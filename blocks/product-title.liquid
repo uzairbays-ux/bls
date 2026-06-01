@@ -1,9 +1,26 @@
 
 
+{%- liquid
+  assign custom_color_wrapper_open = ''
+  assign custom_color_wrapper_close = ''
+  if block.settings.use_custom_color and block.settings.custom_color != blank
+    capture custom_color_wrapper_open
+      echo '<span class="contents product-title__custom-color" style="--color: '
+      echo block.settings.custom_color
+      echo '; color: '
+      echo block.settings.custom_color
+      echo ';">'
+    endcapture
+    assign custom_color_wrapper_close = '</span>'
+  endif
+-%}
+
 {% if closest.product == blank %}
   {% assign text = 'placeholders.product_title' | t %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: text | append: '</p>' %}
+  {{ custom_color_wrapper_open }}
   {% render 'text', fallback_text: product_title, block: block %}
+  {{ custom_color_wrapper_close }}
 {% else %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: closest.product.title | append: '</p>' %}
   <a
@@ -11,7 +28,9 @@
     ref="productTitleLink"
     href="{{ closest.product.selected_or_first_available_variant.url }}"
   >
+    {{ custom_color_wrapper_open }}
     {% render 'text', fallback_text: product_title, block: block %}
+    {{ custom_color_wrapper_close }}
   </a>
 {% endif %}
 
@@ -320,7 +339,20 @@
         }
       ],
       "default": "var(--color-foreground)",
-      "visible_if": "{{ block.settings.type_preset != 'rte' }}"
+      "visible_if": "{{ block.settings.type_preset != 'rte' and block.settings.use_custom_color == false }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_color",
+      "label": "Use custom color",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "custom_color",
+      "label": "Custom color",
+      "default": "#000000",
+      "visible_if": "{{ block.settings.use_custom_color }}"
     },
     {
       "type": "header",
