@@ -14,7 +14,7 @@
     "logo_height_mobile": 40,
     "favicon": "shopify://shop_images/bls-favicon.webp",
     "type_body_font": "inter_n4",
-    "type_subheading_font": "barlowcondensed_n5",
+    "type_subheading_font": "barlow_condensed_n5",
     "type_heading_font": "fraunces_n7",
     "type_accent_font": "fraunces_i6",
     "type_size_paragraph": "14",
