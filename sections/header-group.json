@@ -19,8 +19,8 @@
           "settings": {
             "text": "Free shipping over Rs.1999",
             "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -37,8 +37,8 @@
         "section_width": "page-width",
         "color_scheme": "scheme-08e4fdc9-0fc2-4c82-96bf-ca47e6a98d00",
         "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 10,
+        "padding-block-end": 10
       }
     },
     "header_section": {
@@ -78,8 +78,8 @@
         }
       },
       "settings": {
-        "logo_position": "center",
-        "menu_position": "left",
+        "logo_position": "left",
+        "menu_position": "center",
         "menu_row": "top",
         "customer_account_menu": "customer-account-main-menu",
         "show_search": true,
