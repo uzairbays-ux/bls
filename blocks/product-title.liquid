@@ -1,26 +1,19 @@
 
 
-{%- liquid
-  assign custom_color_wrapper_open = ''
-  assign custom_color_wrapper_close = ''
-  if block.settings.use_custom_color and block.settings.custom_color != blank
-    capture custom_color_wrapper_open
-      echo '<span class="contents product-title__custom-color" style="--color: '
-      echo block.settings.custom_color
-      echo '; color: '
-      echo block.settings.custom_color
-      echo ';">'
-    endcapture
-    assign custom_color_wrapper_close = '</span>'
-  endif
--%}
+{%- if block.settings.use_custom_color and block.settings.custom_color != blank -%}
+  {%- style -%}
+    .text-block--{{ block.id }},
+    .text-block--{{ block.id }} * {
+      --color: {{ block.settings.custom_color }} !important;
+      color: {{ block.settings.custom_color }} !important;
+    }
+  {%- endstyle -%}
+{%- endif -%}
 
 {% if closest.product == blank %}
   {% assign text = 'placeholders.product_title' | t %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: text | append: '</p>' %}
-  {{ custom_color_wrapper_open }}
   {% render 'text', fallback_text: product_title, block: block %}
-  {{ custom_color_wrapper_close }}
 {% else %}
   {% assign clean_title = closest.product.title | remove_first: 'BLS - ' %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: clean_title | append: '</p>' %}
@@ -29,9 +22,7 @@
     ref="productTitleLink"
     href="{{ closest.product.selected_or_first_available_variant.url }}"
   >
-    {{ custom_color_wrapper_open }}
     {% render 'text', fallback_text: product_title, block: block %}
-    {{ custom_color_wrapper_close }}
   </a>
 {% endif %}
 
