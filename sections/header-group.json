@@ -21,8 +21,8 @@
             "link": "",
             "font": "var(--font-heading--family)",
             "font_size": "0.875rem",
-            "weight": "",
-            "letter_spacing": "normal",
+            "weight": "400",
+            "letter_spacing": "tight",
             "case": "none"
           },
           "blocks": {}
