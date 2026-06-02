@@ -240,9 +240,9 @@
               "type": "accordion",
               "name": "t:names.accordion",
               "settings": {
-                "icon": "caret",
+                "icon": "plus",
                 "dividers": true,
-                "type_preset": "h6",
+                "type_preset": "paragraph",
                 "inherit_color_scheme": true,
                 "color_scheme": "",
                 "border": "none",
