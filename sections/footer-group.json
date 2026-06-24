@@ -597,7 +597,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 32,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-5d267d6b-6285-4c49-9e79-51a323292453",
         "padding-block-start": 64,
         "padding-block-end": 48
       }
@@ -632,7 +632,7 @@
         "section_width": "page-width",
         "gap": 24,
         "divider_thickness": 1,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-5d267d6b-6285-4c49-9e79-51a323292453",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
