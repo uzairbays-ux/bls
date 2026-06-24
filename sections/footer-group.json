@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "type": "footer",
   "name": "Footer",
@@ -14,17 +5,17 @@
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
-        "group_H6VpwJ": {
+        "row_main": {
           "type": "group",
           "settings": {
-            "content_direction": "column",
+            "content_direction": "row",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-start",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 6,
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 48,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -53,99 +44,553 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_LWt8Pz": {
-              "type": "text",
+            "col_newsletter": {
+              "type": "group",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 16,
+                "width": "custom",
+                "custom_width": 32,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "newsletter_heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>BLS in Your Inbox</h3>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "2rem",
+                    "line_height": "tight",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 8,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "newsletter_signup": {
+                  "type": "email-signup",
+                  "settings": {
+                    "width": "fill",
+                    "custom_width": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "heading": "",
+                    "heading_preset": "h3",
+                    "border_style": "bottom",
+                    "border_width": 1,
+                    "border_radius": 0,
+                    "input_type_preset": "paragraph",
+                    "style_class": "button-unstyled",
+                    "display_type": "arrow",
+                    "label": "Sign up",
+                    "integrated_button": true,
+                    "button_type_preset": "paragraph",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "newsletter_disclaimer": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>By signing up you agree to receive marketing messages and other communications. See our Privacy Policy and Terms of Service for more information.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.75rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 8,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "newsletter_careers": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p><strong>Want to join us?</strong> Send resumes and portfolios to <a href=\"mailto:careers@bls.com\">careers@bls.com</a></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.75rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 16,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "newsletter_heading",
+                "newsletter_signup",
+                "newsletter_disclaimer",
+                "newsletter_careers"
+              ]
             },
-            "text_f9CFLH": {
-              "type": "text",
+            "col_help": {
+              "type": "group",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "custom",
+                "custom_width": 14,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "help_heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>HELP</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "normal",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "help_links": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p><a href=\"/pages/track-order\">Track My Order</a></p><p><a href=\"/pages/returns\">Returns</a></p><p><a href=\"/pages/shipping\">Shipping</a></p><p><a href=\"/pages/size-guides\">Size Guides</a></p><p><a href=\"/pages/faq\">Frequently Asked Questions</a></p><p><a href=\"/pages/contact\">Contact Us</a></p><p><a href=\"/account\">My Account</a></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "loose",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "help_heading",
+                "help_links"
+              ]
+            },
+            "col_world": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "custom",
+                "custom_width": 14,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "world_heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>OUR WORLD</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "normal",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "world_links": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p><a href=\"/pages/about\">About BLS</a></p><p><a href=\"/pages/early-access\">Early Access</a></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "loose",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "world_heading",
+                "world_links"
+              ]
+            },
+            "col_shop": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "custom",
+                "custom_width": 14,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "shop_heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>SHOP</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "normal",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "shop_links": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p><a href=\"/collections/all\">Shop All</a></p><p><a href=\"/products/gift-card\">Gift Cards</a></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "loose",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "shop_heading",
+                "shop_links"
+              ]
+            },
+            "col_connect": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "custom",
+                "custom_width": 14,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "connect_heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>CONNECT</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "normal",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "connect_links": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p><a href=\"https://www.instagram.com/\" target=\"_blank\" rel=\"noopener\">Instagram</a></p><p><a href=\"https://www.tiktok.com/\" target=\"_blank\" rel=\"noopener\">TikTok</a></p><p><a href=\"/pages/creators\">Creators</a></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "loose",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "connect_heading",
+                "connect_links"
+              ]
             }
           },
           "block_order": [
-            "text_LWt8Pz",
-            "text_f9CFLH"
+            "col_newsletter",
+            "col_help",
+            "col_world",
+            "col_shop",
+            "col_connect"
           ]
-        },
-        "email_signup_crihX7": {
-          "type": "email-signup",
-          "settings": {
-            "width": "fill",
-            "custom_width": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "heading": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "group_H6VpwJ",
-        "email_signup_crihX7"
+        "row_main"
       ],
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
-        "gap": 20,
-        "color_scheme": "scheme-5d267d6b-6285-4c49-9e79-51a323292453",
-        "padding-block-start": 30,
-        "padding-block-end": 30
+        "gap": 32,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 64,
+        "padding-block-end": 48
       }
     },
     "footer_utilities_jLGE8U": {
@@ -154,7 +599,7 @@
         "footer_copyright_jweRK8": {
           "type": "footer-copyright",
           "settings": {
-            "show_powered_by": true,
+            "show_powered_by": false,
             "font_size": "0.75rem",
             "case": "none"
           },
@@ -167,40 +612,20 @@
             "case": "none"
           },
           "blocks": {}
-        },
-        "social_links_Ew63Kq": {
-          "type": "social-links",
-          "settings": {
-            "facebook_url": "https://www.facebook.com/",
-            "instagram_url": "https://www.instagram.com/",
-            "youtube_url": "https://www.youtube.com/",
-            "tiktok_url": "https://www.tiktok.com/",
-            "twitter_url": "https://x.com/",
-            "threads_url": "",
-            "linkedin_url": "",
-            "bluesky_url": "",
-            "snapchat_url": "",
-            "pinterest_url": "",
-            "tumblr_url": "",
-            "vimeo_url": "",
-            "custom_url": ""
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa",
-        "social_links_Ew63Kq"
+        "footer_policy_list_VCdnpa"
       ],
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",
         "gap": 24,
-        "divider_thickness": 0,
-        "color_scheme": "scheme-5",
-        "padding-block-start": 20,
-        "padding-block-end": 20
+        "divider_thickness": 1,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 24,
+        "padding-block-end": 24
       }
     }
   },
