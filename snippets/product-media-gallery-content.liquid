@@ -288,6 +288,10 @@
     }
   {% endif %}
 
+  .media-fit-contain :is(img, video, iframe, .deferred-media__poster-image) {
+    object-fit: cover;
+  }
+
   {% capture view_transition_styles_contain %}
     ::view-transition-old(gallery-item-open),
     ::view-transition-new(gallery-item-open),
