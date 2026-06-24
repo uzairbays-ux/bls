@@ -269,6 +269,20 @@
       "default": 4
     },
     {
+      "type": "select",
+      "id": "mobile_card_size",
+      "label": "Mobile cards visible",
+      "options": [
+        { "value": "60cqw", "label": "1.5" },
+        { "value": "50cqw", "label": "2" },
+        { "value": "40cqw", "label": "2.5" },
+        { "value": "36cqw", "label": "2.75" },
+        { "value": "33cqw", "label": "3" }
+      ],
+      "default": "40cqw",
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.carousel_on_mobile == true }}"
+    },
+    {
       "type": "range",
       "id": "columns_gap",
       "label": "t:settings.horizontal_gap",
