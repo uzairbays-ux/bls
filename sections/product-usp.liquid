@@ -31,7 +31,11 @@
 %}
 
 {%- if has_content -%}
-  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  {% comment %}
+    No .section-background here on purpose: the panel paints its own background,
+    and an absolutely-positioned backdrop with no positioned ancestor resolves
+    against the initial containing block and covers the whole page.
+  {% endcomment %}
   <div
     class="product-usp spacing-style"
     style="{% render 'spacing-style', settings: section.settings %}"
@@ -88,6 +92,7 @@
   .product-usp__media {
     display: flex;
     overflow: hidden;
+    aspect-ratio: 1;
   }
 
   .product-usp__media-img {
