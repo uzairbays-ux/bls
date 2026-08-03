@@ -25,11 +25,11 @@
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
+        "horizontal_alignment": "flex-end",
         "vertical_alignment": "flex-end",
         "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-end",
+        "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 24,
         "section_width": "page-width",
         "section_height": "auto",
@@ -437,7 +437,7 @@
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
+                "vertical_alignment_flex_direction_column": "flex-end",
                 "gap": 12,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-bls-accent",
@@ -450,7 +450,7 @@
                 "gradient_direction": "to top",
                 "link": "/collections/bras",
                 "padding-block-start": 20,
-                "padding-block-end": 20,
+                "padding-block-end": 28,
                 "padding-inline-start": 20,
                 "padding-inline-end": 20
               },
@@ -485,7 +485,7 @@
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
+                "vertical_alignment_flex_direction_column": "flex-end",
                 "gap": 12,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-bls-accent",
@@ -498,7 +498,7 @@
                 "gradient_direction": "to top",
                 "link": "/collections/panties",
                 "padding-block-start": 20,
-                "padding-block-end": 20,
+                "padding-block-end": 28,
                 "padding-inline-start": 20,
                 "padding-inline-end": 20
               },
@@ -533,7 +533,7 @@
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
+                "vertical_alignment_flex_direction_column": "flex-end",
                 "gap": 12,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-bls-accent",
@@ -546,7 +546,7 @@
                 "gradient_direction": "to top",
                 "link": "/collections/sleep-wear",
                 "padding-block-start": 20,
-                "padding-block-end": 20,
+                "padding-block-end": 28,
                 "padding-inline-start": 20,
                 "padding-inline-end": 20
               },
@@ -581,7 +581,7 @@
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
+                "vertical_alignment_flex_direction_column": "flex-end",
                 "gap": 12,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-bls-accent",
@@ -594,7 +594,7 @@
                 "gradient_direction": "to top",
                 "link": "/collections/slips-camis",
                 "padding-block-start": 20,
-                "padding-block-end": 20,
+                "padding-block-end": 28,
                 "padding-inline-start": 20,
                 "padding-inline-end": 20
               },
@@ -629,7 +629,7 @@
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
+                "vertical_alignment_flex_direction_column": "flex-end",
                 "gap": 12,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-bls-accent",
@@ -642,7 +642,7 @@
                 "gradient_direction": "to top",
                 "link": "/collections/active-shape-wear",
                 "padding-block-start": 20,
-                "padding-block-end": 20,
+                "padding-block-end": 28,
                 "padding-inline-start": 20,
                 "padding-inline-end": 20
               },
@@ -677,7 +677,7 @@
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
+                "vertical_alignment_flex_direction_column": "flex-end",
                 "gap": 12,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-bls-accent",
@@ -690,7 +690,7 @@
                 "gradient_direction": "to top",
                 "link": "/collections/teens",
                 "padding-block-start": 20,
-                "padding-block-end": 20,
+                "padding-block-end": 28,
                 "padding-inline-start": 20,
                 "padding-inline-end": 20
               },
@@ -732,7 +732,7 @@
       },
       "name": "t:names.carousel",
       "settings": {
-        "columns": 4,
+        "columns": 3,
         "mobile_columns": "2",
         "section_width": "page-width",
         "columns_gap": 12,
