@@ -600,58 +600,60 @@
     },
     "marquee_valueprops_pdp": {
       "type": "marquee",
-      "name": "t:names.marquee",
       "blocks": {
         "text_1": {
           "type": "text",
           "settings": {
             "text": "<p>Free shipping over Rs.1999</p>",
+            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
             "font_size": "1.125rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap",
-            "width": "fit-content"
+            "wrap": "nowrap"
           }
         },
         "divider_1": {
-          "type": "_divider"
+          "type": "_divider",
+          "settings": {}
         },
         "text_2": {
           "type": "text",
           "settings": {
             "text": "<p>Cash on delivery available</p>",
+            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
             "font_size": "1.125rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap",
-            "width": "fit-content"
+            "wrap": "nowrap"
           }
         },
         "divider_2": {
-          "type": "_divider"
+          "type": "_divider",
+          "settings": {}
         },
         "text_3": {
           "type": "text",
           "settings": {
             "text": "<p>Easy returns & exchange</p>",
+            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
             "font_size": "1.125rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap",
-            "width": "fit-content"
+            "wrap": "nowrap"
           }
         },
         "divider_3": {
-          "type": "_divider"
+          "type": "_divider",
+          "settings": {}
         }
       },
       "block_order": [
@@ -662,6 +664,7 @@
         "text_3",
         "divider_3"
       ],
+      "name": "t:names.marquee",
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "scheme-bls-signature",
