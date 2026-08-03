@@ -2,6 +2,18 @@
 
 {% assign product = closest.product %}
 
+{% liquid
+  assign custom_badge_text = null
+  if product != blank
+    for tag in product.tags
+      if tag contains 'badge:'
+        assign custom_badge_text = tag | split: 'badge:' | last
+        break
+      endif
+    endfor
+  endif
+%}
+
 {% capture children %}
   {% unless product == blank %}
     <div
@@ -11,6 +23,11 @@
         --badge-font-family: var(--font-{{ settings.badge_font_family }}--family); --badge-font-weight: var(--font-{{ settings.badge_font_family }}--weight); --badge-text-transform: {{ settings.badge_text_transform }};
       "
     >
+      {%- if custom_badge_text -%}
+        <div class="product-badges__badge product-badges__badge--rectangle color-scheme-bls-signature">
+          {{- custom_badge_text -}}
+        </div>
+      {%- endif -%}
       {%- if product.available == false or product.compare_at_price > product.price -%}
         <div
           class="
