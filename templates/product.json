@@ -108,32 +108,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "text_category_eyebrow": {
-                  "type": "text",
-                  "name": "Category eyebrow",
-                  "settings": {
-                    "text": "<p>{{ closest.product.type }}</p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.75rem",
-                    "line_height": "tight",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
-                    "wrap": "pretty",
-                    "color": "var(--color-primary)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "text_xrnftG": {
                   "type": "text",
                   "name": "Product title",
@@ -197,7 +171,6 @@
                 }
               },
               "block_order": [
-                "text_category_eyebrow",
                 "text_xrnftG",
                 "review_yHLgjH",
                 "price_tVjtKg"
@@ -627,61 +600,71 @@
     },
     "marquee_valueprops_pdp": {
       "type": "marquee",
-      "name": "t:names.marquee",
       "blocks": {
         "text_1": {
           "type": "text",
           "settings": {
             "text": "<p>Free shipping over Rs.1999</p>",
+            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
             "font_size": "1.125rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap",
-            "width": "fit-content"
+            "wrap": "nowrap"
           }
         },
         "divider_1": {
-          "type": "_divider"
+          "type": "_divider",
+          "settings": {}
         },
         "text_2": {
           "type": "text",
           "settings": {
             "text": "<p>Cash on delivery available</p>",
+            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
             "font_size": "1.125rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap",
-            "width": "fit-content"
+            "wrap": "nowrap"
           }
         },
         "divider_2": {
-          "type": "_divider"
+          "type": "_divider",
+          "settings": {}
         },
         "text_3": {
           "type": "text",
           "settings": {
             "text": "<p>Easy returns & exchange</p>",
+            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
             "font_size": "1.125rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap",
-            "width": "fit-content"
+            "wrap": "nowrap"
           }
         },
         "divider_3": {
-          "type": "_divider"
+          "type": "_divider",
+          "settings": {}
         }
       },
-      "block_order": ["text_1", "divider_1", "text_2", "divider_2", "text_3", "divider_3"],
+      "block_order": [
+        "text_1",
+        "divider_1",
+        "text_2",
+        "divider_2",
+        "text_3",
+        "divider_3"
+      ],
+      "name": "t:names.marquee",
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "scheme-bls-signature",
