@@ -1,0 +1,213 @@
+{% comment %}
+  Product USP: large secondary product image on the left, USP copy and small
+  supporting thumbnails on the right. Renders nothing unless the product has
+  enough imagery to fill it.
+{% endcomment %}
+
+{% liquid
+  assign images = product.images
+  assign feature_image = images[1]
+  assign thumb_one = images[1]
+  assign thumb_two = images[2]
+
+  assign has_content = false
+  if feature_image != blank and section.settings.heading != blank
+    assign has_content = true
+  endif
+%}
+
+{%- if has_content -%}
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  <div
+    class="product-usp spacing-style"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    <div class="product-usp__media">
+      {{
+        feature_image
+        | image_url: width: 1400
+        | image_tag:
+          loading: 'lazy',
+          sizes: '(min-width: 750px) 50vw, 100vw',
+          widths: '400, 600, 800, 1000, 1200, 1400',
+          class: 'product-usp__media-img',
+          alt: feature_image.alt
+      }}
+    </div>
+
+    <div class="product-usp__panel color-{{ section.settings.color_scheme }}">
+      <div class="product-usp__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="product-usp__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <div class="product-usp__heading">{{ section.settings.heading }}</div>
+      </div>
+
+      {%- if thumb_one != blank or thumb_two != blank -%}
+        <div class="product-usp__thumbs">
+          {%- for thumb in images offset: 1 limit: 2 -%}
+            <div class="product-usp__thumb">
+              {{
+                thumb
+                | image_url: width: 400
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: '(min-width: 750px) 15vw, 40vw',
+                  widths: '200, 300, 400',
+                  class: 'product-usp__thumb-img',
+                  alt: thumb.alt
+              }}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .product-usp {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .product-usp__media {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .product-usp__media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-usp__panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--padding-2xl, 32px);
+    padding: var(--padding-2xl, 32px);
+    background-color: var(--color-background);
+  }
+
+  .product-usp__eyebrow {
+    font-family: var(--font-accent--family);
+    font-style: italic;
+    font-size: var(--font-size--lg);
+    color: var(--color-foreground-heading);
+    margin: 0 0 0.25em;
+  }
+
+  .product-usp__heading {
+    font-family: var(--font-heading--family);
+    font-size: var(--font-size--2xl);
+    line-height: var(--line-height--display-tight, 1.15);
+    color: var(--color-primary-hover);
+  }
+
+  .product-usp__heading :is(p, h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+  }
+
+  .product-usp__thumbs {
+    display: flex;
+    gap: var(--padding-lg, 24px);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .product-usp__thumb {
+    width: clamp(96px, 30%, 176px);
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .product-usp__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    .product-usp {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .product-usp__panel {
+      padding: var(--padding-4xl, 56px);
+    }
+
+    .product-usp__heading {
+      font-size: var(--font-size--3xl);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product USP",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the product's 2nd image large, with the 2nd and 3rd images as thumbnails. Hidden automatically if the product has no 2nd image or no heading."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Try me on"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "USP text",
+      "default": "<p>Designed for everyday comfort with a fit that stays put.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-bls-signature"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product USP",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

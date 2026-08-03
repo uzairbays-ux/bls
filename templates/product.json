@@ -172,8 +172,8 @@
               },
               "block_order": [
                 "text_xrnftG",
-                "review_yHLgjH",
-                "price_tVjtKg"
+                "price_tVjtKg",
+                "review_yHLgjH"
               ]
             },
             "divider_VJhene": {
@@ -206,9 +206,9 @@
               "name": "Size guide link",
               "settings": {
                 "text": "<p><a href=\"/pages/size-guides\">Size Guide</a></p>",
-                "width": "fit-content",
+                "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "right",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
                 "font_size": "0.75rem",
@@ -284,7 +284,7 @@
                 "accordion_row_zh3y6y": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Product Details",
+                    "heading": "Details",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -320,49 +320,10 @@
                     "text_mDBAFQ"
                   ]
                 },
-                "accordion_row_7izFt9": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Return policy",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_figE7U": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_figE7U"
-                  ]
-                },
                 "accordion_row_YQDhig": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping",
+                    "heading": "Shipping & Returns",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -371,7 +332,7 @@
                     "text_JHTcPX": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p><p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -401,7 +362,6 @@
               },
               "block_order": [
                 "accordion_row_zh3y6y",
-                "accordion_row_7izFt9",
                 "accordion_row_YQDhig"
               ]
             },
@@ -572,15 +532,221 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "group_valueprops": {
+              "type": "group",
+              "name": "Value props",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 16,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "group_vp1": {
+                  "type": "group",
+                  "name": "Value prop 1",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "gap": 8,
+                    "width": "custom",
+                    "custom_width": 50,
+                    "width_mobile": "custom",
+                    "custom_width_mobile": 50,
+                    "height": "fit",
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 8,
+                    "padding-block-end": 8,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_vp1": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "truck",
+                        "width": 22
+                      }
+                    },
+                    "text_vp1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Free shipping over Rs.1999</p>",
+                        "width": "fit-content",
+                        "max_width": "none",
+                        "alignment": "left",
+                        "type_preset": "custom",
+                        "font": "var(--font-subheading--family)",
+                        "font_size": "0.75rem",
+                        "line_height": "tight",
+                        "letter_spacing": "normal",
+                        "case": "uppercase",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "icon_vp1",
+                    "text_vp1"
+                  ]
+                },
+                "group_vp2": {
+                  "type": "group",
+                  "name": "Value prop 2",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "gap": 8,
+                    "width": "custom",
+                    "custom_width": 50,
+                    "width_mobile": "custom",
+                    "custom_width_mobile": 50,
+                    "height": "fit",
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 8,
+                    "padding-block-end": 8,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_vp2": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "credit_card",
+                        "width": 22
+                      }
+                    },
+                    "text_vp2": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Cash on delivery available</p>",
+                        "width": "fit-content",
+                        "max_width": "none",
+                        "alignment": "left",
+                        "type_preset": "custom",
+                        "font": "var(--font-subheading--family)",
+                        "font_size": "0.75rem",
+                        "line_height": "tight",
+                        "letter_spacing": "normal",
+                        "case": "uppercase",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "icon_vp2",
+                    "text_vp2"
+                  ]
+                },
+                "group_vp3": {
+                  "type": "group",
+                  "name": "Value prop 3",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "gap": 8,
+                    "width": "custom",
+                    "custom_width": 50,
+                    "width_mobile": "custom",
+                    "custom_width_mobile": 50,
+                    "height": "fit",
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 8,
+                    "padding-block-end": 8,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_vp3": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "return",
+                        "width": 22
+                      }
+                    },
+                    "text_vp3": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Easy returns & exchange</p>",
+                        "width": "fit-content",
+                        "max_width": "none",
+                        "alignment": "left",
+                        "type_preset": "custom",
+                        "font": "var(--font-subheading--family)",
+                        "font_size": "0.75rem",
+                        "line_height": "tight",
+                        "letter_spacing": "normal",
+                        "case": "uppercase",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "icon_vp3",
+                    "text_vp3"
+                  ]
+                }
+              },
+              "block_order": [
+                "group_vp1",
+                "group_vp2",
+                "group_vp3"
+              ]
             }
           },
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
-            "variant_picker_R3rGDr",
             "text_size_guide_link",
+            "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "accordion_MrLdHN",
+            "group_valueprops",
             "product_recommendations_8Qpicp",
             "text_aEtTtq"
           ]
@@ -596,81 +762,6 @@
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "marquee_valueprops_pdp": {
-      "type": "marquee",
-      "blocks": {
-        "text_1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Free shipping over Rs.1999</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1.125rem",
-            "line_height": "tight",
-            "letter_spacing": "normal",
-            "case": "uppercase",
-            "wrap": "nowrap"
-          }
-        },
-        "divider_1": {
-          "type": "_divider",
-          "settings": {}
-        },
-        "text_2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Cash on delivery available</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1.125rem",
-            "line_height": "tight",
-            "letter_spacing": "normal",
-            "case": "uppercase",
-            "wrap": "nowrap"
-          }
-        },
-        "divider_2": {
-          "type": "_divider",
-          "settings": {}
-        },
-        "text_3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Easy returns & exchange</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1.125rem",
-            "line_height": "tight",
-            "letter_spacing": "normal",
-            "case": "uppercase",
-            "wrap": "nowrap"
-          }
-        },
-        "divider_3": {
-          "type": "_divider",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "text_1",
-        "divider_1",
-        "text_2",
-        "divider_2",
-        "text_3",
-        "divider_3"
-      ],
-      "name": "t:names.marquee",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "scheme-bls-signature",
-        "padding-block-start": 16,
-        "padding-block-end": 16,
-        "gap_between_elements": 32
       }
     },
     "product_recommendations_qggXJq": {
@@ -815,11 +906,21 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "product_usp": {
+      "type": "product-usp",
+      "settings": {
+        "eyebrow": "Try me on",
+        "heading": "<p>Everyday comfort, engineered to stay put \u2014 soft cotton with a fit that moves with you.</p>",
+        "color_scheme": "scheme-bls-signature",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
-    "marquee_valueprops_pdp",
+    "product_usp",
     "product_recommendations_qggXJq"
   ]
 }
