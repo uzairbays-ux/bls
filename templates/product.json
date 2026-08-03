@@ -53,8 +53,8 @@
             "details_position": "flex-start",
             "gap": 28,
             "sticky_details_desktop": true,
-            "inherit_color_scheme": true,
-            "color_scheme": "scheme-1",
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-bls-cta",
             "background_media": "none",
             "video_position": "cover",
             "background_image_position": "cover",
@@ -112,7 +112,7 @@
                   "type": "text",
                   "name": "Category eyebrow",
                   "settings": {
-                    "text": "<p>{{ closest.product.collections.first.title | default: closest.product.type }}</p>",
+                    "text": "<p>{{ closest.product.type }}</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -138,7 +138,7 @@
                   "type": "text",
                   "name": "Product title",
                   "settings": {
-                    "text": "<h1>{{ closest.product.title | remove_first: 'BLS - ' }}</h1>",
+                    "text": "<h1>{{ closest.product.title }}</h1>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -254,83 +254,40 @@
               },
               "blocks": {}
             },
-            "group_cta": {
-              "type": "group",
-              "name": "Add to cart",
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
               "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": false,
-                "color_scheme": "scheme-bls-cta",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
+                "stacking": true,
+                "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {
-                "buy_buttons_eYQEYi": {
-                  "type": "buy-buttons",
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
                   "settings": {
-                    "stacking": true,
-                    "show_pickup_availability": false,
-                    "gift_card_form": true,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "style_class": "button"
                   },
-                  "blocks": {
-                    "quantity": {
-                      "type": "quantity",
-                      "static": true,
-                      "settings": {},
-                      "blocks": {}
-                    },
-                    "add-to-cart": {
-                      "type": "add-to-cart",
-                      "static": true,
-                      "settings": {
-                        "style_class": "button"
-                      },
-                      "blocks": {}
-                    },
-                    "accelerated-checkout": {
-                      "type": "accelerated-checkout",
-                      "static": true,
-                      "settings": {},
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": []
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
                 }
               },
-              "block_order": ["buy_buttons_eYQEYi"]
+              "block_order": []
             },
             "accordion_MrLdHN": {
               "type": "accordion",
@@ -649,7 +606,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "text_size_guide_link",
-            "group_cta",
+            "buy_buttons_eYQEYi",
             "accordion_MrLdHN",
             "product_recommendations_8Qpicp",
             "text_aEtTtq"
