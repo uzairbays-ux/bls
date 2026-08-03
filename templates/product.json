@@ -913,7 +913,7 @@
         "eyebrow": "Try me on",
         "heading": "<p>Everyday comfort, engineered to stay put \u2014 soft cotton with a fit that moves with you.</p>",
         "color_scheme": "scheme-bls-signature",
-        "padding-block-start": 0,
+        "padding-block-start": 64,
         "padding-block-end": 0
       }
     }
