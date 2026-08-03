@@ -1138,11 +1138,11 @@
         "section_width": "page-width",
         "columns_gap": 12,
         "color_scheme": "scheme-1",
-        "icons_style": "arrow",
+        "icons_style": "none",
         "icons_shape": "none",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "infinite_scroll": true
+        "infinite_scroll": false
       }
     }
   },
