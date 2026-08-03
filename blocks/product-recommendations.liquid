@@ -127,6 +127,7 @@
           data-testid="resource-list-grid"
         {% endif %}
         data-has-recommendations="{{ has_recommendations }}"
+        style="--mobile-card-size: {{ block_settings.mobile_card_size | default: '40cqw' }};"
       >
         {% case block_settings.layout_type %}
           {% when 'grid' %}
@@ -151,7 +152,7 @@
             hidden--desktop
             force-full-width
           "
-          style="--resource-list-gap: {{ mobile_carousel_gap }}px;"
+          style="--resource-list-gap: {{ mobile_carousel_gap }}px; --mobile-card-size: {{ block_settings.mobile_card_size | default: '40cqw' }};"
         >
           {% render 'resource-list-carousel',
             ref: 'resourceListCarouselMobile',
