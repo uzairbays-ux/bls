@@ -10,8 +10,22 @@
   assign thumb_one = images[1]
   assign thumb_two = images[2]
 
+  # Per-product copy via metafields, falling back to the section defaults.
+  assign usp_eyebrow = section.settings.eyebrow
+  assign usp_heading = section.settings.heading
+
+  assign eyebrow_field = product.metafields.custom.usp_eyebrow
+  if eyebrow_field != blank
+    assign usp_eyebrow = eyebrow_field.value | escape
+  endif
+
+  assign heading_field = product.metafields.custom.usp_text
+  if heading_field != blank
+    assign usp_heading = heading_field.value | escape | newline_to_br
+  endif
+
   assign has_content = false
-  if feature_image != blank and section.settings.heading != blank
+  if feature_image != blank and usp_heading != blank
     assign has_content = true
   endif
 %}
@@ -37,10 +51,10 @@
 
     <div class="product-usp__panel color-{{ section.settings.color_scheme }}">
       <div class="product-usp__copy">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="product-usp__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- if usp_eyebrow != blank -%}
+          <p class="product-usp__eyebrow">{{ usp_eyebrow }}</p>
         {%- endif -%}
-        <div class="product-usp__heading">{{ section.settings.heading }}</div>
+        <div class="product-usp__heading">{{ usp_heading }}</div>
       </div>
 
       {%- if thumb_one != blank or thumb_two != blank -%}
@@ -158,18 +172,22 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Shows the product's 2nd image large, with the 2nd and 3rd images as thumbnails. Hidden automatically if the product has no 2nd image or no heading."
+      "content": "Shows the product's 2nd image large, with the 2nd and 3rd images as thumbnails. Hidden automatically if the product has no 2nd image or no text."
+    },
+    {
+      "type": "paragraph",
+      "content": "Per-product copy: set metafields custom.usp_eyebrow and custom.usp_text (type: single or multi-line text) on a product to override the defaults below. Products without them fall back to these values."
     },
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Eyebrow",
+      "label": "Default eyebrow",
       "default": "Try me on"
     },
     {
       "type": "richtext",
       "id": "heading",
-      "label": "USP text",
+      "label": "Default USP text",
       "default": "<p>Designed for everyday comfort with a fit that stays put.</p>"
     },
     {
