@@ -276,68 +276,77 @@
     "marquee_valueprops": {
       "type": "marquee",
       "blocks": {
+        "icon_1": {
+          "type": "icon",
+          "settings": {
+            "icon": "truck",
+            "width": 34
+          }
+        },
         "text_1": {
           "type": "text",
           "settings": {
             "text": "<p>Free shipping over Rs.1999</p>",
-            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
-            "font_size": "1.125rem",
+            "font_size": "2rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "width": "fit-content"
           }
         },
-        "divider_1": {
-          "type": "_divider",
-          "settings": {}
+        "icon_2": {
+          "type": "icon",
+          "settings": {
+            "icon": "credit_card",
+            "width": 34
+          }
         },
         "text_2": {
           "type": "text",
           "settings": {
             "text": "<p>Cash on delivery available</p>",
-            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
-            "font_size": "1.125rem",
+            "font_size": "2rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "width": "fit-content"
           }
         },
-        "divider_2": {
-          "type": "_divider",
-          "settings": {}
+        "icon_3": {
+          "type": "icon",
+          "settings": {
+            "icon": "return",
+            "width": 34
+          }
         },
         "text_3": {
           "type": "text",
           "settings": {
             "text": "<p>Easy returns & exchange</p>",
-            "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-subheading--family)",
-            "font_size": "1.125rem",
+            "font_size": "2rem",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "width": "fit-content"
           }
-        },
-        "divider_3": {
-          "type": "_divider",
-          "settings": {}
         }
       },
       "block_order": [
+        "icon_1",
         "text_1",
-        "divider_1",
+        "icon_2",
         "text_2",
-        "divider_2",
-        "text_3",
-        "divider_3"
+        "icon_3",
+        "text_3"
       ],
       "name": "t:names.marquee",
       "settings": {
@@ -345,7 +354,7 @@
         "color_scheme": "scheme-bls-signature",
         "padding-block-start": 16,
         "padding-block-end": 16,
-        "gap_between_elements": 32
+        "gap_between_elements": 40
       }
     },
     "carousel_shopbycategory": {
@@ -731,7 +740,8 @@
         "icons_style": "arrow",
         "icons_shape": "none",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "infinite_scroll": true
       }
     },
     "product_list_campaign": {
@@ -1131,7 +1141,8 @@
         "icons_style": "arrow",
         "icons_shape": "none",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "infinite_scroll": true
       }
     }
   },
