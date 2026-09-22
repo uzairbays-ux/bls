@@ -296,6 +296,16 @@
   }
 </script>
 
+{% if section.settings.top_link_text != blank %}
+  <div class="top-link" style="text-align:center;font-size:0.875rem;padding:6px 12px;color:rgb(120,120,120);">
+    {% if section.settings.top_link_url != blank %}
+      <a href="{{ section.settings.top_link_url }}"{% if section.settings.top_link_new_tab %} target="_blank" rel="noopener"{% endif %} style="color:inherit;text-decoration:underline;">{{ section.settings.top_link_text }}</a>
+    {% else %}
+      {{ section.settings.top_link_text }}
+    {% endif %}
+  </div>
+{% endif %}
+
 <header-component
   id="header-component"
   class="{{ class }}"
@@ -1130,6 +1140,27 @@
   "tag": "header",
   "class": "header-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Top link"
+    },
+    {
+      "type": "text",
+      "id": "top_link_text",
+      "label": "Text",
+      "default": "Track Your Order"
+    },
+    {
+      "type": "url",
+      "id": "top_link_url",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "top_link_new_tab",
+      "label": "Open in new tab",
+      "default": true
+    },
     {
       "type": "header",
       "content": "t:content.logo"

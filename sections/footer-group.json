@@ -53,7 +53,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "col_newsletter": {
+            "col_brand": {
               "type": "group",
               "settings": {
                 "content_direction": "column",
@@ -63,9 +63,9 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 16,
+                "gap": 24,
                 "width": "custom",
-                "custom_width": 32,
+                "custom_width": 14,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -92,17 +92,92 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "newsletter_heading": {
+                "brand_logo": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3>BLS in Your Inbox</h3>",
+                    "text": "<p><strong>BRITISH LINGERIE</strong><br>STUDIO</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-heading--family)",
-                    "font_size": "2rem",
+                    "font_size": "1rem",
                     "line_height": "tight",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "brand_social": {
+                  "type": "_footer-social-icons",
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "brand_logo",
+                "brand_social"
+              ]
+            },
+            "col_about": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "flex-start",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 16,
+                "width": "custom",
+                "custom_width": 26,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "about_heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p><strong>About Us</strong></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.125rem",
+                    "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
@@ -111,81 +186,31 @@
                     "background_color": "#00000026",
                     "corner_radius": 0,
                     "padding-block-start": 0,
-                    "padding-block-end": 8,
+                    "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
                   },
                   "blocks": {}
                 },
-                "newsletter_signup": {
-                  "type": "email-signup",
+                "about_text": {
+                  "type": "text",
                   "settings": {
-                    "width": "fill",
-                    "custom_width": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "heading": "",
-                    "heading_preset": "h3",
-                    "border_style": "bottom",
-                    "border_width": 1,
-                    "border_radius": 0,
-                    "input_type_preset": "paragraph",
-                    "style_class": "button-unstyled",
-                    "display_type": "arrow",
-                    "label": "Sign up",
-                    "integrated_button": true,
-                    "button_type_preset": "paragraph",
+                    "text": "<p>British Lingerie Studio is redefining sensuality for women across the globe. Offering luxury lingerie, underwear, sleepwear, loungewear &amp; active wear for today's woman. We are known for quality lingerie, aiming at sophistication, class and comfort. <a href=\"/pages/about\">Read More..</a></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.9375rem",
+                    "line_height": "loose",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
                     "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "newsletter_disclaimer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>By signing up you agree to receive marketing messages and other communications. See our Privacy Policy and Terms of Service for more information.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "0.75rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 8,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "newsletter_careers": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p><strong>Want to join us?</strong> Send resumes and portfolios to <a href=\"mailto:careers@bls.com\">careers@bls.com</a></p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "0.75rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 16,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
@@ -194,10 +219,8 @@
                 }
               },
               "block_order": [
-                "newsletter_heading",
-                "newsletter_signup",
-                "newsletter_disclaimer",
-                "newsletter_careers"
+                "about_heading",
+                "about_text"
               ]
             },
             "col_help": {
@@ -210,9 +233,9 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 12,
+                "gap": 16,
                 "width": "custom",
-                "custom_width": 14,
+                "custom_width": 12,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -242,16 +265,16 @@
                 "help_heading": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>HELP</p>",
+                    "text": "<p><strong>Help</strong></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.125rem",
                     "line_height": "normal",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
+                    "letter_spacing": "normal",
+                    "case": "none",
                     "wrap": "pretty",
                     "color": "var(--color-foreground-heading)",
                     "background": false,
@@ -267,13 +290,13 @@
                 "help_links": {
                   "type": "text",
                   "settings": {
-                    "text": "<p><a href=\"/pages/track-order\">Track My Order</a></p><p><a href=\"/pages/returns\">Returns</a></p><p><a href=\"/pages/shipping\">Shipping</a></p><p><a href=\"/pages/size-guides\">Size Guides</a></p><p><a href=\"/pages/faq\">Frequently Asked Questions</a></p><p><a href=\"/pages/contact\">Contact Us</a></p><p><a href=\"/account\">My Account</a></p>",
+                    "text": "<p><a href=\"/pages/store-locator\">Store Locator</a></p><p><a href=\"/pages/about\">About Us</a></p><p><a href=\"/pages/return-policy\">Return Policy</a></p><p><a href=\"/pages/track-order\">Track Your Order</a></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
-                    "font_size": "0.875rem",
+                    "font_size": "0.9375rem",
                     "line_height": "loose",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -295,7 +318,7 @@
                 "help_links"
               ]
             },
-            "col_world": {
+            "col_pages": {
               "type": "group",
               "settings": {
                 "content_direction": "column",
@@ -305,9 +328,9 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 12,
+                "gap": 16,
                 "width": "custom",
-                "custom_width": 14,
+                "custom_width": 10,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -334,46 +357,21 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "world_heading": {
+                "pages_heading": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>OUR WORLD</p>",
+                    "text": "<p><strong>Pages</strong></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.125rem",
                     "line_height": "normal",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground-heading)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "world_links": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p><a href=\"/pages/about\">About BLS</a></p><p><a href=\"/pages/early-access\">Early Access</a></p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "0.875rem",
-                    "line_height": "loose",
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
-                    "color": "var(--color-foreground)",
+                    "color": "var(--color-foreground-heading)",
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
@@ -386,11 +384,10 @@
                 }
               },
               "block_order": [
-                "world_heading",
-                "world_links"
+                "pages_heading"
               ]
             },
-            "col_shop": {
+            "col_newsletter": {
               "type": "group",
               "settings": {
                 "content_direction": "column",
@@ -400,9 +397,9 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 12,
+                "gap": 16,
                 "width": "custom",
-                "custom_width": 14,
+                "custom_width": 28,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -429,19 +426,19 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "shop_heading": {
+                "newsletter_heading": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>SHOP</p>",
+                    "text": "<p><strong>Sign Up For Our Newsletter</strong></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.125rem",
                     "line_height": "normal",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
+                    "letter_spacing": "normal",
+                    "case": "none",
                     "wrap": "pretty",
                     "color": "var(--color-foreground-heading)",
                     "background": false,
@@ -454,16 +451,16 @@
                   },
                   "blocks": {}
                 },
-                "shop_links": {
+                "newsletter_text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p><a href=\"/collections/all\">Shop All</a></p><p><a href=\"/products/gift-card\">Gift Cards</a></p>",
+                    "text": "<p>Enter your email below to receive special offers, exclusive discounts and many more!</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
-                    "font_size": "0.875rem",
+                    "font_size": "0.9375rem",
                     "line_height": "loose",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -478,95 +475,25 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                }
-              },
-              "block_order": [
-                "shop_heading",
-                "shop_links"
-              ]
-            },
-            "col_connect": {
-              "type": "group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "flex-start",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 12,
-                "width": "custom",
-                "custom_width": 14,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "connect_heading": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>CONNECT</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
-                    "line_height": "normal",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground-heading)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 },
-                "connect_links": {
-                  "type": "text",
+                "newsletter_signup": {
+                  "type": "email-signup",
                   "settings": {
-                    "text": "<p><a href=\"https://www.instagram.com/\" target=\"_blank\" rel=\"noopener\">Instagram</a></p><p><a href=\"https://www.tiktok.com/\" target=\"_blank\" rel=\"noopener\">TikTok</a></p><p><a href=\"/pages/creators\">Creators</a></p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "0.875rem",
-                    "line_height": "loose",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "heading": "",
+                    "heading_preset": "h3",
+                    "border_style": "solid",
+                    "border_width": 1,
+                    "border_radius": 0,
+                    "input_type_preset": "paragraph",
+                    "style_class": "button-primary",
+                    "display_type": "button",
+                    "label": "Subscribe",
+                    "integrated_button": false,
+                    "button_type_preset": "paragraph",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -576,17 +503,18 @@
                 }
               },
               "block_order": [
-                "connect_heading",
-                "connect_links"
+                "newsletter_heading",
+                "newsletter_text",
+                "newsletter_signup"
               ]
             }
           },
           "block_order": [
-            "col_newsletter",
+            "col_brand",
+            "col_about",
             "col_help",
-            "col_world",
-            "col_shop",
-            "col_connect"
+            "col_pages",
+            "col_newsletter"
           ]
         }
       },
