@@ -150,6 +150,142 @@
         "gap": 0
       }
     },
+    "wacoal_styles_slider": {
+      "type": "wacoal-image-text-slider",
+      "name": "Wacoal styles slider",
+      "blocks": {
+        "item_01": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-01.jpg",
+            "title": "Minimizer",
+            "text": "reduce your bustline up to 1\"",
+            "link": "/collections/bras"
+          }
+        },
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-02.jpg",
+            "title": "Strapless",
+            "text": "your no-straps, no-slip solution",
+            "link": "/collections/bras"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-03.jpg",
+            "title": "T-Shirt",
+            "text": "your go-to basics",
+            "link": "/collections/bras"
+          }
+        },
+        "item_04": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-04.jpg",
+            "title": "Wireless",
+            "text": "effortless support without the wires",
+            "link": "/collections/bras"
+          }
+        },
+        "item_05": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-05.jpg",
+            "title": "Full Coverage",
+            "text": "maximum coverage, minimal compromise",
+            "link": "/collections/bras"
+          }
+        },
+        "item_06": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-06.jpg",
+            "title": "Sport",
+            "text": "support that's made for movement",
+            "link": "/collections/active-shape-wear"
+          }
+        },
+        "item_07": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-07.jpg",
+            "title": "Lounge",
+            "text": "for moments when comfort comes first",
+            "link": "/collections/sleep-wear"
+          }
+        },
+        "item_08": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-08.jpg",
+            "title": "Full Figure",
+            "text": "crafted to support up to K cups",
+            "link": "/collections/bras"
+          }
+        },
+        "item_09": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-09.jpg",
+            "title": "Lace",
+            "text": "delicate details meet hidden support",
+            "link": "/collections/bras"
+          }
+        },
+        "item_10": {
+          "type": "item",
+          "settings": {
+            "image_asset": "wacoal-style-10.jpg",
+            "title": "Underwire",
+            "text": "support that never lets you down",
+            "link": "/collections/bras"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04",
+        "item_05",
+        "item_06",
+        "item_07",
+        "item_08",
+        "item_09",
+        "item_10"
+      ],
+      "settings": {
+        "heading": "Shop Bra Styles"
+      }
+    },
+    "wacoal_rich_text": {
+      "type": "wacoal-rich-text",
+      "name": "Wacoal rich text",
+      "settings": {
+        "background": "#f3f0eb",
+        "heading": "Support that <em>gets</em> you. Style that <em>reflects</em> you. Comfort that <em>never</em> quits.",
+        "text": "It all starts with the right fitting bra.",
+        "max_width": 60,
+        "button1_label": "FIND YOUR PERFECT FIT",
+        "button1_link": "/pages/the-perfect-fit",
+        "button2_label": "YOUR CUSTOM BRA WARDROBE",
+        "button2_link": "/collections/bras"
+      }
+    },
+    "wacoal_featured_collection": {
+      "type": "wacoal-featured-collection",
+      "name": "Wacoal featured collection",
+      "settings": {
+        "heading": "Best Sellers",
+        "subheading": "Crafted for consistency, chosen for comfort — these are the styles that set the standard.",
+        "collection": "bras",
+        "max_products": 10,
+        "badge": "Best Seller"
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -1240,6 +1376,9 @@
   "order": [
     "wacoal_hero",
     "wacoal_tiles",
+    "wacoal_styles_slider",
+    "wacoal_rich_text",
+    "wacoal_featured_collection",
     "product_list_campaign",
     "two_up_content",
     "marquee_valueprops",

@@ -1,0 +1,46 @@
+{% comment %}
+  Centred rich-text band (Wacoal "rich text"): serif heading with italic words,
+  one line of text and up to two pill buttons, on the page's beige background.
+{% endcomment %}
+<div
+  class="wac-rich"
+  style="--wac-rich-bg: {{ section.settings.background }}; --wac-rich-max: {{ section.settings.max_width }}%;"
+>
+  <div class="wac-rich__content">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="wac-rich__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="wac-rich__text"><p>{{ section.settings.text | escape }}</p></div>
+    {%- endif -%}
+    {%- if section.settings.button1_label != blank or section.settings.button2_label != blank -%}
+      <div class="wac-rich__buttons">
+        {%- if section.settings.button1_label != blank -%}
+          <a class="wac-rich__button" href="{{ section.settings.button1_link | default: '#' }}">{{ section.settings.button1_label | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.button2_label != blank -%}
+          <a class="wac-rich__button" href="{{ section.settings.button2_link | default: '#' }}">{{ section.settings.button2_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wacoal rich text",
+  "tag": "section",
+  "class": "wac-section-rich",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#f3f0eb" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Support that <em>gets</em> you. Style that <em>reflects</em> you. Comfort that <em>never</em> quits." },
+    { "type": "text", "id": "text", "label": "Text", "default": "It all starts with the right fitting bra." },
+    { "type": "range", "id": "max_width", "label": "Content width (% of page)", "min": 40, "max": 100, "step": 5, "default": 60 },
+    { "type": "text", "id": "button1_label", "label": "First button", "default": "FIND YOUR PERFECT FIT" },
+    { "type": "url", "id": "button1_link", "label": "First button link" },
+    { "type": "text", "id": "button2_label", "label": "Second button", "default": "YOUR CUSTOM BRA WARDROBE" },
+    { "type": "url", "id": "button2_link", "label": "Second button link" }
+  ],
+  "presets": [ { "name": "Wacoal rich text" } ]
+}
+{% endschema %}

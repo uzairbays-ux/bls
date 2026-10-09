@@ -94,7 +94,7 @@
         "brand_wacoal": {
           "type": "brand",
           "settings": {
-            "label": "WACOAL",
+            "label": "British Lingerie Studio",
             "url": "/",
             "active": true
           }
@@ -102,9 +102,16 @@
         "brand_btemptd": {
           "type": "brand",
           "settings": {
-            "label": "b.tempt’d",
-            "url": "/",
+            "label": "Location",
+            "url": "/pages/store-locator",
             "active": false
+          }
+        },
+        "store_pakistan": {
+          "type": "store",
+          "settings": {
+            "label": "Pakistan",
+            "url": "/"
           }
         },
         "store_usa": {
@@ -125,13 +132,14 @@
       "block_order": [
         "brand_wacoal",
         "brand_btemptd",
+        "store_pakistan",
         "store_usa",
         "store_canada"
       ],
       "settings": {
         "background": "#000000",
         "text_color": "#ffffff",
-        "store_label": "USA"
+        "store_label": "Pakistan"
       }
     },
     "wacoal_promo_bar": {

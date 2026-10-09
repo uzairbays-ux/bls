@@ -1,0 +1,235 @@
+{% comment %}
+  "Best Sellers" product carousel (Wacoal featured collection): centred serif heading
+  and sub-heading, round prev/next buttons at the right, a horizontally scrolling row of
+  product cards: image (second image on hover), badge pills, colour swatches, vendor and
+  style number, title, price, star rating. Products come from the chosen collection.
+{% endcomment %}
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.max_products
+-%}
+<div class="wac-featured" data-wac-featured>
+  <div class="wac-featured__container">
+    <div class="wac-featured__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="wac-featured__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <div class="wac-featured__sub"><p>{{ section.settings.subheading | escape }}</p></div>
+      {%- endif -%}
+    </div>
+
+    <div class="wac-featured__body">
+      <div class="wac-featured__nav">
+        <button type="button" class="wac-featured__arrow wac-featured__arrow--prev is-disabled" data-wac-featured-prev aria-label="Previous products" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="wac-featured__arrow wac-featured__arrow--next" data-wac-featured-next aria-label="Next products">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="wac-featured__track" data-wac-featured-track>
+        {%- for product in collection.products limit: limit -%}
+          {%- liquid
+            assign front = product.featured_image
+            assign back = blank
+            if product.images.size > 1
+              assign back = product.images[1]
+            endif
+            assign title = product.title | remove_first: 'BLS - ' | remove_first: 'BLS-' | remove_first: 'BLS '
+            assign style_no = product.selected_or_first_available_variant.sku | split: '-' | first
+            assign color_option = blank
+            for option in product.options_with_values
+              assign oname = option.name | downcase
+              if oname == 'color' or oname == 'colour'
+                assign color_option = option
+              endif
+            endfor
+            assign rating = product.metafields.reviews.rating.value
+            assign rating_count = product.metafields.reviews.rating_count.value
+          -%}
+          <div class="wac-card">
+            <div class="wac-card__top">
+              <a class="wac-card__image-link" href="{{ product.url }}" aria-label="{{ title | escape }}">
+                <span class="wac-card__flip">
+                  {%- if front -%}
+                    <img class="wac-card__img wac-card__img--front" src="{{ front | image_url: width: 560 }}" srcset="{{ front | image_url: width: 280 }} 280w, {{ front | image_url: width: 560 }} 560w" sizes="278px" width="{{ front.width }}" height="{{ front.height }}" alt="{{ front.alt | default: title | escape }}" loading="lazy">
+                  {%- else -%}
+                    <span class="wac-card__img wac-card__img--front wac-card__img--empty"></span>
+                  {%- endif -%}
+                  {%- if back != blank -%}
+                    <img class="wac-card__img wac-card__img--back" src="{{ back | image_url: width: 560 }}" width="{{ back.width }}" height="{{ back.height }}" alt="" loading="lazy">
+                  {%- endif -%}
+                </span>
+                {%- if section.settings.badge != blank or product.compare_at_price > product.price -%}
+                  <span class="wac-card__flags">
+                    {%- if section.settings.badge != blank -%}
+                      <span class="wac-card__flag">{{ section.settings.badge | escape }}</span>
+                    {%- endif -%}
+                    {%- if product.compare_at_price > product.price -%}
+                      <span class="wac-card__flag wac-card__flag--soft">Sale</span>
+                    {%- endif -%}
+                  </span>
+                {%- endif -%}
+              </a>
+
+              <div class="wac-card__info">
+                {%- if color_option != blank -%}
+                  <ul class="wac-card__swatches" role="list" aria-label="Colours">
+                    {%- for value in color_option.values limit: 5 -%}
+                      {%- liquid
+                        assign key = value | downcase | strip
+                        assign hex = '#d9d2cb'
+                        case key
+                          when 'black' or 'jet black'
+                            assign hex = '#000000'
+                          when 'white' or 'ivory' or 'off white' or 'off-white'
+                            assign hex = '#f5f1ea'
+                          when 'skin' or 'nude' or 'beige' or 'sand'
+                            assign hex = '#e8c9a8'
+                          when 'cream'
+                            assign hex = '#f2e6d0'
+                          when 'red'
+                            assign hex = '#c8102e'
+                          when 'maroon' or 'wine' or 'burgundy'
+                            assign hex = '#6e1e2b'
+                          when 'pink' or 'baby pink' or 'light pink'
+                            assign hex = '#f3b5c6'
+                          when 'hot pink' or 'fuchsia' or 'magenta'
+                            assign hex = '#e3348a'
+                          when 'peach'
+                            assign hex = '#f6c3a4'
+                          when 'purple' or 'violet'
+                            assign hex = '#7e286f'
+                          when 'lilac' or 'lavender' or 'mauve'
+                            assign hex = '#b89bc9'
+                          when 'blue' or 'royal blue'
+                            assign hex = '#2b55a3'
+                          when 'navy' or 'navy blue' or 'dark blue'
+                            assign hex = '#1b2a4a'
+                          when 'sky blue' or 'light blue' or 'baby blue'
+                            assign hex = '#a9cfe8'
+                          when 'teal' or 'turquoise'
+                            assign hex = '#2a8c8c'
+                          when 'green' or 'dark green' or 'bottle green'
+                            assign hex = '#2f6b3a'
+                          when 'olive'
+                            assign hex = '#7a7a3a'
+                          when 'mint' or 'sea green'
+                            assign hex = '#a7dcc6'
+                          when 'yellow' or 'mustard'
+                            assign hex = '#e0b43a'
+                          when 'orange' or 'rust'
+                            assign hex = '#d2691e'
+                          when 'grey' or 'gray' or 'light grey' or 'light gray'
+                            assign hex = '#9a9a9a'
+                          when 'charcoal' or 'dark grey' or 'dark gray'
+                            assign hex = '#4a4a4a'
+                          when 'brown' or 'coffee' or 'chocolate' or 'mocha'
+                            assign hex = '#6b4226'
+                          when 'tan' or 'camel' or 'caramel'
+                            assign hex = '#c69c6d'
+                          when 'gold' or 'golden'
+                            assign hex = '#d4af37'
+                          when 'silver'
+                            assign hex = '#c0c0c0'
+                          when 'multi' or 'mix' or 'multicolor' or 'multicolour' or 'printed' or 'print'
+                            assign hex = 'linear-gradient(135deg,#e3348a 0 33%,#2b55a3 33% 66%,#e0b43a 66%)'
+                        endcase
+                      -%}
+                      <li class="wac-card__swatch{% if forloop.first %} is-active{% endif %}" title="{{ value | escape }}"><span class="wac-card__swatch-dot" style="background: {{ hex }};"></span></li>
+                    {%- endfor -%}
+                    {%- if color_option.values.size > 5 -%}
+                      <li class="wac-card__swatch-more" aria-hidden="true">+</li>
+                    {%- endif -%}
+                  </ul>
+                {%- endif -%}
+
+                <a class="wac-card__title-link" href="{{ product.url }}">
+                  <span class="wac-card__meta">
+                    <span>{{ product.vendor | escape }}</span>
+                    {%- if style_no != blank -%}<span>{{ style_no | escape }}</span>{%- endif -%}
+                  </span>
+                  <span class="wac-card__title">{{ title | escape }}</span>
+                </a>
+
+                <div class="wac-card__price">
+                  <span class="wac-card__price-now">{{ product.price | money }}</span>
+                  {%- if product.compare_at_price > product.price -%}
+                    <s class="wac-card__price-was">{{ product.compare_at_price | money }}</s>
+                  {%- endif -%}
+                </div>
+
+                {%- if rating != blank -%}
+                  <a class="wac-card__rating" href="{{ product.url }}#reviews" aria-label="Rated {{ rating.rating }} out of 5 from {{ rating_count }} reviews">
+                    <span class="wac-card__stars" style="--wac-rating: {{ rating.rating | times: 1.0 | divided_by: 5.0 | times: 100 | round: 1 }}%;" aria-hidden="true">
+                      <span class="wac-card__stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                      <span class="wac-card__stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </span>
+                    <span class="wac-card__rating-count">({{ rating_count }})</span>
+                    <svg class="wac-card__rating-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- else -%}
+          <p class="wac-featured__empty">Choose a collection with products.</p>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.wacFeaturedReady) return;
+      root.dataset.wacFeaturedReady = '1';
+      var track = root.querySelector('[data-wac-featured-track]');
+      var prev = root.querySelector('[data-wac-featured-prev]');
+      var next = root.querySelector('[data-wac-featured-next]');
+      if (!track || !prev || !next) return;
+      function step() {
+        var card = track.querySelector('.wac-card');
+        if (!card) return track.clientWidth;
+        var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0) || 0;
+        var w = card.getBoundingClientRect().width + gap;
+        var n = Math.max(1, Math.floor((track.clientWidth + gap) / w));
+        return n * w;
+      }
+      function update() {
+        var max = track.scrollWidth - track.clientWidth - 1;
+        var atStart = track.scrollLeft <= 1;
+        var atEnd = track.scrollLeft >= max;
+        prev.classList.toggle('is-disabled', atStart); prev.disabled = atStart;
+        next.classList.toggle('is-disabled', atEnd); next.disabled = atEnd;
+      }
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+    function initAll() { document.querySelectorAll('[data-wac-featured]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    document.addEventListener('shopify:section:load', initAll);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wacoal featured collection",
+  "tag": "section",
+  "class": "wac-section-featured",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Best Sellers" },
+    { "type": "text", "id": "subheading", "label": "Sub-heading", "default": "Crafted for consistency, chosen for comfort — these are the styles that set the standard." },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "max_products", "label": "Products", "min": 4, "max": 20, "step": 1, "default": 10 },
+    { "type": "text", "id": "badge", "label": "Badge on every card", "default": "Best Seller", "info": "Leave empty for no badge. Sale items also get a Sale pill." }
+  ],
+  "presets": [ { "name": "Wacoal featured collection" } ]
+}
+{% endschema %}

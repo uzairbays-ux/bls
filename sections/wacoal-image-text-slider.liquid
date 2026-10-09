@@ -1,0 +1,130 @@
+{% comment %}
+  "Shop Bra Styles" slider (Wacoal image-with-text slider): heading on the left,
+  round prev/next buttons on the right, a full-bleed horizontally scrolling row of
+  cards (image, serif headline, one line of text), each card linking to a collection.
+{% endcomment %}
+<div class="wac-styles" data-wac-styles>
+  <div class="wac-styles__header">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="wac-styles__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.blocks.size > 1 -%}
+      <div class="wac-styles__nav">
+        <button type="button" class="wac-styles__arrow wac-styles__arrow--prev is-disabled" data-wac-styles-prev aria-label="Previous slide" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="wac-styles__arrow wac-styles__arrow--next" data-wac-styles-next aria-label="Next slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <ul class="wac-styles__list" data-wac-styles-list role="list">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign src = ''
+        assign srcset = ''
+        if block.settings.image != blank
+          assign src = block.settings.image | image_url: width: 700
+          assign srcset = block.settings.image | image_url: width: 350 | append: ' 350w, ' | append: src | append: ' 700w'
+        elsif block.settings.image_asset != blank
+          assign src = block.settings.image_asset | asset_url
+        endif
+        assign tag = 'div'
+        if block.settings.link != blank
+          assign tag = 'a'
+        endif
+      -%}
+      <li class="wac-styles__item" {{ block.shopify_attributes }}>
+        <{{ tag }} class="wac-styles__card" {% if tag == 'a' %}href="{{ block.settings.link }}"{% endif %}>
+          {%- if src != blank -%}
+            <img
+              class="wac-styles__img"
+              src="{{ src }}"
+              {% if srcset != blank %}srcset="{{ srcset }}" sizes="350px"{% endif %}
+              width="700"
+              height="819"
+              alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+              loading="lazy"
+            >
+          {%- else -%}
+            <span class="wac-styles__img wac-styles__img--empty"></span>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <span class="wac-styles__title">{{ block.settings.title | escape }}</span>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <span class="wac-styles__text"><span class="wac-styles__p">{{ block.settings.text | escape }}</span></span>
+          {%- endif -%}
+        </{{ tag }}>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.wacStylesReady) return;
+      root.dataset.wacStylesReady = '1';
+      var list = root.querySelector('[data-wac-styles-list]');
+      var prev = root.querySelector('[data-wac-styles-prev]');
+      var next = root.querySelector('[data-wac-styles-next]');
+      if (!list || !prev || !next) return;
+      function step() {
+        var item = list.querySelector('.wac-styles__item');
+        if (!item) return list.clientWidth;
+        var w = item.getBoundingClientRect().width + parseFloat(getComputedStyle(item).marginRight || 0);
+        var n = Math.max(1, Math.floor(list.clientWidth / w));
+        return n * w;
+      }
+      function update() {
+        var max = list.scrollWidth - list.clientWidth - 1;
+        var atStart = list.scrollLeft <= 1;
+        var atEnd = list.scrollLeft >= max;
+        prev.classList.toggle('is-disabled', atStart); prev.disabled = atStart;
+        next.classList.toggle('is-disabled', atEnd); next.disabled = atEnd;
+      }
+      prev.addEventListener('click', function () { list.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { list.scrollBy({ left: step(), behavior: 'smooth' }); });
+      list.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+    function initAll() { document.querySelectorAll('[data-wac-styles]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    document.addEventListener('shopify:section:load', initAll);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wacoal styles slider",
+  "tag": "section",
+  "class": "wac-section-styles",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop Bra Styles" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Portrait, about 450 x 526." },
+        { "type": "text", "id": "image_asset", "label": "or asset file name", "info": "Used only while no image is picked, e.g. wacoal-style-01.jpg" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Minimizer" },
+        { "type": "text", "id": "text", "label": "Text", "default": "reduce your bustline up to 1\"" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wacoal styles slider",
+      "blocks": [ { "type": "item" }, { "type": "item" }, { "type": "item" }, { "type": "item" }, { "type": "item" } ]
+    }
+  ]
+}
+{% endschema %}
