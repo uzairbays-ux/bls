@@ -11,6 +11,7 @@
   "sections": {
     "wacoal_hero": {
       "type": "wacoal-hero",
+      "name": "Wacoal hero slider",
       "blocks": {
         "slide_1": {
           "type": "slide",

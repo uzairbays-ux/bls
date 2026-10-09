@@ -378,8 +378,14 @@
   height: 22px;
 }
 
-.header-section .header__column--right .search-action .header-actions__action {
-  margin-right: 0;
+.header-section .header__column--right .search-action,
+.header-section .header__column--right header-actions,
+.header-section .header__column--right .header-actions__action {
+  margin: 0;
+}
+
+.header-section .header__column--right header-actions {
+  gap: 0;
 }
 
 /* cart badge: 19px blush circle, Inter 11/700, bottom-right of the icon */
