@@ -79,6 +79,77 @@
         "autoplay_seconds": 6
       }
     },
+    "wacoal_tiles": {
+      "type": "wacoal-tiles",
+      "name": "Wacoal tiles",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "image_asset": "wacoal-tile-1.jpg",
+            "image_mobile_asset": "",
+            "heading_line1": "A New Standard for",
+            "heading_line2": "Smaller Bustlines",
+            "text": "Available in 30–38 bands and A–DDD cups",
+            "button_label": "SHOP BASELINE",
+            "link": "/collections/bras",
+            "button_link": ""
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "image_asset": "wacoal-tile-2.jpg",
+            "image_mobile_asset": "",
+            "heading_line1": "BUY 3 GET 3 FREE",
+            "heading_line2": "All Sale Panties",
+            "text": "No code needed.",
+            "button_label": "SHOP PANTIES",
+            "link": "/collections/panties",
+            "button_link": ""
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "image_asset": "wacoal-tile-3.jpg",
+            "image_mobile_asset": "",
+            "heading_line1": "Lace, Satin &",
+            "heading_line2": "Everyday Luxury",
+            "text": "Lingerie sets for every mood",
+            "button_label": "SHOP LINGERIE",
+            "link": "/collections/all",
+            "button_link": ""
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "image_asset": "wacoal-tile-4.jpg",
+            "image_mobile_asset": "",
+            "heading_line1": "Smooth From",
+            "heading_line2": "Every Angle",
+            "text": "Shapewear that moves with you",
+            "button_label": "SHOP SHAPEWEAR",
+            "link": "/collections/active-shape-wear",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4"
+      ],
+      "settings": {
+        "columns": 4,
+        "tile_height": 540,
+        "tile_height_mobile": 400,
+        "mobile_layout": "stack",
+        "gap": 0
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -1168,6 +1239,7 @@
   },
   "order": [
     "wacoal_hero",
+    "wacoal_tiles",
     "product_list_campaign",
     "two_up_content",
     "marquee_valueprops",

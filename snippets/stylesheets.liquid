@@ -6,11 +6,15 @@
   assign wac_inter_400 = wac_inter | font_modify: 'weight', '400'
   assign wac_inter_600 = wac_inter | font_modify: 'weight', '600'
   assign wac_inter_700 = wac_inter | font_modify: 'weight', '700'
+  assign wac_serif_400 = settings.type_heading_font | font_modify: 'weight', '400'
+  assign wac_serif_400i = wac_serif_400 | font_modify: 'style', 'italic'
 -%}
 <style>
   {% if wac_inter_400 %}{{ wac_inter_400 | font_face: font_display: 'swap' }}{% endif %}
   {% if wac_inter_600 %}{{ wac_inter_600 | font_face: font_display: 'swap' }}{% endif %}
   {% if wac_inter_700 %}{{ wac_inter_700 | font_face: font_display: 'swap' }}{% endif %}
+  {% if wac_serif_400 %}{{ wac_serif_400 | font_face: font_display: 'swap' }}{% endif %}
+  {% if wac_serif_400i %}{{ wac_serif_400i | font_face: font_display: 'swap' }}{% endif %}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
