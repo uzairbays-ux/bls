@@ -1275,7 +1275,8 @@
 }
 
 .wac-card {
-  flex: 0 0 calc((100% - 32px) / 5);
+  /* Wacoal: 278px cards in a 1368px row, so the fifth card is cut at the edge */
+  flex: 0 0 20.31%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
