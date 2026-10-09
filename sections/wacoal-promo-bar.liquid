@@ -1,0 +1,131 @@
+{% comment %}
+  Rotating promo bar (Wacoal replica). 36px tall, one message at a time, fades every
+  N seconds; pause and next controls on the right. Each message can carry a desktop
+  and a shorter mobile wording.
+{% endcomment %}
+<div
+  class="wac-promo"
+  data-wac-promo
+  data-interval="{{ section.settings.interval | times: 1000 }}"
+  style="--wac-promo-bg: {{ section.settings.background }}; --wac-promo-color: {{ section.settings.text_color }};"
+>
+  <div class="wac-promo__slides" aria-live="polite">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign tag = 'div'
+        if block.settings.link != blank
+          assign tag = 'a'
+        endif
+        assign mobile_text = block.settings.text_mobile | default: block.settings.text
+      -%}
+      <{{ tag }}
+        class="wac-promo__slide{% if forloop.first %} is-active{% endif %}"
+        {% if tag == 'a' %}href="{{ block.settings.link }}"{% endif %}
+        {{ block.shopify_attributes }}
+      >
+        <span class="wac-promo__text wac-promo__text--desktop">
+          {{- block.settings.text -}}
+          {%- if block.settings.details_label != blank -%}
+            <span class="wac-promo__details">{{ block.settings.details_label }}</span>
+          {%- endif -%}
+        </span>
+        <span class="wac-promo__text wac-promo__text--mobile">{{ mobile_text }}</span>
+      </{{ tag }}>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="wac-promo__controls">
+      <button type="button" class="wac-promo__btn wac-promo__toggle" data-wac-promo-toggle aria-label="Pause messages" aria-pressed="false">
+        <span class="wac-promo__toggle-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="wac-promo__btn wac-promo__next" data-wac-promo-next aria-label="Next message">
+        <svg width="7" height="12" viewBox="0 0 7 12" fill="none" aria-hidden="true">
+          <path d="M1 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.wacPromoReady) return;
+      root.dataset.wacPromoReady = '1';
+      var slides = root.querySelectorAll('.wac-promo__slide');
+      if (slides.length < 2) return;
+      var interval = parseInt(root.dataset.interval, 10) || 6000;
+      var index = 0;
+      var timer = null;
+      var paused = false;
+      var toggle = root.querySelector('[data-wac-promo-toggle]');
+      function show(i) {
+        slides[index].classList.remove('is-active');
+        index = (i + slides.length) % slides.length;
+        slides[index].classList.add('is-active');
+      }
+      function start() {
+        stop();
+        timer = setInterval(function () { show(index + 1); }, interval);
+      }
+      function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+      root.querySelector('[data-wac-promo-next]').addEventListener('click', function () {
+        show(index + 1);
+        if (!paused) start();
+      });
+      toggle.addEventListener('click', function () {
+        paused = !paused;
+        root.classList.toggle('is-paused', paused);
+        toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        toggle.setAttribute('aria-label', paused ? 'Play messages' : 'Pause messages');
+        if (paused) stop(); else start();
+      });
+      start();
+    }
+    function initAll() {
+      document.querySelectorAll('[data-wac-promo]').forEach(init);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    document.addEventListener('shopify:section:load', initAll);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wacoal promo bar",
+  "tag": "section",
+  "class": "wac-section-promo-bar",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#ecd8c9" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#111111" },
+    { "type": "range", "id": "interval", "label": "Seconds per message", "min": 3, "max": 15, "step": 1, "default": 6 }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text (desktop)", "default": "FREE SHIPPING ON ALL ORDERS" },
+        { "type": "text", "id": "text_mobile", "label": "Text (phone)", "info": "Leave empty to reuse the desktop text." },
+        { "type": "text", "id": "details_label", "label": "Underlined word after the text", "info": "For example DETAILS. Desktop only." },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "enabled_on": { "groups": ["header"] },
+  "presets": [
+    {
+      "name": "Wacoal promo bar",
+      "blocks": [
+        { "type": "message", "settings": { "text": "FREE SHIPPING ON ALL ORDERS", "details_label": "DETAILS" } },
+        { "type": "message", "settings": { "text": "INTRODUCING WACOAL REWARDS  |  SIGN UP & EARN 100 POINTS", "text_mobile": "INTRODUCING WACOAL REWARDS" } },
+        { "type": "message", "settings": { "text": "BUY 3 GET 3 FREE ON ALL SALE PANTIES", "text_mobile": "BUY 3 GET 3 FREE - SALE PANTIES" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

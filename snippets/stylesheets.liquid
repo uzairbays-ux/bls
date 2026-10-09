@@ -1,2 +1,18 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+{%- comment -%} Wacoal replica: extra Inter weights from the store font, Archivo (expanded) from Google Fonts as the stand-in for the licensed GT America Expanded, then the replica stylesheet. {%- endcomment -%}
+{%- liquid
+  assign wac_inter = settings.type_body_font
+  assign wac_inter_400 = wac_inter | font_modify: 'weight', '400'
+  assign wac_inter_600 = wac_inter | font_modify: 'weight', '600'
+  assign wac_inter_700 = wac_inter | font_modify: 'weight', '700'
+-%}
+<style>
+  {% if wac_inter_400 %}{{ wac_inter_400 | font_face: font_display: 'swap' }}{% endif %}
+  {% if wac_inter_600 %}{{ wac_inter_600 | font_face: font_display: 'swap' }}{% endif %}
+  {% if wac_inter_700 %}{{ wac_inter_700 | font_face: font_display: 'swap' }}{% endif %}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,400;125,500;125,700&display=swap">
+{{ 'wacoal.css' | asset_url | stylesheet_tag }}

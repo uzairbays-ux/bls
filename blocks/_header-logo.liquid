@@ -55,14 +55,25 @@
     class="header-logo__image-container header-logo__image-container--original"
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    {% if block_settings.placeholder_logo_asset != blank %}
+      {%- comment -%} Placeholder brand mark from assets/ while the replica is built; clear the setting to show the store logo again. {%- endcomment -%}
+      <img
+        src="{{ block_settings.placeholder_logo_asset | asset_url }}"
+        class="header-logo__image wac-logo"
+        alt="{{ alt_text_fallback }}"
+        width="160"
+        height="26"
+      >
+    {% else %}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        alt_text_fallback: alt_text_fallback,
+        text_fallback: shop.name,
+        style: logo_style
+      %}
+    {% endif %}
   </span>
 
   {% if use_inverse_logo %}
@@ -159,6 +170,12 @@
       "id": "hide_logo_on_home_page",
       "label": "t:settings.hide_logo_on_home_page",
       "info": "t:info.hide_logo_on_home_page_help"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_logo_asset",
+      "label": "Placeholder logo file (assets/)",
+      "info": "Temporary: shows this SVG from the theme assets instead of the store logo. Leave empty to use the logo from theme settings."
     },
     {
       "type": "header",

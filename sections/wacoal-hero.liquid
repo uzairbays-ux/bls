@@ -1,0 +1,191 @@
+{% comment %}
+  Full-bleed hero slider (Wacoal replica). One slide per block: a desktop and a phone
+  image, a short line above the heading, the heading, optional text and a pill button.
+  Images come from the theme's Files when picked, otherwise from a file in assets/
+  (the placeholder photos live there until the store's own are uploaded).
+{% endcomment %}
+<section
+  class="wac-hero"
+  data-wac-hero
+  data-autoplay="{{ section.settings.autoplay_seconds | times: 1000 }}"
+  style="--wac-hero-h-desktop: {{ section.settings.height_desktop }}px; --wac-hero-h-mobile: {{ section.settings.height_mobile }}px;"
+>
+  <div class="wac-hero__viewport">
+    <div class="wac-hero__track" data-wac-hero-track>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign desktop_src = ''
+          if block.settings.image != blank
+            assign desktop_src = block.settings.image | image_url: width: 2048
+          elsif block.settings.image_asset != blank
+            assign desktop_src = block.settings.image_asset | asset_url
+          endif
+          assign mobile_src = desktop_src
+          if block.settings.image_mobile != blank
+            assign mobile_src = block.settings.image_mobile | image_url: width: 1000
+          elsif block.settings.image_mobile_asset != blank
+            assign mobile_src = block.settings.image_mobile_asset | asset_url
+          endif
+        -%}
+        <div
+          class="wac-hero__slide{% if forloop.first %} is-active{% endif %}"
+          data-wac-hero-slide
+          role="group"
+          aria-roledescription="slide"
+          aria-label="{{ forloop.index }} of {{ forloop.length }}"
+          {{ block.shopify_attributes }}
+        >
+          <div
+            class="wac-hero__image"
+            style="--wac-bg-desktop: url('{{ desktop_src }}'); --wac-bg-mobile: url('{{ mobile_src }}');"
+          ></div>
+          <div class="wac-hero__content wac-hero__content--{{ block.settings.position }} wac-hero__content--text-{{ block.settings.text_align }}">
+            <div class="wac-hero__text">
+              {%- if block.settings.preheader != blank -%}
+                <p class="wac-hero__preheader wac-hero__preheader--{{ block.settings.preheader_font }}">{{ block.settings.preheader }}</p>
+              {%- endif -%}
+              {%- if block.settings.heading != blank -%}
+                <h2
+                  class="wac-hero__heading"
+                  style="--wac-h-size: {{ block.settings.heading_size }}px; --wac-h-size-mobile: {{ block.settings.heading_size_mobile }}px; --wac-h-weight: {{ block.settings.heading_weight }};"
+                >
+                  {{- block.settings.heading | escape | newline_to_br -}}
+                </h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="wac-hero__body">{{ block.settings.text }}</p>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank -%}
+                <div class="wac-hero__buttons">
+                  <a class="wac-hero__button" href="{{ block.settings.button_link | default: '#' }}">{{ block.settings.button_label }}</a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="wac-hero__controls">
+      <button type="button" class="wac-hero__control wac-hero__control--toggle" data-wac-hero-toggle aria-label="Pause slideshow" aria-pressed="false">
+        <svg class="wac-hero__icon-pause" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <rect x="6" y="4" width="3.5" height="14" fill="currentColor"/>
+          <rect x="12.5" y="4" width="3.5" height="14" fill="currentColor"/>
+        </svg>
+        <svg class="wac-hero__icon-play" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <path d="M7 4.5v13l10-6.5z" fill="currentColor"/>
+        </svg>
+      </button>
+      <button type="button" class="wac-hero__control" data-wac-hero-prev aria-label="Previous slide">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M13.5 5.5 8 11l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button type="button" class="wac-hero__control" data-wac-hero-next aria-label="Next slide">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M8.5 5.5 14 11l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.wacHeroReady) return;
+      root.dataset.wacHeroReady = '1';
+      var track = root.querySelector('[data-wac-hero-track]');
+      var slides = root.querySelectorAll('[data-wac-hero-slide]');
+      if (slides.length < 2) return;
+      var delay = parseInt(root.dataset.autoplay, 10) || 0;
+      var index = 0;
+      var timer = null;
+      var paused = false;
+      var toggle = root.querySelector('[data-wac-hero-toggle]');
+
+      function go(i, animate) {
+        index = (i + slides.length) % slides.length;
+        track.style.transition = animate === false ? 'none' : '';
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        slides.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
+      }
+      function start() {
+        stop();
+        if (delay > 0 && !paused) timer = setInterval(function () { go(index + 1); }, delay);
+      }
+      function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+      root.querySelector('[data-wac-hero-next]').addEventListener('click', function () { go(index + 1); start(); });
+      root.querySelector('[data-wac-hero-prev]').addEventListener('click', function () { go(index - 1); start(); });
+      toggle.addEventListener('click', function () {
+        paused = !paused;
+        root.classList.toggle('is-paused', paused);
+        toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        toggle.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+        if (paused) stop(); else start();
+      });
+
+      // finger swipe
+      var startX = null;
+      root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      root.addEventListener('touchend', function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        startX = null;
+        if (Math.abs(dx) < 40) return;
+        go(dx < 0 ? index + 1 : index - 1);
+        start();
+      }, { passive: true });
+
+      go(0, false);
+      start();
+    }
+    function initAll() {
+      document.querySelectorAll('[data-wac-hero]').forEach(init);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    document.addEventListener('shopify:section:load', initAll);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wacoal hero slider",
+  "tag": "section",
+  "class": "wac-section-hero",
+  "settings": [
+    { "type": "range", "id": "height_desktop", "label": "Height on desktop (px)", "min": 400, "max": 1000, "step": 10, "default": 800 },
+    { "type": "range", "id": "height_mobile", "label": "Height on phones (px)", "min": 300, "max": 900, "step": 5, "default": 635 },
+    { "type": "range", "id": "autoplay_seconds", "label": "Seconds per slide (0 = no autoplay)", "min": 0, "max": 15, "step": 1, "default": 6 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
+        { "type": "text", "id": "image_asset", "label": "or asset file name (desktop)", "info": "Used only while no image is picked, e.g. wacoal-hero-1-desktop.jpg" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Image (phone)" },
+        { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phone)" },
+        { "type": "select", "id": "position", "label": "Text box position (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "right" },
+        { "type": "select", "id": "text_align", "label": "Text alignment (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" } ], "default": "left" },
+        { "type": "inline_richtext", "id": "preheader", "label": "Line above the heading" },
+        { "type": "select", "id": "preheader_font", "label": "Font of that line", "options": [ { "value": "expanded", "label": "Expanded sans" }, { "value": "serif", "label": "Serif" }, { "value": "sans", "label": "Sans" } ], "default": "expanded" },
+        { "type": "textarea", "id": "heading", "label": "Heading", "info": "One line per row." },
+        { "type": "range", "id": "heading_size", "label": "Heading size on desktop (px)", "min": 24, "max": 90, "step": 1, "default": 45 },
+        { "type": "range", "id": "heading_size_mobile", "label": "Heading size on phones (px)", "min": 16, "max": 50, "step": 1, "default": 25 },
+        { "type": "select", "id": "heading_weight", "label": "Heading weight", "options": [ { "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" } ], "default": "400" },
+        { "type": "inline_richtext", "id": "text", "label": "Text under the heading" },
+        { "type": "text", "id": "button_label", "label": "Button label" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Wacoal hero slider" } ]
+}
+{% endschema %}

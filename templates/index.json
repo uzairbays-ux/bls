@@ -9,59 +9,74 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
-      "name": "t:names.hero",
-      "settings": {
-        "media_type_1": "image",
-        "image_1": "shopify://shop_images/home-desktop.webp",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": true,
-        "media_type_1_mobile": "image",
-        "image_1_mobile": "shopify://shop_images/home-mobile.webp",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-end",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "flex-end",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "auto",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": false,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 0,
-        "padding-block-end": 24
-      },
+    "wacoal_hero": {
+      "type": "wacoal-hero",
       "blocks": {
-        "button_hero": {
-          "type": "button",
+        "slide_1": {
+          "type": "slide",
           "settings": {
-            "label": "Shop now",
-            "link": "/collections/all",
-            "style_class": "button",
-            "open_in_new_tab": false,
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+            "image_asset": "wacoal-hero-1-desktop.jpg",
+            "image_mobile_asset": "wacoal-hero-1-mobile.jpg",
+            "position": "right",
+            "text_align": "left",
+            "preheader": "<strong>NEW</strong> HIGH BAR™ COLLECTION",
+            "preheader_font": "expanded",
+            "heading": "WE’RE RAISING\nTHE BAR\nFOR COMFORT",
+            "heading_size": 45,
+            "heading_size_mobile": 25,
+            "heading_weight": "400",
+            "text": "",
+            "button_label": "SHOP BEST SELLERS",
+            "button_link": "/collections/all"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image_asset": "wacoal-hero-2-desktop.jpg",
+            "image_mobile_asset": "wacoal-hero-2-mobile.jpg",
+            "position": "center",
+            "text_align": "center",
+            "preheader": "YOU ARE NOT EITHER/OR.",
+            "preheader_font": "expanded",
+            "heading": "UNDERNEATH\nIT ALL, LIES WACOAL",
+            "heading_size": 50,
+            "heading_size_mobile": 30,
+            "heading_weight": "400",
+            "text": "",
+            "button_label": "SEE THE CAMPAIGN",
+            "button_link": "/collections/all"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image_asset": "wacoal-hero-3-desktop.jpg",
+            "image_mobile_asset": "wacoal-hero-3-mobile.jpg",
+            "position": "left",
+            "text_align": "left",
+            "preheader": "Introducing",
+            "preheader_font": "serif",
+            "heading": "WACOAL REWARDS",
+            "heading_size": 70,
+            "heading_size_mobile": 35,
+            "heading_weight": "500",
+            "text": "Where every order loves you back. Earn 100 points today just for signing up!",
+            "button_label": "JOIN & EARN",
+            "button_link": "/account/register"
           }
         }
       },
       "block_order": [
-        "button_hero"
-      ]
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "height_desktop": 800,
+        "height_mobile": 635,
+        "autoplay_seconds": 6
+      }
     },
     "product_list_fa6P9H": {
       "type": "product-list",
@@ -1151,7 +1166,7 @@
     }
   },
   "order": [
-    "hero_jVaWmY",
+    "wacoal_hero",
     "product_list_campaign",
     "two_up_content",
     "marquee_valueprops",

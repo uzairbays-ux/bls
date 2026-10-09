@@ -1,0 +1,90 @@
+{% comment %}
+  Brand switcher bar above the promo bar (Wacoal replica, section 1 of the homepage).
+  Desktop only: 35px tall, brands on the left, store selector on the right.
+{% endcomment %}
+<div
+  class="wac-top-nav"
+  style="--wac-top-nav-bg: {{ section.settings.background }}; --wac-top-nav-color: {{ section.settings.text_color }};"
+>
+  <div class="wac-top-nav__inner">
+    <div class="wac-top-nav__brands">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'brand' -%}
+          <a
+            class="wac-top-nav__brand{% if block.settings.active %} wac-top-nav__brand--active{% endif %}"
+            href="{{ block.settings.url | default: routes.root_url }}"
+            {{ block.shopify_attributes }}
+          >
+            {{- block.settings.label -}}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.store_label != blank -%}
+      <details class="wac-top-nav__store">
+        <summary class="wac-top-nav__store-button" aria-label="{{ section.settings.store_label }}">
+          {{- section.settings.store_label -}}
+        </summary>
+        <ul class="wac-top-nav__dropdown">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'store' -%}
+              <li class="wac-top-nav__store-item" {{ block.shopify_attributes }}>
+                <a
+                  class="wac-top-nav__store-link{% if block.settings.label == section.settings.store_label %} wac-top-nav__store-link--active{% endif %}"
+                  href="{{ block.settings.url }}"
+                >
+                  {{- block.settings.label -}}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </details>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wacoal top nav",
+  "tag": "section",
+  "class": "wac-section-top-nav",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "text", "id": "store_label", "label": "Store selector label", "default": "USA" }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "WACOAL" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "checkbox", "id": "active", "label": "Current brand (bold)", "default": false }
+      ]
+    },
+    {
+      "type": "store",
+      "name": "Store option",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "USA" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "enabled_on": { "groups": ["header"] },
+  "presets": [
+    {
+      "name": "Wacoal top nav",
+      "blocks": [
+        { "type": "brand", "settings": { "label": "WACOAL", "active": true } },
+        { "type": "brand", "settings": { "label": "b.tempt’d" } },
+        { "type": "store", "settings": { "label": "USA" } },
+        { "type": "store", "settings": { "label": "Canada" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
