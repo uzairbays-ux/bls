@@ -12,7 +12,7 @@
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'menu' or 'links' -%}
-          <details class="wac-footer__block wac-footer__block--menu" {{ block.shopify_attributes }}>
+          <details class="wac-footer__block wac-footer__block--menu" open {{ block.shopify_attributes }}>
             <summary class="wac-footer__header">
               <h3 class="wac-footer__heading">{{ block.settings.heading | escape }}</h3>
               <span class="wac-footer__toggle" aria-hidden="true"><span class="wac-footer__plus">+</span><span class="wac-footer__minus">&minus;</span></span>
@@ -48,7 +48,7 @@
               {%- form 'customer', class: 'wac-footer__form' -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 {%- if form.posted_successfully? -%}
-                  <p class="wac-footer__form-msg">{{ 'content.newsletter_success' | t | default: 'Thanks for subscribing.' }}</p>
+                  <p class="wac-footer__form-msg">{{ 'blocks.email_signup.success' | t }}</p>
                 {%- else -%}
                   <label class="visually-hidden" for="wac-footer-email-{{ section.id }}">Email address</label>
                   <input
@@ -77,7 +77,6 @@
                 {%- if block.settings.note != blank -%}<div class="wac-footer__note-text">{{ block.settings.note }}</div>{%- endif -%}
               </div>
             {%- endif -%}
-            {%- assign socials = '' -%}
             {%- if block.settings.instagram != blank or block.settings.facebook != blank or block.settings.tiktok != blank or block.settings.youtube != blank or block.settings.pinterest != blank or block.settings.whatsapp != blank -%}
               <ul class="wac-footer__social" role="list" aria-label="Follow us">
                 {%- if block.settings.instagram != blank -%}
@@ -118,6 +117,24 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var mq = window.matchMedia('(max-width: 749px)');
+    function sync() {
+      document.querySelectorAll('.wac-footer__block--menu').forEach(function (d) {
+        if (mq.matches) d.removeAttribute('open'); else d.setAttribute('open', '');
+      });
+    }
+    document.addEventListener('click', function (e) {
+      var s = e.target.closest && e.target.closest('.wac-footer__header');
+      if (s && !mq.matches) e.preventDefault();
+    });
+    sync();
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    document.addEventListener('shopify:section:load', sync);
+  })();
+</script>
 
 {% schema %}
 {
