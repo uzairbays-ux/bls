@@ -9,10 +9,17 @@
   if section.blocks.size < cols
     assign cols = section.blocks.size
   endif
+  # Wacoal's 35px heading fits a 720px tile; narrower tiles get a smaller size
+  assign heading_size = '35px'
+  if cols >= 4
+    assign heading_size = '28px'
+  elsif cols == 3
+    assign heading_size = '31px'
+  endif
 -%}
 <div
   class="wac-tiles wac-tiles--mobile-{{ section.settings.mobile_layout }}"
-  style="--wac-tiles-cols: {{ cols }}; --wac-tile-h: {{ section.settings.tile_height }}px; --wac-tile-h-mobile: {{ section.settings.tile_height_mobile }}px; --wac-tiles-gap: {{ section.settings.gap }}px;"
+  style="--wac-tiles-cols: {{ cols }}; --wac-tile-h: {{ section.settings.tile_height }}px; --wac-tile-h-mobile: {{ section.settings.tile_height_mobile }}px; --wac-tiles-gap: {{ section.settings.gap }}px; --wac-tile-heading: {{ heading_size }};"
 >
   {%- for block in section.blocks -%}
     {%- liquid

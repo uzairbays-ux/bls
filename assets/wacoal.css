@@ -826,7 +826,7 @@
   margin: 0;
   font-family: var(--wac-font-serif);
   font-weight: 400;
-  font-size: 35px;
+  font-size: var(--wac-tile-heading, 35px);
   line-height: 1.15;
   letter-spacing: 0;
   text-transform: none;
@@ -896,6 +896,10 @@
 
   .wac-tile__content {
     padding: 20px;
+  }
+
+  .wac-tile__heading {
+    font-size: 35px;
   }
 
   .wac-tile__text p {
