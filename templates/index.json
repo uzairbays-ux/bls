@@ -277,7 +277,7 @@
     },
     "wacoal_featured_collection": {
       "type": "wacoal-featured-collection",
-      "name": "Wacoal featured collection",
+      "name": "Wacoal best sellers",
       "settings": {
         "heading": "Best Sellers",
         "subheading": "Crafted for consistency, chosen for comfort — these are the styles that set the standard.",
