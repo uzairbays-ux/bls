@@ -29,7 +29,7 @@
   color: var(--wac-top-nav-color, #fff);
   font-family: var(--wac-font-sans);
   font-size: 13px;
-  line-height: 19px;
+  line-height: 18.2px;
 }
 
 .wac-top-nav__inner {
@@ -279,19 +279,20 @@
   --header-padding: 0px;
 }
 
+/* grid: logo | nav | icons, 100px between them (Wacoal: logo ends 182, nav 283-1201, icons from 1301) */
 .header-section .header__row--top .header__columns {
   min-height: var(--wac-header-h);
   padding: 0 22px;
   --header-left: auto;
-  --header-center: 1fr;
+  --header-center: minmax(0, 1fr);
   --header-right: auto;
-  --header-template-columns: auto 1fr auto;
-  grid-gap: 0;
+  --header-template-columns: auto minmax(0, 1fr) auto;
+  grid-gap: 0 100px;
 }
 
 .header-section .header__row--top .header__columns:has(.header__column--center header-menu) {
   --header-left: auto;
-  --header-center: 1fr;
+  --header-center: minmax(0, 1fr);
   --header-right: auto;
 }
 
@@ -326,13 +327,13 @@
 
 .header-section .header-menu .overflow-menu {
   width: 100%;
-  max-width: 918px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .header-section .header-menu .overflow-menu::part(list) {
   justify-content: space-between;
   width: 100%;
+  margin-inline: 0;
 }
 
 .header-section .menu-list__link {
@@ -360,6 +361,7 @@
 .header-section .header__column--right .search-action {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .header-section .header__column--right .header-actions__action,
@@ -378,10 +380,6 @@
 
 .header-section .header__column--right .search-action .header-actions__action {
   margin-right: 0;
-}
-
-.header-section .header__column--right header-actions .header-actions__action:last-child {
-  margin-right: -10px;
 }
 
 /* cart badge: 19px blush circle, Inter 11/700, bottom-right of the icon */
