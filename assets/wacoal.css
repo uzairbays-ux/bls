@@ -469,6 +469,7 @@
     grid-area: leftB;
     display: flex;
     justify-content: center;
+    margin-left: -8px;
   }
 
   .header-section #header-component .header__row--top .header__columns .header__column--right .search-action {
@@ -728,6 +729,7 @@
   }
 
   .wac-hero__body {
+    margin-top: 6px;
     font-size: 16px;
     line-height: 26.4px;
   }
