@@ -21,7 +21,7 @@
             "hide_logo_on_home_page": false,
             "padding-block-start": 0,
             "padding-block-end": 0,
-            "placeholder_logo_asset": "wacoal-logo.svg"
+            "placeholder_logo_asset": ""
           },
           "blocks": {}
         },
@@ -82,7 +82,9 @@
         "product_color_scheme": "default",
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default",
-        "top_link_text": ""
+        "top_link_text": "",
+        "show_wishlist": true,
+        "wishlist_url": ""
       }
     },
     "wacoal_top_nav": {

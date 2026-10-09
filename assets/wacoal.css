@@ -384,6 +384,11 @@
   height: 22px;
 }
 
+.header-section .wac-wishlist {
+  color: inherit;
+  text-decoration: none;
+}
+
 .header-section .header__column--right .search-action,
 .header-section .header__column--right header-actions,
 .header-section .header__column--right .header-actions__action {
@@ -477,8 +482,17 @@
   }
 
   .header-section .header__columns header-actions {
+    grid-column: 4 / 6;
     justify-self: end;
     margin-inline-end: 9px;
+  }
+
+  .header-section header-actions .wac-wishlist {
+    width: 35px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .header-section .header-actions__action:not(.account-button) svg {

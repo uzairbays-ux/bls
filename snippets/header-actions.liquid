@@ -113,6 +113,20 @@
     </div>
   {% endif %}
 
+  {% if section and section.settings.show_wishlist %}
+    <a
+      href="{{ section.settings.wishlist_url | default: '#' }}"
+      class="header-actions__action wac-wishlist"
+      aria-label="Wishlist"
+    >
+      <span class="svg-wrapper" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 19.2s-7.6-4.5-7.6-10.1A4.2 4.2 0 0 1 11 6.9a4.2 4.2 0 0 1 7.6 2.2c0 5.6-7.6 10.1-7.6 10.1Z" stroke="currentColor" stroke-width="var(--icon-stroke-width)" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  {% endif %}
+
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     <script
       src="{{ 'cart-drawer.js' | asset_url }}"
