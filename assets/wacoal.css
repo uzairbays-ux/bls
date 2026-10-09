@@ -1536,8 +1536,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-block: 0;
   list-style: none;
   cursor: default;
+}
+
+.wac-footer__header:hover {
+  color: inherit;
 }
 
 .wac-footer__header::-webkit-details-marker {
@@ -1755,7 +1760,7 @@
 
   .wac-footer__header {
     cursor: pointer;
-    min-height: 44px;
+    min-height: 42px;
   }
 
   .wac-footer__toggle {

@@ -108,11 +108,11 @@
     <div class="wac-footer__info-wrap">
       <p class="wac-footer__copyright">
         &copy; {{ year }} {{ shop.name | escape }}. All Rights Reserved
-        {%- for policy in shop.policies -%}
-          {%- if policy.body != blank -%}
-            <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ policy.url }}">{{ policy.title | escape }}</a>
-          {%- endif -%}
-        {%- endfor -%}
+        {%- comment -%} Same order as Wacoal: privacy, terms, then the store's other policies {%- endcomment -%}
+        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/privacy-policy' | replace: '//', '/' }}">Privacy</a>
+        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/terms-of-service' | replace: '//', '/' }}">Terms</a>
+        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/refund-policy' | replace: '//', '/' }}">Refunds</a>
+        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/shipping-policy' | replace: '//', '/' }}">Shipping</a>
       </p>
     </div>
   </div>
