@@ -13,6 +13,7 @@
   "sections": {
     "header_section": {
       "type": "header",
+      "name": "Header",
       "blocks": {
         "header-logo": {
           "type": "_header-logo",
