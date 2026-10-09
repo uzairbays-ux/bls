@@ -464,10 +464,15 @@
     bottom: 0;
   }
 
-  .header-section .header__columns .header__column--left .search-action {
+  /* search in the second slot from the left; Horizon's own rule uses the #header-component id, so match it */
+  .header-section #header-component .header__row--top .header__columns .header__column--left .search-action {
     grid-area: leftB;
     display: flex;
     justify-content: center;
+  }
+
+  .header-section #header-component .header__row--top .header__columns .header__column--right .search-action {
+    display: none;
   }
 
   .header-section .header__columns header-actions {
@@ -706,8 +711,7 @@
     text-align: center;
   }
 
-  .wac-hero__text,
-  .wac-hero__content--text-center .wac-hero__text {
+  .wac-hero__content .wac-hero__text {
     width: 100%;
     margin: 0;
   }
