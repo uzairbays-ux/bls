@@ -65,7 +65,7 @@
                     <p class="wac-footer__form-msg wac-footer__form-msg--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
                   {%- endif -%}
                   {%- if block.settings.consent != blank -%}
-                    <p class="wac-footer__consent">{{ block.settings.consent }}</p>
+                    <div class="wac-footer__consent">{{ block.settings.consent }}</div>
                   {%- endif -%}
                   <button type="submit" class="wac-footer__submit">{{ block.settings.button_label | default: 'Subscribe' | escape }}</button>
                 {%- endif -%}
