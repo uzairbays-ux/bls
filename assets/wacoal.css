@@ -1987,7 +1987,9 @@
 }
 
 .wac-colhead__container {
-  margin: 0 2.5%;
+  width: 95%;
+  max-width: 1385px;
+  margin: 0 auto;
 }
 
 .wac-colhead__breadcrumb {
@@ -2106,7 +2108,9 @@
 
 /* filter bar */
 .wac-coll {
-  margin: 0 2.5%;
+  width: 95%;
+  max-width: 1385px;
+  margin: 0 auto;
   font-family: var(--wac-font-sans);
   color: var(--wac-ink);
 }
@@ -2714,6 +2718,8 @@ html.wac-drawer-open {
   }
 
   .wac-coll {
+    width: auto;
+    max-width: none;
     margin: 0;
   }
 
