@@ -14,6 +14,31 @@
       assign color_option = option
     endif
   endfor
+  assign own_color = ''
+  if color_option == blank or color_option.values.size < 2
+    capture own_color
+      render 'wacoal-product-color', product: product
+    endcapture
+    assign own_color = own_color | strip
+  endif
+  comment
+    Colour sold as its own product: show it as a circle and drop "- Colour" from the title.
+  endcomment
+  if own_color != ''
+    assign title_parts = title | split: ' - '
+    assign last_part = title_parts.last | downcase | strip
+    assign color_down = own_color | downcase
+    if title_parts.size > 1 and last_part == color_down
+      assign keep = title_parts.size | minus: 1
+      assign title = ''
+      for part in title_parts limit: keep
+        unless forloop.first
+          assign title = title | append: ' - '
+        endunless
+        assign title = title | append: part
+      endfor
+    endif
+  endif
 -%}
 <li class="wac-pcard{% unless product.available %} is-sold-out{% endunless %}">
   <a class="wac-pcard__image" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
@@ -39,6 +64,18 @@
         {%- if color_option.values.size > 4 -%}
           <li class="wac-pcard__more">+{{ color_option.values.size | minus: 4 }} more</li>
         {%- endif -%}
+      </ul>
+    {%- elsif own_color != '' -%}
+      {%- capture bg -%}{%- render 'wacoal-color-hex', name: own_color -%}{%- endcapture -%}
+      {%- liquid
+        assign bg = bg | strip
+        if bg == blank and img != blank
+          assign img_url = img | image_url: width: 80
+          assign bg = 'url(' | append: img_url | append: ') center 35% / 260% auto'
+        endif
+      -%}
+      <ul class="wac-pcard__swatches" role="list" aria-label="Colour">
+        <li class="wac-pcard__swatch is-active" title="{{ own_color | escape }}"><span style="background: {{ bg | default: '#d9d2cb' }};"></span><span class="visually-hidden">{{ own_color | escape }}</span></li>
       </ul>
     {%- endif -%}
     <a class="wac-pcard__title" href="{{ product.url }}">
