@@ -1,14 +1,18 @@
 /* ------------------------------------------------------------------
    Wacoal replica styles (homepage, top of page)
    Reference: wacoal-america.com, measured 2026-10-09 at 1440 and 390 px.
-   Fonts: Inter (store font); "GT America Expanded" is replaced by
-   Archivo at 125% width; "Ethic Serif" by the store heading font.
+   Fonts (BLS): Poppins for reading and buttons (store body font),
+   Bebas Neue for short loud capitals (hero, wide/bold headings, promo
+   tile, collection titles, footer headings), Achemost for the editorial
+   serif headlines (falls back to the store heading font until the
+   Achemost file is added to assets).
    ------------------------------------------------------------------ */
 
 :root {
-  --wac-font-sans: 'Inter', var(--font-body--family);
-  --wac-font-expanded: 'Archivo', 'Inter', var(--font-body--family);
-  --wac-font-serif: var(--font-heading--family);
+  --wac-font-sans: var(--font-body--family);
+  --wac-font-caps: 'Bebas Neue', 'Arial Narrow', var(--font-body--family);
+  --wac-font-serif: 'Achemost', var(--font-heading--family);
+  --wac-caps-scale: 1.2;
   --wac-black: #000;
   --wac-ink: #111;
   --wac-blush: #ecd8c9;
@@ -599,8 +603,10 @@
 }
 
 .wac-hero__preheader--expanded {
-  font-family: var(--wac-font-expanded);
-  font-stretch: 125%;
+  font-family: var(--wac-font-caps);
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
 }
 
 .wac-hero__preheader--serif {
@@ -620,11 +626,10 @@
 
 .wac-hero__heading {
   margin: 0 0 20px;
-  font-family: var(--wac-font-expanded);
-  font-stretch: 125%;
-  font-size: var(--wac-h-size, 45px);
-  line-height: 1;
-  font-weight: var(--wac-h-weight, 400);
+  font-family: var(--wac-font-caps);
+  font-size: calc(var(--wac-h-size, 45px) * var(--wac-caps-scale));
+  line-height: 0.95;
+  font-weight: 400;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: inherit;
@@ -747,7 +752,7 @@
 
   .wac-hero__heading {
     margin-bottom: 10px;
-    font-size: var(--wac-h-size-mobile, 25px);
+    font-size: calc(var(--wac-h-size-mobile, 25px) * var(--wac-caps-scale));
   }
 
   .wac-hero__body {
@@ -1560,11 +1565,11 @@
 .wac-footer__heading {
   margin: 0;
   padding: 12px 0;
-  font-family: var(--wac-font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: 1.3px;
+  font-family: var(--wac-font-caps);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #fff;
 }
@@ -1871,15 +1876,17 @@
   font-weight: 500;
 }
 
-.wac-iwt--heading-expanded .wac-iwt__heading {
-  font-family: var(--wac-font-expanded);
-  font-stretch: 125%;
-  font-weight: 500;
+.wac-iwt--heading-expanded .wac-iwt__heading,
+.wac-iwt--heading-bold .wac-iwt__heading {
+  font-family: var(--wac-font-caps);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 2px;
 }
 
 .wac-iwt--heading-bold .wac-iwt__heading {
-  font-family: var(--wac-font-sans);
-  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 .wac-iwt__heading sup {
@@ -1962,6 +1969,11 @@
     font-size: 25px;
   }
 
+  .wac-iwt--heading-expanded .wac-iwt__heading,
+  .wac-iwt--heading-bold .wac-iwt__heading {
+    font-size: 32px;
+  }
+
   .wac-iwt__text p {
     margin-top: 16px;
     font-size: 16px;
@@ -2036,11 +2048,11 @@
 
 .wac-colhead__title {
   margin: 0 0 10px;
-  font-family: var(--wac-font-sans);
-  font-size: 30px;
-  font-weight: 500;
+  font-family: var(--wac-font-caps);
+  font-size: 40px;
+  font-weight: 400;
   line-height: 36px;
-  letter-spacing: 0;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #000;
 }
@@ -2452,10 +2464,11 @@
 }
 
 .wac-coll__tile-h2 {
-  font-family: var(--wac-font-sans);
-  font-size: 50px;
-  font-weight: 600;
-  line-height: 53px;
+  font-family: var(--wac-font-caps);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 1.5px;
 }
 
 .wac-coll__tile-text {
@@ -2764,8 +2777,8 @@ html.wac-drawer-open {
   }
 
   .wac-coll__tile-h2 {
-    font-size: 32px;
-    line-height: 36px;
+    font-size: 40px;
+    line-height: 38px;
   }
 
   .wac-coll__tile-text {
