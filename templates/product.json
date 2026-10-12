@@ -59,7 +59,8 @@
             "heading": "Fit tips",
             "source": "text",
             "text": "<p>Your band should sit level and snug around your ribcage, and the cups should hold you fully without gaps or spilling over. Not sure of your size? Use our <a href=\"/pages/size-guides\" title=\"Size guides\">size guide</a> to find your band and cup.</p>",
-            "open": false
+            "open": false,
+            "only_tags": "Bras"
           }
         },
         "acc_shipping": {
