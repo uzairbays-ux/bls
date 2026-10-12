@@ -3753,8 +3753,13 @@ button.wac-pdp__feature-head {
   }
 
   .wac-pdp__head--mobile {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 6px 10px 10px;
+  }
+
+  .wac-pdp__head--mobile .wac-pdp__rating {
+    order: 5;
   }
 
   .wac-pdp__head--mobile .wac-pdp__vendor {
