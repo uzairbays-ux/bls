@@ -157,19 +157,19 @@
         "msg_rewards": {
           "type": "message",
           "settings": {
-            "text": "INTRODUCING WACOAL REWARDS  |  SIGN UP & EARN 100 POINTS",
-            "text_mobile": "INTRODUCING WACOAL REWARDS",
-            "details_label": "",
-            "link": "/"
+            "text": "BRA BUNDLES: BUY 3 FROM RS.7,500",
+            "text_mobile": "3 BRAS FROM RS.7,500",
+            "details_label": "SHOP",
+            "link": "/collections/bundles"
           }
         },
         "msg_sale": {
           "type": "message",
           "settings": {
-            "text": "BUY 3 GET 3 FREE ON ALL SALE PANTIES",
-            "text_mobile": "BUY 3 GET 3 FREE - SALE PANTIES",
-            "details_label": "",
-            "link": "/"
+            "text": "SLIPS & CAMIS: BUY 3 FOR RS.4,500",
+            "text_mobile": "3 SLIPS & CAMIS FOR RS.4,500",
+            "details_label": "SHOP",
+            "link": "/collections/bundles"
           }
         }
       },
