@@ -9,136 +9,6 @@
  */
 {
   "sections": {
-    "wacoal_main_product": {
-      "type": "wacoal-main-product",
-      "blocks": {
-        "feature_padding": {
-          "type": "feature",
-          "settings": {
-            "label": "Padding",
-            "tags": "Light Padded, Style_Light Paded=Light Padded, Padded, Paded=Padded, Soft Padded, Non Padded, Non-Paded=Non Padded, Non Paded=Non Padded",
-            "text": ""
-          }
-        },
-        "feature_wire": {
-          "type": "feature",
-          "settings": {
-            "label": "Wire",
-            "tags": "Wired, Underwire=Wired, Non Wired, Non-Wired=Non Wired, Wireless=Non Wired",
-            "text": ""
-          }
-        },
-        "feature_fabric": {
-          "type": "feature",
-          "settings": {
-            "label": "Fabric",
-            "tags": "Fabric_*, Cotton, Lace, Satin=Satin, Polyester/Polyamide, Polyerster/Polyamide=Polyester/Polyamide, Polyamide",
-            "text": ""
-          }
-        },
-        "feature_type": {
-          "type": "feature",
-          "settings": {
-            "label": "Type",
-            "tags": "Pushup=Push Up, Front Open, Seamless Bra=Seamless, Seamless, Bralette, Maternity, Nursing, Bra & Panty Sets=Bra & Panty Set, Teens",
-            "text": ""
-          }
-        },
-        "acc_details": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Details",
-            "source": "details",
-            "text": "",
-            "open": true,
-            "only_tags": ""
-          }
-        },
-        "acc_fit": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Fit tips",
-            "source": "text",
-            "text": "<p>Your band should sit level and snug around your ribcage, and the cups should hold you fully without gaps or spilling over. Not sure of your size? Use our <a href=\"/pages/size-guides\" title=\"Size guides\">size guide</a> to find your band and cup.</p>",
-            "open": false,
-            "only_tags": "Bras"
-          }
-        },
-        "acc_shipping": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Shipping & returns",
-            "source": "shipping",
-            "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p><p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
-            "open": false,
-            "only_tags": ""
-          }
-        },
-        "acc_care": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Fabric/care",
-            "source": "care",
-            "text": "",
-            "open": false,
-            "only_tags": ""
-          }
-        },
-        "acc_features": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Features",
-            "source": "features",
-            "text": "",
-            "open": false,
-            "only_tags": ""
-          }
-        }
-      },
-      "block_order": [
-        "feature_padding",
-        "feature_wire",
-        "feature_fabric",
-        "feature_type",
-        "acc_details",
-        "acc_features",
-        "acc_fit",
-        "acc_shipping",
-        "acc_care"
-      ],
-      "settings": {
-        "photo_shape": "wacoal",
-        "sticky_gallery": true,
-        "brand_line": "British Lingerie Studio",
-        "show_style": true,
-        "style_label": "Style",
-        "badge_tags": "Best Seller, Bestseller=Best Seller, new=New",
-        "color_label": "Color",
-        "band_label": "Band",
-        "cup_label": "Cup",
-        "size_guide_label": "Find my size",
-        "size_guide_url": "/pages/size-guides",
-        "quantity_label": "Quantity",
-        "select_label": "Select your size",
-        "add_label": "Add to cart",
-        "sold_out_label": "Sold out",
-        "adding_label": "Adding...",
-        "added_label": "Added to cart",
-        "ship_text": "<p>Free shipping on orders above Rs.9,999</p>",
-        "note_text": "<p>Cash on delivery available.</p>",
-        "match_heading": "Complete your look",
-        "match_collection": "panties",
-        "match_limit": 8
-      }
-    },
-    "wacoal_similar": {
-      "type": "wacoal-product-recommendations",
-      "settings": {
-        "heading": "Similar styles",
-        "limit": 10,
-        "margin_bottom": 40
-      }
-    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -892,8 +762,7 @@
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
-      },
-      "disabled": true
+      }
     },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
@@ -1036,24 +905,20 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
-      },
-      "disabled": true
+      }
     },
     "product_usp": {
       "type": "product-usp",
       "settings": {
         "eyebrow": "Try me on",
-        "heading": "<p>Everyday comfort, engineered to stay put — soft cotton with a fit that moves with you.</p>",
+        "heading": "<p>Everyday comfort, engineered to stay put \u2014 soft cotton with a fit that moves with you.</p>",
         "color_scheme": "scheme-bls-signature",
         "padding-block-start": 64,
         "padding-block-end": 0
-      },
-      "disabled": true
+      }
     }
   },
   "order": [
-    "wacoal_main_product",
-    "wacoal_similar",
     "main",
     "product_usp",
     "product_recommendations_qggXJq"
