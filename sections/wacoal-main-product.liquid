@@ -582,6 +582,22 @@
         {%- for block in section.blocks -%}
           {%- if block.type != 'accordion' -%}{%- continue -%}{%- endif -%}
           {%- liquid
+            if block.settings.only_tags != blank
+              assign show = false
+              assign only = block.settings.only_tags | downcase | split: ','
+              for tag in p.tags
+                assign t = tag | downcase | strip
+                for o in only
+                  assign o = o | strip
+                  if o == t
+                    assign show = true
+                  endif
+                endfor
+              endfor
+              unless show
+                continue
+              endunless
+            endif
             assign body = ''
             case block.settings.source
               when 'description'
@@ -737,7 +753,8 @@
         { "type": "select", "id": "source", "label": "Content", "options": [ { "value": "details", "label": "Description: intro text" }, { "value": "features", "label": "Description: lines starting with -" }, { "value": "care", "label": "Description: Fabric & Care part" }, { "value": "shipping", "label": "Description: Shipping & Returns part" }, { "value": "description", "label": "Whole product description" }, { "value": "text", "label": "Text below" }, { "value": "page", "label": "A page" } ], "default": "text" },
         { "type": "richtext", "id": "text", "label": "Text", "info": "Also used when the chosen description part is missing." },
         { "type": "page", "id": "page", "label": "Page" },
-        { "type": "checkbox", "id": "open", "label": "Open when the page loads", "default": false }
+        { "type": "checkbox", "id": "open", "label": "Open when the page loads", "default": false },
+        { "type": "text", "id": "only_tags", "label": "Only on products tagged", "info": "Optional. Tags separated by commas, e.g. Bras." }
       ]
     }
   ],
