@@ -1,0 +1,102 @@
+{% comment %}
+  Image with text (Wacoal "image with text"): photo on one half, centred text on the other.
+  Heading styles: serif (with italic words), expanded sans, or bold sans in a colour.
+  Phones: photo on top, text below.
+{% endcomment %}
+{%- liquid
+  assign ss = section.settings
+  assign src = ''
+  assign srcset = ''
+  if ss.image != blank
+    assign src = ss.image | image_url: width: 1440
+    assign srcset = ss.image | image_url: width: 720 | append: ' 720w, ' | append: src | append: ' 1440w'
+  elsif ss.image_asset != blank
+    assign src = ss.image_asset | asset_url
+  endif
+  assign src_m = ''
+  if ss.image_mobile != blank
+    assign src_m = ss.image_mobile | image_url: width: 800
+  elsif ss.image_mobile_asset != blank
+    assign src_m = ss.image_mobile_asset | asset_url
+  endif
+  assign img_w = ss.image.width | default: 2025
+  assign img_h = ss.image.height | default: 1847
+  assign text_size = 'large'
+  if ss.heading_style != 'serif'
+    assign text_size = 'small'
+  endif
+-%}
+<div
+  class="wac-iwt wac-iwt--image-{{ ss.image_position }} wac-iwt--heading-{{ ss.heading_style }} wac-iwt--text-{{ text_size }}"
+  style="--wac-iwt-bg: {{ ss.background }}; --wac-iwt-heading-color: {{ ss.heading_color }}; --wac-iwt-mb: {{ ss.margin_bottom }}px;"
+>
+  {%- if src != blank -%}
+    {%- liquid
+      assign tag = 'div'
+      if ss.link != blank
+        assign tag = 'a'
+      endif
+    -%}
+    <{{ tag }} class="wac-iwt__image"{% if tag == 'a' %} href="{{ ss.link }}" aria-label="{{ ss.button_label | default: ss.heading | strip_html | escape }}"{% endif %}>
+      <picture>
+        {%- if src_m != blank -%}
+          <source media="(max-width: 749px)" srcset="{{ src_m }}">
+        {%- endif -%}
+        <img
+          class="wac-iwt__img"
+          src="{{ src }}"
+          {% if srcset != blank %}srcset="{{ srcset }}" sizes="(max-width: 749px) 100vw, 50vw"{% endif %}
+          width="{{ img_w }}"
+          height="{{ img_h }}"
+          alt="{{ ss.image.alt | default: ss.heading | strip_html | escape }}"
+          loading="lazy"
+        >
+      </picture>
+    </{{ tag }}>
+  {%- endif -%}
+
+  <div class="wac-iwt__content">
+    <div class="wac-iwt__wrap">
+      {%- if ss.preheader != blank -%}
+        <p class="wac-iwt__preheader">{{ ss.preheader }}</p>
+      {%- endif -%}
+      {%- if ss.heading != blank -%}
+        <h2 class="wac-iwt__heading">{{ ss.heading }}</h2>
+      {%- endif -%}
+      {%- if ss.text != blank -%}
+        <div class="wac-iwt__text">{{ ss.text }}</div>
+      {%- endif -%}
+      {%- if ss.button_label != blank -%}
+        <div class="wac-iwt__buttons">
+          <a class="wac-iwt__button" href="{{ ss.button_link | default: ss.link | default: '#' }}">{{ ss.button_label | escape }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wacoal image with text",
+  "tag": "section",
+  "class": "wac-section-iwt",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "About 2000 x 1850 works like the Wacoal rows." },
+    { "type": "text", "id": "image_asset", "label": "or asset file name", "info": "Used only while no image is picked." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Image on phones (optional)" },
+    { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phones)" },
+    { "type": "select", "id": "image_position", "label": "Image position on desktop", "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ], "default": "right" },
+    { "type": "url", "id": "link", "label": "Image link" },
+    { "type": "inline_richtext", "id": "preheader", "label": "Line above the heading", "info": "Shown in serif italics, for example Introducing." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Fall Into Something <em>Comfortable</em>" },
+    { "type": "select", "id": "heading_style", "label": "Heading style", "options": [ { "value": "serif", "label": "Serif (italic words allowed)" }, { "value": "expanded", "label": "Wide sans" }, { "value": "bold", "label": "Bold sans" } ], "default": "serif" },
+    { "type": "color", "id": "heading_color", "label": "Heading colour", "default": "#000000" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Discover the soft and easy layers your autumn wardrobe has been asking for.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "SHOP NOW" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to use the image link." },
+    { "type": "color", "id": "background", "label": "Background", "default": "#fafafc" },
+    { "type": "range", "id": "margin_bottom", "label": "Space below", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 }
+  ],
+  "presets": [ { "name": "Wacoal image with text" } ]
+}
+{% endschema %}

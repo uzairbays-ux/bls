@@ -1105,11 +1105,11 @@
 }
 
 .wac-rich {
-  margin: 20px 0;
-  padding: 20px 0;
+  margin: var(--wac-rich-mt, 20px) 0 var(--wac-rich-mb, 20px);
+  padding: var(--wac-rich-py, 20px) 0;
   background: var(--wac-rich-bg, #f3f0eb);
   text-align: center;
-  color: var(--wac-ink);
+  color: var(--wac-rich-color, var(--wac-ink));
 }
 
 .wac-rich__content {
@@ -1121,12 +1121,12 @@
 .wac-rich__heading {
   margin: 0;
   font-family: var(--wac-font-serif);
-  font-size: 50px;
+  font-size: var(--wac-rich-h, 50px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 1px;
   text-transform: none;
-  color: var(--wac-ink);
+  color: inherit;
 }
 
 .wac-rich__heading em,
@@ -1182,8 +1182,8 @@
 
 @media screen and (max-width: 749px) {
   .wac-rich {
-    margin: 0;
-    padding: 35px 0;
+    margin: var(--wac-rich-mt-m, 0px) 0 var(--wac-rich-mb-m, 0px);
+    padding: var(--wac-rich-py-m, 35px) 0;
   }
 
   .wac-rich__content {
@@ -1193,7 +1193,7 @@
   }
 
   .wac-rich__heading {
-    font-size: 30px;
+    font-size: var(--wac-rich-h-m, 30px);
   }
 
   .wac-rich__text p {
@@ -1788,5 +1788,186 @@
   .wac-footer__info-wrap {
     margin: 0 12.5%;
     min-height: 70px;
+  }
+}
+
+/* ===== 10. Image with text ======================================== */
+.wac-section-iwt {
+  display: block;
+}
+
+.wac-iwt {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--wac-iwt-mb, 0px);
+  background: var(--wac-iwt-bg, #fafafc);
+  color: #000;
+}
+
+.wac-iwt--image-right {
+  flex-direction: row-reverse;
+}
+
+.wac-iwt__image {
+  display: block;
+  flex: 0 0 50%;
+  width: 50%;
+}
+
+.wac-iwt__image picture,
+.wac-iwt__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wac-iwt__content {
+  flex: 1 1 50%;
+  padding: 40px;
+  text-align: center;
+}
+
+.wac-iwt__wrap {
+  max-width: 75%;
+  margin: 0 auto;
+}
+
+.wac-iwt__preheader {
+  margin: 0 0 10px;
+  font-family: var(--wac-font-serif);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+}
+
+.wac-iwt__heading {
+  margin: 0 0 20px;
+  font-size: 35px;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+  color: var(--wac-iwt-heading-color, #000);
+  text-transform: none;
+}
+
+.wac-iwt--heading-serif .wac-iwt__heading {
+  font-family: var(--wac-font-serif);
+  font-size: 45px;
+  font-weight: 500;
+}
+
+.wac-iwt--heading-serif .wac-iwt__heading em,
+.wac-iwt--heading-serif .wac-iwt__heading i {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.wac-iwt--heading-expanded .wac-iwt__heading {
+  font-family: var(--wac-font-expanded);
+  font-stretch: 125%;
+  font-weight: 500;
+}
+
+.wac-iwt--heading-bold .wac-iwt__heading {
+  font-family: var(--wac-font-sans);
+  font-weight: 700;
+}
+
+.wac-iwt__heading sup {
+  font-size: 0.75em;
+}
+
+.wac-iwt__text {
+  margin: 0 0 10px;
+}
+
+.wac-iwt__text p {
+  margin: 18px 0 0;
+  font-family: var(--wac-font-sans);
+  font-size: 18px;
+  line-height: 29.7px;
+  letter-spacing: 0.5px;
+}
+
+.wac-iwt--text-small .wac-iwt__text p {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.wac-iwt__text p:first-child {
+  margin-top: 0;
+}
+
+.wac-iwt__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.wac-iwt__button {
+  display: inline-block;
+  margin: 15px 10px 0;
+  padding: 0;
+  border-bottom: 1px solid currentColor;
+  color: #000;
+  font-family: var(--wac-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.wac-iwt__button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-iwt,
+  .wac-iwt--image-right {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wac-iwt__image {
+    flex: none;
+    width: 100%;
+  }
+
+  .wac-iwt__content {
+    padding: 40px 20px;
+  }
+
+  .wac-iwt__wrap {
+    max-width: 90%;
+  }
+
+  .wac-iwt__preheader {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .wac-iwt__heading,
+  .wac-iwt--heading-serif .wac-iwt__heading {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+
+  .wac-iwt__text p {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 26.4px;
+  }
+
+  .wac-iwt--text-small .wac-iwt__text p {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 23.1px;
+  }
+
+  .wac-iwt__button {
+    font-size: 12px;
+    line-height: 24px;
   }
 }

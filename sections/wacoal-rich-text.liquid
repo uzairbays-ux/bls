@@ -1,10 +1,17 @@
 {% comment %}
   Centred rich-text band (Wacoal "rich text"): serif heading with italic words,
-  one line of text and up to two pill buttons, on the page's beige background.
+  one line of text and up to two pill buttons, on a colour or gradient band.
 {% endcomment %}
+{%- liquid
+  assign ss = section.settings
+  assign bg = ss.background
+  if ss.background_gradient != blank
+    assign bg = ss.background_gradient
+  endif
+-%}
 <div
   class="wac-rich"
-  style="--wac-rich-bg: {{ section.settings.background }}; --wac-rich-max: {{ section.settings.max_width }}%;"
+  style="--wac-rich-bg: {{ bg }}; --wac-rich-color: {{ ss.text_color }}; --wac-rich-max: {{ ss.max_width }}%; --wac-rich-h: {{ ss.heading_size }}px; --wac-rich-h-m: {{ ss.heading_size_mobile }}px; --wac-rich-mt: {{ ss.margin_top }}px; --wac-rich-mb: {{ ss.margin_bottom }}px; --wac-rich-py: {{ ss.padding_y }}px; --wac-rich-mt-m: {{ ss.margin_top_mobile }}px; --wac-rich-mb-m: {{ ss.margin_bottom_mobile }}px; --wac-rich-py-m: {{ ss.padding_y_mobile }}px;"
 >
   <div class="wac-rich__content">
     {%- if section.settings.heading != blank -%}
@@ -33,13 +40,24 @@
   "class": "wac-section-rich",
   "settings": [
     { "type": "color", "id": "background", "label": "Background", "default": "#f3f0eb" },
+    { "type": "color_background", "id": "background_gradient", "label": "Background gradient", "info": "Optional. Used instead of the background colour when set." },
+    { "type": "color", "id": "text_color", "label": "Text colour", "default": "#111111" },
+    { "type": "range", "id": "heading_size", "label": "Heading size on desktop", "min": 24, "max": 70, "step": 1, "unit": "px", "default": 50 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size on phones", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 30 },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Support that <em>gets</em> you. Style that <em>reflects</em> you. Comfort that <em>never</em> quits." },
     { "type": "text", "id": "text", "label": "Text", "default": "It all starts with the right fitting bra." },
     { "type": "range", "id": "max_width", "label": "Content width (% of page)", "min": 40, "max": 100, "step": 5, "default": 60 },
     { "type": "text", "id": "button1_label", "label": "First button", "default": "FIND YOUR PERFECT FIT" },
     { "type": "url", "id": "button1_link", "label": "First button link" },
     { "type": "text", "id": "button2_label", "label": "Second button", "default": "YOUR CUSTOM BRA WARDROBE" },
-    { "type": "url", "id": "button2_link", "label": "Second button link" }
+    { "type": "url", "id": "button2_link", "label": "Second button link" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "margin_top", "label": "Space above (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 20 },
+    { "type": "range", "id": "margin_bottom", "label": "Space below (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 20 },
+    { "type": "range", "id": "padding_y", "label": "Inner padding top and bottom (desktop)", "min": 0, "max": 60, "step": 5, "unit": "px", "default": 20 },
+    { "type": "range", "id": "margin_top_mobile", "label": "Space above (phones)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom_mobile", "label": "Space below (phones)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_y_mobile", "label": "Inner padding top and bottom (phones)", "min": 0, "max": 60, "step": 5, "unit": "px", "default": 35 }
   ],
   "presets": [ { "name": "Wacoal rich text" } ]
 }
