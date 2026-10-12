@@ -25,7 +25,7 @@
         "col_bls": {
           "type": "links",
           "settings": {
-            "heading": "British Lingerie Studio",
+            "heading": "BLS",
             "label_1": "About Us",
             "url_1": "/pages/about-us",
             "label_2": "Store Locator",
@@ -98,4 +98,3 @@
     "wacoal_footer"
   ]
 }
-
