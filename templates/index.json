@@ -862,7 +862,7 @@
         "text_1": {
           "type": "text",
           "settings": {
-            "text": "<p>Free shipping over Rs.1999</p>",
+            "text": "<p>Free shipping above Rs.9,999</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -918,50 +918,13 @@
             "padding-inline-end": 0
           },
           "blocks": {}
-        },
-        "icon_3": {
-          "type": "icon",
-          "settings": {
-            "icon": "return",
-            "width": 34,
-            "link": "",
-            "open_in_new_tab": false
-          },
-          "blocks": {}
-        },
-        "text_3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Easy returns & exchange</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-subheading--family)",
-            "font_size": "2rem",
-            "line_height": "tight",
-            "letter_spacing": "normal",
-            "case": "uppercase",
-            "wrap": "nowrap",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "icon_1",
         "text_1",
         "icon_2",
-        "text_2",
-        "icon_3",
-        "text_3"
+        "text_2"
       ],
       "name": "t:names.marquee",
       "settings": {
