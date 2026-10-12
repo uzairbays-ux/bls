@@ -597,7 +597,7 @@
                     "text_vp1": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Free shipping over Rs.1999</p>",
+                        "text": "<p>Free shipping above Rs.9,999</p>",
                         "width": "fit-content",
                         "max_width": "none",
                         "alignment": "left",
@@ -673,69 +673,11 @@
                     "icon_vp2",
                     "text_vp2"
                   ]
-                },
-                "group_vp3": {
-                  "type": "group",
-                  "name": "Value prop 3",
-                  "settings": {
-                    "content_direction": "row",
-                    "vertical_on_mobile": false,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "gap": 8,
-                    "width": "custom",
-                    "custom_width": 50,
-                    "width_mobile": "custom",
-                    "custom_width_mobile": 50,
-                    "height": "fit",
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 8,
-                    "padding-block-end": 8,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "icon_vp3": {
-                      "type": "icon",
-                      "settings": {
-                        "icon": "return",
-                        "width": 22
-                      }
-                    },
-                    "text_vp3": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Easy returns & exchange</p>",
-                        "width": "fit-content",
-                        "max_width": "none",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-subheading--family)",
-                        "font_size": "0.75rem",
-                        "line_height": "tight",
-                        "letter_spacing": "normal",
-                        "case": "uppercase",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "icon_vp3",
-                    "text_vp3"
-                  ]
                 }
               },
               "block_order": [
                 "group_vp1",
-                "group_vp2",
-                "group_vp3"
+                "group_vp2"
               ]
             }
           },
@@ -911,7 +853,7 @@
       "type": "product-usp",
       "settings": {
         "eyebrow": "Try me on",
-        "heading": "<p>Everyday comfort, engineered to stay put \u2014 soft cotton with a fit that moves with you.</p>",
+        "heading": "<p>Everyday comfort, engineered to stay put — soft cotton with a fit that moves with you.</p>",
         "color_scheme": "scheme-bls-signature",
         "padding-block-start": 64,
         "padding-block-end": 0
