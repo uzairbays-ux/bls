@@ -364,7 +364,7 @@
         "button_label": "LEARN MORE",
         "button_link": "",
         "background": "#fafafc",
-        "margin_bottom": 50
+        "margin_bottom": 0
       }
     },
     "product_list_campaign": {
