@@ -336,6 +336,14 @@
   margin-inline: 0;
 }
 
+/* wide screens: keep the links together in the middle instead of spreading them out */
+@media screen and (min-width: 1440px) {
+  .header-section .header-menu .overflow-menu::part(list) {
+    justify-content: center;
+    column-gap: var(--wac-nav-gap, 24px);
+  }
+}
+
 .header-section .menu-list__link {
   --menu-top-level-font-family: var(--wac-font-sans);
   --menu-top-level-font-size-desktop: 14px;
