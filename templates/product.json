@@ -124,7 +124,7 @@
         "sold_out_label": "Sold out",
         "adding_label": "Adding...",
         "added_label": "Added to cart",
-        "ship_text": "<p>Free shipping over Rs.1999</p>",
+        "ship_text": "<p>Free shipping on orders above Rs.9,999</p>",
         "note_text": "<p>Cash on delivery available.</p>",
         "match_heading": "Complete your look",
         "match_collection": "panties",
