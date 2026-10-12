@@ -1,0 +1,62 @@
+{%- doc -%}
+  One filter's choices for the Wacoal collection grid (drop-down panel and drawer group).
+  Size-like filters show rounded squares, colour filters show swatches, others show check boxes.
+  @param {object} filter - A collection filter
+{%- enddoc -%}
+{%- liquid
+  assign label_lc = filter.label | downcase
+  assign style = 'check'
+  if label_lc contains 'size' or label_lc contains 'band' or label_lc contains 'cup'
+    assign style = 'square'
+  elsif filter.presentation == 'swatch' or label_lc contains 'colo'
+    assign style = 'swatch'
+  endif
+-%}
+<div class="wac-filter" data-filter="{{ filter.param_name | escape }}" data-label="{{ filter.label | escape }}">
+  {%- case filter.type -%}
+    {%- when 'price_range' -%}
+      <div class="wac-filter__price">
+        <label class="wac-filter__price-field">
+          <span>From</span>
+          <input type="number" inputmode="numeric" min="0" name="{{ filter.min_value.param_name }}" value="{% if filter.min_value.value %}{{ filter.min_value.value | money_without_currency | remove: ',' }}{% endif %}" placeholder="0">
+        </label>
+        <label class="wac-filter__price-field">
+          <span>To</span>
+          <input type="number" inputmode="numeric" min="0" name="{{ filter.max_value.param_name }}" value="{% if filter.max_value.value %}{{ filter.max_value.value | money_without_currency | remove: ',' }}{% endif %}" placeholder="{{ filter.range_max | money_without_currency | remove: ',' }}">
+        </label>
+      </div>
+    {%- else -%}
+      <ul class="wac-filter__list wac-filter__list--{{ style }}" role="list">
+        {%- for value in filter.values -%}
+          <li class="wac-filter__item">
+            <label class="wac-filter__opt wac-filter__opt--{{ style }}{% if value.count == 0 and value.active == false %} is-empty{% endif %}">
+              <input
+                type="checkbox"
+                class="wac-filter__input"
+                name="{{ value.param_name }}"
+                value="{{ value.value }}"
+                {% if value.active %}checked{% endif %}
+                {% if value.count == 0 and value.active == false %}disabled{% endif %}
+              >
+              {%- if style == 'swatch' -%}
+                {%- liquid
+                  assign sw = ''
+                  if value.swatch.color
+                    assign sw = value.swatch.color
+                  elsif value.swatch.image
+                    assign sw = value.swatch.image | image_url: width: 66 | prepend: 'url(' | append: ') center / cover'
+                  else
+                    assign sw = value.label | downcase | strip
+                  endif
+                -%}
+                <span class="wac-filter__swatch" style="--sw: {{ sw }};"></span>
+              {%- elsif style == 'check' -%}
+                <span class="wac-filter__box" aria-hidden="true"></span>
+              {%- endif -%}
+              <span class="wac-filter__label">{{ value.label | escape }}</span>
+            </label>
+          </li>
+        {%- endfor -%}
+      </ul>
+  {%- endcase -%}
+</div>

@@ -1,0 +1,153 @@
+{% comment %}
+  Collection header (Wacoal collection page): breadcrumb, title, description, and a row of
+  category cards with round arrows. Each card points at a collection; its photo is the card's
+  own image, else the collection image, else the collection's first product photo.
+  A card can be limited to some collections (e.g. only on Bras) with "Show on".
+{% endcomment %}
+{%- liquid
+  assign current = collection.handle
+  assign cards = ''
+  for block in section.blocks
+    assign show = true
+    assign only = block.settings.show_on | strip
+    if only != blank
+      assign show = false
+      assign handles = only | split: ','
+      for h in handles
+        assign h = h | strip
+        if h == current
+          assign show = true
+        endif
+      endfor
+    endif
+    if block.settings.collection == blank
+      assign show = false
+    endif
+    if show
+      assign cards = cards | append: block.id | append: ','
+    endif
+  endfor
+  assign card_ids = cards | split: ','
+  assign desc = collection.description | strip_html | strip
+-%}
+<section class="wac-colhead" data-wac-colhead>
+  <div class="wac-colhead__container">
+    <nav class="wac-colhead__breadcrumb" aria-label="Breadcrumb">
+      <a class="wac-colhead__crumb" href="{{ routes.root_url }}">Home</a>
+      <span class="wac-colhead__sep" aria-hidden="true">/</span>
+      <span class="wac-colhead__current" aria-current="page">{{ collection.title | downcase | escape }}</span>
+    </nav>
+
+    <div class="wac-colhead__head">
+      <div class="wac-colhead__text">
+        <h1 class="wac-colhead__title">{{ collection.title | escape }}</h1>
+        {%- if section.settings.show_description and desc != blank -%}
+          <div class="wac-colhead__desc">{{ collection.description }}</div>
+        {%- elsif section.settings.fallback_text != blank -%}
+          <div class="wac-colhead__desc"><p>{{ section.settings.fallback_text | escape }}</p></div>
+        {%- endif -%}
+      </div>
+      {%- if card_ids.size > 1 -%}
+        <div class="wac-colhead__arrows">
+          <button type="button" class="wac-styles__arrow is-disabled" data-wac-colhead-prev aria-label="Previous categories" disabled>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="wac-styles__arrow" data-wac-colhead-next aria-label="Next categories">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if card_ids.size > 0 -%}
+      <ul class="wac-colhead__list" data-wac-colhead-list role="list">
+        {%- for block in section.blocks -%}
+          {%- unless card_ids contains block.id -%}{%- continue -%}{%- endunless -%}
+          {%- liquid
+            assign c = block.settings.collection
+            assign img = block.settings.image | default: c.image | default: c.products.first.featured_image
+            assign label = block.settings.title | default: c.title
+          -%}
+          <li class="wac-colhead__item{% if c.handle == current %} is-current{% endif %}" {{ block.shopify_attributes }}>
+            <a class="wac-colhead__link" href="{{ c.url }}">
+              {%- if img != blank -%}
+                <img
+                  class="wac-colhead__img"
+                  src="{{ img | image_url: width: 430 }}"
+                  srcset="{{ img | image_url: width: 220 }} 220w, {{ img | image_url: width: 430 }} 430w"
+                  sizes="(max-width: 749px) 160px, 215px"
+                  width="{{ img.width }}"
+                  height="{{ img.height }}"
+                  alt="{{ label | escape }}"
+                  {% if forloop.index > 6 %}loading="lazy"{% endif %}
+                >
+              {%- else -%}
+                <span class="wac-colhead__img wac-colhead__img--empty"></span>
+              {%- endif -%}
+              <span class="wac-colhead__label">{{ label | escape }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.ready) return;
+      root.dataset.ready = '1';
+      var list = root.querySelector('[data-wac-colhead-list]');
+      var prev = root.querySelector('[data-wac-colhead-prev]');
+      var next = root.querySelector('[data-wac-colhead-next]');
+      if (!list || !prev || !next) return;
+      function step() {
+        var item = list.querySelector('.wac-colhead__item');
+        if (!item) return list.clientWidth;
+        var gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+        var w = item.getBoundingClientRect().width + gap;
+        return Math.max(1, Math.floor((list.clientWidth + gap) / w)) * w;
+      }
+      function update() {
+        var max = list.scrollWidth - list.clientWidth - 1;
+        prev.disabled = list.scrollLeft <= 1; prev.classList.toggle('is-disabled', prev.disabled);
+        next.disabled = list.scrollLeft >= max; next.classList.toggle('is-disabled', next.disabled);
+      }
+      prev.addEventListener('click', function () { list.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { list.scrollBy({ left: step(), behavior: 'smooth' }); });
+      list.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+    function all() { document.querySelectorAll('[data-wac-colhead]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', all); else all();
+    document.addEventListener('shopify:section:load', all);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wacoal collection header",
+  "tag": "div",
+  "class": "wac-section-colhead",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "checkbox", "id": "show_description", "label": "Show the collection description", "default": true },
+    { "type": "text", "id": "fallback_text", "label": "Text when a collection has no description" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Optional. Otherwise the collection image or its first product photo." },
+        { "type": "text", "id": "title", "label": "Label", "info": "Optional. Otherwise the collection title." },
+        { "type": "text", "id": "show_on", "label": "Show on", "info": "Optional. Collection handles separated by commas, e.g. bras,padded. Leave empty to show on every collection." }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Wacoal collection header" } ]
+}
+{% endschema %}
