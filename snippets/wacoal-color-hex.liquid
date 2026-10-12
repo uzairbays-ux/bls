@@ -1,0 +1,93 @@
+{%- doc -%}
+  Prints a CSS background for a colour name (a hex code, or a split gradient for names like
+  Black-Beige-Coffee). Prints nothing when the name is not known, so the caller can fall back
+  to a photo.
+  @param {string} name - Colour name, e.g. Sea Green
+{%- enddoc -%}
+{%- liquid
+  assign parts = name | downcase | replace: ' / ', '-' | replace: '/', '-' | replace: ' & ', '-' | replace: ' and ', '-' | split: '-'
+  assign found = ''
+  for part in parts
+    assign key = part | strip
+    assign hex = ''
+    case key
+      when 'black' or 'jet black'
+        assign hex = '#000000'
+      when 'white' or 'ivory' or 'off white' or 'off-white' or 'pearl'
+        assign hex = '#f5f1ea'
+      when 'skin' or 'nude' or 'beige' or 'sand' or 'dark beige' or 'latte'
+        assign hex = '#e8c9a8'
+      when 'cream' or 'champagne'
+        assign hex = '#f2e6d0'
+      when 'red' or 'cherry' or 'jujube red' or 'scarlet'
+        assign hex = '#b5122e'
+      when 'maroon' or 'wine' or 'burgundy'
+        assign hex = '#6e1e2b'
+      when 'pink' or 'baby pink' or 'light pink' or 'blush' or 'rose' or 'peach rose'
+        assign hex = '#f3b5c6'
+      when 'piony' or 'peony' or 'dusty pink' or 'dusty rose'
+        assign hex = '#e3a3b1'
+      when 'hot pink' or 'fuchsia' or 'magenta'
+        assign hex = '#e3348a'
+      when 'peach' or 'salmon' or 'coral'
+        assign hex = '#f4a28c'
+      when 'purple' or 'violet' or 'plum'
+        assign hex = '#7e286f'
+      when 'lilac' or 'lavender' or 'mauve'
+        assign hex = '#b89bc9'
+      when 'blue' or 'royal blue'
+        assign hex = '#2b55a3'
+      when 'navy' or 'navy blue' or 'dark blue'
+        assign hex = '#1b2a4a'
+      when 'sky blue' or 'light blue' or 'baby blue'
+        assign hex = '#a9cfe8'
+      when 'teal' or 'turquoise'
+        assign hex = '#2a8c8c'
+      when 'green' or 'dark green' or 'bottle green' or 'leaf green' or 'emerald'
+        assign hex = '#2f6b3a'
+      when 'olive'
+        assign hex = '#7a7a3a'
+      when 'mint' or 'sea green'
+        assign hex = '#a7dcc6'
+      when 'yellow' or 'mustard'
+        assign hex = '#e0b43a'
+      when 'orange' or 'rust'
+        assign hex = '#d2691e'
+      when 'grey' or 'gray' or 'light grey' or 'light gray' or 'heather grey' or 'heather gray'
+        assign hex = '#9a9a9a'
+      when 'charcoal' or 'dark grey' or 'dark gray'
+        assign hex = '#4a4a4a'
+      when 'brown' or 'coffee' or 'chocolate' or 'mocha'
+        assign hex = '#6b4226'
+      when 'tan' or 'camel' or 'caramel'
+        assign hex = '#c69c6d'
+      when 'gold' or 'golden'
+        assign hex = '#d4af37'
+      when 'silver'
+        assign hex = '#c0c0c0'
+      when 'multi' or 'mix' or 'multicolor' or 'multicolour' or 'printed' or 'print'
+        assign hex = '#e3348a,#2b55a3,#e0b43a'
+    endcase
+    if hex != ''
+      if found != ''
+        assign found = found | append: ','
+      endif
+      assign found = found | append: hex
+    endif
+  endfor
+  assign colours = found | split: ','
+-%}
+{%- if colours.size == 1 -%}
+  {{- colours.first -}}
+{%- elsif colours.size > 1 -%}
+  {%- liquid
+    assign step = 100.0 | divided_by: colours.size
+    assign stops = ''
+    for c in colours
+      assign from = forloop.index0 | times: step | round: 2
+      assign to = forloop.index | times: step | round: 2
+      assign stops = stops | append: ',' | append: c | append: ' ' | append: from | append: '% ' | append: to | append: '%'
+    endfor
+  -%}
+  linear-gradient(135deg{{ stops }})
+{%- endif -%}

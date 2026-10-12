@@ -1,0 +1,650 @@
+{% comment %}
+  Product page (Wacoal product page): photo slider on the left (sticky on desktop), and on the
+  right the title and price, colour circles, size buttons (bra sizes like 34B split into BAND
+  and CUP), quantity, add to cart, feature cards, accordions and a "Complete your look" row.
+  Colours sold as separate products (same style number at the start of the SKU) show as links;
+  colours sold as variants show as buttons.
+{% endcomment %}
+{%- liquid
+  assign ss = section.settings
+  assign p = product
+  assign first_v = p.selected_or_first_available_variant
+  assign picked = p.selected_variant
+  assign style_no = p.variants.first.sku | split: '-' | first | strip
+
+  assign color_index = -1
+  assign color_option = blank
+  for option in p.options_with_values
+    assign oname = option.name | downcase
+    if oname == 'color' or oname == 'colour'
+      assign color_index = forloop.index0
+      assign color_option = option
+    endif
+  endfor
+  assign multi_color = false
+  if color_option != blank and color_option.values.size > 1
+    assign multi_color = true
+  endif
+
+  capture color_name
+    render 'wacoal-product-color', product: p
+  endcapture
+  assign color_name = color_name | strip
+  if multi_color
+    assign color_name = first_v.options[color_index]
+    if picked
+      assign color_name = picked.options[color_index]
+    endif
+  endif
+
+  assign title = p.title | remove_first: 'BLS - ' | remove_first: 'BLS-' | remove_first: 'BLS '
+  assign title_parts = title | split: ' - '
+  if title_parts.size > 1 and color_name != blank
+    assign last_part = title_parts.last | downcase | strip
+    assign color_down = color_name | downcase
+    if last_part == color_down
+      assign keep = title_parts.size | minus: 1
+      assign title = ''
+      for part in title_parts limit: keep
+        unless forloop.first
+          assign title = title | append: ' - '
+        endunless
+        assign title = title | append: part
+      endfor
+    endif
+  endif
+
+  assign badge = ''
+  assign badge_entries = ss.badge_tags | split: ','
+  for entry in badge_entries
+    assign pair = entry | split: '='
+    assign want = pair.first | strip | downcase
+    assign shown = pair.last | strip
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == want
+        assign badge = shown
+        break
+      endif
+    endfor
+    if badge != ''
+      break
+    endif
+  endfor
+  if badge == '' and p.compare_at_price > p.price
+    assign badge = 'Sale'
+  endif
+
+  assign rating = p.metafields.reviews.rating.value
+  assign rating_count = p.metafields.reviews.rating_count.value
+
+  assign images = p.media | where: 'media_type', 'image'
+  if images.size == 0 and p.featured_image
+    assign images = p.images
+  endif
+
+  comment
+    Size option: the first option that is not the colour. Bra sizes (two digits then letters,
+    e.g. 34B, 36DD) are split into a band list and a cup list.
+  endcomment
+  assign size_index = -1
+  for option in p.options_with_values
+    if forloop.index0 != color_index and size_index == -1
+      assign size_index = forloop.index0
+    endif
+  endfor
+  assign split_sizes = false
+  assign bands = ''
+  assign cups = ''
+  if size_index > -1 and p.has_only_default_variant == false
+    assign split_sizes = true
+    assign size_option = p.options_with_values[size_index]
+    for value in size_option.values
+      assign v = value | strip | upcase
+      assign b = v | slice: 0, 2
+      assign b_num = b | plus: 0 | append: ''
+      assign c = v | slice: 2, 10
+      if b_num != b or c == blank or c contains ' ' or c contains '/' or c contains '-'
+        assign split_sizes = false
+        break
+      endif
+      assign c_first = c | slice: 0, 1
+      assign c_first_num = c_first | plus: 0 | append: ''
+      if c_first_num == c_first
+        assign split_sizes = false
+        break
+      endif
+      assign b_key = '|' | append: b | append: '|'
+      unless bands contains b_key
+        assign bands = bands | append: b_key
+      endunless
+      assign c_key = '|' | append: c | append: '|'
+      unless cups contains c_key
+        assign cups = cups | append: c_key
+      endunless
+    endfor
+  endif
+  if split_sizes
+    assign band_list = bands | remove_first: '|' | split: '||' | sort
+    assign band_list = band_list | join: ',' | remove: '|' | split: ','
+    assign cup_order = 'AA,A,B,C,D,DD,DDD,E,F,FF,G,GG,H,HH,I,J,JJ,K'
+    assign cup_order_list = cup_order | split: ','
+    assign cup_list = ''
+    for c in cup_order_list
+      assign c_key = '|' | append: c | append: '|'
+      if cups contains c_key
+        assign cup_list = cup_list | append: c | append: ','
+        assign cups = cups | remove: c_key
+      endif
+    endfor
+    assign leftover = cups | remove_first: '|' | split: '||'
+    for c in leftover
+      assign c = c | remove: '|'
+      if c != blank
+        assign cup_list = cup_list | append: c | append: ','
+      endif
+    endfor
+    assign cup_list = cup_list | split: ','
+  endif
+
+  assign picked_band = ''
+  assign picked_cup = ''
+  if picked and split_sizes
+    assign picked_size = picked.options[size_index] | strip | upcase
+    assign picked_band = picked_size | slice: 0, 2
+    assign picked_cup = picked_size | slice: 2, 10
+  endif
+
+  assign siblings_url = ''
+  if multi_color == false and style_no != blank
+    assign q = style_no | url_encode
+    assign siblings_url = routes.predictive_search_url | append: '?q=' | append: q | append: '&resources[type]=product&resources[limit]=10&resources[options][fields]=variants.sku&resources[options][unavailable_products]=last&section_id=wacoal-color-siblings'
+  endif
+
+  assign is_new = false
+  for tag in p.tags
+    assign t = tag | downcase
+    if t == 'new'
+      assign is_new = true
+    endif
+  endfor
+  assign own_flag = ''
+  if is_new
+    assign own_flag = 'new'
+  elsif p.compare_at_price > p.price
+    assign own_flag = 'sale'
+  endif
+
+  assign shape = ss.photo_shape
+-%}
+
+{%- capture head -%}
+  {%- if rating != blank -%}
+    <a class="wac-pdp__rating" href="#reviews" aria-label="Rated {{ rating.rating }} out of 5 from {{ rating_count }} reviews">
+      <span class="wac-card__stars" style="--wac-rating: {{ rating.rating | times: 1.0 | divided_by: 5.0 | times: 100 | round: 1 }}%;" aria-hidden="true">
+        <span class="wac-card__stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="wac-card__stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </span>
+      <span class="wac-pdp__rating-text">{{ rating.rating | round: 1 }} ({{ rating_count }})</span>
+    </a>
+  {%- endif -%}
+  {%- if ss.brand_line != blank -%}
+    <div class="wac-pdp__vendor">{{ ss.brand_line | escape }}</div>
+  {%- endif -%}
+  <h1 class="wac-pdp__title">{{ title | escape }}</h1>
+  <div class="wac-pdp__price-row">
+    <span class="wac-pdp__price" data-wac-price>
+      {%- liquid
+        assign shown_v = picked | default: first_v
+      -%}
+      <span class="wac-pdp__price-now">{{ shown_v.price | money }}</span>
+      {%- if shown_v.compare_at_price > shown_v.price -%}
+        <s class="wac-pdp__price-was">{{ shown_v.compare_at_price | money }}</s>
+      {%- endif -%}
+    </span>
+    {%- if badge != '' -%}
+      <span class="wac-pdp__flag">{{ badge | escape }}</span>
+    {%- endif -%}
+  </div>
+  {%- if style_no != blank and ss.show_style -%}
+    <div class="wac-pdp__style">{{ ss.style_label | escape }} {{ style_no | escape }}</div>
+  {%- endif -%}
+{%- endcapture -%}
+
+<div
+  class="wac-pdp wac-pdp--shape-{{ shape }}{% if ss.sticky_gallery %} wac-pdp--sticky{% endif %}"
+  data-wac-pdp
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ p.id }}"
+  data-product-url="{{ p.url }}"
+  data-handle="{{ p.handle }}"
+  {% if siblings_url != blank %}data-siblings-url="{{ siblings_url }}"{% endif %}
+>
+  <div class="wac-pdp__head wac-pdp__head--mobile">{{ head }}</div>
+
+  <div class="wac-pdp__container">
+    <div class="wac-pdp__gallery" data-wac-gallery>
+      <div class="wac-pdp__frame">
+        <div class="wac-pdp__slider" data-wac-slider tabindex="0" aria-label="Product photos">
+          {%- for media in images -%}
+            {%- liquid
+              assign img = media.preview_image | default: media
+              assign loading = 'lazy'
+              if forloop.first
+                assign loading = 'eager'
+              endif
+            -%}
+            <div class="wac-pdp__slide" data-media-id="{{ media.id }}">
+              <img
+                class="wac-pdp__img"
+                src="{{ img | image_url: width: 1200 }}"
+                srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 600 }} 600w, {{ img | image_url: width: 800 }} 800w, {{ img | image_url: width: 1200 }} 1200w"
+                sizes="(max-width: 749px) calc(100vw - 7px), 592px"
+                width="{{ img.width }}"
+                height="{{ img.height }}"
+                alt="{{ img.alt | default: title | escape }}"
+                loading="{{ loading }}"
+                {% if forloop.first %}fetchpriority="high"{% endif %}
+              >
+            </div>
+          {%- else -%}
+            <div class="wac-pdp__slide"><span class="wac-pdp__img wac-pdp__img--empty"></span></div>
+          {%- endfor -%}
+        </div>
+        {%- if images.size > 1 -%}
+          <div class="wac-pdp__arrows">
+            <button type="button" class="wac-pdp__arrow" data-wac-prev aria-label="Previous photo" disabled>
+              <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8.5 1.5L2 8l6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button type="button" class="wac-pdp__arrow" data-wac-next aria-label="Next photo">
+              <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M1.5 1.5L8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if images.size > 1 -%}
+        <div class="wac-pdp__dots">
+          {%- for media in images -%}
+            <button type="button" class="wac-pdp__dot{% if forloop.first %} is-active{% endif %}" data-wac-dot="{{ forloop.index0 }}" aria-label="Photo {{ forloop.index }} of {{ images.size }}"></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="wac-pdp__wrap">
+      <div class="wac-pdp__head wac-pdp__head--desktop">{{ head }}</div>
+
+      <form class="wac-pdp__info" method="post" action="{{ routes.cart_add_url }}" data-wac-form novalidate>
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="id" value="{% if picked or p.has_only_default_variant %}{{ shown_v.id }}{% endif %}" data-wac-id>
+
+        {%- if color_name != blank -%}
+          <div class="wac-pdp__option wac-pdp__option--color">
+            <h2 class="wac-pdp__label"><strong>{{ ss.color_label | escape }}:</strong> <span data-wac-color-name>{{ color_name | escape }}</span></h2>
+            <ul class="wac-pdp__swatches" role="list" data-wac-swatches>
+              {%- if multi_color -%}
+                {%- for value in color_option.values -%}
+                  {%- liquid
+                    assign vname = value.name
+                    assign v_img = blank
+                    for v in p.variants
+                      if v.options[color_index] == vname and v.featured_image
+                        assign v_img = v.featured_image
+                        break
+                      endif
+                    endfor
+                    assign active = false
+                    if vname == color_name
+                      assign active = true
+                    endif
+                  -%}
+                  {%- render 'wacoal-pdp-swatch', name: vname, value: vname, image: v_img, active: active -%}
+                {%- endfor -%}
+              {%- else -%}
+                {%- render 'wacoal-pdp-swatch', name: color_name, url: p.url, handle: p.handle, image: p.featured_image, active: true, flag: own_flag -%}
+              {%- endif -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- unless p.has_only_default_variant -%}
+          {%- for option in p.options_with_values -%}
+            {%- if forloop.index0 == color_index -%}{%- continue -%}{%- endif -%}
+            {%- liquid
+              assign o_index = forloop.index0
+              assign is_size = false
+              if o_index == size_index
+                assign is_size = true
+              endif
+            -%}
+            {%- if is_size and split_sizes -%}
+              <div class="wac-pdp__option" data-wac-band-group>
+                <div class="wac-pdp__option-head">
+                  <h2 class="wac-pdp__label"><strong>{{ ss.band_label | escape }}:</strong> <span data-wac-picked-label>{{ picked_band }}</span></h2>
+                  {%- if ss.size_guide_label != blank -%}
+                    <a class="wac-pdp__guide" href="{{ ss.size_guide_url | default: '#' }}">{{ ss.size_guide_label | escape }}</a>
+                  {%- endif -%}
+                </div>
+                <ul class="wac-pdp__sizes" role="list">
+                  {%- for b in band_list -%}
+                    {%- liquid
+                      assign ok = false
+                      for v in p.variants
+                        assign vs = v.options[size_index] | strip | upcase | slice: 0, 2
+                        if vs == b and v.available
+                          assign ok = true
+                          break
+                        endif
+                      endfor
+                    -%}
+                    <li class="wac-pdp__size">
+                      <input type="radio" class="wac-pdp__radio" id="{{ section.id }}-band-{{ b }}" name="{{ section.id }}-band" value="{{ b }}" data-wac-band{% if b == picked_band %} checked{% endif %}>
+                      <label for="{{ section.id }}-band-{{ b }}"{% unless ok %} class="is-unavailable"{% endunless %}>{{ b }}</label>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              <div class="wac-pdp__option" data-wac-cup-group>
+                <h2 class="wac-pdp__label"><strong>{{ ss.cup_label | escape }}:</strong> <span data-wac-picked-label>{{ picked_cup }}</span></h2>
+                <ul class="wac-pdp__sizes" role="list">
+                  {%- for c in cup_list -%}
+                    {%- liquid
+                      assign ok = false
+                      for v in p.variants
+                        assign vs = v.options[size_index] | strip | upcase | slice: 2, 10
+                        if vs == c and v.available
+                          assign ok = true
+                          break
+                        endif
+                      endfor
+                    -%}
+                    <li class="wac-pdp__size">
+                      <input type="radio" class="wac-pdp__radio" id="{{ section.id }}-cup-{{ c }}" name="{{ section.id }}-cup" value="{{ c }}" data-wac-cup{% if c == picked_cup %} checked{% endif %}>
+                      <label for="{{ section.id }}-cup-{{ c }}"{% unless ok %} class="is-unavailable"{% endunless %}>{{ c }}</label>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- else -%}
+              <div class="wac-pdp__option" data-wac-option-group="{{ o_index }}">
+                <div class="wac-pdp__option-head">
+                  <h2 class="wac-pdp__label"><strong>{{ option.name | escape }}:</strong> <span data-wac-picked-label>{% if picked %}{{ picked.options[o_index] | escape }}{% endif %}</span></h2>
+                  {%- if is_size and ss.size_guide_label != blank -%}
+                    <a class="wac-pdp__guide" href="{{ ss.size_guide_url | default: '#' }}">{{ ss.size_guide_label | escape }}</a>
+                  {%- endif -%}
+                </div>
+                <ul class="wac-pdp__sizes" role="list">
+                  {%- for value in option.values -%}
+                    <li class="wac-pdp__size">
+                      <input type="radio" class="wac-pdp__radio" id="{{ section.id }}-o{{ o_index }}-{{ forloop.index }}" name="{{ section.id }}-o{{ o_index }}" value="{{ value | escape }}" data-wac-option="{{ o_index }}"{% if picked and picked.options[o_index] == value %} checked{% endif %}>
+                      <label for="{{ section.id }}-o{{ o_index }}-{{ forloop.index }}"{% unless value.available %} class="is-unavailable"{% endunless %}>{{ value | escape }}</label>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <div class="wac-pdp__qty">
+          <label class="wac-pdp__label wac-pdp__label--qty" for="{{ section.id }}-qty"><strong>{{ ss.quantity_label | escape }}</strong></label>
+          <div class="wac-pdp__qty-box">
+            <button type="button" class="wac-pdp__qty-btn" data-wac-minus aria-label="Decrease quantity" disabled>
+              <svg width="12" height="2" viewBox="0 0 12 1.2" aria-hidden="true"><path fill="currentColor" d="M0 0h12v1.2H0z"/></svg>
+            </button>
+            <input class="wac-pdp__qty-input" id="{{ section.id }}-qty" type="number" name="quantity" value="1" min="1" max="99" inputmode="numeric" data-wac-qty>
+            <button type="button" class="wac-pdp__qty-btn" data-wac-plus aria-label="Increase quantity">
+              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M5.25 0v5.25H0v1.5h5.25V12h1.5V6.75H12v-1.5H6.75V0z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="wac-pdp__add"
+          data-wac-add
+          data-label-select="{{ ss.select_label | escape }}"
+          data-label-add="{{ ss.add_label | escape }}"
+          data-label-sold="{{ ss.sold_out_label | escape }}"
+          data-label-adding="{{ ss.adding_label | escape }}"
+          data-label-added="{{ ss.added_label | escape }}"
+        >
+          {%- if p.available == false -%}
+            {{ ss.sold_out_label | escape }}
+          {%- elsif picked or p.has_only_default_variant -%}
+            {{ ss.add_label | escape }}
+          {%- else -%}
+            {{ ss.select_label | escape }}
+          {%- endif -%}
+        </button>
+        <p class="wac-pdp__message" data-wac-message role="status" aria-live="polite" hidden></p>
+
+        {%- if ss.ship_text != blank -%}
+          <div class="wac-pdp__ship">{{ ss.ship_text }}</div>
+        {%- endif -%}
+        {%- if ss.note_text != blank -%}
+          <div class="wac-pdp__note">{{ ss.note_text }}</div>
+        {%- endif -%}
+      </form>
+
+      {%- capture features -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type != 'feature' -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign f_title = ''
+            assign entries = block.settings.tags | split: ','
+            for entry in entries
+              assign pair = entry | split: '='
+              assign want = pair.first | strip | downcase
+              if want == blank
+                continue
+              endif
+              assign shown = ''
+              if pair.size > 1
+                assign shown = pair.last | strip
+              endif
+              assign is_prefix = false
+              if want contains '*'
+                assign is_prefix = true
+                assign want = want | remove: '*'
+              endif
+              for tag in p.tags
+                assign t = tag | downcase | strip
+                if is_prefix
+                  assign t_head = t | slice: 0, want.size
+                  if t_head == want
+                    assign f_title = tag | slice: want.size, 100 | strip
+                    break
+                  endif
+                elsif t == want
+                  assign f_title = shown | default: tag
+                  break
+                endif
+              endfor
+              if f_title != ''
+                break
+              endif
+            endfor
+          -%}
+          {%- if f_title != '' -%}
+            <div class="wac-pdp__feature{% if block.settings.text == blank %} is-static{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.text != blank -%}
+                <button type="button" class="wac-pdp__feature-head" data-wac-feature aria-expanded="false">
+              {%- else -%}
+                <div class="wac-pdp__feature-head">
+              {%- endif -%}
+                <span class="wac-pdp__feature-cat">{{ block.settings.label | escape }}</span>
+                <span class="wac-pdp__feature-row">
+                  <span class="wac-pdp__feature-title">{{ f_title | escape }}</span>
+                  {%- if block.settings.text != blank -%}
+                    <svg class="wac-pdp__feature-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                  {%- endif -%}
+                </span>
+              {%- if block.settings.text != blank -%}
+                </button>
+                <div class="wac-pdp__feature-body" hidden>{{ block.settings.text }}</div>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if features != blank -%}
+        <div class="wac-pdp__features">{{ features }}</div>
+      {%- endif -%}
+
+      {%- capture rows -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type != 'accordion' -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign body = ''
+            case block.settings.source
+              when 'description'
+                assign body = p.description
+              when 'page'
+                assign body = block.settings.page.content
+              else
+                assign body = block.settings.text
+            endcase
+          -%}
+          {%- if body != blank -%}
+            <details class="wac-pdp__acc"{% if block.settings.open %} open{% endif %} {{ block.shopify_attributes }}>
+              <summary class="wac-pdp__acc-head">
+                <span>{{ block.settings.heading | escape }}</span>
+                <span class="wac-pdp__acc-icon" aria-hidden="true">
+                  <svg class="wac-pdp__acc-plus" width="12" height="12" viewBox="0 0 12 12"><path fill="currentColor" d="M5.25 0v5.25H0v1.5h5.25V12h1.5V6.75H12v-1.5H6.75V0z"/></svg>
+                  <svg class="wac-pdp__acc-minus" width="12" height="2" viewBox="0 0 12 1.2"><path fill="currentColor" d="M0 0h12v1.2H0z"/></svg>
+                </span>
+              </summary>
+              <div class="wac-pdp__acc-body rte">{{ body }}</div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if rows != blank -%}
+        <div class="wac-pdp__accs">{{ rows }}</div>
+      {%- endif -%}
+
+      {%- liquid
+        assign match = ss.match_collection
+        assign match_count = 0
+      -%}
+      {%- if match != blank and match.products_count > 0 -%}
+        {%- capture match_cards -%}
+          {%- for item in match.products -%}
+            {%- if item.id == p.id -%}{%- continue -%}{%- endif -%}
+            {%- if match_count >= ss.match_limit -%}{%- break -%}{%- endif -%}
+            {%- assign match_count = match_count | plus: 1 -%}
+            {%- render 'wacoal-pdp-card', product: item, sizes: '220px' -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- if match_count > 0 -%}
+          <div class="wac-pdp__match" data-wac-carousel>
+            <div class="wac-pdp__match-head">
+              <h3 class="wac-pdp__match-title">{{ ss.match_heading | escape }}</h3>
+              {%- if match_count > 2 -%}
+                <div class="wac-pdp__match-arrows">
+                  <button type="button" class="wac-pdp__match-arrow" data-wac-carousel-prev aria-label="Previous products" disabled>
+                    <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8.5 1.5L2 8l6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                  </button>
+                  <button type="button" class="wac-pdp__match-arrow" data-wac-carousel-next aria-label="Next products">
+                    <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M1.5 1.5L8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                  </button>
+                </div>
+              {%- endif -%}
+            </div>
+            <ul class="wac-pdp__match-list" role="list" data-wac-carousel-list>{{ match_cards }}</ul>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <script type="application/json" data-wac-pdp-json>
+    {
+      "colorIndex": {{ color_index }},
+      "sizeIndex": {{ size_index }},
+      "split": {{ split_sizes }},
+      "multiColor": {{ multi_color }},
+      "variants": [
+        {%- for v in p.variants -%}
+          {
+            "id": {{ v.id }},
+            "options": {{ v.options | json }},
+            "available": {{ v.available }},
+            "price": {{ v.price | money | json }},
+            "compare": {% if v.compare_at_price > v.price %}{{ v.compare_at_price | money | json }}{% else %}null{% endif %},
+            "media": {% if v.featured_media %}{{ v.featured_media.id }}{% else %}null{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+  <script type="application/ld+json">{{ p | structured_data }}</script>
+</div>
+
+<script type="module" src="{{ 'wacoal-product.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Wacoal product",
+  "tag": "section",
+  "class": "wac-section-pdp",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "header", "content": "Photos" },
+    { "type": "select", "id": "photo_shape", "label": "Photo shape", "options": [ { "value": "wacoal", "label": "Wacoal frame (592 x 695)" }, { "value": "portrait", "label": "Portrait 2:3" }, { "value": "natural", "label": "Photo's own shape" } ], "default": "wacoal" },
+    { "type": "checkbox", "id": "sticky_gallery", "label": "Photos stay in view while scrolling (desktop)", "default": true },
+    { "type": "header", "content": "Title area" },
+    { "type": "text", "id": "brand_line", "label": "Line above the title", "default": "British Lingerie Studio", "info": "Leave empty to hide." },
+    { "type": "checkbox", "id": "show_style", "label": "Show style number", "default": true, "info": "Taken from the start of the SKU, e.g. BLSAUPD04." },
+    { "type": "text", "id": "style_label", "label": "Style number label", "default": "Style" },
+    { "type": "text", "id": "badge_tags", "label": "Badge by tag", "default": "Best Seller, Bestseller=Best Seller, new=New", "info": "Tags that show a pill next to the price, separated by commas. Use tag=Text to change the wording. Products on sale show Sale when no tag matches." },
+    { "type": "header", "content": "Options" },
+    { "type": "text", "id": "color_label", "label": "Colour label", "default": "Color" },
+    { "type": "text", "id": "band_label", "label": "Band label", "default": "Band", "info": "Bra sizes like 34B are split into band and cup." },
+    { "type": "text", "id": "cup_label", "label": "Cup label", "default": "Cup" },
+    { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Find my size" },
+    { "type": "url", "id": "size_guide_url", "label": "Size guide link" },
+    { "type": "text", "id": "quantity_label", "label": "Quantity label", "default": "Quantity" },
+    { "type": "header", "content": "Add to cart" },
+    { "type": "text", "id": "select_label", "label": "Button before a size is picked", "default": "Select your size" },
+    { "type": "text", "id": "add_label", "label": "Button text", "default": "Add to cart" },
+    { "type": "text", "id": "sold_out_label", "label": "Sold out text", "default": "Sold out" },
+    { "type": "text", "id": "adding_label", "label": "While adding", "default": "Adding..." },
+    { "type": "text", "id": "added_label", "label": "After adding", "default": "Added to cart" },
+    { "type": "richtext", "id": "ship_text", "label": "Bold line under the button", "default": "<p>Free shipping over Rs.1999</p>" },
+    { "type": "richtext", "id": "note_text", "label": "Small text under that", "default": "<p>Cash on delivery available. Easy returns & exchange.</p>" },
+    { "type": "header", "content": "Complete your look" },
+    { "type": "text", "id": "match_heading", "label": "Heading", "default": "Complete your look" },
+    { "type": "collection", "id": "match_collection", "label": "Products from", "info": "Leave empty to hide the row." },
+    { "type": "range", "id": "match_limit", "label": "Number of products", "min": 2, "max": 12, "step": 1, "default": 8 }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature card",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Card label", "default": "Padding" },
+        { "type": "text", "id": "tags", "label": "Tags to look for", "default": "Padded, Paded=Padded, Light Padded, Non Padded, Non-Paded=Non Padded", "info": "The first product tag found shows as the card title. Separate with commas; tag=Title changes the wording; Fabric_* takes the text after Fabric_." },
+        { "type": "richtext", "id": "text", "label": "Text when the card is opened", "info": "Optional." }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Details" },
+        { "type": "select", "id": "source", "label": "Content", "options": [ { "value": "description", "label": "Product description" }, { "value": "text", "label": "Text below" }, { "value": "page", "label": "A page" } ], "default": "text" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "page", "id": "page", "label": "Page" },
+        { "type": "checkbox", "id": "open", "label": "Open when the page loads", "default": false }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Wacoal product" } ],
+  "enabled_on": { "templates": [ "product" ] }
+}
+{% endschema %}

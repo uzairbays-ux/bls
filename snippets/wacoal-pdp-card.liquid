@@ -1,0 +1,69 @@
+{%- doc -%}
+  Small product card for the Wacoal product page carousels (Complete your look, Similar styles):
+  photo, title, price and an ADD NOW pill that adds the chosen size to the cart.
+  @param {product} product - The product
+  @param {string} [sizes] - The img sizes attribute
+{%- enddoc -%}
+{%- liquid
+  assign title = product.title | remove_first: 'BLS - ' | remove_first: 'BLS-' | remove_first: 'BLS '
+  assign img = product.featured_image
+  assign color_option = blank
+  for option in product.options_with_values
+    assign oname = option.name | downcase
+    if oname == 'color' or oname == 'colour'
+      assign color_option = option
+    endif
+  endfor
+-%}
+<li class="wac-pcard{% unless product.available %} is-sold-out{% endunless %}">
+  <a class="wac-pcard__image" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if img != blank -%}
+      <img
+        src="{{ img | image_url: width: 600 }}"
+        srcset="{{ img | image_url: width: 300 }} 300w, {{ img | image_url: width: 600 }} 600w"
+        sizes="{{ sizes | default: '300px' }}"
+        width="{{ img.width }}"
+        height="{{ img.height }}"
+        alt="{{ img.alt | default: title | escape }}"
+        loading="lazy"
+      >
+    {%- endif -%}
+  </a>
+  <div class="wac-pcard__info">
+    {%- if color_option != blank and color_option.values.size > 1 -%}
+      <ul class="wac-pcard__swatches" role="list" aria-label="Colours">
+        {%- for value in color_option.values limit: 4 -%}
+          {%- capture bg -%}{%- render 'wacoal-color-hex', name: value -%}{%- endcapture -%}
+          <li class="wac-pcard__swatch{% if forloop.first %} is-active{% endif %}" title="{{ value | escape }}"><span style="background: {{ bg | strip | default: '#d9d2cb' }};"></span></li>
+        {%- endfor -%}
+        {%- if color_option.values.size > 4 -%}
+          <li class="wac-pcard__more">+{{ color_option.values.size | minus: 4 }} more</li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+    <a class="wac-pcard__title" href="{{ product.url }}">
+      {{ title | escape }}
+      <span class="wac-pcard__price">
+        <span>{{ product.price | money }}</span>
+        {%- if product.compare_at_price > product.price -%}
+          <s>{{ product.compare_at_price | money }}</s>
+        {%- endif -%}
+      </span>
+    </a>
+    <div class="wac-pcard__actions">
+      {%- if product.available == false -%}
+        <span class="wac-pcard__btn is-disabled">Sold out</span>
+      {%- elsif product.has_only_default_variant -%}
+        <button type="button" class="wac-pcard__btn" data-wac-quick-add-id="{{ product.selected_or_first_available_variant.id }}">Add now</button>
+      {%- else -%}
+        <select class="wac-pcard__btn wac-pcard__select" data-wac-quick-add aria-label="Add {{ title | escape }} to cart: choose a size">
+          <option value="" selected disabled>Add now</option>
+          {%- for v in product.variants -%}
+            <option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title | escape }}{% unless v.available %} (sold out){% endunless %}</option>
+          {%- endfor -%}
+        </select>
+        <svg class="wac-pcard__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      {%- endif -%}
+    </div>
+  </div>
+</li>

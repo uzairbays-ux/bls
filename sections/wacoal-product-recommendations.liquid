@@ -1,0 +1,48 @@
+{% comment %}
+  "Similar styles" row under the Wacoal product page: Shopify's related products in a
+  side-scrolling row with round arrows. The products load after the page, from the
+  product recommendations URL with this section's id.
+{% endcomment %}
+{%- liquid
+  assign ss = section.settings
+  assign url = routes.product_recommendations_url | append: '?product_id=' | append: product.id | append: '&section_id=' | append: section.id | append: '&limit=' | append: ss.limit | append: '&intent=related'
+-%}
+<div class="wac-similar" data-wac-similar data-url="{{ url }}" style="--wac-similar-mb: {{ ss.margin_bottom }}px;">
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="wac-similar__inner" data-wac-carousel>
+      <div class="wac-similar__head">
+        <h2 class="wac-similar__title">{{ ss.heading | escape }}</h2>
+        <div class="wac-similar__nav">
+          <button type="button" class="wac-similar__arrow" data-wac-carousel-prev aria-label="Previous products" disabled>
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8.5 1.5L2 8l6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <button type="button" class="wac-similar__arrow" data-wac-carousel-next aria-label="Next products">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M1.5 1.5L8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </div>
+      <ul class="wac-similar__list" role="list" data-wac-carousel-list>
+        {%- for item in recommendations.products -%}
+          {%- render 'wacoal-pdp-card', product: item, sizes: '(max-width: 749px) 200px, 300px' -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+</div>
+
+<script type="module" src="{{ 'wacoal-product.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Wacoal similar styles",
+  "tag": "section",
+  "class": "wac-section-similar",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Similar styles" },
+    { "type": "range", "id": "limit", "label": "Number of products", "min": 2, "max": 10, "step": 1, "default": 10 },
+    { "type": "range", "id": "margin_bottom", "label": "Space below", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 40 }
+  ],
+  "presets": [ { "name": "Wacoal similar styles" } ],
+  "enabled_on": { "templates": [ "product" ] }
+}
+{% endschema %}

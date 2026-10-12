@@ -1,0 +1,44 @@
+{% comment %}
+  Colour circles for the Wacoal product page, loaded with the predictive search
+  (/search/suggest?q=STYLE&section_id=wacoal-color-siblings). Lists the products whose SKU starts
+  with the same style number, so each colour sold as its own product gets a circle.
+{% endcomment %}
+{%- liquid
+  assign style = predictive_search.terms | downcase | strip
+-%}
+<ul class="wac-pdp__swatches" role="list" data-wac-siblings>
+  {%- if style != blank -%}
+    {%- for item in predictive_search.resources.products -%}
+      {%- liquid
+        assign item_style = item.variants.first.sku | split: '-' | first | downcase | strip
+        if item_style != style
+          continue
+        endif
+        capture name
+          render 'wacoal-product-color', product: item
+        endcapture
+        assign name = name | strip
+        if name == blank
+          continue
+        endif
+        assign flag = ''
+        for tag in item.tags
+          assign t = tag | downcase
+          if t == 'new'
+            assign flag = 'new'
+          endif
+        endfor
+        if flag == '' and item.compare_at_price > item.price
+          assign flag = 'sale'
+        endif
+      -%}
+      {%- render 'wacoal-pdp-swatch', name: name, url: item.url, handle: item.handle, image: item.featured_image, active: false, flag: flag -%}
+    {%- endfor -%}
+  {%- endif -%}
+</ul>
+
+{% schema %}
+{
+  "name": "Wacoal colour circles"
+}
+{% endschema %}

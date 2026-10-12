@@ -1,0 +1,36 @@
+{%- doc -%}
+  Prints the colour name of a product: its Color option, else a Color_ tag, else the middle
+  part of the SKU (STYLE-Colour-Size), else the last part of the title (BLS - Name - Colour).
+  @param {product} product - The product
+{%- enddoc -%}
+{%- liquid
+  assign c = ''
+  for option in product.options_with_values
+    assign oname = option.name | downcase
+    if oname == 'color' or oname == 'colour'
+      assign c = option.selected_value | default: option.values.first
+    endif
+  endfor
+  if c == ''
+    for tag in product.tags
+      assign head = tag | slice: 0, 6 | downcase
+      if head == 'color_'
+        assign c = tag | slice: 6, 100
+        break
+      endif
+    endfor
+  endif
+  if c == ''
+    assign sku_parts = product.variants.first.sku | split: '-'
+    if sku_parts.size > 2
+      assign c = sku_parts[1]
+    endif
+  endif
+  if c == ''
+    assign title_parts = product.title | split: ' - '
+    if title_parts.size > 2
+      assign c = title_parts.last
+    endif
+  endif
+-%}
+{{- c | strip -}}

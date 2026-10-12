@@ -1,0 +1,40 @@
+{%- doc -%}
+  One colour circle on the Wacoal product page. A link to another colour product when url is
+  given, otherwise a button that picks a Color value of this product.
+  @param {string} name - Colour name
+  @param {string} [url] - Product link (colour sold as its own product)
+  @param {string} [handle] - Product handle, used to mark the current colour
+  @param {string} [value] - Option value (colour sold as a variant of this product)
+  @param {image} [image] - Photo used when the colour name is unknown
+  @param {boolean} [active] - Current colour
+  @param {string} [flag] - new or sale
+{%- enddoc -%}
+{%- capture bg -%}{%- render 'wacoal-color-hex', name: name -%}{%- endcapture -%}
+{%- liquid
+  assign bg = bg | strip
+  if bg == blank and image != blank
+    assign img_url = image | image_url: width: 120
+    assign bg = 'url(' | append: img_url | append: ') center 35% / 260% auto'
+  endif
+  if bg == blank
+    assign bg = '#d9d2cb'
+  endif
+-%}
+<li class="wac-pdp__swatch-item"{% if handle != blank %} data-handle="{{ handle }}"{% endif %}>
+  {%- if url != blank -%}
+    <a class="wac-pdp__swatch{% if active %} is-active{% endif %}" href="{{ url }}" title="{{ name | escape }}" data-name="{{ name | escape }}"{% if active %} aria-current="true"{% endif %}>
+      <span class="wac-pdp__swatch-dot" style="background: {{ bg }};"></span>
+      <span class="visually-hidden">{{ name | escape }}</span>
+    </a>
+  {%- else -%}
+    <button type="button" class="wac-pdp__swatch{% if active %} is-active{% endif %}" title="{{ name | escape }}" data-name="{{ name | escape }}" data-wac-color="{{ value | escape }}" aria-pressed="{% if active %}true{% else %}false{% endif %}">
+      <span class="wac-pdp__swatch-dot" style="background: {{ bg }};"></span>
+      <span class="visually-hidden">{{ name | escape }}</span>
+    </button>
+  {%- endif -%}
+  {%- if flag == 'new' -%}
+    <span class="wac-pdp__swatch-text">new</span>
+  {%- elsif flag == 'sale' -%}
+    <span class="wac-pdp__swatch-sale" title="On sale"></span>
+  {%- endif -%}
+</li>
