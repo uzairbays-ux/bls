@@ -158,6 +158,10 @@
     {%- endif -%}
   {%- endpaginate -%}
 
+  {%- if ss.show_full_description and collection.description != blank -%}
+    <div class="wac-coll__about rte">{{ collection.description }}</div>
+  {%- endif -%}
+
   <div class="wac-drawer" id="WacDrawer-{{ section.id }}" hidden data-wac-drawer role="dialog" aria-modal="true" aria-label="Filters">
     <div class="wac-drawer__overlay" data-wac-drawer-close></div>
     <form class="wac-drawer__panel" method="get" action="{{ collection.url }}" data-wac-drawer-form>
@@ -271,6 +275,7 @@
     { "type": "range", "id": "per_page", "label": "Products per page", "min": 12, "max": 48, "step": 4, "default": 24 },
     { "type": "range", "id": "columns", "label": "Products per row on desktop", "min": 3, "max": 5, "step": 1, "default": 4 },
     { "type": "checkbox", "id": "inline_filters", "label": "Show each filter as a pill in the bar (desktop)", "default": true },
+    { "type": "checkbox", "id": "show_full_description", "label": "Show the full collection description under the products", "default": true },
     { "type": "header", "content": "Promo tile in the grid" },
     { "type": "checkbox", "id": "tile_enabled", "label": "Show the promo tile", "default": true, "info": "Two columns wide, first page only." },
     { "type": "range", "id": "tile_row", "label": "Row on desktop", "min": 1, "max": 8, "step": 1, "default": 4 },

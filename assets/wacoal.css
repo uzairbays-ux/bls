@@ -2394,6 +2394,7 @@
   position: relative;
   grid-row: var(--wac-tile-row, 4);
   grid-column: span 2;
+  align-self: start;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2780,5 +2781,23 @@ html.wac-drawer-open {
 
   .wac-drawer__panel {
     width: 100%;
+  }
+}
+
+.wac-coll__about {
+  max-width: 900px;
+  margin: 10px auto 60px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.wac-coll__about p {
+  margin: 0 0 12px;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-coll__about {
+    margin: 10px 2.5% 40px;
   }
 }
