@@ -909,6 +909,10 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.wac-tile__button {
+  text-shadow: none;
+}
+
 .wac-tile__button:hover {
   background: #000;
   border-color: #000;
