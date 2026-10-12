@@ -832,12 +832,28 @@
   z-index: 1;
 }
 
+/* dark fade from the bottom so the white text reads on light photos */
+.wac-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, var(--wac-tile-shade, 0.55)) 0%,
+    rgba(0, 0, 0, calc(var(--wac-tile-shade, 0.55) * 0.7)) 30%,
+    rgba(0, 0, 0, 0) 65%
+  );
+}
+
 .wac-tile__content {
   position: relative;
   z-index: 2;
   width: 100%;
   padding: 40px 24px;
   pointer-events: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
 }
 
 .wac-tile__heading {
