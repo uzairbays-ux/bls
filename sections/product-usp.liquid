@@ -201,9 +201,8 @@
             visible = entries[0].isIntersecting;
             if (visible) start(); else stop();
           }, { threshold: 0.25 }).observe(root);
-        } else {
-          start();
         }
+        start();
       }
       function all() {
         document.querySelectorAll('[data-usp-slider]').forEach(init);
