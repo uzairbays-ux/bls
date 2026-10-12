@@ -148,10 +148,10 @@
         "msg_shipping": {
           "type": "message",
           "settings": {
-            "text": "FREE SHIPPING ON ALL ORDERS",
-            "text_mobile": "FREE SHIPPING ON ALL ORDERS",
+            "text": "FREE SHIPPING ON ORDERS ABOVE RS.9,999",
+            "text_mobile": "FREE SHIPPING ABOVE RS.9,999",
             "details_label": "DETAILS",
-            "link": "/"
+            "link": "/policies/shipping-policy"
           }
         },
         "msg_rewards": {
