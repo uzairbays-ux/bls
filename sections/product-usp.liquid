@@ -1,14 +1,25 @@
 {% comment %}
-  Product USP: large secondary product image on the left, USP copy and small
-  supporting thumbnails on the right. Renders nothing unless the product has
-  enough imagery to fill it.
+  Product USP: large product photo on the left, USP copy and small thumbnails on the right.
+  Uses the last photos of the product gallery; the large photo rotates through them on its own
+  and has arrows, and the thumbnails show which one is on screen (click to jump).
+  Renders nothing unless the product has enough imagery to fill it.
 {% endcomment %}
 
 {% liquid
   assign images = product.images
-  assign feature_image = images[1]
-  assign thumb_one = images[1]
-  assign thumb_two = images[2]
+  assign count = section.settings.photo_count
+  assign start = images.size | minus: count
+  comment
+    Never start at the first (main) photo when the product has other photos.
+  endcomment
+  if start < 1
+    assign start = 1
+  endif
+  if images.size < 2
+    assign start = 0
+  endif
+  assign usp_count = images.size | minus: start
+  assign feature_image = images[start]
 
   # Per-product copy via metafields, falling back to the section defaults.
   assign usp_eyebrow = section.settings.eyebrow
@@ -40,17 +51,34 @@
     class="product-usp spacing-style"
     style="{% render 'spacing-style', settings: section.settings %}"
   >
-    <div class="product-usp__media">
-      {{
-        feature_image
-        | image_url: width: 1400
-        | image_tag:
-          loading: 'lazy',
-          sizes: '(min-width: 750px) 50vw, 100vw',
-          widths: '400, 600, 800, 1000, 1200, 1400',
-          class: 'product-usp__media-img',
-          alt: feature_image.alt
-      }}
+    <div
+      class="product-usp__media"
+      data-usp-slider
+      data-autoplay="{{ section.settings.autoplay_seconds }}"
+      {% if usp_count > 1 %}tabindex="0" aria-roledescription="carousel" aria-label="{{ product.title | escape }} photos"{% endif %}
+    >
+      {%- for image in images offset: start -%}
+        <div class="product-usp__slide{% if forloop.first %} is-active{% endif %}" data-usp-slide{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+          {{
+            image
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'lazy',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              widths: '400, 600, 800, 1000, 1200, 1400',
+              class: 'product-usp__media-img',
+              alt: image.alt
+          }}
+        </div>
+      {%- endfor -%}
+      {%- if usp_count > 1 -%}
+        <button type="button" class="product-usp__arrow product-usp__arrow--prev" data-usp-prev aria-label="Previous photo">
+          <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8.5 1.5L2 8l6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <button type="button" class="product-usp__arrow product-usp__arrow--next" data-usp-next aria-label="Next photo">
+          <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M1.5 1.5L8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      {%- endif -%}
     </div>
 
     <div class="product-usp__panel color-{{ section.settings.color_scheme }}">
@@ -61,10 +89,16 @@
         <div class="product-usp__heading">{{ usp_heading }}</div>
       </div>
 
-      {%- if thumb_one != blank or thumb_two != blank -%}
+      {%- if usp_count > 1 -%}
         <div class="product-usp__thumbs">
-          {%- for thumb in images offset: 1 limit: 2 -%}
-            <div class="product-usp__thumb">
+          {%- for thumb in images offset: start -%}
+            <button
+              type="button"
+              class="product-usp__thumb{% if forloop.first %} is-active{% endif %}"
+              data-usp-thumb="{{ forloop.index0 }}"
+              aria-label="Show photo {{ forloop.index }} of {{ usp_count }}"
+              {% if forloop.first %}aria-current="true"{% endif %}
+            >
               {{
                 thumb
                 | image_url: width: 400
@@ -73,14 +107,112 @@
                   sizes: '(min-width: 750px) 15vw, 40vw',
                   widths: '200, 300, 400',
                   class: 'product-usp__thumb-img',
-                  alt: thumb.alt
+                  alt: ''
               }}
-            </div>
+            </button>
           {%- endfor -%}
         </div>
       {%- endif -%}
     </div>
   </div>
+
+  <script>
+    (function () {
+      function init(root) {
+        if (!root || root.dataset.uspReady) return;
+        root.dataset.uspReady = '1';
+        var slides = Array.prototype.slice.call(root.querySelectorAll('[data-usp-slide]'));
+        if (slides.length < 2) return;
+        var section = root.closest('.product-usp');
+        var thumbs = section ? Array.prototype.slice.call(section.querySelectorAll('[data-usp-thumb]')) : [];
+        var seconds = parseFloat(root.dataset.autoplay) || 0;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var current = 0;
+        var timer = null;
+        var paused = false;
+        var visible = true;
+
+        function show(i) {
+          current = (i + slides.length) % slides.length;
+          slides.forEach(function (s, n) {
+            var on = n === current;
+            s.classList.toggle('is-active', on);
+            if (on) {
+              s.removeAttribute('aria-hidden');
+              var img = s.querySelector('img');
+              if (img) img.loading = 'eager';
+            } else {
+              s.setAttribute('aria-hidden', 'true');
+            }
+          });
+          thumbs.forEach(function (t, n) {
+            t.classList.toggle('is-active', n === current);
+            if (n === current) t.setAttribute('aria-current', 'true');
+            else t.removeAttribute('aria-current');
+          });
+          var next = slides[(current + 1) % slides.length].querySelector('img');
+          if (next) next.loading = 'eager';
+        }
+        function stop() {
+          if (timer) clearInterval(timer);
+          timer = null;
+        }
+        function start() {
+          stop();
+          if (!seconds || reduce || paused || !visible) return;
+          timer = setInterval(function () { show(current + 1); }, seconds * 1000);
+        }
+        function go(i) {
+          show(i);
+          start();
+        }
+
+        var prev = root.querySelector('[data-usp-prev]');
+        var next = root.querySelector('[data-usp-next]');
+        if (prev) prev.addEventListener('click', function () { go(current - 1); });
+        if (next) next.addEventListener('click', function () { go(current + 1); });
+        thumbs.forEach(function (t) {
+          t.addEventListener('click', function () { go(parseInt(t.dataset.uspThumb, 10)); });
+        });
+        root.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+        });
+
+        /* pause while the pointer or keyboard focus is on the photo */
+        root.addEventListener('mouseenter', function () { paused = true; stop(); });
+        root.addEventListener('mouseleave', function () { paused = false; start(); });
+        root.addEventListener('focusin', function () { paused = true; stop(); });
+        root.addEventListener('focusout', function () { paused = false; start(); });
+
+        /* swipe on touch screens */
+        var x0 = null;
+        root.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+        root.addEventListener('touchend', function (e) {
+          if (x0 === null) return;
+          var dx = e.changedTouches[0].clientX - x0;
+          x0 = null;
+          if (Math.abs(dx) > 40) go(dx < 0 ? current + 1 : current - 1);
+        });
+
+        /* only rotate while the section is on screen */
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+            if (visible) start(); else stop();
+          }, { threshold: 0.25 }).observe(root);
+        } else {
+          start();
+        }
+      }
+      function all() {
+        document.querySelectorAll('[data-usp-slider]').forEach(init);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', all);
+      else all();
+      document.addEventListener('shopify:section:load', all);
+    })();
+  </script>
 {%- endif -%}
 
 {% stylesheet %}
@@ -90,9 +222,29 @@
   }
 
   .product-usp__media {
+    position: relative;
     display: flex;
     overflow: hidden;
     aspect-ratio: 1;
+  }
+
+  .product-usp__media:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: -2px;
+  }
+
+  .product-usp__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+  }
+
+  .product-usp__slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease, visibility 0s linear 0s;
   }
 
   .product-usp__media-img {
@@ -100,6 +252,37 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .product-usp__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background-color 0.2s ease;
+  }
+
+  .product-usp__arrow:hover {
+    background: #fff;
+  }
+
+  .product-usp__arrow--prev {
+    left: 16px;
+  }
+
+  .product-usp__arrow--next {
+    right: 16px;
   }
 
   .product-usp__panel {
@@ -140,9 +323,26 @@
   }
 
   .product-usp__thumb {
-    width: clamp(96px, 30%, 176px);
+    width: clamp(72px, 22%, 176px);
     aspect-ratio: 1;
     overflow: hidden;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    opacity: 0.6;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+    transition: opacity 0.2s ease, outline-color 0.2s ease;
+  }
+
+  .product-usp__thumb:hover {
+    opacity: 1;
+  }
+
+  .product-usp__thumb.is-active {
+    opacity: 1;
+    outline-color: var(--color-primary-hover);
   }
 
   .product-usp__thumb-img {
@@ -177,7 +377,27 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Shows the product's 2nd image large, with the 2nd and 3rd images as thumbnails. Hidden automatically if the product has no 2nd image or no text."
+      "content": "Shows the last photos of the product gallery: the large photo rotates through them, with arrows, and the thumbnails show which one is on screen. Hidden automatically if the product has no 2nd image or no text."
+    },
+    {
+      "type": "range",
+      "id": "photo_count",
+      "label": "Photos from the end of the gallery",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "info": "The product's main (first) photo is never used here."
+    },
+    {
+      "type": "range",
+      "id": "autoplay_seconds",
+      "label": "Seconds per photo (0 = no auto-rotate)",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4
     },
     {
       "type": "paragraph",
