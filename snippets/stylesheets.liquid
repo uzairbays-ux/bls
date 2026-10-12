@@ -23,10 +23,11 @@
   {% if wac_serif_600 %}{{ wac_serif_600 | font_face: font_display: 'swap' }}{% endif %}
   {% if wac_serif_500 %}{{ wac_serif_500 | font_face: font_display: 'swap' }}{% endif %}
   {% if wac_serif_500i %}{{ wac_serif_500i | font_face: font_display: 'swap' }}{% endif %}
-  /* Font roles: Horizon's small headings use Bebas Neue, its headings Achemost (store heading font until the Achemost file is in assets). html:root beats the theme's later :root variables. */
+  /* Font roles: Horizon's small headings use Bebas Neue, its headings and italic accent Achemost (store fonts until the Achemost file is in assets). html:root beats the theme's later :root variables. */
   html:root {
     --font-subheading--family: 'Bebas Neue', 'Arial Narrow', sans-serif;
     --font-heading--family: 'Achemost', {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+    --font-accent--family: 'Achemost', {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
   }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
