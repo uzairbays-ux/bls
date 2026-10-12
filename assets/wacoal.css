@@ -2718,6 +2718,7 @@ html.wac-drawer-open {
   }
 
   .wac-coll__bar {
+    justify-content: flex-start;
     margin: 22px 2.5% 0;
   }
 

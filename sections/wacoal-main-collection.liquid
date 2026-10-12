@@ -195,6 +195,11 @@
 
 <script>
   (function () {
+    // leave empty price boxes out of the address
+    function cleanSubmit(form) {
+      form.querySelectorAll('input[type="number"]').forEach(function (i) { i.disabled = i.value === ''; });
+      form.submit();
+    }
     function init(root) {
       if (root.dataset.ready) return;
       root.dataset.ready = '1';
@@ -225,12 +230,12 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeAll(null); closeDrawer(); } });
       if (inline) {
         inline.addEventListener('change', function (e) {
-          if (e.target.matches('input[type="checkbox"], select')) inline.submit();
+          if (e.target.matches('input[type="checkbox"], select')) cleanSubmit(inline);
         });
         inline.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' && e.target.matches('input[type="number"]')) { e.preventDefault(); inline.submit(); }
+          if (e.key === 'Enter' && e.target.matches('input[type="number"]')) { e.preventDefault(); cleanSubmit(inline); }
         });
-        inline.querySelectorAll('input[type="number"]').forEach(function (i) { i.addEventListener('change', function () { inline.submit(); }); });
+        inline.querySelectorAll('input[type="number"]').forEach(function (i) { i.addEventListener('change', function () { cleanSubmit(inline); }); });
       }
 
       // drawer
@@ -252,6 +257,7 @@
       root.querySelectorAll('[data-wac-drawer-open]').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); closeAll(null); openDrawer(); }); });
       if (drawer) drawer.querySelectorAll('[data-wac-drawer-close]').forEach(function (b) { b.addEventListener('click', closeDrawer); });
       if (dform) {
+        dform.addEventListener('submit', function (e) { e.preventDefault(); cleanSubmit(dform); });
         var countEl = dform.querySelector('[data-wac-apply-count]');
         dform.addEventListener('change', function () {
           var n = dform.querySelectorAll('input[type="checkbox"]:checked').length;
