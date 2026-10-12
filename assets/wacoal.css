@@ -3934,3 +3934,18 @@ button.wac-pdp__feature-head {
     flex-basis: 200px;
   }
 }
+
+/* ===== 13. Horizon product page buttons =========================== */
+/* BLS brand (as on the live store): Add to cart near-black, Buy it now white with a dark outline. */
+.product-form-buttons button.shopify-payment-button__button--unbranded {
+  --button-color: var(--color-secondary-button-text);
+  --button-background-color: var(--color-secondary-button-background);
+  --button-border-color: var(--color-secondary-button-border);
+  --button-border-width: 1px;
+}
+
+.product-form-buttons button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  --button-color: var(--color-secondary-button-hover-text);
+  --button-background-color: var(--color-secondary-button-hover-background);
+  --button-border-color: var(--color-secondary-button-hover-border);
+}
