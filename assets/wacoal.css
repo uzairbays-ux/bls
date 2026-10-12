@@ -602,7 +602,7 @@
   text-transform: uppercase;
 }
 
-.wac-hero__preheader--expanded {
+.wac-hero .wac-hero__preheader--expanded {
   font-family: var(--wac-font-caps);
   font-size: 22px;
   line-height: 22px;
@@ -748,6 +748,11 @@
     margin: 16px 0 10px;
     font-size: 16px;
     line-height: 16px;
+  }
+
+  .wac-hero .wac-hero__preheader--expanded {
+    font-size: 19px;
+    line-height: 19px;
   }
 
   .wac-hero__heading {
