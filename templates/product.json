@@ -48,7 +48,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Details",
-            "source": "description",
+            "source": "details",
             "text": "",
             "open": true
           }
@@ -66,7 +66,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Shipping & returns",
-            "source": "text",
+            "source": "shipping",
             "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p><p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
             "open": false
           }
@@ -75,8 +75,17 @@
           "type": "accordion",
           "settings": {
             "heading": "Fabric/care",
-            "source": "text",
-            "text": "<p>Hand wash in cold water with a mild detergent. Do not bleach, tumble dry or iron. Dry flat in the shade and fasten the hooks before washing.</p>",
+            "source": "care",
+            "text": "",
+            "open": false
+          }
+        },
+        "acc_features": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Features",
+            "source": "features",
+            "text": "",
             "open": false
           }
         }
@@ -87,6 +96,7 @@
         "feature_fabric",
         "feature_type",
         "acc_details",
+        "acc_features",
         "acc_fit",
         "acc_shipping",
         "acc_care"
@@ -110,7 +120,7 @@
         "adding_label": "Adding...",
         "added_label": "Added to cart",
         "ship_text": "<p>Free shipping over Rs.1999</p>",
-        "note_text": "<p>Cash on delivery available. Easy returns & exchange.</p>",
+        "note_text": "<p>Cash on delivery available.</p>",
         "match_heading": "Complete your look",
         "match_collection": "panties",
         "match_limit": 8

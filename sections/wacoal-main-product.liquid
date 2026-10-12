@@ -176,6 +176,89 @@
   endif
 
   assign shape = ss.photo_shape
+
+  comment
+    Split the description the way BLS writes it: intro text, lines starting with "-" (Features),
+    then "Fabric & Care" and "Shipping & Returns" parts, and a closing "**" note. Descriptions
+    with tables, images or video are not split.
+  endcomment
+  assign d_details = ''
+  assign d_features = ''
+  assign d_care = ''
+  assign d_shipping = ''
+  assign d_note = ''
+  assign d_split = true
+  if p.description contains '<table' or p.description contains '<img' or p.description contains '<iframe'
+    assign d_split = false
+  endif
+  if d_split
+    assign d_norm = p.description | replace: '<br/>', '<br>' | replace: '<br />', '<br>' | replace: '</p>', '<br>' | replace: '</div>', '<br>' | replace: '</li>', '<br>' | replace: '</h3>', '<br>' | replace: '</h4>', '<br>' | strip_newlines
+    assign d_lines = d_norm | split: '<br>'
+    assign bucket = 'details'
+    assign list_open = false
+    for line in d_lines
+      assign t = line | strip_html | replace: '&nbsp;', ' ' | strip
+      if t == blank
+        continue
+      endif
+      assign key = t | downcase | replace: '&amp;', '&' | remove: ':' | strip
+      case key
+        when 'fabric & care' or 'fabric and care' or 'fabric/care' or 'care' or 'fabric' or 'care instructions'
+          if list_open
+            assign d_features = d_features | append: '</ul>'
+            assign list_open = false
+          endif
+          assign bucket = 'care'
+          continue
+        when 'shipping & returns' or 'shipping and returns' or 'shipping & return' or 'shipping'
+          if list_open
+            assign d_features = d_features | append: '</ul>'
+            assign list_open = false
+          endif
+          assign bucket = 'shipping'
+          continue
+        when 'details' or 'description'
+          assign bucket = 'details'
+          continue
+        when 'features'
+          assign bucket = 'features'
+          continue
+      endcase
+      assign c2 = t | slice: 0, 2
+      if c2 == '**'
+        assign d_note = d_note | append: '<p>' | append: t | append: '</p>'
+        continue
+      endif
+      assign c1 = t | slice: 0, 1
+      if bucket == 'details' or bucket == 'features'
+        if c1 == '-' or c1 == '•'
+          unless list_open
+            assign d_features = d_features | append: '<ul>'
+            assign list_open = true
+          endunless
+          assign item = t | remove_first: c1 | strip
+          assign d_features = d_features | append: '<li>' | append: item | append: '</li>'
+          assign bucket = 'features'
+        elsif bucket == 'features'
+          if list_open
+            assign d_features = d_features | append: '</ul>'
+            assign list_open = false
+          endif
+          assign d_features = d_features | append: '<p><strong>' | append: t | append: '</strong></p>'
+        else
+          assign d_details = d_details | append: '<p>' | append: t | append: '</p>'
+        endif
+      elsif bucket == 'care'
+        assign d_care = d_care | append: '<p>' | append: t | append: '</p>'
+      else
+        assign d_shipping = d_shipping | append: '<p>' | append: t | append: '</p>'
+      endif
+    endfor
+    if list_open
+      assign d_features = d_features | append: '</ul>'
+    endif
+    assign d_details = d_details | append: d_note
+  endif
 -%}
 
 {%- capture head -%}
@@ -503,11 +586,25 @@
             case block.settings.source
               when 'description'
                 assign body = p.description
+              when 'details'
+                assign body = d_details
+                if d_split == false
+                  assign body = p.description
+                endif
+              when 'features'
+                assign body = d_features
+              when 'care'
+                assign body = d_care
+              when 'shipping'
+                assign body = d_shipping
               when 'page'
                 assign body = block.settings.page.content
               else
                 assign body = block.settings.text
             endcase
+            if body == blank and block.settings.source != 'description' and block.settings.source != 'details'
+              assign body = block.settings.text
+            endif
           -%}
           {%- if body != blank -%}
             <details class="wac-pdp__acc"{% if block.settings.open %} open{% endif %} {{ block.shopify_attributes }}>
@@ -616,7 +713,7 @@
     { "type": "text", "id": "adding_label", "label": "While adding", "default": "Adding..." },
     { "type": "text", "id": "added_label", "label": "After adding", "default": "Added to cart" },
     { "type": "richtext", "id": "ship_text", "label": "Bold line under the button", "default": "<p>Free shipping over Rs.1999</p>" },
-    { "type": "richtext", "id": "note_text", "label": "Small text under that", "default": "<p>Cash on delivery available. Easy returns & exchange.</p>" },
+    { "type": "richtext", "id": "note_text", "label": "Small text under that", "default": "<p>Cash on delivery available.</p>" },
     { "type": "header", "content": "Complete your look" },
     { "type": "text", "id": "match_heading", "label": "Heading", "default": "Complete your look" },
     { "type": "collection", "id": "match_collection", "label": "Products from", "info": "Leave empty to hide the row." },
@@ -637,8 +734,8 @@
       "name": "Accordion row",
       "settings": [
         { "type": "text", "id": "heading", "label": "Heading", "default": "Details" },
-        { "type": "select", "id": "source", "label": "Content", "options": [ { "value": "description", "label": "Product description" }, { "value": "text", "label": "Text below" }, { "value": "page", "label": "A page" } ], "default": "text" },
-        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "select", "id": "source", "label": "Content", "options": [ { "value": "details", "label": "Description: intro text" }, { "value": "features", "label": "Description: lines starting with -" }, { "value": "care", "label": "Description: Fabric & Care part" }, { "value": "shipping", "label": "Description: Shipping & Returns part" }, { "value": "description", "label": "Whole product description" }, { "value": "text", "label": "Text below" }, { "value": "page", "label": "A page" } ], "default": "text" },
+        { "type": "richtext", "id": "text", "label": "Text", "info": "Also used when the chosen description part is missing." },
         { "type": "page", "id": "page", "label": "Page" },
         { "type": "checkbox", "id": "open", "label": "Open when the page loads", "default": false }
       ]
