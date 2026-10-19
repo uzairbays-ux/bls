@@ -186,13 +186,26 @@ class WacoalProduct {
     if (mainPrice) new MutationObserver(sync).observe(mainPrice.parentElement, { childList: true, characterData: true, subtree: true });
     if (mainColor) new MutationObserver(sync).observe(mainColor, { childList: true, characterData: true, subtree: true });
     const row = add.closest('.wac-pdp__add-row') || add;
-    new IntersectionObserver(([entry]) => {
-      // only once the button has gone up off the screen, not before reaching it
-      const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+    // shown once the add button has gone up off the screen (checked on every scroll: a jump from
+    // below the button to above it never crosses the screen edge, so an IntersectionObserver misses it)
+    let shown = false;
+    let queued = false;
+    const check = () => {
+      queued = false;
+      const show = row.getBoundingClientRect().bottom < 0;
+      if (show === shown) return;
+      shown = show;
       bar.classList.toggle('is-visible', show);
       bar.setAttribute('aria-hidden', show ? 'false' : 'true');
       btn.tabIndex = show ? 0 : -1;
-    }).observe(row);
+    };
+    window.addEventListener('scroll', () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(check);
+    }, { passive: true });
+    window.addEventListener('resize', check);
+    check();
     btn.addEventListener('click', () => {
       if (add.classList.contains('is-ready') && !add.disabled) {
         add.click();

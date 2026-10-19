@@ -6108,7 +6108,7 @@ html.wac-zoom-open {
   }
 
   .wac-pdp__slide {
-    flex-basis: calc((100% - 8px) / 1.6);
+    flex-basis: calc((100% - 8px) / 1.5);
   }
 
   .wac-pdp__thumbs {
@@ -6118,7 +6118,7 @@ html.wac-zoom-open {
 
 @media screen and (min-width: 1400px) {
   .wac-pdp__slide {
-    flex-basis: calc((100% - 16px) / 2.4);
+    flex-basis: calc((100% - 16px) / 2.15);
   }
 }
 
