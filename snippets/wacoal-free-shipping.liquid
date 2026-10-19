@@ -1,0 +1,26 @@
+{%- doc -%}
+  Free-shipping progress for the cart drawer and cart page (theme setting wac_free_ship_threshold,
+  rupees). Lives inside the cart items markup, so Horizon re-renders it after every cart change.
+{%- enddoc -%}
+{%- liquid
+  assign threshold = settings.wac_free_ship_threshold | default: 9999 | times: 100
+  assign remaining = threshold | minus: cart.total_price
+  assign pct = cart.total_price | times: 100 | divided_by: threshold
+  if pct > 100
+    assign pct = 100
+  endif
+-%}
+{%- if threshold > 0 -%}
+  <div class="wac-ship{% if remaining <= 0 %} is-free{% endif %}">
+    <p class="wac-ship__text">
+      {%- if remaining > 0 -%}
+        You're <strong>{{ remaining | money_without_trailing_zeros }}</strong> away from free shipping
+      {%- else -%}
+        <strong>Free shipping unlocked</strong> on this order
+      {%- endif -%}
+    </p>
+    <div class="wac-ship__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}" aria-label="Progress to free shipping">
+      <span style="width: {{ pct }}%;"></span>
+    </div>
+  </div>
+{%- endif -%}

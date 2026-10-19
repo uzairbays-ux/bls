@@ -4868,3 +4868,244 @@ button.wac-pdp__feature-head {
     padding: 10px 0 14px;
   }
 }
+
+/* ===== Cart: drawer + page ============================================ */
+/* titles: Bebas caps like the collection titles */
+.cart-drawer__heading,
+.cart-title h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--wac-font-caps);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.cart-drawer__heading .cart-bubble,
+.cart-title .cart-bubble {
+  font-family: var(--wac-font-sans);
+  letter-spacing: 0;
+}
+
+.cart-drawer__heading .cart-bubble__background,
+.cart-title .cart-bubble .cart-bubble__background {
+  background: var(--wac-badge);
+}
+
+.cart-drawer__heading .cart-bubble__text,
+.cart-title .cart-bubble__text {
+  color: var(--wac-ink);
+  font-weight: 700;
+}
+
+/* free shipping progress */
+.wac-ship {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #fbf6f2;
+}
+
+.wac-ship__text {
+  margin: 0 0 9px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--wac-ink);
+}
+
+.wac-ship__bar {
+  height: 6px;
+  border-radius: 3px;
+  background: #eadfd6;
+  overflow: hidden;
+}
+
+.wac-ship__bar span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: #73170f;
+  transition: width 0.4s ease;
+}
+
+.wac-ship.is-free .wac-ship__bar span {
+  background: #2f6b3a;
+}
+
+/* line items */
+.cart-items__media-container {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f4f1ee;
+}
+
+.cart-items__title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--wac-ink);
+  text-decoration: none;
+}
+
+.cart-items__title:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cart-items__variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.cart-items__variant {
+  display: flex;
+  gap: 4px;
+}
+
+.cart-items__variant-name {
+  color: #999;
+}
+
+.cart-items__unit-price-wrapper {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wac-ink);
+}
+
+.cart-items .quantity-selector {
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.cart-items__remove {
+  color: #777;
+}
+
+.cart-items__remove:hover {
+  color: #73170f;
+}
+
+/* summary */
+.cart-totals__total-label,
+.cart-totals__total-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wac-ink);
+}
+
+.cart__checkout-button.button {
+  min-height: 52px;
+  border-radius: 14px;
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cart__checkout-button.button:hover {
+  background: #000;
+}
+
+.wac-cart-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+/* cart page: summary panel in BLS blush, sticky beside the items */
+.cart-page__summary .cart-summary {
+  border-radius: 12px;
+  background: #fbf6f2;
+}
+
+@media screen and (min-width: 750px) {
+  .cart-page__summary {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+
+/* SASO's own discount code box replaces Horizon's when the app adds it */
+.cart-summary:has(.saso-use-discount-code-cart-container) .cart-actions {
+  display: none;
+}
+
+.saso-use-discount-code-cart-container {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0 14px;
+}
+
+.saso-use-discount-code-cart-container input.saso-use-discount-code-cart-code {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgb(223, 223, 223) !important;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.saso-use-discount-code-cart-container button,
+.saso-use-discount-code-cart-container .saso-apply-discount-code {
+  flex: 0 0 auto;
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* empty bag */
+.wac-cart-empty {
+  margin: 4px 0 20px;
+}
+
+.wac-cart-empty__text {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #555;
+}
+
+.wac-cart-empty .wac-search-pills {
+  flex-wrap: wrap;
+  padding: 6px 0 0;
+}
+
+.wac-cart-empty .wac-search-pills__label {
+  display: none;
+}
+
+.wac-cart-empty .wac-search-pills__list {
+  flex-wrap: wrap;
+}
+
+/* wishlist hearts: red when active (product saved / header with saved items) */
+.wac-wish-btn.is-added {
+  color: #c8102e;
+}
+
+.header-section .wac-wishlist:has(.wac-wishlist__count:not([hidden])) svg path {
+  fill: #c8102e;
+  stroke: #c8102e;
+}

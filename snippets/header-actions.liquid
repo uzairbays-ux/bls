@@ -216,7 +216,7 @@
                   class="cart-drawer__heading h4"
                   id="cart-drawer-heading"
                 >
-                  {{ 'content.cart_title' | t }}
+                  {{ settings.wac_cart_title | default: 'Your bag' | escape }}
                   {% render 'cart-bubble' %}
                 </h2>
 

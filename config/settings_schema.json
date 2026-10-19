@@ -2302,5 +2302,29 @@
         "default": "New"
       }
     ]
+  },
+  {
+    "name": "BLS cart",
+    "settings": [
+      {
+        "type": "text",
+        "id": "wac_cart_title",
+        "label": "Cart title",
+        "default": "Your bag"
+      },
+      {
+        "type": "number",
+        "id": "wac_free_ship_threshold",
+        "label": "Free shipping from (Rs.)",
+        "default": 9999,
+        "info": "Shows a progress bar in the cart. 0 hides it."
+      },
+      {
+        "type": "text",
+        "id": "wac_cart_note",
+        "label": "Note under the checkout button",
+        "default": "Cash on delivery available · Secure checkout"
+      }
+    ]
   }
 ]

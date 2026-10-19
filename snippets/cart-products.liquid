@@ -44,6 +44,11 @@
       </p>
     {%- endif -%}
 
+    <div class="wac-cart-empty">
+      <p class="wac-cart-empty__text">Not sure where to start? Pick a type:</p>
+      {% render 'wacoal-search-pills' %}
+    </div>
+
     <a
       class="button cart-items__empty-button"
       href="{{ settings.empty_cart_button_link | default: routes.all_products_collection_url }}"
@@ -60,6 +65,7 @@
     >
       {{- cart.item_count -}}
     </span>
+    {% render 'wacoal-free-shipping' %}
     <form
       action="{{ routes.cart_url }}"
       class="cart-form"
@@ -207,11 +213,8 @@
                         <dl class="cart-items__variants">
                           {%- for option in item.options_with_values -%}
                             <div class="cart-items__variant">
-                              <dt class="visually-hidden">{{ option.name }}:</dt>
-                              <dd>
-                                {{- option.value -}}
-                                {%- if forloop.last != true %},&nbsp;{% endif -%}
-                              </dd>
+                              <dt class="cart-items__variant-name">{{ option.name }}:</dt>
+                              <dd>{{- option.value -}}</dd>
                             </div>
                           {%- endfor -%}
                         </dl>
