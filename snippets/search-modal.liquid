@@ -109,6 +109,8 @@
           </button>
         </div>
 
+        {% render 'wacoal-search-pills' %}
+
         <div class="predictive-search-form__content-wrapper">
           <div
             class="predictive-search-form__content"
@@ -146,7 +148,7 @@
   .search-modal__content {
     /* Approx set the top so when the content is at max height, the modal is centered */
     --modal-top-margin: calc(50dvh - var(--modal-max-height) / 2 - 2rem);
-    --modal-width: 66dvw;
+    --modal-width: min(1180px, 88dvw);
 
     padding: 0;
     border: var(--style-border-popover);

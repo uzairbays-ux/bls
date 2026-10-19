@@ -1,0 +1,17 @@
+{%- doc -%}
+  "Shop by type" pills in the search modal: the main menu's top-level collection links
+  (Bras, Panties, Sleep Wear ...), so they follow the menu.
+{%- enddoc -%}
+{%- assign menu = linklists['main-menu'] -%}
+{%- if menu.links.size > 0 -%}
+  <nav class="wac-search-pills" aria-label="Shop by type">
+    <span class="wac-search-pills__label">Shop by type</span>
+    <ul class="wac-search-pills__list" role="list">
+      {%- for link in menu.links -%}
+        {%- if link.type == 'collection_link' or link.type == 'catalog_link' -%}
+          <li><a class="wac-search-pills__pill" href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}

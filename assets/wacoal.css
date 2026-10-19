@@ -4580,3 +4580,85 @@ button.wac-pdp__feature-head {
 .mega-menu__content-list--products .wac-card__rating {
   display: none;
 }
+
+/* ===== Search modal: wider, type pills, site product cards ============ */
+.wac-search-pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.wac-search-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.wac-search-pills__label {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--wac-ink);
+}
+
+.wac-search-pills__list {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wac-search-pills__pill {
+  display: inline-block;
+  padding: 8px 15px;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--wac-ink);
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.wac-search-pills__pill:hover,
+.wac-search-pills__pill:focus-visible {
+  border-color: var(--wac-ink);
+  background: var(--wac-blush);
+}
+
+.predictive-search-results__card--product .wac-card {
+  width: 100%;
+}
+
+.predictive-search-results__card--product .wac-card__flags {
+  left: 8px;
+  right: 8px;
+  bottom: 10px;
+  gap: 5px;
+}
+
+.predictive-search-results__card--product .wac-card__flag {
+  padding: 6px 10px;
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.predictive-search-results__card--product .wac-card__info {
+  padding: 8px 2px 4px;
+}
+
+.predictive-search-results__card--product .wac-card__rating {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-search-pills {
+    padding: 10px 16px 2px;
+  }
+}
