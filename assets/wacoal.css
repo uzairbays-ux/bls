@@ -5752,11 +5752,11 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
 }
 
 /* narrow charts (2 or 3 columns) stay compact on wide screens */
-.bls-chart:has(thead th:nth-child(2):last-child) {
+.bls-chart:has(thead tr:last-child > :nth-child(2):last-child) {
   max-width: 480px;
 }
 
-.bls-chart:has(thead th:nth-child(3):last-child) {
+.bls-chart:has(thead tr:last-child > :nth-child(3):last-child) {
   max-width: 560px;
 }
 
