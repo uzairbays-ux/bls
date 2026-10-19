@@ -352,7 +352,7 @@
   --menu-top-level-font-family: var(--wac-font-sans);
   --menu-top-level-font-size-desktop: 14px;
   --menu-top-level-font-size: 14px;
-  --menu-top-level-font-weight: 600;
+  --menu-top-level-font-weight: 400;
   --menu-top-level-font-case: uppercase;
   --menu-top-level-font-color: var(--wac-ink);
   --menu-top-level-font-line-height: 30px;
@@ -362,6 +362,12 @@
 
 .header-section .menu-list__link-title {
   padding-inline: 0;
+}
+
+/* the page you are on (or inside) is bold, the rest regular */
+.header-section .menu-list__link.menu-list__link--active,
+.header-section .menu-list__link[aria-current='page'] {
+  --menu-top-level-font-weight: 600;
 }
 
 /* actions: 22px icons, 42px apart */
@@ -4064,14 +4070,19 @@ button.wac-pdp__feature-head {
 }
 
 /* product page: square heart beside Add to cart, same height and corners as the quantity box */
-.product-form-buttons > .wac-wish-wrap {
+/* doubled class: Horizon's `.product-form-buttons > :not(...)` rule (same weight, loaded later) gives every button 51% */
+.product-form-buttons.product-form-buttons > .wac-wish-wrap {
   display: flex;
   flex: 0 0 52px;
 }
 
-.product-form-buttons > :has(+ .wac-wish-wrap) {
+.product-form-buttons.product-form-buttons > :has(+ .wac-wish-wrap) {
   flex: 1 1 0;
   min-width: 0;
+}
+
+.product-form-buttons.product-form-buttons > .wac-wish-wrap ~ .accelerated-checkout-block {
+  flex: 1 0 100%;
 }
 
 .product-form-buttons .wac-wish-wrap .wac-wish-btn {
