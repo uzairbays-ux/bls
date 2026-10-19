@@ -9,6 +9,383 @@
  */
 {
   "sections": {
+    "wacoal_main_product": {
+      "type": "wacoal-main-product",
+      "blocks": {
+        "feature_padding": {
+          "type": "feature",
+          "settings": {
+            "label": "Padding",
+            "tags": "Light Padded, Style_Light Paded=Light Padded, Padded, Paded=Padded, Soft Padded, Non Padded, Non-Paded=Non Padded, Non Paded=Non Padded",
+            "text": ""
+          }
+        },
+        "feature_wire": {
+          "type": "feature",
+          "settings": {
+            "label": "Wire",
+            "tags": "Wired, Underwire=Wired, Non Wired, Non-Wired=Non Wired, Wireless=Non Wired",
+            "text": ""
+          }
+        },
+        "feature_fabric": {
+          "type": "feature",
+          "settings": {
+            "label": "Fabric",
+            "tags": "Fabric_*, Cotton, Lace, Satin=Satin, Polyester/Polyamide, Polyerster/Polyamide=Polyester/Polyamide, Polyamide",
+            "text": ""
+          }
+        },
+        "feature_type": {
+          "type": "feature",
+          "settings": {
+            "label": "Type",
+            "tags": "Pushup=Push Up, Front Open, Seamless Bra=Seamless, Seamless, Bralette, Maternity, Nursing, Bra & Panty Sets=Bra & Panty Set, Teens",
+            "text": ""
+          }
+        },
+        "acc_details": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Details",
+            "source": "details",
+            "text": "",
+            "open": true,
+            "only_tags": ""
+          }
+        },
+        "acc_fit": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Fit tips",
+            "source": "text",
+            "text": "<p>Your band should sit level and snug around your ribcage, and the cups should hold you fully without gaps or spilling over. Not sure of your size? Use our <a href=\"/pages/size-guides\" title=\"Size guides\">size guide</a> to find your band and cup.</p>",
+            "open": false,
+            "only_tags": "Bras"
+          }
+        },
+        "acc_shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & returns",
+            "source": "shipping",
+            "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p><p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+            "open": false,
+            "only_tags": ""
+          }
+        },
+        "acc_care": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Fabric/care",
+            "source": "care",
+            "text": "",
+            "open": false,
+            "only_tags": ""
+          }
+        },
+        "acc_features": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Features",
+            "source": "features",
+            "text": "",
+            "open": false,
+            "only_tags": ""
+          }
+        },
+        "size_chart_sml_bras": {
+          "type": "size_chart",
+          "settings": {
+            "title": "S/M/L bras (SizeChart-1)",
+            "image": "shopify://shop_images/hix.ai-download-1790917858783.webp",
+            "tags": "SizeChart-1, Seamless crop top",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_teen_panty": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Teens panties",
+            "image": "shopify://shop_images/Teen_Panty_chart_size_-new.webp",
+            "tags": "",
+            "title_contains": "Teen Panty",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_teen_bra": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Teens bras",
+            "image": "shopify://shop_images/Teen_Bra_size_chart-new.webp",
+            "tags": "Teens",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_sleepwear": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Sleepwear",
+            "image": "shopify://shop_images/Sleep_Wear.webp",
+            "tags": "Sleep Wear, Pajama Sets, Pajama Set, Short Sets, Short Set, Nightgown, PJS, Lounge Wear",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_hena": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Hena thong",
+            "image": "shopify://shop_images/BLS1447_Hena.webp",
+            "tags": "",
+            "title_contains": "Hena Thong, Hena Lace Thong",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_soraya": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Soraya boyshort",
+            "image": "shopify://shop_images/BLS1455_Soraya.webp",
+            "tags": "",
+            "title_contains": "Soraya Lace Boyshort",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_lenore": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Lenore thong",
+            "image": "shopify://shop_images/BLS10361_Lenore.webp",
+            "tags": "",
+            "title_contains": "Lenore Lace Thong",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_liza": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Liza boyshort",
+            "image": "shopify://shop_images/BLS20101_Liza.webp",
+            "tags": "",
+            "title_contains": "Liza Lace Boyshort",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_haut": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Haut thong",
+            "image": "shopify://shop_images/BLSDK1439_Haut.webp",
+            "tags": "",
+            "title_contains": "Haut Lace Thong",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_camis": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Slips & Camis",
+            "image": "shopify://shop_images/camisole_size.webp",
+            "tags": "Slips & Camis, Camisole",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_sports_bra": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Sports bras",
+            "image": "shopify://shop_images/sports_bra_size-new.jpg",
+            "tags": "Sports Bra",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_shapewear": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Shapewear",
+            "image": "shopify://shop_images/shapewear_size.webp",
+            "tags": "Shaper, Active & Shape Wear, Sports & Shape Wear",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "size_chart_bras": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Bras (band/cup)",
+            "image": "shopify://shop_images/bra_size.webp",
+            "tags": "Bras, Bra",
+            "title_contains": "",
+            "show_sister_size": true
+          }
+        },
+        "size_chart_panties": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Panties",
+            "image": "shopify://shop_images/panties-size-chart.webp",
+            "tags": "Panties",
+            "title_contains": "",
+            "show_sister_size": false
+          }
+        },
+        "extra_chart_bra_panty_sets": {
+          "type": "extra_chart",
+          "settings": {
+            "title": "Bra & panty sets",
+            "image": "shopify://shop_images/bra-panty-set-size-chart.webp",
+            "tab_label": "Bra & panty set",
+            "main_tab_label": "Bra size",
+            "tags": "Bra & Panty Sets",
+            "title_contains": "Bra & Panty Set"
+          }
+        },
+        "extra_chart_panty_sets": {
+          "type": "extra_chart",
+          "settings": {
+            "title": "Panty size (bra & panty sets)",
+            "image": "shopify://shop_images/panties-size-chart.webp",
+            "tab_label": "Panty size",
+            "main_tab_label": "",
+            "tags": "Bra & Panty Sets",
+            "title_contains": "Bra & Panty Set"
+          }
+        }
+      },
+      "block_order": [
+        "feature_padding",
+        "feature_wire",
+        "feature_fabric",
+        "feature_type",
+        "acc_details",
+        "acc_features",
+        "acc_fit",
+        "acc_shipping",
+        "acc_care",
+        "size_chart_sml_bras",
+        "size_chart_teen_panty",
+        "size_chart_teen_bra",
+        "size_chart_sleepwear",
+        "size_chart_hena",
+        "size_chart_soraya",
+        "size_chart_lenore",
+        "size_chart_liza",
+        "size_chart_haut",
+        "size_chart_camis",
+        "size_chart_sports_bra",
+        "size_chart_shapewear",
+        "size_chart_bras",
+        "size_chart_panties",
+        "extra_chart_bra_panty_sets",
+        "extra_chart_panty_sets"
+      ],
+      "settings": {
+        "photo_shape": "wacoal",
+        "sticky_gallery": true,
+        "brand_line": "British Lingerie Studio",
+        "show_style": true,
+        "style_label": "Style",
+        "badge_tags": "Best Seller, Bestseller=Best Seller, new=New",
+        "color_label": "Color",
+        "band_label": "Band",
+        "cup_label": "Cup",
+        "size_guide_label": "Size Guide",
+        "quantity_label": "Quantity",
+        "select_label": "Select your size",
+        "add_label": "Add to cart",
+        "sold_out_label": "Sold out",
+        "adding_label": "Adding...",
+        "added_label": "Added to cart",
+        "ship_text": "<p>Free shipping on orders above Rs.9,999</p>",
+        "note_text": "<p>Cash on delivery available.</p>",
+        "match_heading": "Complete your look",
+        "match_collection": "panties",
+        "match_limit": 8,
+        "sister_size_chart": "shopify://shop_images/bls-sister-size-bra.jpg",
+        "show_share": true
+      }
+    },
+    "product_usp": {
+      "type": "product-usp",
+      "settings": {
+        "eyebrow": "Try me on",
+        "heading": "<p>Everyday comfort, engineered to stay put — soft cotton with a fit that moves with you.</p>",
+        "color_scheme": "scheme-bls-signature",
+        "padding-block-start": 64,
+        "padding-block-end": 0
+      }
+    },
+    "wacoal_similar": {
+      "type": "wacoal-product-recommendations",
+      "settings": {
+        "heading": "Similar styles",
+        "limit": 10,
+        "margin_bottom": 40
+      }
+    },
+    "reviews": {
+      "type": "wacoal-reviews",
+      "settings": {
+        "heading": "Reviews"
+      }
+    },
+    "faq": {
+      "type": "wacoal-faq",
+      "blocks": {
+        "faq_size": {
+          "type": "question",
+          "settings": {
+            "question": "How do I find my size?",
+            "answer": "<p>Tap <strong>Size Guide</strong> next to the sizes on this page for this style's chart, and Sister Size for bras. For a full fitting walk-through, visit our <a href=\"/pages/the-perfect-fit\">Fitting Room</a>.</p>"
+          }
+        },
+        "faq_shipping": {
+          "type": "question",
+          "settings": {
+            "question": "Is shipping free?",
+            "answer": "<p>Yes, shipping is free on domestic orders above Rs.9,999.</p>"
+          }
+        },
+        "faq_cod": {
+          "type": "question",
+          "settings": {
+            "question": "Can I pay cash on delivery?",
+            "answer": "<p>Yes, cash on delivery is available.</p>"
+          }
+        },
+        "faq_returns": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return or exchange lingerie?",
+            "answer": "<p>We do not accept returns or exchanges for lingerie due to the intimate nature of the product. Any shortages or damages must be reported to customer service within 1 day of delivery.</p>"
+          }
+        },
+        "faq_care": {
+          "type": "question",
+          "settings": {
+            "question": "How should I care for my lingerie?",
+            "answer": "<p>Hand wash with similar colours, do not bleach, do not tumble dry, line dry in shade and do not dry clean.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_size",
+        "faq_shipping",
+        "faq_cod",
+        "faq_returns",
+        "faq_care"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "subheading": "",
+        "open_first": false
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -871,7 +1248,8 @@
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
+      },
+      "disabled": true
     },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
@@ -1014,82 +1392,17 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "product_usp": {
-      "type": "product-usp",
-      "settings": {
-        "eyebrow": "Try me on",
-        "heading": "<p>Everyday comfort, engineered to stay put — soft cotton with a fit that moves with you.</p>",
-        "color_scheme": "scheme-bls-signature",
-        "padding-block-start": 64,
-        "padding-block-end": 0
-      }
-    },
-    "reviews": {
-      "type": "wacoal-reviews",
-      "settings": {
-        "heading": "Reviews"
-      }
-    },
-    "faq": {
-      "type": "wacoal-faq",
-      "blocks": {
-        "faq_size": {
-          "type": "question",
-          "settings": {
-            "question": "How do I find my size?",
-            "answer": "<p>Tap <strong>Size Guide</strong> next to the sizes on this page for this style's chart, and Sister Size for bras. For a full fitting walk-through, visit our <a href=\"/pages/the-perfect-fit\">Fitting Room</a>.</p>"
-          }
-        },
-        "faq_shipping": {
-          "type": "question",
-          "settings": {
-            "question": "Is shipping free?",
-            "answer": "<p>Yes, shipping is free on domestic orders above Rs.9,999.</p>"
-          }
-        },
-        "faq_cod": {
-          "type": "question",
-          "settings": {
-            "question": "Can I pay cash on delivery?",
-            "answer": "<p>Yes, cash on delivery is available.</p>"
-          }
-        },
-        "faq_returns": {
-          "type": "question",
-          "settings": {
-            "question": "Can I return or exchange lingerie?",
-            "answer": "<p>We do not accept returns or exchanges for lingerie due to the intimate nature of the product. Any shortages or damages must be reported to customer service within 1 day of delivery.</p>"
-          }
-        },
-        "faq_care": {
-          "type": "question",
-          "settings": {
-            "question": "How should I care for my lingerie?",
-            "answer": "<p>Hand wash with similar colours, do not bleach, do not tumble dry, line dry in shade and do not dry clean.</p>"
-          }
-        }
       },
-      "block_order": [
-        "faq_size",
-        "faq_shipping",
-        "faq_cod",
-        "faq_returns",
-        "faq_care"
-      ],
-      "settings": {
-        "heading": "Frequently asked questions",
-        "subheading": "",
-        "open_first": false
-      }
+      "disabled": true
     }
   },
   "order": [
-    "main",
+    "wacoal_main_product",
     "product_usp",
-    "product_recommendations_qggXJq",
+    "wacoal_similar",
     "reviews",
-    "faq"
+    "faq",
+    "main",
+    "product_recommendations_qggXJq"
   ]
 }
