@@ -3842,7 +3842,8 @@ button.wac-pdp__feature-head {
   }
 
   .wac-pdp__head--mobile .wac-pdp__vendor {
-    display: none;
+    margin: 0 0 2px;
+    font-size: 14px;
   }
 
   .wac-pdp__head--desktop {
@@ -5859,4 +5860,40 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
 
 .wac-saso-slot .saso-notification-x a:hover {
   background: rgb(0 0 0 / 0.06) !important;
+}
+
+/* product page breadcrumb (Wacoal: "home / all bras" above the brand line, 13px) */
+.wac-pdp__crumbs {
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 21px;
+  color: #111;
+  text-transform: capitalize;
+}
+
+.wac-pdp__crumbs a {
+  color: #666;
+  text-decoration: none;
+}
+
+.wac-pdp__crumbs a:last-child {
+  color: #111;
+}
+
+.wac-pdp__crumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wac-pdp__crumbs-sep {
+  margin: 0 6px;
+  color: #999;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-pdp__crumbs {
+    order: -1;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
 }

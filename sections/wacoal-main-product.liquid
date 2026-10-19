@@ -331,7 +331,41 @@
   {%- endif -%}
 {%- endcapture -%}
 
+{%- liquid
+  comment
+    Breadcrumb collection: the one in the address (/collections/bras/products/...), else the first
+    main menu collection the product is in, else its first collection.
+  endcomment
+  assign crumb = collection
+  if crumb == blank
+    assign p_handles = p.collections | map: 'handle' | join: '|' | prepend: '|' | append: '|'
+    for link in linklists['main-menu'].links
+      if link.type == 'collection_link'
+        assign key = '|' | append: link.object.handle | append: '|'
+        if p_handles contains key
+          assign crumb = link.object
+          break
+        endif
+      endif
+    endfor
+  endif
+  if crumb == blank
+    for c in p.collections
+      if c.handle != 'all' and c.handle != 'frontpage'
+        assign crumb = c
+        break
+      endif
+    endfor
+  endif
+-%}
 {%- capture head -%}
+  <nav class="wac-pdp__crumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a>
+    {%- if crumb != blank -%}
+      <span class="wac-pdp__crumbs-sep" aria-hidden="true">/</span>
+      <a href="{{ crumb.url }}">{{ crumb.title | downcase | escape }}</a>
+    {%- endif -%}
+  </nav>
   {%- if rating != blank -%}
     <a class="wac-pdp__rating" href="#reviews" aria-label="Rated {{ rating.rating }} out of 5 from {{ rating_count }} reviews">
       <span class="wac-card__stars" style="--wac-rating: {{ rating.rating | times: 1.0 | divided_by: 5.0 | times: 100 | round: 1 }}%;" aria-hidden="true">
