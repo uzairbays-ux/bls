@@ -17,7 +17,7 @@
   --wac-ink: #111;
   --wac-blush: #ecd8c9;
   --wac-badge: #dbc5b5;
-  --wac-header-h: 94px;
+  --wac-header-h: 74px;
   --wac-header-h-mobile: 65px;
 }
 
@@ -357,7 +357,7 @@
   --menu-top-level-font-color: var(--wac-ink);
   --menu-top-level-font-line-height: 30px;
   letter-spacing: 1px;
-  padding-block: 32px;
+  padding-block: 22px;
 }
 
 .header-section .menu-list__link-title {
@@ -3023,7 +3023,7 @@ html.wac-drawer-open {
 }
 
 .wac-pdp__head--desktop {
-  padding: 20px 10px 10px;
+  padding: 20px 15px 10px; /* same side inset as the options below (.wac-pdp__info) */
 }
 
 .wac-pdp__rating {
@@ -3540,16 +3540,16 @@ button.wac-pdp__feature-head {
 }
 
 .wac-pdp__acc-body {
-  padding-bottom: 25px;
-  font-size: 16px;
-  line-height: 28.8px;
-  letter-spacing: 0.25px;
+  padding-bottom: 22px;
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: 0.2px;
 }
 
 .wac-pdp__acc-body p,
 .wac-pdp__acc-body ul,
 .wac-pdp__acc-body ol {
-  margin: 16px 0 0;
+  margin: 12px 0 0;
 }
 
 .wac-pdp__acc-body ul,
@@ -4006,7 +4006,7 @@ button.wac-pdp__feature-head {
 }
 
 .wac-saso-slot #saso-notifications {
-  margin: 12px 0 4px;
+  margin: 12px 0;
   padding-top: 0 !important;
 }
 
@@ -4027,11 +4027,15 @@ button.wac-pdp__feature-head {
 
 .wac-saso-slot .saso-notification-x {
   position: absolute;
-  top: 50%;
-  right: 14px;
+  top: 0;
+  right: 9px;
+  bottom: 0;
+  height: auto !important; /* the app sets 0 */
+  max-height: none !important;
+  display: flex;
+  align-items: center;
   margin: 0;
   float: none;
-  transform: translateY(-50%);
   line-height: 1;
 }
 
