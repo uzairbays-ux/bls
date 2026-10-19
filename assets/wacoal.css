@@ -5111,3 +5111,383 @@ button.wac-pdp__feature-head {
   fill: #c8102e;
   stroke: #c8102e;
 }
+
+/* ===== Product page: reviews (sections/wacoal-reviews.liquid, Judge.me data) ===== */
+.wac-rev {
+  padding: 48px 0 40px;
+  scroll-margin-top: 20px;
+}
+
+.wac-rev__container {
+  width: 95%;
+  max-width: 1385px;
+  margin: 0 auto;
+  font-family: var(--wac-font-sans);
+  color: var(--wac-ink);
+}
+
+.wac-rev__title {
+  margin: 0 0 24px;
+  font-family: var(--wac-font-caps);
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.wac-rev__top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #111;
+}
+
+.wac-rev__label {
+  margin: 0 0 12px;
+  font-family: var(--wac-font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.wac-rev__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wac-rev__bar-row {
+  display: grid;
+  grid-template-columns: 54px 1fr 28px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.wac-rev__bar {
+  height: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.wac-rev__bar span {
+  display: block;
+  height: 100%;
+  background: var(--wac-badge);
+}
+
+.wac-rev__bar-count {
+  text-align: right;
+  color: #666;
+}
+
+.wac-rev__score {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wac-rev__avg {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.wac-rev__score-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wac-rev__stars {
+  position: relative;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: #d9d2cb;
+}
+
+.wac-rev__stars::before {
+  content: '\2605\2605\2605\2605\2605';
+}
+
+.wac-rev__stars::after {
+  content: '\2605\2605\2605\2605\2605';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--wac-rev-pct, 0%);
+  overflow: hidden;
+  white-space: nowrap;
+  color: #111;
+}
+
+.wac-rev__count {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.wac-rev__none {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.wac-rev__pick {
+  display: flex;
+  gap: 8px;
+}
+
+.wac-rev__pick-star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #777;
+  cursor: pointer;
+}
+
+.wac-rev__pick-star:hover,
+.wac-rev__pick-star:hover ~ .wac-rev__pick-star {
+  color: #777;
+}
+
+.wac-rev__pick:hover .wac-rev__pick-star {
+  color: #111;
+  border-color: #111;
+}
+
+.wac-rev__pick .wac-rev__pick-star:hover ~ .wac-rev__pick-star {
+  color: #777;
+  border-color: #ccc;
+}
+
+.wac-rev__write-btn {
+  margin-top: 14px;
+  padding: 12px 26px;
+  border: 1px solid #111;
+  border-radius: 14px;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wac-rev__write-btn:hover {
+  background: var(--wac-blush);
+}
+
+/* Judge.me's widget below: keep its list, form and paging, drop its own summary header */
+.wac-rev__list .jdgm-rev-widg__title,
+.wac-rev__list .jdgm-rev-widg__summary,
+.wac-rev__list .jdgm-histogram,
+.wac-rev__list .jdgm-rev-widg__summary-stars {
+  display: none !important;
+}
+
+.wac-rev__list .jdgm-write-rev-link {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+}
+
+.wac-rev__list .jdgm-rev-widg {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-family: var(--wac-font-sans) !important;
+}
+
+.wac-rev__list .jdgm-rev-widg__header {
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.wac-rev__list .jdgm-rev {
+  padding: 26px 0 !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #e6e1dc !important;
+}
+
+.wac-rev__list .jdgm-rev__title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+
+.wac-rev__list .jdgm-rev__body,
+.wac-rev__list .jdgm-rev__body p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #333 !important;
+}
+
+.wac-rev__list .jdgm-star {
+  color: #111 !important;
+}
+
+.wac-rev__list .jdgm-rev__author,
+.wac-rev__list .jdgm-rev__timestamp {
+  font-size: 13px !important;
+  color: #555 !important;
+}
+
+.wac-rev__list .jdgm-rev__icon {
+  background: var(--wac-badge) !important;
+  color: #111 !important;
+}
+
+.wac-rev__list .jdgm-rev-widg__sort-wrapper select,
+.wac-rev__list .jdgm-sort-dropdown {
+  border: 1px solid #ccc !important;
+  border-radius: 22px !important;
+  padding: 6px 14px !important;
+}
+
+.wac-rev__list .jdgm-paginate__page.jdgm-curt {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-rev {
+    padding: 36px 0 28px;
+  }
+
+  .wac-rev__title {
+    font-size: 26px;
+  }
+
+  .wac-rev__top {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .wac-rev__pick-star {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ===== Product page: FAQ (sections/wacoal-faq.liquid) ================= */
+.wac-faq {
+  width: 95%;
+  max-width: 1385px;
+  margin: 0 auto 56px;
+}
+
+.wac-faq__box {
+  padding: 40px 6%;
+  background: #f5f0eb;
+}
+
+.wac-faq__title {
+  margin: 0 0 6px;
+  font-family: var(--wac-font-serif);
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+  color: #111;
+}
+
+.wac-faq__sub {
+  margin: 0 0 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}
+
+.wac-faq__list {
+  max-width: 880px;
+  margin: 18px auto 0;
+}
+
+.wac-faq__item {
+  border-bottom: 1px solid #d9cfc6;
+}
+
+.wac-faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  list-style: none;
+  cursor: pointer;
+}
+
+.wac-faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.wac-faq__icon {
+  position: relative;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.wac-faq__icon::before,
+.wac-faq__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.wac-faq__icon::after {
+  transform: rotate(90deg);
+}
+
+.wac-faq__item[open] .wac-faq__icon::after {
+  transform: rotate(0deg);
+}
+
+.wac-faq__a {
+  padding: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #333;
+}
+
+.wac-faq__a p {
+  margin: 0 0 8px;
+}
+
+.wac-faq__a a {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-faq__box {
+    padding: 30px 18px;
+  }
+
+  .wac-faq__title {
+    font-size: 22px;
+  }
+}

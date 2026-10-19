@@ -1,0 +1,121 @@
+{%- doc -%}
+  Product reviews in the site's design (Wacoal layout: rating snapshot | overall rating | review this
+  product), fed by Judge.me's product metafields:
+  - reviews.rating / reviews.rating_count: average and count
+  - judgeme.widget: Judge.me's pre-rendered widget (histogram counts are read from it); it is output
+    below and the Judge.me app embed turns it into the live list (pages, sorting, write-a-review form).
+{%- enddoc -%}
+{%- liquid
+  assign p = product
+  assign rating = p.metafields.reviews.rating.value
+  assign count = p.metafields.reviews.rating_count.value | default: 0
+  assign widget = p.metafields.judgeme.widget
+  assign avg = 0
+  if rating
+    assign avg = rating.rating | times: 1.0
+  endif
+  assign avg_label = avg | round: 1
+  assign avg_pct = avg | times: 20
+-%}
+{%- if p -%}
+<section class="wac-rev" id="reviews" aria-labelledby="WacRevTitle-{{ section.id }}">
+  <div class="wac-rev__container">
+    <h2 class="wac-rev__title" id="WacRevTitle-{{ section.id }}">{{ section.settings.heading | default: 'Reviews' | escape }}</h2>
+
+    <div class="wac-rev__top">
+      <div class="wac-rev__snapshot">
+        <h3 class="wac-rev__label">Rating snapshot</h3>
+        <ul class="wac-rev__bars" role="list">
+          {%- for n in (1..5) reversed -%}
+            {%- liquid
+              assign key = "data-rating='" | append: n | append: "' data-frequency='"
+              assign freq = 0
+              if widget contains key
+                assign freq = widget | split: key | last | split: "'" | first | plus: 0
+              endif
+              assign pct = 0
+              if count > 0
+                assign pct = freq | times: 100 | divided_by: count
+              endif
+            -%}
+            <li class="wac-rev__bar-row">
+              <span class="wac-rev__bar-label">{{ n }} star{% if n > 1 %}s{% endif %}</span>
+              <span class="wac-rev__bar" aria-hidden="true"><span style="width: {{ pct }}%;"></span></span>
+              <span class="wac-rev__bar-count">{{ freq }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="wac-rev__overall">
+        <h3 class="wac-rev__label">Overall rating</h3>
+        {%- if count > 0 -%}
+          <div class="wac-rev__score">
+            <span class="wac-rev__avg">{{ avg_label }}</span>
+            <span class="wac-rev__score-side">
+              <span class="wac-rev__stars" style="--wac-rev-pct: {{ avg_pct }}%;" aria-label="Rated {{ avg_label }} out of 5"></span>
+              <span class="wac-rev__count">{{ count }} review{% if count != 1 %}s{% endif %}</span>
+            </span>
+          </div>
+        {%- else -%}
+          <p class="wac-rev__none">No reviews yet. Be the first to share how it fits.</p>
+        {%- endif -%}
+      </div>
+
+      <div class="wac-rev__write">
+        <h3 class="wac-rev__label">Review this product</h3>
+        <div class="wac-rev__pick" role="group" aria-label="Choose a star rating">
+          {%- for n in (1..5) -%}
+            <button type="button" class="wac-rev__pick-star" data-wac-rev-write aria-label="{{ n }} star{% if n > 1 %}s{% endif %}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+            </button>
+          {%- endfor -%}
+        </div>
+        <button type="button" class="wac-rev__write-btn" data-wac-rev-write>Write a review</button>
+      </div>
+    </div>
+
+    <div
+      id="judgeme_product_reviews"
+      class="jdgm-widget jdgm-review-widget jdgm-outside-widget wac-rev__list"
+      data-id="{{ p.id }}"
+      data-product-title="{{ p.title | escape }}"
+      data-auto-install="false"
+    >
+      {{ widget }}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    if (window.wacReviews) return;
+    window.wacReviews = true;
+    // our buttons open Judge.me's own form (its link stays in the widget, hidden)
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-wac-rev-write]');
+      if (!btn) return;
+      var section = btn.closest('.wac-rev');
+      var link = section && section.querySelector('.jdgm-write-rev-link');
+      if (link) {
+        link.click();
+        var form = section.querySelector('.jdgm-form-wrapper, .jdgm-form');
+        (form || link).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Reviews (Judge.me)",
+  "tag": "div",
+  "class": "wac-section-reviews",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Reviews" }
+  ],
+  "presets": [{ "name": "Reviews (Judge.me)" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

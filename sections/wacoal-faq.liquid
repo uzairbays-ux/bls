@@ -1,0 +1,65 @@
+{%- doc -%}
+  FAQ accordion (Wacoal "helpful tips" look: soft box, italic serif heading, rows that open one at a
+  time), with FAQPage structured data for search engines. Questions are blocks, edited in the editor.
+{%- enddoc -%}
+{%- if section.blocks.size > 0 -%}
+<section class="wac-faq" id="faq" aria-labelledby="WacFaqTitle-{{ section.id }}">
+  <div class="wac-faq__box">
+    <h2 class="wac-faq__title" id="WacFaqTitle-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+    {%- if section.settings.subheading != blank -%}
+      <p class="wac-faq__sub">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+    <div class="wac-faq__list">
+      {%- for block in section.blocks -%}
+        <details class="wac-faq__item" name="wac-faq-{{ section.id }}" {{ block.shopify_attributes }}{% if forloop.first and section.settings.open_first %} open{% endif %}>
+          <summary class="wac-faq__q">
+            <span>{{ block.settings.question | escape }}</span>
+            <span class="wac-faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="wac-faq__a rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for block in section.blocks -%}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "div",
+  "class": "wac-section-faq",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" },
+    { "type": "text", "id": "subheading", "label": "Sub-heading" },
+    { "type": "checkbox", "id": "open_first", "label": "Open the first question", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer</p>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "FAQ" }]
+}
+{% endschema %}

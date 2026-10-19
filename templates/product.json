@@ -1025,11 +1025,71 @@
         "padding-block-start": 64,
         "padding-block-end": 0
       }
+    },
+    "reviews": {
+      "type": "wacoal-reviews",
+      "settings": {
+        "heading": "Reviews"
+      }
+    },
+    "faq": {
+      "type": "wacoal-faq",
+      "blocks": {
+        "faq_size": {
+          "type": "question",
+          "settings": {
+            "question": "How do I find my size?",
+            "answer": "<p>Tap <strong>Size Guide</strong> next to the sizes on this page for this style's chart, and Sister Size for bras. For a full fitting walk-through, visit our <a href=\"/pages/the-perfect-fit\">Fitting Room</a>.</p>"
+          }
+        },
+        "faq_shipping": {
+          "type": "question",
+          "settings": {
+            "question": "Is shipping free?",
+            "answer": "<p>Yes, shipping is free on domestic orders above Rs.9,999.</p>"
+          }
+        },
+        "faq_cod": {
+          "type": "question",
+          "settings": {
+            "question": "Can I pay cash on delivery?",
+            "answer": "<p>Yes, cash on delivery is available.</p>"
+          }
+        },
+        "faq_returns": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return or exchange lingerie?",
+            "answer": "<p>We do not accept returns or exchanges for lingerie due to the intimate nature of the product. Any shortages or damages must be reported to customer service within 1 day of delivery.</p>"
+          }
+        },
+        "faq_care": {
+          "type": "question",
+          "settings": {
+            "question": "How should I care for my lingerie?",
+            "answer": "<p>Hand wash with similar colours, do not bleach, do not tumble dry, line dry in shade and do not dry clean.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_size",
+        "faq_shipping",
+        "faq_cod",
+        "faq_returns",
+        "faq_care"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "subheading": "",
+        "open_first": false
+      }
     }
   },
   "order": [
     "main",
     "product_usp",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "reviews",
+    "faq"
   ]
 }
