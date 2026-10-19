@@ -7,13 +7,14 @@
   @param {string} [modal_title] - Default "Size Chart"
   @param {string} [alignment] - left | center | right (default right)
   @param {image} [sister_image] - Sister Size chart
+  @param {string} [sister_table] - Sister Size chart as table HTML (used instead of the image)
   @param {string} [sister_label] - Default "Sister Size"
   @param {string} [attrs] - Extra attributes for the wrapper (editor)
 {%- enddoc -%}
 <div class="bls-sg bls-sg--{{ alignment | default: 'right' }}" data-bls-size-guide {{ attrs }}>
   <div class="bls-sg__links">
     <button type="button" class="bls-sg__link" data-bls-sg-open="chart">{{ link_label | default: 'Size Guide' | escape }}</button>
-    {%- if sister_image != blank -%}
+    {%- if sister_image != blank or sister_table != blank -%}
       <button type="button" class="bls-sg__link" data-bls-sg-open="sister" data-bls-sg-sister-link hidden>{{ sister_label | default: 'Sister Size' | escape }}</button>
     {%- endif -%}
   </div>
@@ -29,7 +30,7 @@
     <div class="bls-sg__panels" data-bls-sg-panels></div>
   </dialog>
 
-  {%- if sister_image != blank -%}
+  {%- if sister_image != blank or sister_table != blank -%}
     <dialog class="bls-sg__modal" data-bls-sg-modal="sister" aria-labelledby="BlsSgSister-{{ uid }}">
       <div class="bls-sg__head">
         <h2 class="bls-sg__title" id="BlsSgSister-{{ uid }}">{{ sister_label | default: 'Sister Size' | escape }}</h2>
@@ -37,7 +38,11 @@
       </div>
       <div class="bls-sg__panels">
         <div class="bls-sg__panel">
-          <img src="{{ sister_image | image_url: width: 1400 }}" alt="{{ sister_image.alt | default: 'Sister size chart' | escape }}" loading="lazy">
+          {%- if sister_table != blank -%}
+            {{ sister_table }}
+          {%- else -%}
+            <img src="{{ sister_image | image_url: width: 1400 }}" alt="{{ sister_image.alt | default: 'Sister size chart' | escape }}" loading="lazy">
+          {%- endif -%}
         </div>
       </div>
     </dialog>

@@ -90,7 +90,7 @@
     if block.type != 'size_chart' and block.type != 'extra_chart'
       continue
     endif
-    if block.settings.image == blank
+    if block.settings.image == blank and block.settings.table == blank
       continue
     endif
     if block.type == 'size_chart' and sg_has_main
@@ -116,7 +116,16 @@
       endfor
     endunless
     if hit
-      assign sg_src = block.settings.image | image_url: width: 1400
+      comment
+        A chart typed in as a table is shown instead of the image (no image to download).
+      endcomment
+      assign sg_src = ''
+      assign sg_body = ''
+      if block.settings.table != blank
+        assign sg_body = '<template>' | append: block.settings.table | append: '</template>'
+      elsif block.settings.image != blank
+        assign sg_src = block.settings.image | image_url: width: 1400
+      endif
       assign sg_alt = block.settings.image.alt | default: block.settings.title | escape
       if block.type == 'size_chart'
         assign sg_has_main = true
@@ -124,11 +133,11 @@
         if block.settings.show_sister_size
           assign sg_marker = sg_marker | append: ' data-sister'
         endif
-        assign sg_marker = sg_marker | append: '></span>'
+        assign sg_marker = sg_marker | append: '>' | append: sg_body | append: '</span>'
       else
         assign sg_tab = block.settings.tab_label | default: 'More sizes' | escape
         assign sg_main_tab = block.settings.main_tab_label | escape
-        assign sg_marker = '<span class="bls-sg-rule" data-kind="extra" data-src="' | append: sg_src | append: '" data-alt="' | append: sg_alt | append: '" data-tab="' | append: sg_tab | append: '" data-main-tab="' | append: sg_main_tab | append: '"></span>'
+        assign sg_marker = '<span class="bls-sg-rule" data-kind="extra" data-src="' | append: sg_src | append: '" data-alt="' | append: sg_alt | append: '" data-tab="' | append: sg_tab | append: '" data-main-tab="' | append: sg_main_tab | append: '">' | append: sg_body | append: '</span>'
       endif
       assign sg_rules = sg_rules | append: sg_marker
     endif
@@ -326,6 +335,7 @@
       modal_title: 'Size Chart',
       alignment: 'right',
       sister_image: ss.sister_size_chart,
+      sister_table: ss.sister_size_table,
       sister_label: 'Sister Size'
     -%}
   {%- endif -%}
@@ -908,6 +918,7 @@
     { "type": "text", "id": "cup_label", "label": "Cup label", "default": "Cup" },
     { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Size Guide", "info": "The charts are the Size chart / Extra size chart blocks: the first Size chart whose tags or title match is shown; each matching Extra size chart is a tab." },
     { "type": "image_picker", "id": "sister_size_chart", "label": "Sister Size chart", "info": "Shown on charts that have Sister Size switched on." },
+    { "type": "html", "id": "sister_size_table", "label": "Sister Size chart as a table", "info": "Shown instead of the image when filled." },
     { "type": "text", "id": "quantity_label", "label": "Quantity label", "default": "Quantity" },
     { "type": "header", "content": "Add to cart" },
     { "type": "text", "id": "select_label", "label": "Button before a size is picked", "default": "Select your size" },
@@ -952,6 +963,7 @@
       "settings": [
         { "type": "text", "id": "title", "label": "Name (only shown in the editor)" },
         { "type": "image_picker", "id": "image", "label": "Chart image" },
+        { "type": "html", "id": "table", "label": "Chart as a table", "info": "Shown instead of the image when filled. Loads faster and stays sharp on phones." },
         { "type": "text", "id": "tags", "label": "Product tags", "info": "Comma separated, case ignored. Any one is enough." },
         { "type": "text", "id": "title_contains", "label": "Or title contains", "info": "Comma separated phrases, case ignored." },
         { "type": "checkbox", "id": "show_sister_size", "label": "Show the Sister Size link", "default": false }
@@ -963,6 +975,7 @@
       "settings": [
         { "type": "text", "id": "title", "label": "Name (only shown in the editor)" },
         { "type": "image_picker", "id": "image", "label": "Chart image" },
+        { "type": "html", "id": "table", "label": "Chart as a table", "info": "Shown instead of the image when filled." },
         { "type": "text", "id": "tab_label", "label": "Tab label", "default": "More sizes" },
         { "type": "text", "id": "main_tab_label", "label": "Rename the main chart's tab", "info": "Optional, e.g. Bra size." },
         { "type": "text", "id": "tags", "label": "Product tags", "info": "Comma separated, case ignored. Any one is enough." },

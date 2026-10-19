@@ -5655,6 +5655,118 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   margin: 0 auto;
 }
 
+/* size charts typed in as tables (Size chart block "Chart as a table") */
+.bls-chart {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--wac-ink);
+}
+
+.bls-chart__title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bls-chart__unit,
+.bls-chart__lead {
+  margin: 0 0 12px;
+  color: #555;
+  font-size: 13px;
+  text-align: center;
+}
+
+.bls-chart__lead {
+  max-width: 560px;
+  margin: 0 auto 18px;
+  font-size: 14px;
+}
+
+.bls-chart__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #e6dcd4;
+  border-radius: 4px;
+}
+
+.bls-chart__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.bls-chart__table th,
+.bls-chart__table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #efe7e1;
+  white-space: nowrap;
+}
+
+.bls-chart__table thead th {
+  background: var(--wac-blush);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.bls-chart__table thead tr + tr th {
+  border-top: 1px solid #e0cbbb;
+  font-weight: 500;
+}
+
+.bls-chart__table tbody th {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  font-weight: 600;
+}
+
+.bls-chart__table tbody tr:nth-child(even) th,
+.bls-chart__table tbody tr:nth-child(even) td {
+  background: #faf6f3;
+}
+
+.bls-chart__table tbody tr:last-child th,
+.bls-chart__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* "Fits bra sizes" lists wrap instead of scrolling */
+.bls-chart__table--list td {
+  white-space: normal;
+  text-align: left;
+}
+
+.bls-chart__note {
+  margin: 12px 0 0;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+}
+
+.bls-sg__panel .bls-chart + .bls-chart {
+  margin-top: 24px;
+}
+
+@media (max-width: 749px) {
+  .bls-sg__panels {
+    padding: 0 14px 18px;
+  }
+
+  .bls-chart__table th,
+  .bls-chart__table td {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+}
+
 /* ===== Wacoal product page: today's features ========================= */
 /* BLS colours on the add button once a size is picked (Wacoal uses blush) */
 .wac-pdp__add.is-ready {

@@ -1,5 +1,6 @@
 /* Size Guide link + popup (snippets/bls-size-guide-ui.liquid): first .bls-sg-rule[data-kind=main] is the
-   chart, every [data-kind=extra] a tab; Sister Size shows when the chart allows it. */
+   chart, every [data-kind=extra] a tab; Sister Size shows when the chart allows it. A rule holding a
+   <template> is a chart typed in as a table and is shown instead of an image. */
 (function () {
   if (window.blsSizeGuide) { window.blsSizeGuide.refresh(); return; }
 
@@ -21,14 +22,19 @@
     });
   }
 
-  function panel(src, alt, id, hidden) {
+  function panel(rule, id, hidden) {
     var p = document.createElement('div');
     p.className = 'bls-sg__panel';
     if (id) { p.id = id; p.setAttribute('role', 'tabpanel'); }
     if (hidden) p.hidden = true;
-    var img = document.createElement('img');
-    img.src = src; img.alt = alt || 'Size chart'; img.loading = 'lazy';
-    p.appendChild(img);
+    var tpl = rule.querySelector('template');
+    if (tpl) {
+      p.appendChild(tpl.content.cloneNode(true));
+    } else {
+      var img = document.createElement('img');
+      img.src = rule.dataset.src; img.alt = rule.dataset.alt || 'Size chart'; img.loading = 'lazy';
+      p.appendChild(img);
+    }
     return p;
   }
 
@@ -44,9 +50,9 @@
       for (var i = 0; i < r.extras.length; i++) {
         if (r.extras[i].dataset.mainTab) { mainLabel = r.extras[i].dataset.mainTab; break; }
       }
-      items.push({ label: mainLabel, src: r.main.dataset.src, alt: r.main.dataset.alt });
+      items.push({ label: mainLabel, rule: r.main });
     }
-    r.extras.forEach(function (x) { items.push({ label: x.dataset.tab, src: x.dataset.src, alt: x.dataset.alt }); });
+    r.extras.forEach(function (x) { items.push({ label: x.dataset.tab, rule: x }); });
     var uid = 'BlsSgPanel-' + Math.random().toString(36).slice(2, 8);
     items.forEach(function (it, n) {
       if (useTabs) {
@@ -60,7 +66,7 @@
         b.textContent = it.label;
         tabs.appendChild(b);
       }
-      panels.appendChild(panel(it.src, it.alt, useTabs ? uid + '-' + n : '', useTabs && n > 0));
+      panels.appendChild(panel(it.rule, useTabs ? uid + '-' + n : '', useTabs && n > 0));
     });
     tabs.hidden = !useTabs;
   }
