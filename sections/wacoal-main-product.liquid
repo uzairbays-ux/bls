@@ -376,7 +376,17 @@
   <div class="wac-pdp__head wac-pdp__head--mobile">{{ head }}</div>
 
   <div class="wac-pdp__container">
-    <div class="wac-pdp__gallery" data-wac-gallery>
+    <div class="wac-pdp__gallery{% if images.size > 1 %} wac-pdp__gallery--thumbs{% endif %}" data-wac-gallery>
+      {%- if images.size > 1 -%}
+        <div class="wac-pdp__thumbs" data-wac-thumbs aria-label="Choose a photo">
+          {%- for media in images -%}
+            {%- assign t_img = media.preview_image | default: media -%}
+            <button type="button" class="wac-pdp__thumb{% if forloop.first %} is-active{% endif %}" data-wac-thumb="{{ forloop.index0 }}" aria-label="Photo {{ forloop.index }} of {{ images.size }}">
+              <img src="{{ t_img | image_url: width: 160 }}" srcset="{{ t_img | image_url: width: 80 }} 80w, {{ t_img | image_url: width: 160 }} 160w" sizes="76px" width="76" height="{{ 76 | divided_by: t_img.aspect_ratio | round }}" alt="" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
       <div class="wac-pdp__frame">
         <div class="wac-pdp__slider" data-wac-slider tabindex="0" aria-label="Product photos">
           {%- for media in images -%}

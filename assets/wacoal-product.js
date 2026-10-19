@@ -118,6 +118,8 @@ class WacoalProduct {
     const prev = this.el.querySelector('[data-wac-prev]');
     const next = this.el.querySelector('[data-wac-next]');
     const dots = Array.from(this.el.querySelectorAll('[data-wac-dot]'));
+    const thumbsBox = this.el.querySelector('[data-wac-thumbs]');
+    const thumbs = Array.from(this.el.querySelectorAll('[data-wac-thumb]'));
     const slides = () => Array.from(slider.children);
     const index = () => {
       const w = slides()[0] ? slides()[0].getBoundingClientRect().width : slider.clientWidth;
@@ -135,10 +137,22 @@ class WacoalProduct {
       if (prev) prev.disabled = slider.scrollLeft <= 1;
       if (next) next.disabled = slider.scrollLeft >= max;
       dots.forEach((d, n) => d.classList.toggle('is-active', n === i));
+      thumbs.forEach((t, n) => {
+        const on = n === i;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-current', on ? 'true' : 'false');
+        // keep the active thumb in view inside its own column (never scrolls the page)
+        if (on && thumbsBox) {
+          const top = t.offsetTop; // the thumbs column is position: relative
+          if (top < thumbsBox.scrollTop) thumbsBox.scrollTop = top;
+          else if (top + t.offsetHeight > thumbsBox.scrollTop + thumbsBox.clientHeight) thumbsBox.scrollTop = top + t.offsetHeight - thumbsBox.clientHeight;
+        }
+      });
     };
     if (prev) prev.addEventListener('click', () => this.goTo(Math.max(0, index() - 1)));
     if (next) next.addEventListener('click', () => this.goTo(Math.min(slides().length - 1, index() + 1)));
     dots.forEach((d) => d.addEventListener('click', () => this.goTo(Number(d.dataset.wacDot))));
+    thumbs.forEach((t) => t.addEventListener('click', () => this.goTo(Number(t.dataset.wacThumb))));
     slider.addEventListener('scroll', update, { passive: true });
     slider.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); this.goTo(Math.min(slides().length - 1, index() + 1)); }
