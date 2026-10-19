@@ -46,7 +46,14 @@
                   elsif value.swatch.image
                     assign sw = value.swatch.image | image_url: width: 66 | prepend: 'url(' | append: ') center / cover'
                   else
-                    assign sw = value.label | downcase | strip
+                    # same colour names as the product card swatches (two-tone names give a split swatch)
+                    capture sw
+                      render 'wacoal-color-hex', name: value.label
+                    endcapture
+                    assign sw = sw | strip
+                    if sw == blank
+                      assign sw = value.label | downcase | strip
+                    endif
                   endif
                 -%}
                 <span class="wac-filter__swatch" style="--sw: {{ sw }};"></span>
