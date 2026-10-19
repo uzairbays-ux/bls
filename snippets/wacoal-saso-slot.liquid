@@ -1,0 +1,34 @@
+{%- doc -%}
+  Product pages: the SASO volume-discount app drops its notification bar ("Buy 3 for Rs.9500") straight under the
+  header. This moves the app's #saso-notifications element into a slot right after the product title, and puts it
+  back there if the product details are re-rendered (variant change).
+{%- enddoc -%}
+<script>
+  (function () {
+    function place() {
+      var bar = document.getElementById('saso-notifications');
+      var title = document.querySelector('.product-details h1');
+      if (!bar || !title) return;
+      var block = title.closest('.text-block') || title;
+      var slot = block.nextElementSibling;
+      if (!slot || !slot.hasAttribute('data-wac-saso-slot')) {
+        slot = document.querySelector('[data-wac-saso-slot]') || document.createElement('div');
+        slot.className = 'wac-saso-slot';
+        slot.setAttribute('data-wac-saso-slot', '');
+        block.insertAdjacentElement('afterend', slot);
+      }
+      if (bar.parentElement !== slot) slot.appendChild(bar);
+    }
+    var queued = false;
+    function queue() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; place(); });
+    }
+    function start() {
+      place();
+      new MutationObserver(queue).observe(document.body, { childList: true, subtree: true });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  })();
+</script>

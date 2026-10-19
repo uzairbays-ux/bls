@@ -120,7 +120,8 @@
           var about = document.getElementById('CollectionAbout');
           if (!about) return;
           e.preventDefault();
-          var header = document.querySelector('.header-section');
+          // the header only stays on screen in 'always' mode; in 'scroll-up' mode it hides while scrolling down
+          var header = document.querySelector('#header-component[sticky="always"]');
           var offset = (header ? header.getBoundingClientRect().height : 0) + 20;
           window.scrollTo({ top: about.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
         });

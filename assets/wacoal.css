@@ -3973,3 +3973,63 @@ button.wac-pdp__feature-head {
   --button-background-color: var(--color-secondary-button-hover-background);
   --button-border-color: var(--color-secondary-button-hover-border);
 }
+
+/* ===== Header: hides on scroll down, slides back in on scroll up ======= */
+/* header-group.json enable_sticky_header = scroll-up; Horizon only fades it in, this slides it down */
+@keyframes wac-header-in {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active'][data-scroll-direction='up']) {
+  animation: wac-header-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
+    animation: none;
+  }
+}
+
+/* ===== Product page: SASO discount bar under the title ================= */
+/* snippets/wacoal-saso-slot.liquid moves the app's bar here; the app sets colours inline */
+.wac-saso-slot {
+  width: 100%;
+  flex: 0 0 100%;
+  align-self: stretch;
+}
+
+.wac-saso-slot #saso-notifications {
+  margin: 12px 0 4px;
+  padding-top: 0 !important;
+}
+
+.wac-saso-slot .saso-notification {
+  position: relative;
+  padding: 10px 40px 10px 16px !important;
+  border-radius: 2px;
+  text-align: left;
+}
+
+.wac-saso-slot .saso-notification p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.wac-saso-slot .saso-notification-x {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  margin: 0;
+  float: none;
+  transform: translateY(-50%);
+  line-height: 1;
+}
+
+.wac-saso-slot .saso-notification-x a {
+  background: none !important;
+  text-decoration: none;
+}
