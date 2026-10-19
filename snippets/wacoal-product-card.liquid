@@ -2,6 +2,8 @@
   Product card used by the Wacoal-style sections (Best Sellers carousel, collection grid).
   @param {product} product - The product
   @param {string} [badge] - Text of the white pill on the photo, e.g. Best Seller
+  @param {number} [new_days] - Show "New arrival" for products published in the last this many days (default 30, 0 = off)
+  @param {boolean} [no_size_flag] - Hide the size range pill (S-XL / Up to E cup)
   @param {string} [sizes] - The img sizes attribute for the photo
   @param {boolean} [eager] - Load the photo straight away (first row of a grid)
 {%- enddoc -%}
@@ -22,6 +24,69 @@
   endfor
   assign rating = product.metafields.reviews.rating.value
   assign rating_count = product.metafields.reviews.rating_count.value
+
+  comment
+    Pills on the photo, Wacoal style: one status pill (badge, else New arrival, else Sale) and a size range pill.
+  endcomment
+  assign status_flag = badge
+  if status_flag == blank
+    assign days = new_days | default: 30
+    assign is_new = false
+    for tag in product.tags
+      assign t = tag | downcase | strip
+      if t == 'new' or t == 'new arrival' or t == 'new arrivals'
+        assign is_new = true
+        break
+      endif
+    endfor
+    if is_new == false and days > 0 and product.published_at
+      assign now_s = 'now' | date: '%s' | plus: 0
+      assign published_s = product.published_at | date: '%s' | plus: 0
+      assign age_days = now_s | minus: published_s | divided_by: 86400
+      if age_days < days
+        assign is_new = true
+      endif
+    endif
+    if is_new
+      assign status_flag = 'New arrival'
+    elsif product.compare_at_price > product.price
+      assign status_flag = 'Sale'
+    endif
+  endif
+
+  assign size_flag = ''
+  unless no_size_flag
+    for option in product.options_with_values
+      assign oname = option.name | downcase
+      if oname != 'size'
+        continue
+      endif
+      assign first_value = option.values.first | upcase | strip
+      assign lead = first_value | slice: 0
+      if '0123456789' contains lead
+        comment band + cup sizes (34B..40DD): the biggest cup
+        endcomment
+        assign cups = 'AA,A,B,C,D,DD,E,DDD,F,FF,G,GG,H,HH,J,JJ,K' | split: ','
+        assign max_cup = -1
+        for value in option.values
+          assign cup = value | upcase | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' | strip
+          for c in cups
+            if c == cup and forloop.index0 > max_cup
+              assign max_cup = forloop.index0
+            endif
+          endfor
+        endfor
+        if max_cup >= 0
+          assign size_flag = 'Up to ' | append: cups[max_cup] | append: ' cup'
+        endif
+      elsif option.values.size > 1
+        assign from = option.values.first | split: '/' | first | strip
+        assign to = option.values.last | split: '/' | last | strip
+        assign size_flag = from | append: '-' | append: to
+      endif
+      break
+    endfor
+  endunless
 -%}
 <div class="wac-card">
   <div class="wac-card__top">
@@ -36,13 +101,13 @@
           <img class="wac-card__img wac-card__img--back" src="{{ back | image_url: width: 560 }}" width="{{ back.width }}" height="{{ back.height }}" alt="" loading="lazy">
         {%- endif -%}
       </span>
-      {%- if badge != blank or product.compare_at_price > product.price -%}
+      {%- if status_flag != blank or size_flag != blank -%}
         <span class="wac-card__flags">
-          {%- if badge != blank -%}
-            <span class="wac-card__flag">{{ badge | escape }}</span>
+          {%- if status_flag != blank -%}
+            <span class="wac-card__flag">{{ status_flag | escape }}</span>
           {%- endif -%}
-          {%- if product.compare_at_price > product.price -%}
-            <span class="wac-card__flag wac-card__flag--soft">Sale</span>
+          {%- if size_flag != blank -%}
+            <span class="wac-card__flag">{{ size_flag | escape }}</span>
           {%- endif -%}
         </span>
       {%- endif -%}

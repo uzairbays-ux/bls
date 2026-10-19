@@ -2284,5 +2284,23 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "BLS menu labels",
+    "settings": [
+      {
+        "type": "text",
+        "id": "wac_new_menu_items",
+        "label": "Menu items with a \"New\" label",
+        "default": "Satin Secrets",
+        "info": "Top-level menu titles, separated by commas."
+      },
+      {
+        "type": "text",
+        "id": "wac_new_menu_label",
+        "label": "Label text",
+        "default": "New"
+      }
+    ]
   }
 ]

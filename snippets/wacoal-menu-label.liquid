@@ -1,0 +1,16 @@
+{%- doc -%}
+  Small "New" pill after a top-level menu title listed in theme setting wac_new_menu_items.
+  @param {string} title - The menu link title
+{%- enddoc -%}
+{%- liquid
+  assign wanted = title | downcase | strip
+  assign items = settings.wac_new_menu_items | downcase | split: ','
+  for item in items
+    assign name = item | strip
+    if name != blank and name == wanted
+      assign label = settings.wac_new_menu_label | default: 'New' | escape
+      echo '<span class="wac-menu-new">' | append: label | append: '</span>'
+      break
+    endif
+  endfor
+-%}

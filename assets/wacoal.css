@@ -4316,3 +4316,58 @@ button.wac-pdp__feature-head {
     gap: 22px 8px;
   }
 }
+
+/* ===== Menu "New" label (theme setting wac_new_menu_items) ============= */
+.menu-list__link-title:has(.wac-menu-new) {
+  position: relative;
+}
+
+.wac-menu-new {
+  display: inline-block;
+  padding: 3px 6px 2px;
+  border-radius: 8px;
+  background: #73170f;
+  color: #fff;
+  font-family: var(--wac-font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* desktop: a small tag over the end of the title, so the menu spacing stays as it is */
+.menu-list__link-title .wac-menu-new {
+  position: absolute;
+  top: -9px;
+  right: -16px;
+  pointer-events: none;
+}
+
+/* drawer: inline after the title */
+.menu-drawer__menu-item .wac-menu-new {
+  margin-left: 8px;
+}
+
+/* product cards: pills wrap on narrow cards */
+.wac-card__flags {
+  right: 10px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-card__flags {
+    left: 6px;
+    right: 6px;
+    bottom: 8px;
+    gap: 4px;
+  }
+
+  .wac-card__flag {
+    padding: 6px 9px;
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: 0.3px;
+  }
+}
