@@ -1,0 +1,301 @@
+{%- doc -%}
+  Size Guide link + popup for the product page, ported from the live theme (sections/product-template.liquid
+  + snippets/sizeChart-popup.liquid there). The rules are child blocks:
+  - "Size chart" (_bls-size-chart): the first one that matches the product is the chart.
+  - "Extra size chart" (_bls-size-chart-extra): every match is added as its own tab.
+  Each child prints a marker only when it matches; no match = no link. "Sister Size" shows when the
+  chosen chart has it switched on.
+{%- enddoc -%}
+{%- liquid
+  assign bs = block.settings
+-%}
+<div class="bls-sg bls-sg--{{ bs.alignment }}" data-bls-size-guide {{ block.shopify_attributes }}>
+  <div class="bls-sg__links">
+    <button type="button" class="bls-sg__link" data-bls-sg-open="chart">{{ bs.link_label | default: 'Size Guide' | escape }}</button>
+    {%- if bs.sister_image != blank -%}
+      <button type="button" class="bls-sg__link" data-bls-sg-open="sister" data-bls-sg-sister-link hidden>{{ bs.sister_label | default: 'Sister Size' | escape }}</button>
+    {%- endif -%}
+  </div>
+
+  <div class="bls-sg__rules" hidden>{% content_for 'blocks' %}</div>
+
+  <dialog class="bls-sg__modal" data-bls-sg-modal="chart" aria-labelledby="BlsSgTitle-{{ block.id }}">
+    <div class="bls-sg__head">
+      <h2 class="bls-sg__title" id="BlsSgTitle-{{ block.id }}">{{ bs.modal_title | default: 'Size Chart' | escape }}</h2>
+      <button type="button" class="bls-sg__close" data-bls-sg-close aria-label="Close">&#215;</button>
+    </div>
+    <div class="bls-sg__tabs" data-bls-sg-tabs role="tablist" hidden></div>
+    <div class="bls-sg__panels" data-bls-sg-panels></div>
+  </dialog>
+
+  {%- if bs.sister_image != blank -%}
+    <dialog class="bls-sg__modal" data-bls-sg-modal="sister" aria-labelledby="BlsSgSister-{{ block.id }}">
+      <div class="bls-sg__head">
+        <h2 class="bls-sg__title" id="BlsSgSister-{{ block.id }}">{{ bs.sister_label | default: 'Sister Size' | escape }}</h2>
+        <button type="button" class="bls-sg__close" data-bls-sg-close aria-label="Close">&#215;</button>
+      </div>
+      <div class="bls-sg__panels">
+        <div class="bls-sg__panel">
+          <img src="{{ bs.sister_image | image_url: width: 1400 }}" alt="{{ bs.sister_image.alt | default: 'Sister size chart' | escape }}" loading="lazy">
+        </div>
+      </div>
+    </dialog>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    if (window.blsSizeGuide) { window.blsSizeGuide.refresh(); return; }
+
+    function rules(root) {
+      var all = Array.prototype.slice.call(root.querySelectorAll('.bls-sg-rule'));
+      return {
+        main: all.filter(function (r) { return r.dataset.kind === 'main'; })[0] || null,
+        extras: all.filter(function (r) { return r.dataset.kind === 'extra'; })
+      };
+    }
+
+    function refresh() {
+      document.querySelectorAll('[data-bls-size-guide]').forEach(function (root) {
+        var sister = root.querySelector('[data-bls-sg-sister-link]');
+        if (sister) {
+          var main = rules(root).main;
+          sister.hidden = !(main && main.hasAttribute('data-sister'));
+        }
+      });
+    }
+
+    function panel(src, alt, id, hidden) {
+      var p = document.createElement('div');
+      p.className = 'bls-sg__panel';
+      if (id) { p.id = id; p.setAttribute('role', 'tabpanel'); }
+      if (hidden) p.hidden = true;
+      var img = document.createElement('img');
+      img.src = src; img.alt = alt || 'Size chart'; img.loading = 'lazy';
+      p.appendChild(img);
+      return p;
+    }
+
+    function fill(root, modal) {
+      var r = rules(root);
+      var tabs = modal.querySelector('[data-bls-sg-tabs]');
+      var panels = modal.querySelector('[data-bls-sg-panels]');
+      tabs.innerHTML = ''; panels.innerHTML = '';
+      var useTabs = !!(r.main && r.extras.length);
+      var items = [];
+      if (r.main) {
+        var mainLabel = 'Size chart';
+        for (var i = 0; i < r.extras.length; i++) {
+          if (r.extras[i].dataset.mainTab) { mainLabel = r.extras[i].dataset.mainTab; break; }
+        }
+        items.push({ label: mainLabel, src: r.main.dataset.src, alt: r.main.dataset.alt });
+      }
+      r.extras.forEach(function (x) { items.push({ label: x.dataset.tab, src: x.dataset.src, alt: x.dataset.alt }); });
+      var uid = 'BlsSgPanel-' + Math.random().toString(36).slice(2, 8);
+      items.forEach(function (it, n) {
+        if (useTabs) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'bls-sg__tab' + (n === 0 ? ' is-active' : '');
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-selected', n === 0 ? 'true' : 'false');
+          b.setAttribute('aria-controls', uid + '-' + n);
+          b.dataset.blsSgTab = String(n);
+          b.textContent = it.label;
+          tabs.appendChild(b);
+        }
+        panels.appendChild(panel(it.src, it.alt, useTabs ? uid + '-' + n : '', useTabs && n > 0));
+      });
+      tabs.hidden = !useTabs;
+    }
+
+    document.addEventListener('click', function (e) {
+      var open = e.target.closest('[data-bls-sg-open]');
+      if (open) {
+        var root = open.closest('[data-bls-size-guide]');
+        var modal = root && root.querySelector('[data-bls-sg-modal="' + open.dataset.blsSgOpen + '"]');
+        if (!modal) return;
+        e.preventDefault();
+        if (open.dataset.blsSgOpen === 'chart') fill(root, modal);
+        if (modal.showModal) modal.showModal(); else modal.setAttribute('open', '');
+        return;
+      }
+      var tab = e.target.closest('[data-bls-sg-tab]');
+      if (tab) {
+        var m = tab.closest('.bls-sg__modal');
+        m.querySelectorAll('[data-bls-sg-tab]').forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        m.querySelectorAll('.bls-sg__panel').forEach(function (p, n) { p.hidden = String(n) !== tab.dataset.blsSgTab; });
+        return;
+      }
+      var close = e.target.closest('[data-bls-sg-close]');
+      var backdrop = e.target.classList && e.target.classList.contains('bls-sg__modal');
+      if (close || backdrop) {
+        var d = close ? close.closest('.bls-sg__modal') : e.target;
+        if (d.close) d.close(); else d.removeAttribute('open');
+      }
+    });
+
+    window.blsSizeGuide = { refresh: refresh };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refresh); else refresh();
+    // product details are re-rendered on variant change
+    var queued = false;
+    new MutationObserver(function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; refresh(); });
+    }).observe(document.body, { childList: true, subtree: true });
+  })();
+</script>
+
+{% stylesheet %}
+  .bls-sg:not(:has(.bls-sg-rule)) {
+    display: none;
+  }
+
+  .bls-sg__links {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+
+  .bls-sg--left .bls-sg__links {
+    justify-content: flex-start;
+  }
+
+  .bls-sg--center .bls-sg__links {
+    justify-content: center;
+  }
+
+  .bls-sg__link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-foreground);
+    font: inherit;
+    font-size: 0.75rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .bls-sg__link[hidden] {
+    display: none;
+  }
+
+  .bls-sg__modal {
+    width: min(920px, calc(100vw - 32px));
+    max-height: calc(100dvh - 48px);
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    overflow: auto;
+  }
+
+  .bls-sg__modal::backdrop {
+    background: rgb(0 0 0 / 0.55);
+  }
+
+  .bls-sg__head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 52px 12px;
+    background: #fff;
+  }
+
+  .bls-sg__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .bls-sg__close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: none;
+    color: #111;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .bls-sg__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px 14px;
+  }
+
+  .bls-sg__tabs[hidden] {
+    display: none;
+  }
+
+  .bls-sg__tab {
+    padding: 8px 18px;
+    border: 1px solid #1e1e1e;
+    background: #fff;
+    color: #1e1e1e;
+    font: inherit;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .bls-sg__tab.is-active {
+    background: #1e1e1e;
+    color: #fff;
+  }
+
+  .bls-sg__panels {
+    padding: 0 20px 22px;
+  }
+
+  .bls-sg__panel + .bls-sg__panel:not([hidden]) {
+    margin-top: 24px;
+  }
+
+  .bls-sg__panel[hidden] {
+    display: none;
+  }
+
+  .bls-sg__panel img {
+    display: block;
+    width: 100%;
+    max-width: 865px;
+    height: auto;
+    margin: 0 auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BLS size guide",
+  "tag": null,
+  "blocks": [{ "type": "_bls-size-chart" }, { "type": "_bls-size-chart-extra" }],
+  "settings": [
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Size Guide" },
+    { "type": "text", "id": "modal_title", "label": "Popup title", "default": "Size Chart" },
+    { "type": "select", "id": "alignment", "label": "Link alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "right" },
+    { "type": "image_picker", "id": "sister_image", "label": "Sister Size chart", "info": "Shown when the chosen chart has Sister Size switched on." },
+    { "type": "text", "id": "sister_label", "label": "Sister Size label", "default": "Sister Size" }
+  ],
+  "presets": [{ "name": "BLS size guide" }]
+}
+{% endschema %}

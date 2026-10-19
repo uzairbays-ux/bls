@@ -1,0 +1,56 @@
+{%- doc -%}
+  One size chart rule inside the "BLS size guide" block, same rules as the live theme's size_chart blocks:
+  matches when the product has one of the tags, or its title contains one of the phrases (case ignored).
+  The size guide uses the FIRST matching chart (block order), so put specific rules above general ones.
+  Outputs a marker only when the product matches; blocks/bls-size-guide.liquid does the rest.
+{%- enddoc -%}
+{%- liquid
+  assign product = closest.product
+  assign matches = false
+  if product and block.settings.image != blank
+    assign product_tags = product.tags | join: ',' | downcase | split: ','
+    assign product_title = product.title | downcase
+    assign rule_tags = block.settings.tags | downcase | split: ','
+    for rule_tag in rule_tags
+      assign needle = rule_tag | strip
+      if needle != '' and product_tags contains needle
+        assign matches = true
+        break
+      endif
+    endfor
+    unless matches
+      assign phrases = block.settings.title_contains | downcase | split: ','
+      for phrase in phrases
+        assign needle = phrase | strip
+        if needle != '' and product_title contains needle
+          assign matches = true
+          break
+        endif
+      endfor
+    endunless
+  endif
+-%}
+{%- if matches -%}
+  <span
+    class="bls-sg-rule"
+    data-kind="main"
+    data-src="{{ block.settings.image | image_url: width: 1400 }}"
+    data-alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+    {% if block.settings.show_sister_size %}data-sister{% endif %}
+    {{ block.shopify_attributes }}
+  ></span>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Size chart",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Name (only shown in the editor)" },
+    { "type": "image_picker", "id": "image", "label": "Chart image" },
+    { "type": "text", "id": "tags", "label": "Product tags", "info": "Comma separated, case ignored. Any one is enough." },
+    { "type": "text", "id": "title_contains", "label": "Or title contains", "info": "Comma separated phrases, case ignored." },
+    { "type": "checkbox", "id": "show_sister_size", "label": "Show the Sister Size link", "default": false }
+  ],
+  "presets": [{ "name": "Size chart" }]
+}
+{% endschema %}

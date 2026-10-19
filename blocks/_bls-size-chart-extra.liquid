@@ -1,0 +1,57 @@
+{%- doc -%}
+  Extra size chart inside the "BLS size guide" block, same as the live theme's extra_chart blocks:
+  every matching extra chart becomes its own tab next to the main chart (e.g. Bra size | Panty size on sets).
+  "Main tab label" renames the main chart's tab (the first matching extra chart that sets it wins).
+{%- enddoc -%}
+{%- liquid
+  assign product = closest.product
+  assign matches = false
+  if product and block.settings.image != blank
+    assign product_tags = product.tags | join: ',' | downcase | split: ','
+    assign product_title = product.title | downcase
+    assign rule_tags = block.settings.tags | downcase | split: ','
+    for rule_tag in rule_tags
+      assign needle = rule_tag | strip
+      if needle != '' and product_tags contains needle
+        assign matches = true
+        break
+      endif
+    endfor
+    unless matches
+      assign phrases = block.settings.title_contains | downcase | split: ','
+      for phrase in phrases
+        assign needle = phrase | strip
+        if needle != '' and product_title contains needle
+          assign matches = true
+          break
+        endif
+      endfor
+    endunless
+  endif
+-%}
+{%- if matches -%}
+  <span
+    class="bls-sg-rule"
+    data-kind="extra"
+    data-src="{{ block.settings.image | image_url: width: 1400 }}"
+    data-alt="{{ block.settings.image.alt | default: block.settings.tab_label | default: block.settings.title | escape }}"
+    data-tab="{{ block.settings.tab_label | default: 'More sizes' | escape }}"
+    data-main-tab="{{ block.settings.main_tab_label | escape }}"
+    {{ block.shopify_attributes }}
+  ></span>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Extra size chart",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Name (only shown in the editor)" },
+    { "type": "image_picker", "id": "image", "label": "Chart image" },
+    { "type": "text", "id": "tab_label", "label": "Tab label", "default": "More sizes" },
+    { "type": "text", "id": "main_tab_label", "label": "Rename the main chart's tab", "info": "Optional, e.g. Bra size." },
+    { "type": "text", "id": "tags", "label": "Product tags", "info": "Comma separated, case ignored. Any one is enough." },
+    { "type": "text", "id": "title_contains", "label": "Or title contains", "info": "Comma separated phrases, case ignored." }
+  ],
+  "presets": [{ "name": "Extra size chart" }]
+}
+{% endschema %}
