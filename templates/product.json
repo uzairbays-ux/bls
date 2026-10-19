@@ -201,31 +201,198 @@
               },
               "blocks": {}
             },
-            "text_size_guide_link": {
-              "type": "text",
-              "name": "Size guide link",
+            "bls_size_guide": {
+              "type": "bls-size-guide",
+              "name": "BLS size guide",
               "settings": {
-                "text": "<p><a href=\"/pages/size-guides\">Size Guide</a></p>",
-                "width": "100%",
-                "max_width": "normal",
+                "link_label": "Size Guide",
+                "modal_title": "Size Chart",
                 "alignment": "right",
-                "type_preset": "custom",
-                "font": "var(--font-body--family)",
-                "font_size": "0.75rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "sister_image": "shopify://shop_images/bls-sister-size-bra.jpg",
+                "sister_label": "Sister Size"
               },
-              "blocks": {}
+              "blocks": {
+                "size_chart_sml_bras": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "S/M/L bras (SizeChart-1)",
+                    "image": "shopify://shop_images/hix.ai-download-1790917858783.webp",
+                    "tags": "SizeChart-1, Seamless crop top",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_teen_panty": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Teens panties",
+                    "image": "shopify://shop_images/Teen_Panty_chart_size_-new.webp",
+                    "tags": "",
+                    "title_contains": "Teen Panty",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_teen_bra": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Teens bras",
+                    "image": "shopify://shop_images/Teen_Bra_size_chart-new.webp",
+                    "tags": "Teens",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_sleepwear": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Sleepwear",
+                    "image": "shopify://shop_images/Sleep_Wear.webp",
+                    "tags": "Sleep Wear, Pajama Sets, Pajama Set, Short Sets, Short Set, Nightgown, PJS, Lounge Wear",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_hena": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Hena thong",
+                    "image": "shopify://shop_images/BLS1447_Hena.webp",
+                    "tags": "",
+                    "title_contains": "Hena Thong, Hena Lace Thong",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_soraya": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Soraya boyshort",
+                    "image": "shopify://shop_images/BLS1455_Soraya.webp",
+                    "tags": "",
+                    "title_contains": "Soraya Lace Boyshort",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_lenore": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Lenore thong",
+                    "image": "shopify://shop_images/BLS10361_Lenore.webp",
+                    "tags": "",
+                    "title_contains": "Lenore Lace Thong",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_liza": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Liza boyshort",
+                    "image": "shopify://shop_images/BLS20101_Liza.webp",
+                    "tags": "",
+                    "title_contains": "Liza Lace Boyshort",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_haut": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Haut thong",
+                    "image": "shopify://shop_images/BLSDK1439_Haut.webp",
+                    "tags": "",
+                    "title_contains": "Haut Lace Thong",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_camis": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Slips & Camis",
+                    "image": "shopify://shop_images/camisole_size.webp",
+                    "tags": "Slips & Camis, Camisole",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_sports_bra": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Sports bras",
+                    "image": "shopify://shop_images/sports_bra_size-new.jpg",
+                    "tags": "Sports Bra",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_shapewear": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Shapewear",
+                    "image": "shopify://shop_images/shapewear_size.webp",
+                    "tags": "Shaper, Active & Shape Wear, Sports & Shape Wear",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "size_chart_bras": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Bras (band/cup)",
+                    "image": "shopify://shop_images/bra_size.webp",
+                    "tags": "Bras, Bra",
+                    "title_contains": "",
+                    "show_sister_size": true
+                  }
+                },
+                "size_chart_panties": {
+                  "type": "_bls-size-chart",
+                  "settings": {
+                    "title": "Panties",
+                    "image": "shopify://shop_images/panties-size-chart.webp",
+                    "tags": "Panties",
+                    "title_contains": "",
+                    "show_sister_size": false
+                  }
+                },
+                "extra_chart_bra_panty_sets": {
+                  "type": "_bls-size-chart-extra",
+                  "settings": {
+                    "title": "Bra & panty sets",
+                    "image": "shopify://shop_images/bra-panty-set-size-chart.webp",
+                    "tab_label": "Bra & panty set",
+                    "main_tab_label": "Bra size",
+                    "tags": "Bra & Panty Sets",
+                    "title_contains": "Bra & Panty Set"
+                  }
+                },
+                "extra_chart_panty_sets": {
+                  "type": "_bls-size-chart-extra",
+                  "settings": {
+                    "title": "Panty size (bra & panty sets)",
+                    "image": "shopify://shop_images/panties-size-chart.webp",
+                    "tab_label": "Panty size",
+                    "main_tab_label": "",
+                    "tags": "Bra & Panty Sets",
+                    "title_contains": "Bra & Panty Set"
+                  }
+                }
+              },
+              "block_order": [
+                "size_chart_sml_bras",
+                "size_chart_teen_panty",
+                "size_chart_teen_bra",
+                "size_chart_sleepwear",
+                "size_chart_hena",
+                "size_chart_soraya",
+                "size_chart_lenore",
+                "size_chart_liza",
+                "size_chart_haut",
+                "size_chart_camis",
+                "size_chart_sports_bra",
+                "size_chart_shapewear",
+                "size_chart_bras",
+                "size_chart_panties",
+                "extra_chart_bra_panty_sets",
+                "extra_chart_panty_sets"
+              ]
             },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
@@ -684,7 +851,7 @@
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
-            "text_size_guide_link",
+            "bls_size_guide",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "accordion_MrLdHN",
