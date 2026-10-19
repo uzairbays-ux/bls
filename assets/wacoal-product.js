@@ -101,6 +101,7 @@ class WacoalProduct {
       this.color = active ? active.dataset.wacColor : null;
     }
     this.initGallery();
+    this.initBar();
     this.initOptions();
     this.initQuantity();
     this.initFeatures();
@@ -161,6 +162,46 @@ class WacoalProduct {
     window.addEventListener('resize', update);
     update();
     this.initZoom(slider, index);
+  }
+
+  /* sticky bar (Intimissimi): title, price, colour and the add button once the real button scrolls away */
+  initBar() {
+    const bar = this.el.querySelector('[data-wac-bar]');
+    const add = this.el.querySelector('[data-wac-add]');
+    if (!bar || !add) return;
+    const btn = bar.querySelector('[data-wac-bar-btn]');
+    const price = bar.querySelector('[data-wac-bar-price]');
+    const color = bar.querySelector('[data-wac-bar-color]');
+    const mainPrice = this.el.querySelector('[data-wac-price] .wac-pdp__price-now');
+    const mainColor = this.el.querySelector('[data-wac-color-name]');
+    const sync = () => {
+      btn.textContent = add.textContent.trim();
+      btn.disabled = add.disabled;
+      btn.classList.toggle('is-ready', add.classList.contains('is-ready'));
+      if (price && mainPrice) price.textContent = mainPrice.textContent;
+      if (color && mainColor) color.textContent = mainColor.textContent;
+    };
+    sync();
+    new MutationObserver(sync).observe(add, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ['class', 'disabled'] });
+    if (mainPrice) new MutationObserver(sync).observe(mainPrice.parentElement, { childList: true, characterData: true, subtree: true });
+    if (mainColor) new MutationObserver(sync).observe(mainColor, { childList: true, characterData: true, subtree: true });
+    const row = add.closest('.wac-pdp__add-row') || add;
+    new IntersectionObserver(([entry]) => {
+      // only once the button has gone up off the screen, not before reaching it
+      const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      btn.tabIndex = show ? 0 : -1;
+    }).observe(row);
+    btn.addEventListener('click', () => {
+      if (add.classList.contains('is-ready') && !add.disabled) {
+        add.click();
+        return;
+      }
+      // no size yet: back to the size buttons
+      const target = this.el.querySelector('[data-wac-band-group], [data-wac-option-group]') || row;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' });
+    });
   }
 
   /* zoom: full-screen viewer, click to zoom 2.5x, mouse pans (desktop), drag scrolls (touch) */

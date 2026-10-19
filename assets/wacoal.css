@@ -6078,3 +6078,209 @@ html.wac-zoom-open {
     content: '';
   }
 }
+
+/* ===== Product page: Intimissimi touches ============================== */
+/* serif title */
+.wac-pdp__title {
+  font-family: var(--wac-font-serif);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+/* wide page with a photo strip: about 2.4 photos side by side next to a slim info column */
+@media screen and (min-width: 1100px) {
+  .wac-pdp__container {
+    max-width: none;
+    justify-content: space-between;
+    gap: 36px;
+    padding: 0 24px;
+  }
+
+  .wac-pdp__gallery,
+  .wac-pdp__gallery--thumbs {
+    flex: 1 1 auto;
+  }
+
+  .wac-pdp__wrap {
+    flex: 0 0 420px;
+  }
+
+  .wac-pdp__slide {
+    flex-basis: calc((100% - 8px) / 1.6);
+  }
+
+  .wac-pdp__thumbs {
+    max-height: 640px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .wac-pdp__slide {
+    flex-basis: calc((100% - 16px) / 2.4);
+  }
+}
+
+/* reviews row in the info column */
+.wac-pdp__reviews-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 15px;
+  padding: 15px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  color: var(--wac-ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.wac-pdp__reviews-row:hover > span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wac-pdp__reviews-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+/* sticky bar */
+.wac-pdp-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #ece7e2;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.06);
+  transform: translateY(-120%);
+  transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1), top 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* sits under the header while the header is showing */
+html:not(.wac-header-hidden) .wac-pdp-bar {
+  top: var(--wac-header-h);
+}
+
+.wac-pdp-bar.is-visible {
+  transform: translateY(0);
+}
+
+.wac-pdp-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  max-width: 1385px;
+  margin: 0 auto;
+  padding: 10px 24px;
+}
+
+.wac-pdp-bar__info {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wac-pdp-bar__title {
+  overflow: hidden;
+  font-family: var(--wac-font-serif);
+  font-size: 18px;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--wac-ink);
+}
+
+.wac-pdp-bar__price {
+  font-size: 14px;
+  color: #333;
+}
+
+.wac-pdp-bar__color {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.wac-pdp-bar__dot {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  border-radius: 50%;
+}
+
+.wac-pdp-bar__btn {
+  flex: 0 0 auto;
+  min-width: 220px;
+  height: 46px;
+  padding: 0 24px;
+  border: 1px solid #111;
+  border-radius: 60px;
+  background: #fff;
+  color: #111;
+  font-family: var(--wac-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wac-pdp-bar__btn.is-ready {
+  border-color: #1e1e1e;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-pdp__title {
+    font-size: 22px;
+  }
+
+  /* phones: the bar sits at the bottom */
+  .wac-pdp-bar,
+  html:not(.wac-header-hidden) .wac-pdp-bar {
+    top: auto;
+    bottom: 0;
+    border-top: 1px solid #ece7e2;
+    border-bottom: 0;
+    box-shadow: 0 -6px 18px rgb(0 0 0 / 0.06);
+    transform: translateY(120%);
+  }
+
+  .wac-pdp-bar.is-visible {
+    transform: translateY(0);
+  }
+
+  .wac-pdp-bar__inner {
+    gap: 12px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .wac-pdp-bar__color {
+    display: none;
+  }
+
+  .wac-pdp-bar__title {
+    font-size: 15px;
+  }
+
+  .wac-pdp-bar__btn {
+    min-width: 0;
+    height: 44px;
+    padding: 0 18px;
+  }
+}

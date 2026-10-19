@@ -797,6 +797,19 @@
         <div class="wac-pdp__accs">{{ rows }}</div>
       {%- endif -%}
 
+      {%- if rating != blank and rating_count > 0 -%}
+        <a class="wac-pdp__reviews-row" href="#reviews">
+          <span>Reviews ({{ rating_count }})</span>
+          <span class="wac-pdp__reviews-score">
+            <span class="wac-card__stars" style="--wac-rating: {{ rating.rating | times: 1.0 | divided_by: 5.0 | times: 100 | round: 1 }}%;" aria-hidden="true">
+              <span class="wac-card__stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="wac-card__stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </span>
+            {{ rating.rating | round: 1 }}/5
+          </span>
+        </a>
+      {%- endif -%}
+
       {%- liquid
         assign match = ss.match_collection
         assign match_count = 0
@@ -829,6 +842,23 @@
           </div>
         {%- endif -%}
       {%- endif -%}
+    </div>
+  </div>
+
+  {%- capture bar_dot -%}{%- render 'wacoal-color-hex', name: color_name -%}{%- endcapture -%}
+  <div class="wac-pdp-bar" data-wac-bar aria-hidden="true">
+    <div class="wac-pdp-bar__inner">
+      <div class="wac-pdp-bar__info">
+        <span class="wac-pdp-bar__title">{{ title | escape }}</span>
+        <span class="wac-pdp-bar__price" data-wac-bar-price>{{ shown_v.price | money }}</span>
+      </div>
+      {%- if color_name != blank -%}
+        <div class="wac-pdp-bar__color">
+          <span class="wac-pdp-bar__dot" style="background: {{ bar_dot | strip | default: '#d9d2cb' }};"></span>
+          <span>Color: <span data-wac-bar-color>{{ color_name | escape }}</span></span>
+        </div>
+      {%- endif -%}
+      <button type="button" class="wac-pdp-bar__btn" data-wac-bar-btn tabindex="-1">{{ ss.select_label | escape }}</button>
     </div>
   </div>
 
