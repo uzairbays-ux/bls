@@ -5751,6 +5751,15 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   text-align: center;
 }
 
+/* narrow charts (2 or 3 columns) stay compact on wide screens */
+.bls-chart:has(thead th:nth-child(2):last-child) {
+  max-width: 480px;
+}
+
+.bls-chart:has(thead th:nth-child(3):last-child) {
+  max-width: 560px;
+}
+
 .bls-sg__panel .bls-chart + .bls-chart {
   margin-top: 24px;
 }
