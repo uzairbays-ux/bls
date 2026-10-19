@@ -4871,7 +4871,9 @@ button.wac-pdp__feature-head {
 
 /* ===== Cart: drawer + page ============================================ */
 /* titles: Bebas caps like the collection titles */
-.cart-drawer__heading,
+/* id / extra class: Horizon's `h4, .h4.h4` heading rule outranks a single class */
+#cart-drawer-heading,
+.cart-title h1.h4,
 .cart-title h1 {
   display: flex;
   align-items: center;
