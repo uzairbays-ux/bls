@@ -1,0 +1,8 @@
+{%- doc -%}
+  The site's product card inside the product page carousels (Complete your look, Similar styles).
+  @param {product} product - The product
+  @param {string} [sizes] - The img sizes attribute
+{%- enddoc -%}
+<li class="wac-pcard wac-pcard--site">
+  {%- render 'wacoal-product-card', product: product, badge: '', sizes: sizes -%}
+</li>

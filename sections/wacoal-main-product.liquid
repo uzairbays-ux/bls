@@ -78,6 +78,62 @@
   assign rating = p.metafields.reviews.rating.value
   assign rating_count = p.metafields.reviews.rating_count.value
 
+  comment
+    Size charts, same rules as the live theme's product-template: the first "Size chart" block
+    whose tags or title phrases match is the chart; every matching "Extra size chart" is a tab.
+  endcomment
+  assign sg_has_main = false
+  assign sg_rules = ''
+  assign sg_tags = p.tags | join: ',' | downcase | split: ','
+  assign sg_title = p.title | downcase
+  for block in section.blocks
+    if block.type != 'size_chart' and block.type != 'extra_chart'
+      continue
+    endif
+    if block.settings.image == blank
+      continue
+    endif
+    if block.type == 'size_chart' and sg_has_main
+      continue
+    endif
+    assign hit = false
+    assign rule_tags = block.settings.tags | downcase | split: ','
+    for rule_tag in rule_tags
+      assign needle = rule_tag | strip
+      if needle != '' and sg_tags contains needle
+        assign hit = true
+        break
+      endif
+    endfor
+    unless hit
+      assign phrases = block.settings.title_contains | downcase | split: ','
+      for phrase in phrases
+        assign needle = phrase | strip
+        if needle != '' and sg_title contains needle
+          assign hit = true
+          break
+        endif
+      endfor
+    endunless
+    if hit
+      assign sg_src = block.settings.image | image_url: width: 1400
+      assign sg_alt = block.settings.image.alt | default: block.settings.title | escape
+      if block.type == 'size_chart'
+        assign sg_has_main = true
+        assign sg_marker = '<span class="bls-sg-rule" data-kind="main" data-src="' | append: sg_src | append: '" data-alt="' | append: sg_alt | append: '"'
+        if block.settings.show_sister_size
+          assign sg_marker = sg_marker | append: ' data-sister'
+        endif
+        assign sg_marker = sg_marker | append: '></span>'
+      else
+        assign sg_tab = block.settings.tab_label | default: 'More sizes' | escape
+        assign sg_main_tab = block.settings.main_tab_label | escape
+        assign sg_marker = '<span class="bls-sg-rule" data-kind="extra" data-src="' | append: sg_src | append: '" data-alt="' | append: sg_alt | append: '" data-tab="' | append: sg_tab | append: '" data-main-tab="' | append: sg_main_tab | append: '"></span>'
+      endif
+      assign sg_rules = sg_rules | append: sg_marker
+    endif
+  endfor
+
   assign images = p.media | where: 'media_type', 'image'
   if images.size == 0 and p.featured_image
     assign images = p.images
@@ -261,6 +317,20 @@
   endif
 -%}
 
+{%- capture size_guide -%}
+  {%- if sg_rules != blank -%}
+    {%- render 'bls-size-guide-ui',
+      rules: sg_rules,
+      uid: section.id,
+      link_label: ss.size_guide_label,
+      modal_title: 'Size Chart',
+      alignment: 'right',
+      sister_image: ss.sister_size_chart,
+      sister_label: 'Sister Size'
+    -%}
+  {%- endif -%}
+{%- endcapture -%}
+
 {%- capture head -%}
   {%- if rating != blank -%}
     <a class="wac-pdp__rating" href="#reviews" aria-label="Rated {{ rating.rating }} out of 5 from {{ rating_count }} reviews">
@@ -405,9 +475,7 @@
               <div class="wac-pdp__option" data-wac-band-group>
                 <div class="wac-pdp__option-head">
                   <h2 class="wac-pdp__label"><strong>{{ ss.band_label | escape }}:</strong> <span data-wac-picked-label>{{ picked_band }}</span></h2>
-                  {%- if ss.size_guide_label != blank -%}
-                    <a class="wac-pdp__guide" href="{{ ss.size_guide_url | default: '#' }}">{{ ss.size_guide_label | escape }}</a>
-                  {%- endif -%}
+                  {{ size_guide }}
                 </div>
                 <ul class="wac-pdp__sizes" role="list">
                   {%- for b in band_list -%}
@@ -453,9 +521,7 @@
               <div class="wac-pdp__option" data-wac-option-group="{{ o_index }}">
                 <div class="wac-pdp__option-head">
                   <h2 class="wac-pdp__label"><strong>{{ option.name | escape }}:</strong> <span data-wac-picked-label>{% if picked %}{{ picked.options[o_index] | escape }}{% endif %}</span></h2>
-                  {%- if is_size and ss.size_guide_label != blank -%}
-                    <a class="wac-pdp__guide" href="{{ ss.size_guide_url | default: '#' }}">{{ ss.size_guide_label | escape }}</a>
-                  {%- endif -%}
+                  {%- if is_size -%}{{ size_guide }}{%- endif -%}
                 </div>
                 <ul class="wac-pdp__sizes" role="list">
                   {%- for value in option.values -%}
@@ -483,6 +549,7 @@
           </div>
         </div>
 
+        <div class="wac-pdp__add-row">
         <button
           type="submit"
           class="wac-pdp__add"
@@ -501,6 +568,8 @@
             {{ ss.select_label | escape }}
           {%- endif -%}
         </button>
+        {% render 'wacoal-wishlist-button', product: p, class: 'wac-pdp__wish' %}
+        </div>
         <p class="wac-pdp__message" data-wac-message role="status" aria-live="polite" hidden></p>
 
         {%- if ss.ship_text != blank -%}
@@ -508,6 +577,9 @@
         {%- endif -%}
         {%- if ss.note_text != blank -%}
           <div class="wac-pdp__note">{{ ss.note_text }}</div>
+        {%- endif -%}
+        {%- if ss.show_share -%}
+          {% render 'wacoal-share', product: p %}
         {%- endif -%}
       </form>
 
@@ -650,7 +722,7 @@
             {%- if item.id == p.id -%}{%- continue -%}{%- endif -%}
             {%- if match_count >= ss.match_limit -%}{%- break -%}{%- endif -%}
             {%- assign match_count = match_count | plus: 1 -%}
-            {%- render 'wacoal-pdp-card', product: item, sizes: '220px' -%}
+            {%- render 'wacoal-carousel-card', product: item, sizes: '220px' -%}
           {%- endfor -%}
         {%- endcapture -%}
         {%- if match_count > 0 -%}
@@ -705,7 +777,7 @@
   "name": "Wacoal product",
   "tag": "section",
   "class": "wac-section-pdp",
-  "max_blocks": 20,
+  "max_blocks": 40,
   "settings": [
     { "type": "header", "content": "Photos" },
     { "type": "select", "id": "photo_shape", "label": "Photo shape", "options": [ { "value": "wacoal", "label": "Wacoal frame (592 x 695)" }, { "value": "portrait", "label": "Portrait 2:3" }, { "value": "natural", "label": "Photo's own shape" } ], "default": "wacoal" },
@@ -719,8 +791,8 @@
     { "type": "text", "id": "color_label", "label": "Colour label", "default": "Color" },
     { "type": "text", "id": "band_label", "label": "Band label", "default": "Band", "info": "Bra sizes like 34B are split into band and cup." },
     { "type": "text", "id": "cup_label", "label": "Cup label", "default": "Cup" },
-    { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Find my size" },
-    { "type": "url", "id": "size_guide_url", "label": "Size guide link" },
+    { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Size Guide", "info": "The charts are the Size chart / Extra size chart blocks: the first Size chart whose tags or title match is shown; each matching Extra size chart is a tab." },
+    { "type": "image_picker", "id": "sister_size_chart", "label": "Sister Size chart", "info": "Shown on charts that have Sister Size switched on." },
     { "type": "text", "id": "quantity_label", "label": "Quantity label", "default": "Quantity" },
     { "type": "header", "content": "Add to cart" },
     { "type": "text", "id": "select_label", "label": "Button before a size is picked", "default": "Select your size" },
@@ -733,7 +805,9 @@
     { "type": "header", "content": "Complete your look" },
     { "type": "text", "id": "match_heading", "label": "Heading", "default": "Complete your look" },
     { "type": "collection", "id": "match_collection", "label": "Products from", "info": "Leave empty to hide the row." },
-    { "type": "range", "id": "match_limit", "label": "Number of products", "min": 2, "max": 12, "step": 1, "default": 8 }
+    { "type": "range", "id": "match_limit", "label": "Number of products", "min": 2, "max": 12, "step": 1, "default": 8 },
+    { "type": "header", "content": "Wishlist and share" },
+    { "type": "checkbox", "id": "show_share", "label": "Show share buttons", "default": true }
   ],
   "blocks": [
     {
@@ -755,6 +829,29 @@
         { "type": "page", "id": "page", "label": "Page" },
         { "type": "checkbox", "id": "open", "label": "Open when the page loads", "default": false },
         { "type": "text", "id": "only_tags", "label": "Only on products tagged", "info": "Optional. Tags separated by commas, e.g. Bras." }
+      ]
+    },
+    {
+      "type": "size_chart",
+      "name": "Size chart",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Name (only shown in the editor)" },
+        { "type": "image_picker", "id": "image", "label": "Chart image" },
+        { "type": "text", "id": "tags", "label": "Product tags", "info": "Comma separated, case ignored. Any one is enough." },
+        { "type": "text", "id": "title_contains", "label": "Or title contains", "info": "Comma separated phrases, case ignored." },
+        { "type": "checkbox", "id": "show_sister_size", "label": "Show the Sister Size link", "default": false }
+      ]
+    },
+    {
+      "type": "extra_chart",
+      "name": "Extra size chart",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Name (only shown in the editor)" },
+        { "type": "image_picker", "id": "image", "label": "Chart image" },
+        { "type": "text", "id": "tab_label", "label": "Tab label", "default": "More sizes" },
+        { "type": "text", "id": "main_tab_label", "label": "Rename the main chart's tab", "info": "Optional, e.g. Bra size." },
+        { "type": "text", "id": "tags", "label": "Product tags", "info": "Comma separated, case ignored. Any one is enough." },
+        { "type": "text", "id": "title_contains", "label": "Or title contains", "info": "Comma separated phrases, case ignored." }
       ]
     }
   ],

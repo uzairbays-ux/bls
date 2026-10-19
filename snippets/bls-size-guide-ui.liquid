@@ -1,0 +1,46 @@
+{%- doc -%}
+  Size Guide link(s) + popup, used by blocks/bls-size-guide.liquid (Horizon product page) and
+  sections/wacoal-main-product.liquid. Pass the matching rule markers (spans with class bls-sg-rule).
+  @param {string} rules - Marker HTML of the matching charts
+  @param {string} uid - Unique id for this instance
+  @param {string} [link_label] - Default "Size Guide"
+  @param {string} [modal_title] - Default "Size Chart"
+  @param {string} [alignment] - left | center | right (default right)
+  @param {image} [sister_image] - Sister Size chart
+  @param {string} [sister_label] - Default "Sister Size"
+  @param {string} [attrs] - Extra attributes for the wrapper (editor)
+{%- enddoc -%}
+<div class="bls-sg bls-sg--{{ alignment | default: 'right' }}" data-bls-size-guide {{ attrs }}>
+  <div class="bls-sg__links">
+    <button type="button" class="bls-sg__link" data-bls-sg-open="chart">{{ link_label | default: 'Size Guide' | escape }}</button>
+    {%- if sister_image != blank -%}
+      <button type="button" class="bls-sg__link" data-bls-sg-open="sister" data-bls-sg-sister-link hidden>{{ sister_label | default: 'Sister Size' | escape }}</button>
+    {%- endif -%}
+  </div>
+
+  <div class="bls-sg__rules" hidden>{{ rules }}</div>
+
+  <dialog class="bls-sg__modal" data-bls-sg-modal="chart" aria-labelledby="BlsSgTitle-{{ uid }}">
+    <div class="bls-sg__head">
+      <h2 class="bls-sg__title" id="BlsSgTitle-{{ uid }}">{{ modal_title | default: 'Size Chart' | escape }}</h2>
+      <button type="button" class="bls-sg__close" data-bls-sg-close aria-label="Close">&#215;</button>
+    </div>
+    <div class="bls-sg__tabs" data-bls-sg-tabs role="tablist" hidden></div>
+    <div class="bls-sg__panels" data-bls-sg-panels></div>
+  </dialog>
+
+  {%- if sister_image != blank -%}
+    <dialog class="bls-sg__modal" data-bls-sg-modal="sister" aria-labelledby="BlsSgSister-{{ uid }}">
+      <div class="bls-sg__head">
+        <h2 class="bls-sg__title" id="BlsSgSister-{{ uid }}">{{ sister_label | default: 'Sister Size' | escape }}</h2>
+        <button type="button" class="bls-sg__close" data-bls-sg-close aria-label="Close">&#215;</button>
+      </div>
+      <div class="bls-sg__panels">
+        <div class="bls-sg__panel">
+          <img src="{{ sister_image | image_url: width: 1400 }}" alt="{{ sister_image.alt | default: 'Sister size chart' | escape }}" loading="lazy">
+        </div>
+      </div>
+    </dialog>
+  {%- endif -%}
+</div>
+<script src="{{ 'bls-size-guide.js' | asset_url }}" defer></script>

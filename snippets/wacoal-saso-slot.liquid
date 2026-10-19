@@ -5,14 +5,24 @@
 {%- enddoc -%}
 <script>
   (function () {
+    // the product title on screen: Horizon's product details, or the Wacoal page (one title for
+    // desktop and one for phones; take the visible one)
+    function visibleTitle() {
+      var all = document.querySelectorAll('.wac-pdp__title, .product-details h1');
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].offsetParent !== null) return all[i];
+      }
+      return all[0] || null;
+    }
     function place() {
       var bar = document.getElementById('saso-notifications');
-      var title = document.querySelector('.product-details h1');
+      var title = visibleTitle();
       if (!bar || !title) return;
       var block = title.closest('.text-block') || title;
       var slot = block.nextElementSibling;
       if (!slot || !slot.hasAttribute('data-wac-saso-slot')) {
         slot = document.querySelector('[data-wac-saso-slot]') || document.createElement('div');
+        // moving the slot (and the bar in it) next to the title that is on screen now
         slot.className = 'wac-saso-slot';
         slot.setAttribute('data-wac-saso-slot', '');
         block.insertAdjacentElement('afterend', slot);
@@ -28,6 +38,7 @@
     function start() {
       place();
       new MutationObserver(queue).observe(document.body, { childList: true, subtree: true });
+      window.addEventListener('resize', queue);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
   })();

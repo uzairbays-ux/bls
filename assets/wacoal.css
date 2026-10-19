@@ -5507,3 +5507,214 @@ button.wac-pdp__feature-head {
     animation: wac-backdrop-blur var(--animation-speed, 0.2s) ease forwards;
   }
 }
+
+
+/* ===== Size Guide popup (snippets/bls-size-guide-ui.liquid, assets/bls-size-guide.js) ===== */
+.bls-sg:not(:has(.bls-sg-rule)) {
+  display: none;
+}
+
+.bls-sg__links {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.bls-sg--left .bls-sg__links {
+  justify-content: flex-start;
+}
+
+.bls-sg--center .bls-sg__links {
+  justify-content: center;
+}
+
+.bls-sg__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-foreground);
+  font: inherit;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.bls-sg__link[hidden] {
+  display: none;
+}
+
+.bls-sg__modal {
+  width: min(920px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: #fff;
+  color: #111;
+  overflow: auto;
+}
+
+.bls-sg__modal::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+
+.bls-sg__head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 52px 12px;
+  background: #fff;
+}
+
+.bls-sg__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.bls-sg__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: none;
+  color: #111;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.bls-sg__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px 14px;
+}
+
+.bls-sg__tabs[hidden] {
+  display: none;
+}
+
+.bls-sg__tab {
+  padding: 8px 18px;
+  border: 1px solid #1e1e1e;
+  background: #fff;
+  color: #1e1e1e;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bls-sg__tab.is-active {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.bls-sg__panels {
+  padding: 0 20px 22px;
+}
+
+.bls-sg__panel + .bls-sg__panel:not([hidden]) {
+  margin-top: 24px;
+}
+
+.bls-sg__panel[hidden] {
+  display: none;
+}
+
+.bls-sg__panel img {
+  display: block;
+  width: 100%;
+  max-width: 865px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ===== Wacoal product page: today's features ========================= */
+/* BLS colours on the add button once a size is picked (Wacoal uses blush) */
+.wac-pdp__add.is-ready {
+  border-color: #1e1e1e;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.wac-pdp__add.is-ready:hover {
+  border-color: #000;
+  background: #000;
+}
+
+/* heart beside Add to cart */
+.wac-pdp__add-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.wac-pdp__add-row .wac-pdp__add {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.wac-pdp__add-row .wac-pdp__wish {
+  flex: 0 0 56px;
+  width: 56px;
+  min-height: 56px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.wac-pdp__add-row .wac-pdp__wish:hover {
+  background: var(--wac-blush);
+}
+
+.wac-pdp__info .wac-share {
+  margin-top: 16px;
+}
+
+/* size guide links next to the size label */
+.wac-pdp__option-head .bls-sg {
+  margin-left: auto;
+}
+
+.wac-pdp__option-head .bls-sg__link {
+  font-size: 13px;
+}
+
+/* the site card inside the product page carousels */
+.wac-pcard--site {
+  display: block;
+}
+
+.wac-pcard--site .wac-card {
+  width: 100%;
+}
+
+.wac-pcard--site .wac-card__rating {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-pdp__add-row .wac-pdp__wish {
+    flex-basis: 53px;
+    width: 53px;
+    min-height: 53px;
+  }
+
+  .wac-pcard--site .wac-card__flags {
+    left: 6px;
+    right: 6px;
+    bottom: 8px;
+  }
+}

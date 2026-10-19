@@ -23,7 +23,7 @@
       </div>
       <ul class="wac-similar__list" role="list" data-wac-carousel-list>
         {%- for item in recommendations.products -%}
-          {%- render 'wacoal-pdp-card', product: item, sizes: '(max-width: 749px) 200px, 300px' -%}
+          {%- render 'wacoal-carousel-card', product: item, sizes: '(max-width: 749px) 200px, 300px' -%}
         {%- endfor -%}
       </ul>
     </div>
