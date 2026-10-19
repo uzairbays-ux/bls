@@ -5492,11 +5492,18 @@ button.wac-pdp__feature-head {
   }
 }
 
-/* search modal: soft blur behind it */
+/* search modal: soft blur behind it (own keyframes: Horizon's backdropFilter animation holds its end state) */
+@keyframes wac-backdrop-blur {
+  from { backdrop-filter: blur(0); background: rgb(0 0 0 / 0); }
+  to { backdrop-filter: blur(6px); background: rgb(0 0 0 / 0.28); }
+}
+
 @media screen and (min-width: 750px) {
-  .search-modal__content.dialog-modal::backdrop {
+  .search-modal__content.dialog-modal::backdrop,
+  .search-modal__content.dialog-modal[open]::backdrop {
     background: rgb(0 0 0 / 0.28);
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
+    animation: wac-backdrop-blur var(--animation-speed, 0.2s) ease forwards;
   }
 }
