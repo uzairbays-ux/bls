@@ -3980,20 +3980,29 @@ button.wac-pdp__feature-head {
   --button-border-color: var(--color-secondary-button-hover-border);
 }
 
-/* ===== Header: hides on scroll down, slides back in on scroll up ======= */
-/* header-group.json enable_sticky_header = scroll-up; Horizon only fades it in, this slides it down */
-@keyframes wac-header-in {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
+/* ===== Header: hides on scroll down, slides back on scroll up ======= */
+/* header-group.json keeps it sticky ('always'); assets/wacoal-header.js adds .is-wac-hidden */
+.header-section {
+  transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active'][data-scroll-direction='up']) {
-  animation: wac-header-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+.header-section.is-wac-hidden {
+  transform: translateY(-100%);
+}
+
+/* product photos: use the space the header frees */
+.wac-pdp--sticky .wac-pdp__gallery {
+  transition: top 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
+  top: 20px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
-    animation: none;
+  .header-section,
+  .wac-pdp--sticky .wac-pdp__gallery {
+    transition: none;
   }
 }
 

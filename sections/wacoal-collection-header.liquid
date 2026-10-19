@@ -123,9 +123,8 @@
           // pause the collection's infinite load while we scroll past the grid, or the description moves away
           document.documentElement.dataset.wacNoAutoload = '1';
           setTimeout(function () { delete document.documentElement.dataset.wacNoAutoload; }, 2500);
-          // the header only stays on screen in 'always' mode; in 'scroll-up' mode it hides while scrolling down
-          var header = document.querySelector('#header-component[sticky="always"]');
-          var offset = (header ? header.getBoundingClientRect().height : 0) + 20;
+          // the header slides out of view while scrolling down (assets/wacoal-header.js), so a small gap is enough
+          var offset = 20;
           window.scrollTo({ top: about.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
         });
       }
