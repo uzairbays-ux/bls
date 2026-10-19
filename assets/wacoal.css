@@ -434,6 +434,17 @@
   background: var(--wac-badge);
 }
 
+/* Horizon cuts a hole in the bag for a top-right badge; ours sits bottom-right, so drop the hole
+   and give the badge a ring in the header colour instead (same gap, any icon size) */
+.header-section .header-actions__cart-icon.header-actions__cart-icon--has-cart svg {
+  -webkit-mask: none;
+  mask: none;
+}
+
+.header-section cart-icon.header-actions__cart-icon .cart-bubble__background {
+  box-shadow: 0 0 0 2px var(--color-background, #fff);
+}
+
 .header-section cart-icon.header-actions__cart-icon {
   position: relative;
   display: flex;
@@ -2089,6 +2100,19 @@
   font-size: 18px;
   line-height: 28.8px;
   letter-spacing: 0.25px;
+}
+
+.wac-colhead__more {
+  margin-left: 6px;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.wac-colhead__more:hover {
+  text-decoration: none;
 }
 
 .wac-colhead__arrows {

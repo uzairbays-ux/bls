@@ -49,7 +49,14 @@
             endif
             assign intro = first_p | truncate: section.settings.description_length
           -%}
-          <div class="wac-colhead__desc"><p>{{ intro | escape }}</p></div>
+          <div class="wac-colhead__desc">
+            <p>
+              {{ intro | escape }}
+              {%- if intro != desc %}
+                <a class="wac-colhead__more" href="#CollectionAbout" data-wac-colhead-more>Read more</a>
+              {%- endif -%}
+            </p>
+          </div>
         {%- elsif section.settings.fallback_text != blank -%}
           <div class="wac-colhead__desc"><p>{{ section.settings.fallback_text | escape }}</p></div>
         {%- endif -%}
@@ -105,6 +112,19 @@
     function init(root) {
       if (root.dataset.ready) return;
       root.dataset.ready = '1';
+      var more = root.querySelector('[data-wac-colhead-more]');
+      if (more) {
+        // the full description sits under the products (wacoal-main-collection); stop below the sticky header
+        if (!document.getElementById('CollectionAbout')) more.hidden = true;
+        more.addEventListener('click', function (e) {
+          var about = document.getElementById('CollectionAbout');
+          if (!about) return;
+          e.preventDefault();
+          var header = document.querySelector('.header-section');
+          var offset = (header ? header.getBoundingClientRect().height : 0) + 20;
+          window.scrollTo({ top: about.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+        });
+      }
       var list = root.querySelector('[data-wac-colhead-list]');
       var prev = root.querySelector('[data-wac-colhead-prev]');
       var next = root.querySelector('[data-wac-colhead-next]');
