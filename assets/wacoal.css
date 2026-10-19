@@ -4569,6 +4569,11 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
 }
 
 /* ===== Mega menu: featured products use the site's product card ======= */
+/* mega menu column headings (By Style, By Fabric...) bold, links under them stay regular */
+.mega-menu .mega-menu__link.mega-menu__link--parent {
+  font-weight: 600;
+}
+
 .mega-menu__content-list--products .wac-card {
   width: 100%;
 }
