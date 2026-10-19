@@ -1,0 +1,65 @@
+{%- doc -%}
+  404 page with a sense of humour: big 404, playful copy, three ways out and a search box.
+  Used by templates/404.json (product cards below come from wacoal-featured-collection).
+{%- enddoc -%}
+{%- liquid
+  assign ss = section.settings
+-%}
+<section class="wac-404">
+  <div class="wac-404__inner">
+    <p class="wac-404__eyebrow">{{ ss.eyebrow | escape }}</p>
+    <p class="wac-404__code" aria-hidden="true">4<span class="wac-404__zero">0</span>4</p>
+    <h1 class="wac-404__title">{{ ss.title | escape }}</h1>
+    <div class="wac-404__text">{{ ss.text }}</div>
+
+    <div class="wac-404__actions">
+      {%- if ss.button_1_label != blank -%}
+        <a class="wac-404__btn wac-404__btn--solid" href="{{ ss.button_1_link | default: routes.root_url }}">{{ ss.button_1_label | escape }}</a>
+      {%- endif -%}
+      {%- if ss.button_2_label != blank -%}
+        <a class="wac-404__btn" href="{{ ss.button_2_link | default: routes.all_products_collection_url }}">{{ ss.button_2_label | escape }}</a>
+      {%- endif -%}
+      {%- if ss.button_3_label != blank -%}
+        <a class="wac-404__btn" href="{{ ss.button_3_link | default: routes.all_products_collection_url }}">{{ ss.button_3_label | escape }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if ss.show_search -%}
+      <form class="wac-404__search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="Wac404Search-{{ section.id }}">{{ ss.search_placeholder | escape }}</label>
+        <input id="Wac404Search-{{ section.id }}" type="search" name="q" placeholder="{{ ss.search_placeholder | escape }}" autocomplete="off">
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="submit" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+      </form>
+    {%- endif -%}
+
+    {%- if ss.footnote != blank -%}
+      <p class="wac-404__footnote">{{ ss.footnote | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404 (playful)",
+  "tag": "section",
+  "class": "wac-section-404",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small line above", "default": "Error 404 · wardrobe malfunction" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Well, this is awkward." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We make bras in more than 40 sizes, but this page doesn't come in any of them.</p><p>It may have slipped off the hanger, or the link has a ladder in it.</p>" },
+    { "type": "text", "id": "button_1_label", "label": "Button 1", "default": "Take me home" },
+    { "type": "url", "id": "button_1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "button_2_label", "label": "Button 2", "default": "Shop bras" },
+    { "type": "url", "id": "button_2_link", "label": "Button 2 link" },
+    { "type": "text", "id": "button_3_label", "label": "Button 3", "default": "Shop panties" },
+    { "type": "url", "id": "button_3_link", "label": "Button 3 link" },
+    { "type": "checkbox", "id": "show_search", "label": "Show search", "default": true },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Or search for what you were after" },
+    { "type": "text", "id": "footnote", "label": "Footnote", "default": "No pages were harmed in the making of this error." }
+  ],
+  "presets": [{ "name": "404 (playful)" }]
+}
+{% endschema %}
