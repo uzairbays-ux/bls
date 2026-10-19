@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "wacoal-wishlist",
+      "settings": {
+        "heading": "Wishlist",
+        "empty_title": "Your wishlist is empty",
+        "empty_text": "Tap the heart on any product to save it here.",
+        "shop_label": "Continue shopping",
+        "shop_link": ""
+      }
+    }
+  },
+  "order": ["main"]
+}

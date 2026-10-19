@@ -224,6 +224,8 @@
             add_to_cart_text: add_to_cart_text
           %}
 
+          <span class="wac-wish-wrap">{% render 'wacoal-wishlist-button', product: product %}</span>
+
           {% content_for 'block',
             type: 'accelerated-checkout',
             id: 'accelerated-checkout',
@@ -246,7 +248,11 @@
       >
         {{ 'blocks.sold_out' | t }}
       </button>
+      <span class="wac-wish-wrap">{% render 'wacoal-wishlist-button', product: product %}</span>
     </div>
+  {%- endif -%}
+  {%- if product -%}
+    {% render 'wacoal-share', product: product %}
   {%- endif -%}
 </span>
 

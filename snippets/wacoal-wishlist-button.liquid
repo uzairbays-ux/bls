@@ -1,0 +1,17 @@
+{%- doc -%}
+  Heart button that saves a product to the wishlist (assets/wacoal-wishlist.js).
+  @param {product} product - The product
+  @param {string} [class] - Extra classes
+{%- enddoc -%}
+<button
+  type="button"
+  class="wac-wish-btn {{ class }}"
+  data-wac-wishlist
+  data-product-handle="{{ product.handle }}"
+  data-label-add="Add to wishlist"
+  data-label-remove="Remove from wishlist"
+  aria-pressed="false"
+  aria-label="Add to wishlist"
+>
+  {%- render 'wacoal-heart-icon' -%}
+</button>

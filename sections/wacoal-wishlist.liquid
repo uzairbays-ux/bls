@@ -1,0 +1,36 @@
+{%- doc -%}
+  Wishlist page: products saved with the heart buttons, read from the browser (assets/wacoal-wishlist.js).
+  Used by templates/page.wishlist.json (the old theme's page /pages/wish-list used template "wishlist").
+{%- enddoc -%}
+<section class="wac-wl is-loading" data-wac-wishlist-page data-money-format="{{ shop.money_format | strip_html | escape }}">
+  <div class="wac-wl__container">
+    <h1 class="wac-wl__heading">{{ page.title | default: section.settings.heading | escape }}</h1>
+    {%- if page.content != blank -%}
+      <div class="wac-wl__intro rte">{{ page.content }}</div>
+    {%- endif -%}
+
+    <ul class="wac-wl__grid" data-wac-wl-grid role="list" hidden></ul>
+
+    <div class="wac-wl__empty" data-wac-wl-empty hidden>
+      <p class="wac-wl__empty-title">{{ section.settings.empty_title | escape }}</p>
+      <p>{{ section.settings.empty_text | escape }}</p>
+      <a class="wac-wl__shop" href="{{ section.settings.shop_link | default: routes.all_products_collection_url }}">{{ section.settings.shop_label | escape }}</a>
+    </div>
+
+    <template data-wac-wl-heart>{%- render 'wacoal-heart-icon' -%}</template>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wishlist",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading (when the page has no title)", "default": "Wishlist" },
+    { "type": "text", "id": "empty_title", "label": "Empty title", "default": "Your wishlist is empty" },
+    { "type": "text", "id": "empty_text", "label": "Empty text", "default": "Tap the heart on any product to save it here." },
+    { "type": "text", "id": "shop_label", "label": "Button label", "default": "Continue shopping" },
+    { "type": "url", "id": "shop_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Wishlist" }]
+}
+{% endschema %}
