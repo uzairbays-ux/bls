@@ -142,11 +142,11 @@ class WacoalProduct {
         const on = n === i;
         t.classList.toggle('is-active', on);
         t.setAttribute('aria-current', on ? 'true' : 'false');
-        // keep the active thumb in view inside its own column (never scrolls the page)
-        if (on && thumbsBox) {
-          const top = t.offsetTop; // the thumbs column is position: relative
-          if (top < thumbsBox.scrollTop) thumbsBox.scrollTop = top;
-          else if (top + t.offsetHeight > thumbsBox.scrollTop + thumbsBox.clientHeight) thumbsBox.scrollTop = top + t.offsetHeight - thumbsBox.clientHeight;
+        // keep the active thumb in view inside its own row (never scrolls the page)
+        if (on && thumbsBox && thumbsBox.scrollWidth > thumbsBox.clientWidth + 1) {
+          const left = t.offsetLeft; // the thumbs row is position: relative
+          if (left < thumbsBox.scrollLeft) thumbsBox.scrollLeft = left;
+          else if (left + t.offsetWidth > thumbsBox.scrollLeft + thumbsBox.clientWidth) thumbsBox.scrollLeft = left + t.offsetWidth - thumbsBox.clientWidth;
         }
       });
     };

@@ -5871,23 +5871,19 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   }
 }
 
-/* ===== Product page gallery: thumbnails on the left (desktop) ========= */
+/* ===== Product page gallery: thumbnails in a row under the photos (Intimissimi, desktop) ===== */
 .wac-pdp__thumbs {
   display: none;
 }
 
 @media screen and (min-width: 750px) {
   .wac-pdp__gallery--thumbs {
-    flex-basis: 687px;
-    display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
-    column-gap: 12px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
   }
 
-  .wac-pdp__gallery--thumbs .wac-pdp__frame,
-  .wac-pdp__gallery--thumbs .wac-pdp__dots {
-    grid-column: 2;
+  .wac-pdp__gallery--thumbs .wac-pdp__frame {
+    order: 1;
   }
 
   /* thumbs replace the dots on desktop */
@@ -5897,13 +5893,12 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
 
   .wac-pdp__thumbs {
     position: relative;
-    grid-column: 1;
-    grid-row: 1;
+    order: 2;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 695px;
-    overflow-y: auto;
+    justify-content: safe center;
+    gap: 12px;
+    margin-top: 14px;
+    overflow-x: auto;
     scrollbar-width: none;
   }
 
@@ -5912,14 +5907,13 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   }
 
   .wac-pdp__thumb {
-    flex: 0 0 auto;
+    flex: 0 0 44px;
     display: block;
-    width: 76px;
     padding: 0;
     border: 1px solid transparent;
     background: #f3f0eb;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.75;
     transition: opacity 0.2s ease, border-color 0.2s ease;
   }
 
@@ -5927,7 +5921,7 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 592 / 695;
+    aspect-ratio: 2 / 3;
     object-fit: cover;
   }
 
@@ -5938,6 +5932,47 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   .wac-pdp__thumb.is-active {
     border-color: #111;
     opacity: 1;
+  }
+}
+
+/* arrows: white pills with a long thin arrow, halfway down the photos (Intimissimi) */
+.wac-pdp .wac-pdp__arrows {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.wac-pdp .wac-pdp__arrow {
+  width: 48px;
+  height: 24px;
+  border: 1px solid #e9e9e9;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 1px 1px 10px rgb(0 0 0 / 0.1);
+  color: #3c3738;
+  pointer-events: auto;
+  transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.wac-pdp .wac-pdp__arrow:hover:not(:disabled) {
+  box-shadow: 1px 1px 12px rgb(0 0 0 / 0.18);
+}
+
+.wac-pdp .wac-pdp__arrow:disabled {
+  opacity: 0.45;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-pdp .wac-pdp__arrows {
+    padding: 0 12px;
   }
 }
 
@@ -6245,18 +6280,30 @@ html.wac-zoom-open {
     flex: 0 0 420px;
   }
 
-  .wac-pdp__slide {
-    flex-basis: calc((100% - 8px) / 1.5);
+  /* photos start at the page edge like Intimissimi's */
+  .wac-pdp__container {
+    padding-left: 0;
   }
 
-  .wac-pdp__thumbs {
-    max-height: 640px;
+  .wac-pdp__slide {
+    flex-basis: 26vw;
   }
 }
 
-@media screen and (min-width: 1400px) {
+/* photo strip: whole 2:3 photos, 4px apart, about 1.6 on tablets and 2.5 on wide screens */
+@media screen and (min-width: 750px) {
+  .wac-pdp__slider {
+    gap: 4px;
+  }
+
   .wac-pdp__slide {
-    flex-basis: calc((100% - 16px) / 2.15);
+    flex-basis: calc((100% - 4px) / 1.6);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .wac-pdp__slide {
+    flex-basis: 26vw;
   }
 }
 
