@@ -5728,6 +5728,18 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   font-weight: 600;
 }
 
+/* the size column stays put (with its heading) when a wide chart scrolls on phones */
+.bls-chart__table thead tr:first-child th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.bls-chart__table tbody th,
+.bls-chart__table thead tr:first-child th:first-child {
+  box-shadow: inset -1px 0 0 #efe7e1;
+}
+
 .bls-chart__table tbody tr:nth-child(even) th,
 .bls-chart__table tbody tr:nth-child(even) td {
   background: #faf6f3;
