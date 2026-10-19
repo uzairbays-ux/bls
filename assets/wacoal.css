@@ -4553,3 +4553,30 @@ button.wac-pdp__feature-head {
     flex: 1 1 100%;
   }
 }
+
+/* ===== Mega menu: featured products use the site's product card ======= */
+.mega-menu__content-list--products .wac-card {
+  width: 100%;
+}
+
+.mega-menu__content-list--products .wac-card__flags {
+  left: 8px;
+  right: 8px;
+  bottom: 10px;
+  gap: 5px;
+}
+
+.mega-menu__content-list--products .wac-card__flag {
+  padding: 6px 10px;
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.mega-menu__content-list--products .wac-card__info {
+  padding: 8px 2px 4px;
+}
+
+/* the menu stays tight: no reviews row */
+.mega-menu__content-list--products .wac-card__rating {
+  display: none;
+}

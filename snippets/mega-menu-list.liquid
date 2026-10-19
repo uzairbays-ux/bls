@@ -290,13 +290,8 @@
           {% paginate collection_object.products by max_featured_products %}
             {% for item in collection_object.products %}
               <li class="mega-menu__content-list-item {% if forloop.index > max_featured_products_tablet %} mega-menu__content-list-item--hidden-tablet{% endif %}">
-                {% render 'resource-card',
-                  resource: item,
-                  resource_type: 'product',
-                  image_hover: true,
-                  image_aspect_ratio: content_aspect_ratio,
-                  image_sizes: image_sizes
-                %}
+                {%- comment -%} same card as the collection pages and carousels {%- endcomment -%}
+                {% render 'wacoal-product-card', product: item, badge: '', sizes: '260px' %}
               </li>
             {% endfor %}
           {% endpaginate %}
