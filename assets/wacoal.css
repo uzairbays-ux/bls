@@ -4582,6 +4582,13 @@ button.wac-pdp__feature-head {
 }
 
 /* ===== Search modal: wider, type pills, site product cards ============ */
+/* Horizon caps every .dialog-modal at --normal-content-width (672px); the search modal sets its own width */
+@media screen and (min-width: 750px) {
+  .search-modal__content.dialog-modal {
+    max-width: none;
+  }
+}
+
 .wac-search-pills {
   display: flex;
   align-items: center;
