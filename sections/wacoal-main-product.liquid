@@ -349,9 +349,27 @@
       endif
     endfor
   endif
+  comment
+    Out-of-stock products drop out of the smart collections: fall back to the menu collection named
+    like the product type (Panties, Bra/Bras, Sleep Wear ...), then any store collection (not app-made).
+  endcomment
+  if crumb == blank and p.type != blank
+    assign type_lc = p.type | downcase | strip
+    assign type_s = type_lc | append: 's'
+    for link in linklists['main-menu'].links
+      if link.type == 'collection_link'
+        assign title_lc = link.title | downcase | strip
+        if title_lc == type_lc or title_lc == type_s
+          assign crumb = link.object
+          break
+        endif
+      endif
+    endfor
+  endif
   if crumb == blank
     for c in p.collections
-      if c.handle != 'all' and c.handle != 'frontpage'
+      assign c_head = c.handle | slice: 0, 5
+      if c.handle != 'all' and c.handle != 'frontpage' and c_head != 'avada'
         assign crumb = c
         break
       endif
