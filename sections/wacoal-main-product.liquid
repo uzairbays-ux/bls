@@ -458,6 +458,7 @@
                 width="{{ img.width }}"
                 height="{{ img.height }}"
                 alt="{{ img.alt | default: title | escape }}"
+                data-wac-zoom-src="{{ img | image_url: width: 2200 }}"
                 loading="{{ loading }}"
                 {% if forloop.first %}fetchpriority="high"{% endif %}
               >
@@ -466,6 +467,11 @@
             <div class="wac-pdp__slide"><span class="wac-pdp__img wac-pdp__img--empty"></span></div>
           {%- endfor -%}
         </div>
+        {%- if images.size > 0 -%}
+          <button type="button" class="wac-pdp__zoom-btn" data-wac-zoom-open aria-label="Zoom photo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M10.5 7.5v6M7.5 10.5h6"/></svg>
+          </button>
+        {%- endif -%}
         {%- if images.size > 1 -%}
           <div class="wac-pdp__arrows">
             <button type="button" class="wac-pdp__arrow" data-wac-prev aria-label="Previous photo" disabled>
@@ -485,6 +491,23 @@
         </div>
       {%- endif -%}
     </div>
+
+    <dialog class="wac-zoom" data-wac-zoom aria-label="Product photos, zoomed">
+      <div class="wac-zoom__bar">
+        <span class="wac-zoom__count" data-wac-zoom-count></span>
+        <button type="button" class="wac-zoom__close" data-wac-zoom-close aria-label="Close">&#215;</button>
+      </div>
+      <div class="wac-zoom__stage" data-wac-zoom-stage>
+        <img class="wac-zoom__img" data-wac-zoom-img alt="">
+      </div>
+      <button type="button" class="wac-zoom__nav wac-zoom__nav--prev" data-wac-zoom-prev aria-label="Previous photo">
+        <svg width="12" height="20" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8.5 1.5L2 8l6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <button type="button" class="wac-zoom__nav wac-zoom__nav--next" data-wac-zoom-next aria-label="Next photo">
+        <svg width="12" height="20" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M1.5 1.5L8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <p class="wac-zoom__hint">Click the photo to zoom in</p>
+    </dialog>
 
     <div class="wac-pdp__wrap">
       <div class="wac-pdp__head wac-pdp__head--desktop">{{ head }}</div>

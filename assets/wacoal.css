@@ -5897,3 +5897,184 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
     font-size: 12px;
   }
 }
+
+/* ===== Product photo zoom (wacoal-main-product + wacoal-product.js initZoom) ===== */
+.wac-pdp__slide img {
+  cursor: zoom-in;
+}
+
+.wac-pdp__zoom-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.9);
+  color: #111;
+  cursor: pointer;
+}
+
+.wac-pdp__zoom-btn:hover {
+  background: #fff;
+}
+
+.wac-zoom {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+.wac-zoom::backdrop {
+  background: #fff;
+}
+
+.wac-zoom[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+html.wac-zoom-open {
+  overflow: hidden;
+}
+
+.wac-zoom__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  padding: 12px 18px;
+}
+
+.wac-zoom__count {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #555;
+}
+
+.wac-zoom__close {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  color: #111;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.wac-zoom__stage {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.wac-zoom__img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  user-select: none;
+}
+
+.wac-zoom.is-zoomed .wac-zoom__stage {
+  display: block;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.wac-zoom.is-zoomed .wac-zoom__stage::-webkit-scrollbar {
+  display: none;
+}
+
+.wac-zoom.is-zoomed .wac-zoom__img {
+  width: 250%;
+  max-width: none;
+  max-height: none;
+  height: auto;
+  cursor: zoom-out;
+}
+
+@media screen and (min-width: 750px) {
+  .wac-zoom.is-zoomed .wac-zoom__img {
+    width: min(250%, 2200px);
+    margin: 0 auto;
+  }
+}
+
+.wac-zoom__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.92);
+  color: #111;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.wac-zoom__nav--prev {
+  left: 16px;
+}
+
+.wac-zoom__nav--next {
+  right: 16px;
+}
+
+.wac-zoom.is-single .wac-zoom__nav,
+.wac-zoom.is-zoomed .wac-zoom__nav {
+  display: none;
+}
+
+.wac-zoom__hint {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 10px 0 16px;
+  font-size: 12px;
+  text-align: center;
+  color: #777;
+}
+
+.wac-zoom.is-zoomed .wac-zoom__hint {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-zoom__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .wac-zoom__nav--prev {
+    left: 8px;
+  }
+
+  .wac-zoom__nav--next {
+    right: 8px;
+  }
+
+  .wac-zoom__hint {
+    content: '';
+  }
+}

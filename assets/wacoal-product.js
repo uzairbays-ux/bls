@@ -160,6 +160,69 @@ class WacoalProduct {
     });
     window.addEventListener('resize', update);
     update();
+    this.initZoom(slider, index);
+  }
+
+  /* zoom: full-screen viewer, click to zoom 2.5x, mouse pans (desktop), drag scrolls (touch) */
+  initZoom(slider, index) {
+    const dialog = this.el.querySelector('[data-wac-zoom]');
+    if (!dialog) return;
+    const stage = dialog.querySelector('[data-wac-zoom-stage]');
+    const img = dialog.querySelector('[data-wac-zoom-img]');
+    const count = dialog.querySelector('[data-wac-zoom-count]');
+    const sources = () => Array.from(slider.querySelectorAll('img[data-wac-zoom-src]'));
+    let current = 0;
+    const setZoom = (on, x, y) => {
+      dialog.classList.toggle('is-zoomed', on);
+      if (!on) { stage.scrollTo(0, 0); return; }
+      requestAnimationFrame(() => {
+        stage.scrollLeft = x * (stage.scrollWidth - stage.clientWidth);
+        stage.scrollTop = y * (stage.scrollHeight - stage.clientHeight);
+      });
+    };
+    const show = (i) => {
+      const list = sources();
+      if (!list.length) return;
+      current = (i + list.length) % list.length;
+      setZoom(false);
+      img.src = list[current].dataset.wacZoomSrc;
+      img.alt = list[current].alt || '';
+      count.textContent = (current + 1) + ' / ' + list.length;
+      dialog.classList.toggle('is-single', list.length < 2);
+    };
+    const open = (i) => {
+      show(i);
+      if (dialog.showModal) dialog.showModal(); else dialog.setAttribute('open', '');
+      document.documentElement.classList.add('wac-zoom-open');
+    };
+    const close = () => {
+      if (dialog.open && dialog.close) dialog.close(); else dialog.removeAttribute('open');
+    };
+    dialog.addEventListener('close', () => { setZoom(false); document.documentElement.classList.remove('wac-zoom-open'); });
+    slider.addEventListener('click', (e) => {
+      const slideImg = e.target.closest('img[data-wac-zoom-src]');
+      if (!slideImg) return;
+      open(sources().indexOf(slideImg));
+    });
+    const btn = this.el.querySelector('[data-wac-zoom-open]');
+    if (btn) btn.addEventListener('click', () => open(index()));
+    dialog.querySelector('[data-wac-zoom-close]').addEventListener('click', close);
+    dialog.querySelector('[data-wac-zoom-prev]').addEventListener('click', () => show(current - 1));
+    dialog.querySelector('[data-wac-zoom-next]').addEventListener('click', () => show(current + 1));
+    img.addEventListener('click', (e) => {
+      const r = img.getBoundingClientRect();
+      setZoom(!dialog.classList.contains('is-zoomed'), (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+    });
+    stage.addEventListener('mousemove', (e) => {
+      if (!dialog.classList.contains('is-zoomed') || e.buttons) return;
+      const r = stage.getBoundingClientRect();
+      stage.scrollLeft = ((e.clientX - r.left) / r.width) * (stage.scrollWidth - stage.clientWidth);
+      stage.scrollTop = ((e.clientY - r.top) / r.height) * (stage.scrollHeight - stage.clientHeight);
+    });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+    });
   }
 
   showMedia(mediaId) {
