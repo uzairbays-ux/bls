@@ -102,6 +102,7 @@
     -%}
     <div
       class="wac-coll__grid"
+      data-wac-grid
       style="--wac-cols: {{ ss.columns }}; --wac-tile-row: {{ ss.tile_row }}; --wac-tile-row-m: {{ ss.tile_row_mobile }};"
     >
       {%- if show_tile -%}
@@ -135,6 +136,24 @@
         </div>
       {%- endfor -%}
     </div>
+
+    {%- if ss.infinite_scroll and paginate.pages > 1 -%}
+      {%- liquid
+        assign shown_to = paginate.current_offset | plus: collection.products.size
+      -%}
+      <div
+        class="wac-coll__more"
+        data-wac-more
+        data-next="{{ paginate.next.url }}"
+        data-section="{{ section.id }}"
+        data-total="{{ paginate.items }}"
+        data-shown="{{ shown_to }}"
+      >
+        <p class="wac-coll__more-status" data-wac-more-status aria-live="polite">Showing {{ shown_to }} of {{ paginate.items }}</p>
+        <span class="wac-coll__spinner" data-wac-more-spinner hidden aria-hidden="true"></span>
+        <button type="button" class="wac-coll__more-btn" data-wac-more-btn hidden>Load more</button>
+      </div>
+    {%- endif -%}
 
     {%- if paginate.pages > 1 -%}
       <nav class="wac-pag" aria-label="Pages">
@@ -266,7 +285,61 @@
         });
       }
     }
-    function all() { document.querySelectorAll('[data-wac-coll]').forEach(init); }
+    // infinite load: append the next page's cards when the end of the grid comes near
+    function initMore(root) {
+      var more = root.querySelector('[data-wac-more]');
+      var grid = root.querySelector('[data-wac-grid]');
+      if (!more || !grid || !more.dataset.next) return;
+      root.classList.add('wac-coll--infinite');
+      var status = more.querySelector('[data-wac-more-status]');
+      var spinner = more.querySelector('[data-wac-more-spinner]');
+      var btn = more.querySelector('[data-wac-more-btn]');
+      var busy = false;
+      function done() {
+        observer.disconnect();
+        spinner.hidden = true; btn.hidden = true;
+        status.textContent = 'You have seen all ' + more.dataset.total + ' products';
+      }
+      function load() {
+        var next = more.dataset.next;
+        if (busy || !next) return;
+        if (document.documentElement.dataset.wacNoAutoload) return;
+        busy = true; spinner.hidden = false; btn.hidden = true;
+        var url = next + (next.indexOf('?') > -1 ? '&' : '?') + 'section_id=' + encodeURIComponent(more.dataset.section);
+        fetch(url, { credentials: 'same-origin' })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+          .then(function (html) {
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            var cells = doc.querySelectorAll('[data-wac-grid] > .wac-coll__cell');
+            cells.forEach(function (c) { grid.appendChild(document.importNode(c, true)); });
+            var nextMore = doc.querySelector('[data-wac-more]');
+            more.dataset.next = nextMore ? nextMore.dataset.next : '';
+            more.dataset.shown = nextMore ? nextMore.dataset.shown : more.dataset.total;
+            status.textContent = 'Showing ' + more.dataset.shown + ' of ' + more.dataset.total;
+            busy = false; spinner.hidden = true;
+            if (!more.dataset.next) { done(); return; }
+            // still near the end (tall screens): keep going
+            var rect = more.getBoundingClientRect();
+            if (rect.top < window.innerHeight + 800) load();
+          })
+          .catch(function () {
+            busy = false; spinner.hidden = true; btn.hidden = false;
+          });
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) load();
+      }, { rootMargin: '0px 0px 800px 0px' });
+      observer.observe(more);
+      btn.addEventListener('click', function () { delete document.documentElement.dataset.wacNoAutoload; load(); });
+    }
+
+    function all() {
+      document.querySelectorAll('[data-wac-coll]').forEach(function (root) {
+        var fresh = !root.dataset.ready;
+        init(root);
+        if (fresh) initMore(root);
+      });
+    }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', all); else all();
     document.addEventListener('shopify:section:load', all);
   })();
@@ -279,6 +352,7 @@
   "class": "wac-section-coll",
   "settings": [
     { "type": "range", "id": "per_page", "label": "Products per page", "min": 12, "max": 48, "step": 4, "default": 24 },
+    { "type": "checkbox", "id": "infinite_scroll", "label": "Load more products automatically while scrolling", "default": true, "info": "Page numbers stay for search engines and when this is off." },
     { "type": "range", "id": "columns", "label": "Products per row on desktop", "min": 3, "max": 5, "step": 1, "default": 4 },
     { "type": "checkbox", "id": "inline_filters", "label": "Show each filter as a pill in the bar (desktop)", "default": true },
     { "type": "checkbox", "id": "show_full_description", "label": "Show the full collection description under the products", "default": true },

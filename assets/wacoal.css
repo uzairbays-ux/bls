@@ -4669,3 +4669,57 @@ button.wac-pdp__feature-head {
     padding: 10px 16px 2px;
   }
 }
+
+/* ===== Collection: infinite load (wacoal-main-collection) ============= */
+.wac-coll--infinite .wac-pag {
+  display: none;
+}
+
+.wac-coll__more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 36px 0 12px;
+}
+
+.wac-coll__more-status {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: #666;
+}
+
+.wac-coll__spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgb(223, 223, 223);
+  border-top-color: var(--wac-ink);
+  border-radius: 50%;
+  animation: wac-spin 0.8s linear infinite;
+}
+
+.wac-coll__spinner[hidden],
+.wac-coll__more-btn[hidden] {
+  display: none;
+}
+
+@keyframes wac-spin {
+  to { transform: rotate(360deg); }
+}
+
+.wac-coll__more-btn {
+  padding: 13px 34px;
+  border: 1px solid var(--wac-ink);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--wac-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wac-coll__more-btn:hover {
+  background: var(--wac-blush);
+}
