@@ -146,7 +146,7 @@
         "columns": 4,
         "tile_height": 540,
         "tile_height_mobile": 400,
-        "mobile_layout": "stack",
+        "mobile_layout": "swipe",
         "gap": 0
       }
     },
