@@ -6693,7 +6693,9 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     padding: 0 20px 24px;
   }
 
-  .header-drawer .menu-drawer__featured-content-list-item {
+  .header-drawer .menu-drawer__featured-content-list-item,
+  .header-drawer .menu-drawer__featured-content-list-item:first-child,
+  .header-drawer .menu-drawer__featured-content-list-item:last-child {
     margin: 0;
   }
 
