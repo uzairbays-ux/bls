@@ -1,0 +1,65 @@
+{%- doc -%}
+  Collection edit (Intimissimi "The Natural Fibers Edit"): a heading, one large collection photo and
+  smaller ones. Phones: the large one full width, the rest a swipe row. Desktop: the large one on the
+  left, the rest in a 2 x 2 grid. Each block is a collection; its photo is the block photo, else the
+  collection's image or first product photo.
+{%- enddoc -%}
+{%- assign ss = section.settings -%}
+{%- if section.blocks.size > 0 -%}
+<section class="bls-edit" style="--bls-edit-heading-color: {{ ss.heading_color }};">
+  <div class="bls-edit__inner">
+    {%- if ss.heading != blank -%}<h2 class="bls-edit__heading">{{ ss.heading | escape }}</h2>{%- endif -%}
+    {%- if ss.text != blank -%}<div class="bls-edit__text">{{ ss.text }}</div>{%- endif -%}
+    <div class="bls-edit__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign img = block.settings.image | default: c.image | default: c.featured_image
+          assign label = block.settings.label | default: c.title
+          assign url = block.settings.link | default: c.url | default: '#'
+          if forloop.first
+            assign sizes = '(max-width: 749px) 100vw, 50vw'
+          else
+            assign sizes = '(max-width: 749px) 45vw, 25vw'
+          endif
+        -%}
+        {%- if forloop.index == 2 -%}<div class="bls-edit__row">{%- endif -%}
+        <a class="bls-edit__card{% if forloop.first %} bls-edit__card--lead{% endif %}" href="{{ url }}" {{ block.shopify_attributes }}>
+          {%- if img != blank -%}
+            {{- img | image_url: width: 1400 | image_tag: widths: '300, 450, 600, 900, 1200, 1400', sizes: sizes, loading: 'lazy', class: 'bls-edit__img', alt: '' -}}
+          {%- endif -%}
+          <span class="bls-edit__label">{{ label | escape }}</span>
+        </a>
+        {%- if forloop.last and forloop.index > 1 -%}</div>{%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection edit",
+  "tag": "div",
+  "class": "bls-section-edit",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Fabric Edit" },
+    { "type": "color", "id": "heading_color", "label": "Heading colour", "default": "#b16a80" },
+    { "type": "richtext", "id": "text", "label": "Text under the heading" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "label", "label": "Label", "info": "Default: the collection's name." },
+        { "type": "image_picker", "id": "image", "label": "Photo", "info": "Default: the collection's image or its first product photo." },
+        { "type": "url", "id": "link", "label": "Link", "info": "Default: the collection." }
+      ]
+    }
+  ],
+  "max_blocks": 7,
+  "presets": [{ "name": "Collection edit", "blocks": [{ "type": "collection" }, { "type": "collection" }, { "type": "collection" }, { "type": "collection" }, { "type": "collection" }] }]
+}
+{% endschema %}

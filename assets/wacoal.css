@@ -7147,3 +7147,213 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     border-radius: 4px;
   }
 }
+
+/* ===== Best Sellers on phones: heading, Shop now, big square photo, then the cards (Intimissimi "Perfectly Paired") ===== */
+.wac-featured__link,
+.wac-featured__photo {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-featured .wac-featured__header {
+    text-align: center;
+  }
+
+  .wac-featured .wac-featured__heading {
+    margin: 0 0 8px;
+  }
+
+  .wac-featured .wac-featured__sub {
+    display: block;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .wac-featured .wac-featured__sub p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .wac-featured__link {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--wac-ink);
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .wac-featured__photo {
+    display: block;
+    margin: 20px 16px 8px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #eee9e4;
+  }
+
+  .wac-featured__photo-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+}
+
+/* ===== Collection edit (sections/bls-collection-edit.liquid, Intimissimi "The Natural Fibers Edit") ===== */
+.bls-edit {
+  padding: 60px 0;
+}
+
+.bls-edit__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.bls-edit__heading {
+  margin: 0 0 28px;
+  color: var(--bls-edit-heading-color, var(--wac-ink));
+  font-family: var(--wac-font-serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.bls-edit__text {
+  max-width: 640px;
+  margin: -14px auto 28px;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.bls-edit__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.bls-edit__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.bls-edit__card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #eee9e4;
+  color: #fff;
+  text-decoration: none;
+}
+
+.bls-edit__card--lead {
+  aspect-ratio: auto;
+  min-height: 100%;
+}
+
+.bls-edit__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.6s ease;
+}
+
+.bls-edit__card:hover .bls-edit__img {
+  transform: scale(1.03);
+}
+
+.bls-edit__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 40%);
+  pointer-events: none;
+}
+
+.bls-edit__label {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 1;
+  font-family: var(--wac-font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.bls-edit__card--lead .bls-edit__label {
+  font-size: 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bls-edit__img {
+    transition: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .bls-edit {
+    padding: 32px 0;
+  }
+
+  .bls-edit__inner {
+    padding: 0 16px;
+  }
+
+  .bls-edit__heading {
+    margin-bottom: 20px;
+    font-size: 26px;
+  }
+
+  .bls-edit__grid {
+    display: block;
+  }
+
+  .bls-edit__card--lead {
+    aspect-ratio: 3 / 2;
+    min-height: 0;
+    margin-bottom: 8px;
+  }
+
+  .bls-edit__row {
+    display: flex;
+    gap: 8px;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bls-edit__row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bls-edit__row .bls-edit__card {
+    flex: 0 0 42%;
+    scroll-snap-align: start;
+  }
+
+  .bls-edit__label {
+    font-size: 16px;
+  }
+
+  .bls-edit__card--lead .bls-edit__label {
+    font-size: 18px;
+  }
+}
