@@ -283,7 +283,9 @@
         "subheading": "Crafted for consistency, chosen for comfort — these are the styles that set the standard.",
         "collection": "bras",
         "max_products": 10,
-        "badge": "Best Seller"
+        "badge": "Best Seller",
+        "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
+        "link_label": "Shop now"
       }
     },
     "wacoal_rich_text_sale": {
@@ -1721,6 +1723,59 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "bls_fabric_edit": {
+      "type": "bls-collection-edit",
+      "name": "BLS fabric edit",
+      "blocks": {
+        "edit_satin": {
+          "type": "collection",
+          "settings": {
+            "collection": "satin-secrets",
+            "label": "Satin"
+          }
+        },
+        "edit_silk": {
+          "type": "collection",
+          "settings": {
+            "collection": "sleep-wear-silk",
+            "label": "Silk"
+          }
+        },
+        "edit_lace": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-lace",
+            "label": "Lace"
+          }
+        },
+        "edit_cotton": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-cotton",
+            "label": "Cotton"
+          }
+        },
+        "edit_polyamide": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-polyester-polyamide",
+            "label": "Polyamide"
+          }
+        }
+      },
+      "block_order": [
+        "edit_satin",
+        "edit_silk",
+        "edit_lace",
+        "edit_cotton",
+        "edit_polyamide"
+      ],
+      "settings": {
+        "heading": "The Fabric Edit",
+        "heading_color": "#b16a80",
+        "text": ""
+      }
     }
   },
   "order": [
@@ -1729,6 +1784,7 @@
     "wacoal_styles_slider",
     "wacoal_rich_text",
     "wacoal_featured_collection",
+    "bls_fabric_edit",
     "wacoal_rich_text_sale",
     "wacoal_iwt_fall",
     "wacoal_iwt_rewards",
