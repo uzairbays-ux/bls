@@ -13,7 +13,7 @@
   "sections": {
     "wacoal_footer": {
       "type": "wacoal-footer",
-      "name": "Wacoal footer",
+      "name": "BLS footer",
       "blocks": {
         "col_shop": {
           "type": "menu",

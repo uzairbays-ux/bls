@@ -39,7 +39,7 @@
             "text_align": "center",
             "preheader": "YOU ARE NOT EITHER/OR.",
             "preheader_font": "expanded",
-            "heading": "UNDERNEATH\nIT ALL, LIES WACOAL",
+            "heading": "UNDERNEATH\nIT ALL, LIES BLS",
             "heading_size": 50,
             "heading_size_mobile": 30,
             "heading_weight": "400",
@@ -57,7 +57,7 @@
             "text_align": "left",
             "preheader": "Introducing",
             "preheader_font": "serif",
-            "heading": "WACOAL REWARDS",
+            "heading": "BLS REWARDS",
             "heading_size": 70,
             "heading_size_mobile": 35,
             "heading_weight": "500",
@@ -72,7 +72,7 @@
         "slide_2",
         "slide_3"
       ],
-      "name": "Wacoal hero slider",
+      "name": "BLS hero slider",
       "settings": {
         "height_desktop": 800,
         "height_mobile": 635,
@@ -141,7 +141,7 @@
         "tile_3",
         "tile_4"
       ],
-      "name": "Wacoal tiles",
+      "name": "BLS tiles",
       "settings": {
         "columns": 4,
         "tile_height": 540,
@@ -256,14 +256,14 @@
         "item_09",
         "item_10"
       ],
-      "name": "Wacoal styles slider",
+      "name": "BLS styles slider",
       "settings": {
         "heading": "Shop Bra Styles"
       }
     },
     "wacoal_rich_text": {
       "type": "wacoal-rich-text",
-      "name": "Wacoal rich text",
+      "name": "BLS rich text",
       "settings": {
         "background": "#f3f0eb",
         "heading": "Support that <em>gets</em> you. Style that <em>reflects</em> you. Comfort that <em>never</em> quits.",
@@ -277,7 +277,7 @@
     },
     "wacoal_featured_collection": {
       "type": "wacoal-featured-collection",
-      "name": "Wacoal best sellers",
+      "name": "BLS best sellers",
       "settings": {
         "heading": "Best Sellers",
         "subheading": "Crafted for consistency, chosen for comfort — these are the styles that set the standard.",
@@ -288,7 +288,7 @@
     },
     "wacoal_rich_text_sale": {
       "type": "wacoal-rich-text",
-      "name": "Wacoal rich text",
+      "name": "BLS rich text",
       "settings": {
         "background": "#a8948b",
         "background_gradient": "linear-gradient(293deg, rgba(188, 166, 149, 1), rgba(201, 184, 173, 1) 3%, rgba(168, 148, 139, 1) 100%)",
@@ -312,7 +312,7 @@
     },
     "wacoal_iwt_fall": {
       "type": "wacoal-image-text",
-      "name": "Wacoal image with text",
+      "name": "BLS image with text",
       "settings": {
         "image_asset": "wacoal-iwt-1.jpg",
         "image_mobile_asset": "",
@@ -331,17 +331,17 @@
     },
     "wacoal_iwt_rewards": {
       "type": "wacoal-image-text",
-      "name": "Wacoal image with text",
+      "name": "BLS image with text",
       "settings": {
         "image_asset": "wacoal-iwt-2.jpg",
         "image_mobile_asset": "",
         "image_position": "left",
         "link": "/account/register",
         "preheader": "Introducing",
-        "heading": "WACOAL REWARDS",
+        "heading": "BLS REWARDS",
         "heading_style": "expanded",
         "heading_color": "#000000",
-        "text": "<p>Great support has always been our promise. Rewarding your loyalty is our way of saying thank you. Join Wacoal Rewards and enjoy 100 points just by signing up today!</p>",
+        "text": "<p>Great support has always been our promise. Rewarding your loyalty is our way of saying thank you. Join BLS Rewards and enjoy 100 points just by signing up today!</p>",
         "button_label": "SIGN UP & START EARNING",
         "button_link": "",
         "background": "#fafafc",
@@ -350,7 +350,7 @@
     },
     "wacoal_iwt_fit": {
       "type": "wacoal-image-text",
-      "name": "Wacoal image with text",
+      "name": "BLS image with text",
       "settings": {
         "image_asset": "wacoal-iwt-3.jpg",
         "image_mobile_asset": "",
