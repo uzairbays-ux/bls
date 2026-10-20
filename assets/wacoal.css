@@ -6642,8 +6642,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 
   /* submenu groups and links; the list no longer stretches, so the products follow it */
   .header-drawer .menu-drawer__menu--childlist {
-    flex: 0 0 auto;
     padding-inline: 0;
+  }
+
+  .header-drawer .menu-drawer__inner-submenu > .menu-drawer__menu.menu-drawer__menu--childlist {
+    flex: 0 0 auto;
   }
 
   .header-drawer .menu-drawer__menu--childlist > .menu-drawer__list-item {
