@@ -7111,6 +7111,23 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     flex-basis: 44%;
   }
 
+  /* small cards: left aligned, brand and style number on one line */
+  .wac-featured__track .wac-card__info {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .wac-featured__track .wac-card__meta {
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .wac-featured__track .wac-card__meta span:first-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   /* image with text */
   .wac-iwt,
   .wac-iwt--image-right {
