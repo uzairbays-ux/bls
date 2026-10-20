@@ -6474,17 +6474,31 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 }
 
-/* ===== Collection grid: product names in the product-page title font (Fraunces) ===== */
-.wac-coll .wac-card__title {
+/* ===== Product cards everywhere: product names in the product-page title font (Fraunces) =====
+   wacoal-product-card (collection, search, carousels, mega menu, search modal, fit pages), the
+   wishlist page and the cart page's "You may also like" row (Horizon product card). */
+.wac-card__title,
+.wac-wl__title,
+[ref="productTitleLink"] p {
   font-family: var(--wac-font-serif);
-  font-size: 17px;
   font-weight: 500;
-  line-height: 1.3;
   letter-spacing: 0;
 }
 
+.wac-card__title {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.wac-wl__title {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
 @media screen and (max-width: 749px) {
-  .wac-coll .wac-card__title {
+  .wac-card__title,
+  .wac-coll .wac-card__title,
+  .wac-wl__title {
     font-size: 15px;
     line-height: 1.3;
   }
