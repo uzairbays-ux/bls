@@ -7117,6 +7117,12 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     text-align: left;
   }
 
+  .wac-featured__track .wac-card__title-link,
+  .wac-featured__track .wac-card__meta {
+    width: 100%;
+    min-width: 0;
+  }
+
   .wac-featured__track .wac-card__meta {
     gap: 8px;
     white-space: nowrap;
@@ -7126,6 +7132,10 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .wac-featured__track .wac-card__meta span:last-child {
+    flex: 0 0 auto;
   }
 
   /* image with text */
