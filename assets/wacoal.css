@@ -468,6 +468,11 @@
     padding: 0;
   }
 
+  /* Horizon gives the menu button area its own 60px minimum; keep the bar at the header height */
+  .header-section .header__drawer {
+    min-height: var(--wac-header-h-mobile);
+  }
+
   .header-section .header__icon--summary .header-drawer-icon--open {
     position: relative;
     width: 24px;
