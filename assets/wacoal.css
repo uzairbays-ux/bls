@@ -6700,6 +6700,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   .header-drawer .menu-drawer__featured-content-list {
     gap: 12px;
     padding: 0 20px 24px;
+    scrollbar-width: none;
+  }
+
+  .header-drawer .menu-drawer__featured-content-list::-webkit-scrollbar {
+    display: none;
   }
 
   .header-drawer .menu-drawer__featured-content-list-item,
