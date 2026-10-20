@@ -6473,3 +6473,19 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     padding: 0 18px;
   }
 }
+
+/* ===== Collection grid: product names in the product-page title font (Fraunces) ===== */
+.wac-coll .wac-card__title {
+  font-family: var(--wac-font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-coll .wac-card__title {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+}
