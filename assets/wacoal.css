@@ -7134,9 +7134,6 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     text-overflow: ellipsis;
   }
 
-  .wac-featured__track .wac-card__meta span:last-child {
-    flex: 0 0 auto;
-  }
 
   /* image with text */
   .wac-iwt,
@@ -7365,5 +7362,80 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 
   .bls-edit__card--lead .bls-edit__label {
     font-size: 18px;
+  }
+}
+
+/* ===== Phones: swipe-row progress bar, even card gaps, square lead in the edit, tidy product cards ===== */
+.bls-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .bls-scrollbar {
+    position: relative;
+    display: block;
+    height: 2px;
+    margin: 16px 16px 0;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #e4dfda;
+  }
+
+  .bls-scrollbar[hidden] {
+    display: none;
+  }
+
+  .bls-scrollbar__thumb {
+    display: block;
+    height: 100%;
+    border-radius: 2px;
+    background: #3c3738;
+    transition: transform 0.08s linear;
+  }
+
+  .wac-tiles--mobile-swipe {
+    padding-bottom: 0;
+  }
+
+  .wac-tiles--mobile-swipe + .bls-scrollbar {
+    margin-bottom: 24px;
+  }
+
+  .bls-edit__row + .bls-scrollbar {
+    margin: 16px 0 0;
+  }
+
+  /* Shop Bra Styles: 8px between cards, like the other rows */
+  .wac-styles__item {
+    margin: 0;
+  }
+
+  /* Fabric Edit: square lead photo */
+  .bls-edit__card--lead {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* product cards: no style number, names on two lines, smaller price */
+  .wac-card__meta span:nth-child(2) {
+    display: none;
+  }
+
+  .wac-card__title {
+    display: -webkit-box;
+    min-height: 2.6em;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .wac-card__price {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bls-scrollbar__thumb {
+    transition: none;
   }
 }
