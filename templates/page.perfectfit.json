@@ -1,0 +1,219 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "bls-fit-hero",
+      "settings": {
+        "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
+        "image_position": "center top",
+        "background": "#f2ede9",
+        "heading": "Finding the right bra fit has <em>never been easier</em>",
+        "text": "<p>Bodies change. Keeping up with your size and shape is the key to feeling your best.</p><p>Measure yourself with our bra size calculator, or tell us your current size, and we'll show you your best fit and the styles in stock in it.</p>",
+        "button_1_label": "Manually measure yourself",
+        "button_1_link": "/pages/the-perfect-fit?view=bra-fit-calculator",
+        "button_2_label": "I know my size",
+        "button_2_link": "/pages/the-perfect-fit?view=i-know-my-bra-size"
+      }
+    },
+    "ways": {
+      "type": "bls-fit-cards",
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "icon": "bra",
+            "image_asset": "",
+            "title": "I Know My Bra Size",
+            "text": "<p>Add your current bra size to see your sister sizes and the styles in stock in your size.</p>",
+            "button_label": "Enter your size",
+            "link": "/pages/the-perfect-fit?view=i-know-my-bra-size"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "icon": "tape",
+            "image_asset": "",
+            "title": "Manually Measure Yourself",
+            "text": "<p>Grab a soft measuring tape and let our bra size calculator guide you to your best fit.</p>",
+            "button_label": "Start now",
+            "link": "/pages/the-perfect-fit?view=bra-fit-calculator"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "icon": "chat",
+            "image_asset": "",
+            "title": "Ask Our Fit Team",
+            "text": "<p>Not sure where to start? Message us and we'll guide you every step of the way.</p>",
+            "button_label": "Contact us",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "layout": "ways",
+        "heading": "3 Ways To Get Fit",
+        "heading_italic": false,
+        "text": "<p>Choose the way that suits you. We'll show you your best size and the bras in stock in it.</p>",
+        "columns": 3,
+        "background": "white",
+        "divider": false
+      }
+    },
+    "points": {
+      "type": "bls-fit-cards",
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "image_asset": "bls-fit-point-band.png",
+            "title": "Band",
+            "text": "<p>Straight, snug and not riding up.</p>",
+            "button_label": ""
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "image_asset": "bls-fit-point-cups.png",
+            "title": "Cups",
+            "text": "<p>No spilling, no gaps, and the centre sits flat.</p>",
+            "button_label": ""
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "image_asset": "bls-fit-point-straps.png",
+            "title": "Straps",
+            "text": "<p>Stay up without digging in.</p>",
+            "button_label": ""
+          }
+        },
+        "b4": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "image_asset": "bls-fit-point-comfort.png",
+            "title": "Comfort",
+            "text": "<p>No poking wires and no constant adjusting.</p>",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "layout": "points",
+        "heading": "Signs Of A Good Fit",
+        "heading_italic": false,
+        "text": "<p>Check these four things every time you try on a bra.</p>",
+        "columns": 4,
+        "background": "white",
+        "divider": true
+      }
+    },
+    "sister": {
+      "type": "bls-fit-text",
+      "settings": {
+        "style": "center",
+        "heading": "Your Sister Size",
+        "heading_italic": true,
+        "text": "",
+        "html": "<div class=\"bls-chart\"><p class=\"bls-chart__lead\">Sister sizes are bra sizes with a similar cup volume but different band sizes. If your bra feels too tight or loose, a sister size may give you a better fit.</p><p class=\"bls-chart__title\">Most common sister sizes</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\">Your size</th><th scope=\"col\">Sister size</th></tr></thead><tbody><tr><th scope=\"row\">32D</th><td>34C</td></tr><tr><th scope=\"row\">34D</th><td>36C</td></tr><tr><th scope=\"row\">36B</th><td>34C</td></tr><tr><th scope=\"row\">36C</th><td>38B</td></tr><tr><th scope=\"row\">36D</th><td>34DD / 38C</td></tr><tr><th scope=\"row\">34B</th><td>32C</td></tr><tr><th scope=\"row\">32C</th><td>34B</td></tr><tr><th scope=\"row\">38C</th><td>36D</td></tr><tr><th scope=\"row\">32DD</th><td>34D</td></tr></tbody></table></div><p class=\"bls-chart__note\">Go <strong>up</strong> one band size and <strong>down</strong> one cup size, or go <strong>down</strong> one band size and <strong>up</strong> one cup size.</p></div>",
+        "button_label": "Find my sister sizes",
+        "button_link": "/pages/the-perfect-fit?view=i-know-my-bra-size",
+        "background": "beige"
+      }
+    },
+    "help": {
+      "type": "bls-fit-cards",
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "icon": "whatsapp",
+            "image_asset": "",
+            "title": "WhatsApp",
+            "text": "<p>Message our fit team for quick help with your size.</p>",
+            "button_label": "Chat now"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "icon": "email",
+            "image_asset": "",
+            "title": "Email",
+            "text": "<p>Send us a note and we'll get back to you with answers.</p>",
+            "button_label": "Email us"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "icon": "chat",
+            "image_asset": "",
+            "title": "Message Us",
+            "text": "<p>Ask us anything about sizes, styles or your order.</p>",
+            "button_label": "Contact us",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "layout": "help",
+        "heading": "We're Always Here To Help...",
+        "heading_italic": true,
+        "text": "",
+        "columns": 3,
+        "background": "beige",
+        "divider": false
+      }
+    },
+    "more": {
+      "type": "bls-fit-text",
+      "settings": {
+        "style": "more",
+        "heading": "More info",
+        "text": "<p>British Lingerie Studio helps you find a bra that fits, with tools you can use at home in a few minutes.</p><p>If you prefer to measure, our bra size calculator walks you through two measurements with a soft tape and turns them into your BLS size. If you already know your size, enter your band and cup on the I Know My Size page to see your sister sizes and the styles in stock in your size.</p><p>A bra that fits supports you, feels comfortable all day and looks better under your clothes. Our bras come in bands 32 to 44 and cups A to F, in padded, non-padded, wired and wireless styles, with matching panties, camisoles, sleepwear and shapewear.</p>",
+        "background": "white"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "ways",
+    "points",
+    "sister",
+    "help",
+    "more"
+  ]
+}

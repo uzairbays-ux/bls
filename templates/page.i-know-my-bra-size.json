@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "picker": {
+      "type": "bls-fit-size-picker",
+      "settings": {
+        "back_label": "Find your fit",
+        "back_link": "/pages/the-perfect-fit"
+      }
+    },
+    "help": {
+      "type": "bls-fit-cards",
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "icon": "whatsapp",
+            "image_asset": "",
+            "title": "WhatsApp",
+            "text": "<p>Message our fit team for quick help with your size.</p>",
+            "button_label": "Chat now"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "icon": "email",
+            "image_asset": "",
+            "title": "Email",
+            "text": "<p>Send us a note and we'll get back to you with answers.</p>",
+            "button_label": "Email us"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "icon": "chat",
+            "image_asset": "",
+            "title": "Message Us",
+            "text": "<p>Ask us anything about sizes, styles or your order.</p>",
+            "button_label": "Contact us",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "layout": "help",
+        "heading": "We're Always Here To Help...",
+        "heading_italic": true,
+        "text": "",
+        "columns": 3,
+        "background": "beige",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "picker",
+    "help"
+  ]
+}
