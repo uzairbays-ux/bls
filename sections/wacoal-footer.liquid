@@ -8,6 +8,11 @@
   assign year = 'now' | date: '%Y'
 -%}
 <footer class="wac-footer">
+  {%- if settings.logo != blank -%}
+    <a class="wac-footer__brand" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+      {{- settings.logo | image_url: height: 100 | image_tag: height: 34, alt: shop.name, loading: 'lazy' -}}
+    </a>
+  {%- endif -%}
   <div class="wac-footer__wrap">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
