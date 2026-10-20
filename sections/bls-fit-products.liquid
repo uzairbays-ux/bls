@@ -1,0 +1,43 @@
+{%- doc -%}
+  Not placed on any template: assets/bls-fit.js asks for it on a collection URL with the size filter
+  (?filter.v.option.size=36C&section_id=bls-fit-products) and shows the first 8 products that have
+  that size in stock, as the site's product cards.
+{%- enddoc -%}
+{%- liquid
+  assign size = ''
+  for filter in collection.filters
+    if filter.param_name == 'filter.v.option.size'
+      for v in filter.active_values
+        assign size = v.value
+      endfor
+    endif
+  endfor
+  assign shown = 0
+-%}
+<div class="bls-fit-products" data-fit-products-list data-size="{{ size | escape }}">
+  {%- if size != blank -%}
+    {%- for product in collection.products -%}
+      {%- liquid
+        assign ok = false
+        for variant in product.variants
+          if variant.available and variant.options contains size
+            assign ok = true
+            break
+          endif
+        endfor
+      -%}
+      {%- if ok -%}
+        <div class="bls-fit-products__item">{% render 'wacoal-product-card', product: product, sizes: '(max-width: 749px) 50vw, 240px' %}</div>
+        {%- assign shown = shown | plus: 1 -%}
+        {%- if shown >= 8 -%}{%- break -%}{%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Fit products",
+  "tag": "div"
+}
+{% endschema %}

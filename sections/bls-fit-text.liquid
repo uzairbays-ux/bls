@@ -1,0 +1,42 @@
+{%- doc -%}
+  Text for the fit pages: a centred section with a serif heading (sister sizes, measuring guides)
+  or Wacoal's "more info" block at the foot of the page. Optional HTML (a size table) under the text.
+{%- enddoc -%}
+{{ 'bls-fit.css' | asset_url | stylesheet_tag }}
+{%- assign ss = section.settings -%}
+<section class="bls-fit-text bls-fit-text--{{ ss.style }}{% if ss.background == 'beige' %} bls-fit-text--beige{% endif %}">
+  <div class="bls-fit-text__inner">
+    {%- if ss.heading != blank -%}
+      {%- if ss.style == 'more' -%}
+        <p class="bls-fit-text__tab">{{ ss.heading | escape }}</p>
+      {%- else -%}
+        <h2 class="bls-fit-text__title{% if ss.heading_italic %} bls-fit-text__title--italic{% endif %}">{{ ss.heading | escape }}</h2>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if ss.text != blank -%}<div class="bls-fit-text__body rte">{{ ss.text }}</div>{%- endif -%}
+    {%- if ss.html != blank -%}<div class="bls-fit-text__html">{{ ss.html }}</div>{%- endif -%}
+    {%- if ss.button_label != blank and ss.button_link != blank -%}
+      <p class="bls-fit-text__cta"><a class="bls-fit-card__btn" href="{{ ss.button_link }}">{{ ss.button_label | escape }}</a></p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fit text",
+  "tag": "div",
+  "class": "bls-fit-section",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Look", "options": [ { "value": "center", "label": "Centred, serif heading" }, { "value": "more", "label": "More info (foot of page)" } ], "default": "center" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "heading_italic", "label": "Italic heading", "default": true },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "html", "id": "html", "label": "HTML under the text", "info": "For a size table." },
+    { "type": "text", "id": "button_label", "label": "Button" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "beige", "label": "Soft beige" } ], "default": "white" }
+  ],
+  "presets": [{ "name": "Fit text" }],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

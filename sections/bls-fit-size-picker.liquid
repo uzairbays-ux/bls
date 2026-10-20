@@ -1,0 +1,68 @@
+{%- doc -%}
+  "I know my size" (Wacoal): pick a band and a cup; the shared result panel shows the sister sizes,
+  the S/M/L size and the bras in stock in that size (assets/bls-fit.js).
+{%- enddoc -%}
+{{ 'bls-fit.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'bls-fit.js' | asset_url }}" defer></script>
+{%- liquid
+  assign ss = section.settings
+  assign coll = ss.collection | default: collections['bras']
+  assign coll_url = '/collections/bras'
+  if coll != blank
+    assign coll_url = coll.url
+  endif
+  assign bands = ss.bands | split: ','
+  assign cups = ss.cups | split: ','
+-%}
+<section class="bls-fit-tool bls-fit-tool--picker" data-bls-fit-picker>
+  <div class="bls-fit-tool__inner">
+    {%- if ss.back_label != blank -%}
+      <a class="bls-fit-crumb" href="{{ ss.back_link | default: '/pages/the-perfect-fit' }}">{{ ss.back_label | escape }}</a>
+    {%- endif -%}
+    <h1 class="bls-fit-tool__title">{{ ss.title | escape }}</h1>
+    <hr class="bls-fit-rule">
+    <h2 class="bls-fit-picker__question">{{ ss.question | escape }}</h2>
+
+    <div class="bls-fit-picker__group" role="radiogroup" aria-labelledby="BlsFitBand-{{ section.id }}">
+      <h3 class="bls-fit-picker__head" id="BlsFitBand-{{ section.id }}">Bra band size</h3>
+      <p class="bls-fit-picker__hint">Choose one</p>
+      <div class="bls-fit-picker__pills">
+        {%- for b in bands -%}{%- assign v = b | strip -%}
+          <button type="button" class="bls-fit-size-pill" role="radio" aria-checked="false" data-fit-band="{{ v }}">{{ v }}</button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="bls-fit-picker__group" role="radiogroup" aria-labelledby="BlsFitCup-{{ section.id }}">
+      <h3 class="bls-fit-picker__head" id="BlsFitCup-{{ section.id }}">Bra cup size</h3>
+      <p class="bls-fit-picker__hint">Choose one</p>
+      <div class="bls-fit-picker__pills">
+        {%- for c in cups -%}{%- assign v = c | strip -%}
+          <button type="button" class="bls-fit-size-pill" role="radio" aria-checked="false" data-fit-cup="{{ v }}">{{ v }}</button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {% render 'bls-fit-result', collection_url: coll_url, contact_url: ss.contact_link, again_label: 'Change size' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "I know my size",
+  "tag": "div",
+  "class": "bls-fit-section",
+  "settings": [
+    { "type": "text", "id": "back_label", "label": "Link above the title", "default": "Find your fit" },
+    { "type": "url", "id": "back_link", "label": "Its link" },
+    { "type": "text", "id": "title", "label": "Title", "default": "I Know My Size" },
+    { "type": "text", "id": "question", "label": "Question", "default": "What's Your Bra Size Right Now?" },
+    { "type": "text", "id": "bands", "label": "Bands", "default": "32, 34, 36, 38, 40, 42, 44" },
+    { "type": "text", "id": "cups", "label": "Cups", "default": "A, B, C, D, DD, E, F" },
+    { "type": "collection", "id": "collection", "label": "Show bras from", "info": "Default: Bras." },
+    { "type": "url", "id": "contact_link", "label": "Fit team link", "info": "Default: the contact page." }
+  ],
+  "presets": [{ "name": "I know my size" }],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

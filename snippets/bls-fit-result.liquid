@@ -1,0 +1,45 @@
+{%- doc -%}
+  Result panel shared by the bra size calculator and "I know my size" (filled by assets/bls-fit.js):
+  the size, its sister sizes, the S/M/L size, a link to the collection filtered on the size and the
+  bras in stock in that size (sections/bls-fit-products.liquid, fetched with the size filter).
+  @param {string} collection_url - Collection the products come from, e.g. /collections/bras
+  @param {string} [contact_url] - Fit team link for sizes outside the chart
+  @param {string} [again_label] - Text of the reset button
+{%- enddoc -%}
+<div class="bls-fit-result" data-fit-result data-collection-url="{{ collection_url }}" data-contact-url="{{ contact_url | default: '/pages/contact' }}" hidden>
+  <div class="bls-fit-result__box" tabindex="-1" data-fit-result-box>
+    <div data-fit-result-ok>
+      <p class="bls-fit-result__eyebrow" data-fit-eyebrow>Your BLS size</p>
+      <p class="bls-fit-result__size" data-fit-size></p>
+      <p class="bls-fit-result__note" data-fit-note hidden></p>
+      <dl class="bls-fit-result__facts">
+        <div data-fit-sisters-row>
+          <dt>Sister sizes</dt>
+          <dd data-fit-sisters></dd>
+        </div>
+        <div data-fit-letter-row>
+          <dt>In S/M/L styles</dt>
+          <dd data-fit-letter></dd>
+        </div>
+      </dl>
+      <p class="bls-fit-result__help">Sister sizes hold the same cup volume on a tighter or looser band. Try one when the band feels too tight or too loose.</p>
+      <div class="bls-fit-result__actions">
+        <a class="bls-fit-pill bls-fit-pill--dark" data-fit-shop href="{{ collection_url }}">Shop bras</a>
+        <button type="button" class="bls-fit-pill" data-fit-reset>{{ again_label | default: 'Start again' }}</button>
+      </div>
+    </div>
+    <div data-fit-result-error hidden>
+      <p class="bls-fit-result__eyebrow">Let's get this right</p>
+      <p class="bls-fit-result__message" data-fit-error-text></p>
+      <div class="bls-fit-result__actions">
+        <a class="bls-fit-pill bls-fit-pill--dark" href="{{ contact_url | default: '/pages/contact' }}">Ask our fit team</a>
+        <button type="button" class="bls-fit-pill" data-fit-reset>{{ again_label | default: 'Start again' }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="bls-fit-result__products" data-fit-products-wrap hidden>
+    <h3 class="bls-fit-result__products-title">In stock in <span data-fit-size-inline></span></h3>
+    <div class="bls-fit-result__grid" data-fit-products aria-live="polite"></div>
+    <p class="bls-fit-result__empty" data-fit-empty hidden></p>
+  </div>
+</div>

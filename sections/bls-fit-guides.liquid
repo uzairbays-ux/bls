@@ -1,0 +1,65 @@
+{%- doc -%}
+  Measuring guides beyond bras (panties, camisoles, shapewear): one tab per block with the BLS
+  measuring drawing, the steps and the size table.
+{%- enddoc -%}
+{{ 'bls-fit.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'bls-fit.js' | asset_url }}" defer></script>
+{%- assign ss = section.settings -%}
+{%- if section.blocks.size > 0 -%}
+<section class="bls-fit-guides" data-bls-fit-guides>
+  <div class="bls-fit-guides__inner">
+    {%- if ss.heading != blank -%}<h2 class="bls-fit-cards__title bls-fit-cards__title--italic">{{ ss.heading | escape }}</h2>{%- endif -%}
+    {%- if ss.text != blank -%}<div class="bls-fit-cards__lead">{{ ss.text }}</div>{%- endif -%}
+    <div class="bls-fit-guides__tabs" role="tablist">
+      {%- for block in section.blocks -%}
+        <button type="button" class="bls-fit-guides__tab{% if forloop.first %} is-active{% endif %}" role="tab" id="BlsFitTab-{{ block.id }}" aria-controls="BlsFitPanel-{{ block.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" {% unless forloop.first %}tabindex="-1"{% endunless %} data-fit-tab>{{ block.settings.title | escape }}</button>
+      {%- endfor -%}
+    </div>
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign bs = block.settings
+        assign src = blank
+        if bs.image != blank
+          assign src = bs.image | image_url: width: 800
+        elsif bs.image_asset != blank
+          assign src = bs.image_asset | asset_url
+        endif
+      -%}
+      <div class="bls-fit-guides__panel" role="tabpanel" id="BlsFitPanel-{{ block.id }}" aria-labelledby="BlsFitTab-{{ block.id }}" {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }}>
+        <div class="bls-fit-guides__how">
+          {%- if src != blank -%}<figure class="bls-fit-step__art bls-fit-guides__art"><img src="{{ src }}" alt="" width="270" height="420" loading="lazy"></figure>{%- endif -%}
+          <div class="bls-fit-guides__steps rte">{{ bs.text }}</div>
+        </div>
+        {%- if bs.table != blank -%}<div class="bls-fit-guides__table">{{ bs.table }}</div>{%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Measuring guides",
+  "tag": "div",
+  "class": "bls-fit-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Measuring For Everything Else" },
+    { "type": "richtext", "id": "text", "label": "Text" }
+  ],
+  "blocks": [
+    {
+      "type": "guide",
+      "name": "Guide",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tab", "default": "Panties" },
+        { "type": "image_picker", "id": "image", "label": "Drawing" },
+        { "type": "text", "id": "image_asset", "label": "or theme asset file name", "info": "e.g. bls-fit-figure-panty.jpg" },
+        { "type": "richtext", "id": "text", "label": "Steps" },
+        { "type": "html", "id": "table", "label": "Size table (HTML)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Measuring guides" }],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

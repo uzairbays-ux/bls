@@ -1,0 +1,139 @@
+{%- doc -%}
+  Bra size calculator (Wacoal "Measure Myself"): inches or centimetres, underbust and bust from two
+  selects each (whole number + fraction), BLS's own chart turns them into a size (assets/bls-fit.js),
+  then the shared result panel and the "Do this / Not this" tips.
+{%- enddoc -%}
+{{ 'bls-fit.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'bls-fit.js' | asset_url }}" defer></script>
+{%- liquid
+  assign ss = section.settings
+  assign coll = ss.collection | default: collections['bras']
+  assign coll_url = '/collections/bras'
+  if coll != blank
+    assign coll_url = coll.url
+  endif
+  assign img1 = 'bls-fit-figure-bra.jpg' | asset_url
+  if ss.image_1 != blank
+    assign img1 = ss.image_1 | image_url: width: 1000
+  endif
+  assign img2 = 'bls-fit-figure-bra.jpg' | asset_url
+  if ss.image_2 != blank
+    assign img2 = ss.image_2 | image_url: width: 1000
+  endif
+-%}
+<section class="bls-fit-tool" data-bls-fit-calc>
+  <div class="bls-fit-tool__inner">
+    {%- if ss.back_label != blank -%}
+      <a class="bls-fit-crumb" href="{{ ss.back_link | default: '/pages/the-perfect-fit' }}">{{ ss.back_label | escape }}</a>
+    {%- endif -%}
+    <h1 class="bls-fit-tool__title">{{ ss.title | escape }}</h1>
+    {%- if ss.intro != blank -%}<div class="bls-fit-tool__intro">{{ ss.intro }}</div>{%- endif -%}
+
+    <p class="bls-fit-units__label" id="BlsFitUnits-{{ section.id }}">Choose inches or centimetres</p>
+    <div class="bls-fit-units" role="group" aria-labelledby="BlsFitUnits-{{ section.id }}">
+      <button type="button" class="bls-fit-units__btn is-active" data-fit-unit="in" aria-pressed="true">IN</button>
+      <button type="button" class="bls-fit-units__btn" data-fit-unit="cm" aria-pressed="false">CM</button>
+    </div>
+
+    <div class="bls-fit-steps">
+      {%- for n in (1..2) -%}
+        {%- liquid
+          if n == 1
+            assign key = 'under'
+            assign s_title = ss.step_1_title
+            assign s_text = ss.step_1_text
+            assign s_label = ss.step_1_label
+            assign s_img = img1
+          else
+            assign key = 'over'
+            assign s_title = ss.step_2_title
+            assign s_text = ss.step_2_text
+            assign s_label = ss.step_2_label
+            assign s_img = img2
+          endif
+        -%}
+        <div class="bls-fit-step">
+          <h2 class="bls-fit-step__title">{{ s_title | escape }}</h2>
+          <figure class="bls-fit-step__art"><img src="{{ s_img }}" alt="" width="360" height="460" loading="lazy"></figure>
+          <div class="bls-fit-step__text">{{ s_text }}</div>
+          <p class="bls-fit-step__label" id="BlsFitLabel-{{ key }}-{{ section.id }}">{{ s_label | escape }}</p>
+          <p class="bls-fit-step__req">*Required</p>
+          <div class="bls-fit-pair">
+            <select class="bls-fit-select" data-fit-whole="{{ key }}" aria-labelledby="BlsFitLabel-{{ key }}-{{ section.id }}" aria-describedby="BlsFitUnitHint-{{ section.id }}">
+              <option value="">--</option>
+              {%- for i in (25..50) -%}<option value="{{ i }}">{{ i }}</option>{%- endfor -%}
+            </select>
+            <span class="bls-fit-pair__and" aria-hidden="true">&amp;</span>
+            <select class="bls-fit-select" data-fit-frac="{{ key }}" aria-label="Fraction">
+              <option value="0">0</option><option value="0.125">1/8</option><option value="0.25">1/4</option><option value="0.375">3/8</option><option value="0.5">1/2</option><option value="0.625">5/8</option><option value="0.75">3/4</option><option value="0.875">7/8</option>
+            </select>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+    <p class="visually-hidden" id="BlsFitUnitHint-{{ section.id }}" data-fit-unit-hint>In inches</p>
+    <button type="button" class="bls-fit-calc-btn" data-fit-calc disabled>{{ ss.button_label | escape }}</button>
+
+    {% render 'bls-fit-result', collection_url: coll_url, contact_url: ss.contact_link, again_label: 'Measure again' %}
+  </div>
+
+  {%- if ss.tips_heading != blank -%}
+    {%- assign do_lines = ss.do_list | newline_to_br | split: '<br />' -%}
+    {%- assign dont_lines = ss.dont_list | newline_to_br | split: '<br />' -%}
+    <div class="bls-fit-tips">
+      <h2 class="bls-fit-tips__title">{{ ss.tips_heading | escape }}</h2>
+      <div class="bls-fit-tips__cols">
+        <div>
+          <h3 class="bls-fit-tips__head">Do this</h3>
+          <ul class="bls-fit-tips__list" role="list">
+            {%- for line in do_lines -%}{%- assign t = line | strip -%}{%- if t != blank -%}
+              <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m2.5 8.5 3.5 3.5 7.5-8"/></svg>{{ t | escape }}</li>
+            {%- endif -%}{%- endfor -%}
+          </ul>
+        </div>
+        <div>
+          <h3 class="bls-fit-tips__head">Not this</h3>
+          <ul class="bls-fit-tips__list" role="list">
+            {%- for line in dont_lines -%}{%- assign t = line | strip -%}{%- if t != blank -%}
+              <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13"/></svg>{{ t | escape }}</li>
+            {%- endif -%}{%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Bra size calculator",
+  "tag": "div",
+  "class": "bls-fit-section",
+  "settings": [
+    { "type": "text", "id": "back_label", "label": "Link above the title", "default": "Find your fit" },
+    { "type": "url", "id": "back_link", "label": "Its link" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Measure Myself" },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>A great fitting bra starts with the right size.</p><p>Use our bra size calculator to measure yourself at home in two simple steps. All you need is a soft measuring tape and a non-padded bra.</p>" },
+    { "type": "header", "content": "Step 1: band" },
+    { "type": "text", "id": "step_1_title", "label": "Title", "default": "1. Determine your band size" },
+    { "type": "image_picker", "id": "image_1", "label": "Picture", "info": "Without one the BLS measuring drawing shows." },
+    { "type": "richtext", "id": "step_1_text", "label": "Text", "default": "<p>Put on a non-padded bra and stand in front of a mirror.</p><p>Place the measuring tape right under your bust, around your ribcage (line 1). Pull it snug but not too tight, and keep it level all around.</p><p>Choose the exact number you see on the tape below.</p>" },
+    { "type": "text", "id": "step_1_label", "label": "Select label", "default": "Select exact underbust size:" },
+    { "type": "header", "content": "Step 2: cup" },
+    { "type": "text", "id": "step_2_title", "label": "Title", "default": "2. Determine your cup size" },
+    { "type": "image_picker", "id": "image_2", "label": "Picture" },
+    { "type": "richtext", "id": "step_2_text", "label": "Text", "default": "<p>Place the tape around the fullest part of your bust (line 2), over your bra.</p><p>Keep it straight and comfortable, without flattening your bust.</p><p>Choose the exact number you see on the tape below.</p>" },
+    { "type": "text", "id": "step_2_label", "label": "Select label", "default": "Select exact bust size:" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Calculate bra size" },
+    { "type": "header", "content": "Result" },
+    { "type": "collection", "id": "collection", "label": "Show bras from", "info": "Bras in stock in the size show under the result. Default: Bras." },
+    { "type": "url", "id": "contact_link", "label": "Fit team link", "info": "Shown when the numbers fall outside the size chart. Default: the contact page." },
+    { "type": "header", "content": "Tips" },
+    { "type": "text", "id": "tips_heading", "label": "Heading", "default": "Helpful Bra Fit Tips" },
+    { "type": "textarea", "id": "do_list", "label": "Do this (one per line)", "default": "Wear a non-padded or lightly lined bra\nKnow that your size can change through the month\nBreathe normally while you measure" },
+    { "type": "textarea", "id": "dont_list", "label": "Not this (one per line)", "default": "Don't pull the measuring tape too tight\nDon't round your size down\nDon't hold your breath" }
+  ],
+  "presets": [{ "name": "Bra size calculator" }],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

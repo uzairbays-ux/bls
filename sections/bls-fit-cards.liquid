@@ -1,0 +1,98 @@
+{%- doc -%}
+  A row of cards for the fit pages: "3 ways to get fit" (icon in a circle + pill button), "Signs of a
+  good fit" (round illustrations) or "Here to help" (small icon + underlined link). A card whose
+  button or link is empty shows without it; a Help card without a link is hidden.
+{%- enddoc -%}
+{{ 'bls-fit.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign ss = section.settings
+  assign visible = 0
+  for block in section.blocks
+    if ss.layout == 'help' and block.settings.link == blank
+      continue
+    endif
+    assign visible = visible | plus: 1
+  endfor
+-%}
+{%- if visible > 0 -%}
+<section class="bls-fit-cards bls-fit-cards--{{ ss.layout }}{% if ss.background == 'beige' %} bls-fit-cards--beige{% endif %}{% if ss.divider %} bls-fit-cards--divider{% endif %}" style="--bls-fit-cols: {{ visible | at_most: ss.columns }};">
+  <div class="bls-fit-cards__inner">
+    {%- if ss.heading != blank -%}
+      <h2 class="bls-fit-cards__title{% if ss.heading_italic %} bls-fit-cards__title--italic{% endif %}">{{ ss.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if ss.text != blank -%}
+      <div class="bls-fit-cards__lead">{{ ss.text }}</div>
+    {%- endif -%}
+    <ul class="bls-fit-cards__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign bs = block.settings
+          if ss.layout == 'help' and bs.link == blank
+            continue
+          endif
+          assign img_src = blank
+          if bs.image != blank
+            assign img_src = bs.image | image_url: width: 300
+          elsif bs.image_asset != blank
+            assign img_src = bs.image_asset | asset_url
+          endif
+        -%}
+        <li class="bls-fit-card" {{ block.shopify_attributes }}>
+          {%- if img_src != blank -%}
+            <span class="bls-fit-card__art"><img src="{{ img_src }}" alt="" width="130" height="130" loading="lazy"></span>
+          {%- elsif bs.icon != 'none' -%}
+            <span class="bls-fit-card__art bls-fit-card__art--icon">{% render 'bls-fit-icon', name: bs.icon, size: 34 %}</span>
+          {%- endif -%}
+          {%- if bs.title != blank -%}<h3 class="bls-fit-card__title">{{ bs.title | escape }}</h3>{%- endif -%}
+          {%- if bs.text != blank -%}<div class="bls-fit-card__text">{{ bs.text }}</div>{%- endif -%}
+          {%- if bs.button_label != blank and bs.link != blank -%}
+            {%- liquid
+              assign ext = false
+              if bs.link contains 'http' or bs.link contains 'mailto:' or bs.link contains 'tel:'
+                unless bs.link contains request.host
+                  assign ext = true
+                endunless
+              endif
+            -%}
+            <a class="bls-fit-card__btn" href="{{ bs.link }}"{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ bs.button_label | escape }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Fit cards",
+  "tag": "div",
+  "class": "bls-fit-section",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Look", "options": [ { "value": "ways", "label": "Ways to get fit (icon circle + button)" }, { "value": "points", "label": "Illustrations (round pictures)" }, { "value": "help", "label": "Here to help (small icon + link)" } ], "default": "ways" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "3 Ways To Get Fit" },
+    { "type": "checkbox", "id": "heading_italic", "label": "Italic heading", "default": false },
+    { "type": "richtext", "id": "text", "label": "Text under the heading" },
+    { "type": "range", "id": "columns", "label": "Cards per row (desktop)", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "beige", "label": "Soft beige" } ], "default": "white" },
+    { "type": "checkbox", "id": "divider", "label": "Line above the section", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "none", "label": "None" }, { "value": "bra", "label": "Bra" }, { "value": "tape", "label": "Measuring tape" }, { "value": "chat", "label": "Chat" }, { "value": "phone", "label": "Phone" }, { "value": "email", "label": "Email" }, { "value": "whatsapp", "label": "WhatsApp" }, { "value": "ruler", "label": "Ruler" }, { "value": "heart", "label": "Heart" } ], "default": "bra" },
+        { "type": "image_picker", "id": "image", "label": "Picture instead of the icon" },
+        { "type": "text", "id": "image_asset", "label": "or theme asset file name", "info": "e.g. bls-fit-point-band.png" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Card title" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button_label", "label": "Button / link text" },
+        { "type": "url", "id": "link", "label": "Link", "info": "For WhatsApp use https://wa.me/92XXXXXXXXXX, for email mailto:you@bls.uk.com." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Fit cards", "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }] }],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

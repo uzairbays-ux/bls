@@ -1,0 +1,996 @@
+/* Fit pages: Find your fit, bra size calculator, I know my size (sections/bls-fit-*.liquid).
+   Measured from wacoal-america.com/pages/find-your-fit, bra-fit-calculator and i-know-my-bra-size,
+   in the theme's own fonts (serif headings, sans text). */
+.bls-fit-section {
+  --fit-ink: #111;
+  --fit-text: #333;
+  --fit-muted: #6b6460;
+  --fit-line: #a9a9a9;
+  --fit-soft-line: #e6e1dc;
+  --fit-beige: #f2ede9;
+  --fit-pill: #eae6e1;
+  --fit-figure: #f2c1b3;
+  --fit-serif: var(--wac-font-serif, var(--font-heading--family, Georgia, serif));
+  --fit-sans: var(--wac-font-sans, var(--font-body--family, sans-serif));
+  color: var(--fit-ink);
+  font-family: var(--fit-sans);
+}
+
+.bls-fit-section h1,
+.bls-fit-section h2,
+.bls-fit-section h3 {
+  text-wrap: balance;
+}
+
+/* ---------- pill buttons ---------- */
+.bls-fit-pill,
+.bls-fit-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 30px;
+  border: 0;
+  border-radius: 50px;
+  background: var(--fit-pill);
+  color: var(--fit-ink);
+  font: 600 12px/1.6 var(--fit-sans);
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.bls-fit-pill:hover,
+.bls-fit-card__btn:hover {
+  background: #ddd6cf;
+}
+
+.bls-fit-pill--dark {
+  background: var(--fit-ink);
+  color: #fff;
+}
+
+.bls-fit-pill--dark:hover {
+  background: #000;
+}
+
+.bls-fit-pill:focus-visible,
+.bls-fit-card__btn:focus-visible,
+.bls-fit-hero__btn:focus-visible,
+.bls-fit-units__btn:focus-visible,
+.bls-fit-size-pill:focus-visible,
+.bls-fit-calc-btn:focus-visible,
+.bls-fit-select:focus-visible,
+.bls-fit-guides__tab:focus-visible {
+  outline: 2px solid var(--fit-ink);
+  outline-offset: 2px;
+}
+
+/* ---------- hero ---------- */
+.bls-fit-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 525px;
+  background: var(--bls-fit-hero-bg, var(--fit-beige));
+}
+
+.bls-fit-hero__text {
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 48px 56px max(24px, calc((100vw - 1440px) / 2 + 100px));
+}
+
+.bls-fit-hero__title {
+  max-width: 652px;
+  margin: 0 0 22px;
+  font: 400 clamp(40px, 4.9vw, 70px)/1 var(--fit-serif);
+  letter-spacing: 1px;
+}
+
+.bls-fit-hero__title em {
+  font-style: italic;
+}
+
+.bls-fit-hero__body {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.65;
+  letter-spacing: 0.3px;
+}
+
+.bls-fit-hero__body p {
+  margin: 0 0 18px;
+}
+
+.bls-fit-hero__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+.bls-fit-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 45px;
+  padding: 9px 45px;
+  border-radius: 50px;
+  background: #fff;
+  color: #000;
+  font: 600 14px/1.6 var(--fit-sans);
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.bls-fit-hero__btn:hover {
+  background: var(--fit-ink);
+  color: #fff;
+}
+
+.bls-fit-hero__media {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.bls-fit-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--bls-fit-hero-pos, center 25%);
+}
+
+.bls-fit-hero__img--empty {
+  background: #e7e0da;
+}
+
+/* ---------- cards ---------- */
+.bls-fit-cards {
+  padding: 60px 0;
+}
+
+.bls-fit-cards--beige {
+  background: var(--fit-beige);
+}
+
+.bls-fit-cards__inner,
+.bls-fit-guides__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.bls-fit-cards--divider .bls-fit-cards__inner {
+  padding-top: 60px;
+  border-top: 1px solid var(--fit-soft-line);
+}
+
+.bls-fit-cards--divider {
+  padding-top: 0;
+}
+
+.bls-fit-cards__title {
+  margin: 0;
+  font: 400 42px/1.3 var(--fit-serif);
+  letter-spacing: 0.25px;
+  text-align: center;
+}
+
+.bls-fit-cards__title--italic {
+  font-size: 36px;
+  font-style: italic;
+}
+
+.bls-fit-cards__lead {
+  max-width: 680px;
+  margin: 12px auto 0;
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.bls-fit-cards__lead p {
+  margin: 0;
+}
+
+.bls-fit-cards__list {
+  display: grid;
+  grid-template-columns: repeat(var(--bls-fit-cols, 3), minmax(0, 1fr));
+  gap: 40px;
+  margin: 45px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bls-fit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bls-fit-card__art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--fit-beige);
+  color: #7a6a60;
+}
+
+.bls-fit-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bls-fit-card__art--icon .bls-fit-icon {
+  width: 52px;
+  height: 52px;
+}
+
+.bls-fit-card__title {
+  margin: 0 0 8px;
+  font: 500 22px/1.3 var(--fit-serif);
+  letter-spacing: 0.25px;
+}
+
+.bls-fit-card__text {
+  max-width: 333px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.bls-fit-card__text p {
+  margin: 0;
+}
+
+.bls-fit-card .bls-fit-card__btn {
+  margin-top: 16px;
+}
+
+/* illustrations (signs of a good fit) */
+.bls-fit-cards--points .bls-fit-card__art {
+  width: 150px;
+  height: 150px;
+  background: var(--fit-figure);
+}
+
+/* here to help */
+.bls-fit-cards--help .bls-fit-card__art {
+  width: 58px;
+  height: 58px;
+  border: 1px solid #c9bcb1;
+  background: transparent;
+  color: #8a776b;
+}
+
+.bls-fit-cards--help .bls-fit-card__art--icon .bls-fit-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.bls-fit-cards--help .bls-fit-card__title {
+  font-size: 24px;
+}
+
+.bls-fit-cards--help .bls-fit-card__text {
+  max-width: 280px;
+}
+
+.bls-fit-cards--help .bls-fit-card__btn {
+  min-height: 0;
+  margin-top: 12px;
+  padding: 0;
+  background: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: none;
+}
+
+/* ---------- text ---------- */
+.bls-fit-text {
+  padding: 60px 20px;
+}
+
+.bls-fit-text--beige {
+  background: var(--fit-beige);
+}
+
+.bls-fit-text__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bls-fit-text__title {
+  margin: 0 0 14px;
+  font: 400 34px/1.3 var(--fit-serif);
+  letter-spacing: 0.25px;
+}
+
+.bls-fit-text__title--italic {
+  font-style: italic;
+}
+
+.bls-fit-text__body {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.bls-fit-text__body p {
+  margin: 0 0 12px;
+}
+
+.bls-fit-text__html {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.bls-fit-text__cta {
+  margin: 28px 0 0;
+}
+
+.bls-fit-text--more {
+  padding: 40px 0 60px;
+}
+
+.bls-fit-text--more .bls-fit-text__inner {
+  max-width: 1296px;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.bls-fit-text__tab {
+  display: inline-block;
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 3px solid var(--fit-ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.bls-fit-text--more .bls-fit-text__body {
+  margin-top: 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--fit-soft-line);
+  border-bottom: 1px solid var(--fit-soft-line);
+  font-size: 14px;
+  line-height: 26px;
+}
+
+/* ---------- tools (calculator, I know my size) ---------- */
+.bls-fit-tool {
+  padding: 40px 20px 0;
+}
+
+.bls-fit-tool__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bls-fit-crumb {
+  display: inline-block;
+  padding: 16px 18px;
+  background: var(--fit-beige);
+  color: var(--fit-ink);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.bls-fit-tool__title {
+  margin: 32px 0 34px;
+  font: italic 400 50px/1.15 var(--fit-serif);
+}
+
+.bls-fit-tool__intro {
+  font-size: 18px;
+  line-height: 1.65;
+  letter-spacing: 0.25px;
+  color: var(--fit-text);
+}
+
+.bls-fit-tool__intro p {
+  margin: 0 0 18px;
+}
+
+.bls-fit-rule {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--fit-soft-line);
+}
+
+.bls-fit-units__label {
+  margin: 26px 0 14px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bls-fit-units {
+  display: inline-flex;
+  gap: 10px;
+  padding-bottom: 34px;
+}
+
+.bls-fit-units__btn {
+  min-width: 97px;
+  height: 48px;
+  padding: 0 28px;
+  border: 1px solid var(--fit-line);
+  border-radius: 40px;
+  background: #fff;
+  color: var(--fit-text);
+  font: 500 16px/1 var(--fit-sans);
+  cursor: pointer;
+}
+
+.bls-fit-units__btn.is-active {
+  background: var(--fit-pill);
+  color: #000;
+}
+
+.bls-fit-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 96px;
+  padding: 40px 0 0;
+  border-top: 1px solid var(--fit-soft-line);
+  text-align: left;
+}
+
+.bls-fit-step__title {
+  margin: 0 0 20px;
+  font: 600 22px/1.3 var(--fit-sans);
+  letter-spacing: 0.25px;
+}
+
+.bls-fit-step__art {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 24px;
+  background: var(--fit-figure);
+}
+
+.bls-fit-step__art img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+
+.bls-fit-step__text {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.25px;
+}
+
+.bls-fit-step__text p {
+  margin: 0 0 10px;
+}
+
+.bls-fit-step__label {
+  margin: 30px 0 2px;
+  color: var(--fit-text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+
+.bls-fit-step__req {
+  margin: 0 0 14px;
+  color: var(--fit-muted);
+  font-size: 11px;
+}
+
+.bls-fit-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+
+.bls-fit-pair__and {
+  color: var(--fit-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bls-fit-select {
+  width: 100%;
+  height: 56px;
+  padding: 0 40px 0 16px;
+  border: 1px solid var(--fit-line);
+  border-radius: 10px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23333' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 16px center;
+  color: var(--fit-text);
+  font: 500 16px/1 var(--fit-sans);
+  appearance: none;
+  cursor: pointer;
+}
+
+.bls-fit-calc-btn {
+  display: block;
+  min-width: 265px;
+  margin: 44px auto 0;
+  padding: 16px 48px;
+  border: 1px solid var(--fit-line);
+  border-radius: 30px;
+  background: transparent;
+  color: #000;
+  font: 500 14px/1.6 var(--fit-sans);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.bls-fit-calc-btn:not(:disabled) {
+  border-color: var(--fit-ink);
+  background: var(--fit-ink);
+  color: #fff;
+}
+
+.bls-fit-calc-btn:disabled {
+  color: #8a8a8a;
+  cursor: default;
+}
+
+/* I know my size */
+.bls-fit-picker__question {
+  margin: 46px 0 34px;
+  color: var(--fit-text);
+  font: 400 35px/1.3 var(--fit-serif);
+  letter-spacing: 0.25px;
+}
+
+.bls-fit-picker__group {
+  max-width: 846px;
+  margin: 0 auto 44px;
+}
+
+.bls-fit-picker__head {
+  margin: 0;
+  font: 400 22px/1.4 var(--fit-sans);
+}
+
+.bls-fit-picker__hint {
+  margin: 6px 0 18px;
+  color: #777;
+  font-size: 14px;
+}
+
+.bls-fit-picker__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.bls-fit-size-pill {
+  min-width: 75px;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--fit-line);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--fit-text);
+  font: 500 16px/1 var(--fit-sans);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.bls-fit-size-pill:hover {
+  border-color: var(--fit-ink);
+}
+
+.bls-fit-size-pill.is-active {
+  border-color: var(--fit-ink);
+  background: var(--fit-pill);
+  color: #000;
+}
+
+/* ---------- result ---------- */
+.bls-fit-result {
+  margin: 48px 0 0;
+  text-align: center;
+}
+
+.bls-fit-result__box {
+  padding: 40px 24px 36px;
+  background: var(--fit-beige);
+  outline: 0;
+}
+
+.bls-fit-result__eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bls-fit-result__size {
+  margin: 6px 0 0;
+  font: 400 72px/1.1 var(--fit-serif);
+}
+
+.bls-fit-result__note,
+.bls-fit-result__message {
+  max-width: 560px;
+  margin: 10px auto 0;
+  color: var(--fit-text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.bls-fit-result__message {
+  font-size: 17px;
+}
+
+.bls-fit-result__facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 56px;
+  margin: 26px 0 0;
+}
+
+.bls-fit-result__facts dt {
+  color: var(--fit-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.bls-fit-result__facts dd {
+  margin: 4px 0 0;
+  font: 400 26px/1.3 var(--fit-serif);
+}
+
+.bls-fit-result__sister {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  cursor: pointer;
+}
+
+.bls-fit-result__help {
+  max-width: 520px;
+  margin: 18px auto 0;
+  color: var(--fit-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.bls-fit-result__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.bls-fit-result__products {
+  margin-top: 44px;
+}
+
+.bls-fit-result__products-title {
+  margin: 0 0 22px;
+  font: 400 30px/1.3 var(--fit-serif);
+}
+
+.bls-fit-result__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 20px;
+  min-height: 120px;
+  text-align: left;
+}
+
+.bls-fit-result__grid.is-loading {
+  background: linear-gradient(90deg, #f6f3f0 25%, #efeae6 50%, #f6f3f0 75%) 0 0 / 200% 100%;
+  animation: bls-fit-shimmer 1.2s linear infinite;
+}
+
+@keyframes bls-fit-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.bls-fit-result__grid .wac-card,
+.bls-fit-products__item {
+  min-width: 0;
+}
+
+.bls-fit-result__empty {
+  margin: 0;
+  color: var(--fit-text);
+  font-size: 15px;
+}
+
+/* ---------- tips ---------- */
+.bls-fit-tips {
+  max-width: 1080px;
+  margin: 60px auto 0;
+  padding: 50px 72px;
+  background: var(--fit-beige);
+}
+
+.bls-fit-tips__title {
+  margin: 0 0 30px;
+  font: italic 400 34px/1.3 var(--fit-serif);
+  text-align: center;
+}
+
+.bls-fit-tips__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 46px;
+}
+
+.bls-fit-tips__head {
+  margin: 0 0 14px;
+  font: 700 13px/1.3 var(--fit-sans);
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.bls-fit-tips__list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bls-fit-tips__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.bls-fit-tips__list svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+/* ---------- measuring guides ---------- */
+.bls-fit-guides {
+  padding: 60px 0;
+}
+
+.bls-fit-guides__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 28px 0 34px;
+}
+
+.bls-fit-guides__tab {
+  min-height: 44px;
+  padding: 0 26px;
+  border: 1px solid var(--fit-line);
+  border-radius: 40px;
+  background: #fff;
+  color: var(--fit-text);
+  font: 500 14px/1 var(--fit-sans);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bls-fit-guides__tab.is-active {
+  border-color: var(--fit-ink);
+  background: var(--fit-pill);
+  color: #000;
+}
+
+.bls-fit-guides__how {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.bls-fit-guides__art img {
+  height: 380px;
+}
+
+.bls-fit-guides__steps {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.bls-fit-guides__steps h3,
+.bls-fit-guides__steps h4 {
+  margin: 0 0 6px;
+  font: 600 16px/1.4 var(--fit-sans);
+}
+
+.bls-fit-guides__steps ul {
+  margin: 0 0 18px;
+  padding-left: 18px;
+}
+
+.bls-fit-guides__steps p {
+  margin: 0 0 12px;
+}
+
+.bls-fit-guides__table {
+  margin-top: 36px;
+}
+
+/* ---------- phones ---------- */
+@media screen and (max-width: 749px) {
+  .bls-fit-hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .bls-fit-hero__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .bls-fit-hero__text {
+    order: 0;
+    padding: 30px 20px 40px;
+  }
+
+  .bls-fit-hero__title {
+    font-size: 40px;
+  }
+
+  .bls-fit-hero__body {
+    font-size: 16px;
+  }
+
+  .bls-fit-hero__btn {
+    padding: 9px 32px;
+  }
+
+  .bls-fit-cards {
+    padding: 44px 0;
+  }
+
+  .bls-fit-cards--divider .bls-fit-cards__inner {
+    padding-top: 44px;
+  }
+
+  .bls-fit-cards__title {
+    font-size: 32px;
+  }
+
+  .bls-fit-cards__title--italic,
+  .bls-fit-text__title,
+  .bls-fit-tips__title {
+    font-size: 28px;
+  }
+
+  .bls-fit-cards__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    margin-top: 32px;
+  }
+
+  .bls-fit-cards--points .bls-fit-cards__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 16px;
+  }
+
+  .bls-fit-cards--points .bls-fit-card__art {
+    width: 120px;
+    height: 120px;
+  }
+
+  .bls-fit-tool {
+    padding-top: 20px;
+  }
+
+  .bls-fit-tool__title {
+    margin: 26px 0 24px;
+    font-size: 44px;
+  }
+
+  .bls-fit-tool__intro {
+    font-size: 15px;
+  }
+
+  .bls-fit-steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+    padding-top: 30px;
+  }
+
+  .bls-fit-step__art img {
+    height: 240px;
+  }
+
+  .bls-fit-picker__question {
+    margin: 30px 0 26px;
+    font-size: 30px;
+  }
+
+  .bls-fit-picker__pills {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .bls-fit-size-pill {
+    min-width: 0;
+  }
+
+  .bls-fit-result__size {
+    font-size: 60px;
+  }
+
+  .bls-fit-result__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 10px;
+  }
+
+  .bls-fit-tips {
+    margin: 44px -20px 0;
+    padding: 36px 20px;
+  }
+
+  .bls-fit-tips__cols {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .bls-fit-guides {
+    padding: 44px 0;
+  }
+
+  .bls-fit-guides__how {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .bls-fit-guides__art img {
+    height: 300px;
+  }
+
+  .bls-fit-text {
+    padding: 44px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bls-fit-result__grid.is-loading {
+    animation: none;
+  }
+}

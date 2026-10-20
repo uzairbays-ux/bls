@@ -1,0 +1,57 @@
+{%- doc -%}
+  Find your fit hero (Wacoal "Finding the right bra fit has never been easier"): heading with an
+  italic part (<em>), text, up to two pill buttons, and a photo on the right (on top on phones).
+{%- enddoc -%}
+{{ 'bls-fit.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign ss = section.settings
+  assign img = ss.image
+-%}
+<section class="bls-fit-hero" style="--bls-fit-hero-bg: {{ ss.background }}; --bls-fit-hero-pos: {{ ss.image_position }};">
+  <div class="bls-fit-hero__media">
+    {%- if img != blank -%}
+      {{ img | image_url: width: 1800 | image_tag: class: 'bls-fit-hero__img', widths: '600, 900, 1200, 1500, 1800', sizes: '(max-width: 749px) 100vw, 55vw', loading: 'eager', fetchpriority: 'high', alt: img.alt }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'bls-fit-hero__img bls-fit-hero__img--empty' }}
+    {%- endif -%}
+  </div>
+  <div class="bls-fit-hero__text">
+    {%- if ss.heading != blank -%}
+      <h1 class="bls-fit-hero__title">{{ ss.heading }}</h1>
+    {%- endif -%}
+    {%- if ss.text != blank -%}
+      <div class="bls-fit-hero__body">{{ ss.text }}</div>
+    {%- endif -%}
+    {%- if ss.button_1_label != blank or ss.button_2_label != blank -%}
+      <div class="bls-fit-hero__buttons">
+        {%- if ss.button_1_label != blank -%}
+          <a class="bls-fit-hero__btn" href="{{ ss.button_1_link | default: '#' }}">{{ ss.button_1_label | escape }}</a>
+        {%- endif -%}
+        {%- if ss.button_2_label != blank -%}
+          <a class="bls-fit-hero__btn" href="{{ ss.button_2_link | default: '#' }}">{{ ss.button_2_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fit hero",
+  "tag": "div",
+  "class": "bls-fit-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "select", "id": "image_position", "label": "Photo focus", "options": [ { "value": "center top", "label": "Top" }, { "value": "center 25%", "label": "Upper middle" }, { "value": "center center", "label": "Middle" } ], "default": "center 25%" },
+    { "type": "color", "id": "background", "label": "Background behind the text", "default": "#f2ede9" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Make words italic to set them in the script style.", "default": "Finding the right bra fit has <em>never been easier</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Bodies change. Keeping up with your size and shape is the key to feeling your best.</p><p>Measure yourself with our bra size calculator, or tell us your current size, and we'll show you your best fit.</p>" },
+    { "type": "text", "id": "button_1_label", "label": "Button 1", "default": "Measure yourself" },
+    { "type": "url", "id": "button_1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "button_2_label", "label": "Button 2", "default": "I know my size" },
+    { "type": "url", "id": "button_2_link", "label": "Button 2 link" }
+  ],
+  "presets": [{ "name": "Fit hero" }],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}
