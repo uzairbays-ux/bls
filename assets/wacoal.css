@@ -7415,6 +7415,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     aspect-ratio: 1 / 1;
   }
 
+  /* carousels: no colour circles, so every card's name starts at the same height */
+  .wac-featured__track .wac-card__swatches {
+    display: none;
+  }
+
   /* product cards: no style number, names on two lines, smaller price */
   .wac-card__meta span:nth-child(2) {
     display: none;
