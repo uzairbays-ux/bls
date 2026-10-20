@@ -6801,12 +6801,6 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   .wac-footer .wac-footer__heading--signup {
     margin: 0 0 18px;
     padding-top: 0;
-    font-family: var(--wac-font-serif);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: 0;
-    text-transform: none;
   }
 
   .wac-footer__form {
