@@ -470,6 +470,7 @@
 
   /* Horizon gives the menu button area its own 60px minimum; keep the bar at the header height */
   .header-section .header__drawer {
+    --header-drawer-min-height: var(--wac-header-h-mobile);
     min-height: var(--wac-header-h-mobile);
   }
 
