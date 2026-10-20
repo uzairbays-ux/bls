@@ -6524,7 +6524,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6635,8 +6635,14 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     padding: 0;
   }
 
-  /* submenu groups and links */
+  /* submenu panels cover the main close button */
+  .header-drawer .menu-drawer__submenu {
+    z-index: 3;
+  }
+
+  /* submenu groups and links; the list no longer stretches, so the products follow it */
   .header-drawer .menu-drawer__menu--childlist {
+    flex: 0 0 auto;
     padding-inline: 0;
   }
 
@@ -6660,7 +6666,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     height: 12px;
   }
 
-  .header-drawer .menu-drawer__menu--grandchildlist {
+  .header-drawer .menu-drawer .menu-drawer__menu.menu-drawer__menu--grandchildlist {
     padding: 0 20px 14px;
   }
 
