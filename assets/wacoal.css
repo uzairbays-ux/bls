@@ -6710,6 +6710,16 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 
   /* quick links */
+  .header-drawer .menu-drawer__utility-links {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .header-drawer .menu-drawer__featured-content {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
   .wac-drawer-links {
     margin: 20px 0 0;
     padding: 8px 20px;
