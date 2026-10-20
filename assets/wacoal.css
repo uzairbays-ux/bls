@@ -6964,3 +6964,169 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     overflow: hidden;
   }
 }
+
+/* ===== Phone layouts in the Intimissimi way (the same sections as desktop, re-laid on phones) =====
+   hero full screen with the text bottom left; tiles as a swipe row of tall photos; style and
+   product carousels that show a peek of the next card (swipe, no arrows); image-with-text with
+   the text first and the photo inset with rounded corners. */
+@media screen and (max-width: 749px) {
+  /* hero */
+  .wac-hero__slide {
+    min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 90px));
+  }
+
+  .wac-hero__slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 35%, rgba(0, 0, 0, 0) 60%);
+  }
+
+  .wac-hero__content,
+  .wac-hero__content--left,
+  .wac-hero__content--center,
+  .wac-hero__content--right {
+    justify-content: flex-start;
+    margin-bottom: 0;
+    padding: 16px 16px 20px;
+    text-align: left;
+  }
+
+  .wac-hero__content .wac-hero__text,
+  .wac-hero__content--text-center .wac-hero__text {
+    text-align: left;
+  }
+
+  .wac-hero__buttons {
+    margin-bottom: 0;
+  }
+
+  .wac-hero__button {
+    padding: 9px 32px;
+  }
+
+  .wac-hero__controls {
+    right: 16px;
+    bottom: 20px;
+  }
+
+  /* tiles */
+  .wac-tiles.wac-tiles--mobile-swipe {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 24px 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .wac-tiles--mobile-swipe::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile {
+    flex: 0 0 80%;
+    min-height: 0;
+    aspect-ratio: 2 / 3;
+    justify-content: flex-start;
+    border-radius: 4px;
+    text-align: left;
+    scroll-snap-align: start;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile__content {
+    padding: 18px 16px;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile__heading {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile__text {
+    padding: 0;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile__text p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile__buttons {
+    margin-top: 12px;
+  }
+
+  .wac-tiles--mobile-swipe .wac-tile__button {
+    padding: 7px 22px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  /* carousels: swipe, no arrows */
+  .wac-styles__nav,
+  .wac-featured__nav {
+    display: none;
+  }
+
+  .wac-styles__header {
+    margin: 0 16px;
+  }
+
+  .wac-styles__heading,
+  .wac-featured__heading {
+    font-size: 26px;
+  }
+
+  .wac-styles__list {
+    gap: 8px;
+    padding: 0 16px;
+    scroll-padding-inline: 16px;
+  }
+
+  .wac-styles__item {
+    flex-basis: 78%;
+    width: 78%;
+  }
+
+  .wac-featured__container {
+    margin: 0;
+  }
+
+  .wac-featured__header {
+    padding: 0 16px;
+  }
+
+  .wac-featured__track {
+    padding: 0 16px;
+    scroll-padding-inline: 16px;
+  }
+
+  .wac-featured__track .wac-card {
+    flex-basis: 44%;
+  }
+
+  /* image with text */
+  .wac-iwt,
+  .wac-iwt--image-right {
+    flex-direction: column;
+    padding-bottom: 32px;
+  }
+
+  .wac-iwt__content {
+    order: -1;
+    padding: 36px 20px 24px;
+  }
+
+  .wac-iwt__image {
+    width: auto;
+    margin: 0 16px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+}
