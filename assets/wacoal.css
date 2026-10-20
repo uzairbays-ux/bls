@@ -18,7 +18,7 @@
   --wac-blush: #ecd8c9;
   --wac-badge: #dbc5b5;
   --wac-header-h: 74px;
-  --wac-header-h-mobile: 65px;
+  --wac-header-h-mobile: 54px;
 }
 
 /* ===== 1. Top nav ================================================= */
@@ -6501,5 +6501,233 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   .wac-wl__title {
     font-size: 15px;
     line-height: 1.3;
+  }
+}
+
+/* ===== Phone menu (Horizon drawer, snippets/header-drawer.liquid) in the BLS look =====
+   54px top row like the header (close | logo), 54px rows in small spaced capitals with hairlines,
+   submenu header with back + title, groups in small capitals, links in sentence case, product strip
+   right under the links, and quick links (fit, wishlist, account, contact) on a soft panel. */
+@media screen and (max-width: 749px) {
+  .header-drawer .menu-drawer {
+    width: min(86vw, 380px);
+    max-width: 86vw;
+  }
+
+  .header-drawer .menu-drawer > .menu-drawer__close-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+  }
+
+  .wac-drawer-logo {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    border-bottom: 1px solid #ececec;
+  }
+
+  .wac-drawer-logo img {
+    display: block;
+    width: auto;
+    height: 26px;
+  }
+
+  /* top level */
+  .header-drawer .menu-drawer__navigation > .menu-drawer__menu {
+    padding-inline: 0;
+  }
+
+  .header-drawer .menu-drawer__navigation > .menu-drawer__menu > .menu-drawer__list-item {
+    min-height: 0;
+    border-bottom: 1px solid #ececec;
+  }
+
+  .header-drawer .menu-drawer__menu-container--divider,
+  .header-drawer .menu-drawer__list-item--divider {
+    border: 0;
+  }
+
+  .header-drawer .menu-drawer__navigation .menu-drawer__menu-item--mainlist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 54px;
+    padding: 0 20px;
+    color: var(--wac-ink);
+    font-family: var(--wac-font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+  }
+
+  .header-drawer .menu-drawer__menu-item--mainlist .menu-drawer__menu-item-text {
+    flex: 1 1 auto;
+  }
+
+  .header-drawer .menu-drawer__menu-item--mainlist .icon-caret {
+    flex: 0 0 auto;
+    color: #8a8a8a;
+  }
+
+  .header-drawer .menu-drawer__menu-item--mainlist .icon-caret svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* submenu header: back + title, close on the right */
+  .header-drawer .menu-drawer__nav-buttons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 54px;
+    padding: 0;
+    border-bottom: 1px solid #ececec;
+  }
+
+  .header-drawer .menu-drawer__back-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 54px;
+    padding: 0 60px 0 20px;
+    color: var(--wac-ink);
+    font-family: var(--wac-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+  }
+
+  .header-drawer .menu-drawer__back-button .icon-caret svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .header-drawer .menu-drawer__nav-buttons .menu-drawer__close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+  }
+
+  /* submenu groups and links */
+  .header-drawer .menu-drawer__menu--childlist {
+    padding-inline: 0;
+  }
+
+  .header-drawer .menu-drawer__menu--childlist > .menu-drawer__list-item {
+    border-bottom: 1px solid #ececec;
+  }
+
+  .header-drawer .menu-drawer__menu--childlist .menu-drawer__menu-item--parent {
+    min-height: 52px;
+    padding: 0 20px;
+    color: var(--wac-ink);
+    font-family: var(--wac-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  .header-drawer .menu-drawer__menu--childlist .icon-plus svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .header-drawer .menu-drawer__menu--grandchildlist {
+    padding: 0 20px 14px;
+  }
+
+  .header-drawer .menu-drawer__menu--grandchildlist .menu-drawer__list-item {
+    min-height: 0;
+  }
+
+  .header-drawer .menu-drawer__menu-item--child {
+    padding: 9px 0;
+    color: #333;
+    font-family: var(--wac-font-sans);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .header-drawer .menu-drawer__menu-item--active {
+    font-weight: 600;
+  }
+
+  /* product strip: right under the links, not pinned to the bottom */
+  .header-drawer .menu-drawer__featured-content,
+  .header-drawer .menu-drawer__featured-content--childlist {
+    margin-top: 24px;
+  }
+
+  .header-drawer .menu-drawer__featured-content-list {
+    gap: 12px;
+    padding: 0 20px 24px;
+  }
+
+  .header-drawer .menu-drawer__featured-content-list-item {
+    margin: 0;
+  }
+
+  .header-drawer .menu-drawer__featured-content-list-item--product {
+    width: min(40vw, 150px);
+  }
+
+  .header-drawer .menu-drawer__featured-content .resource-card__title {
+    margin-top: 8px;
+    font-family: var(--wac-font-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* quick links */
+  .wac-drawer-links {
+    margin: 20px 0 0;
+    padding: 8px 20px;
+    background: #f7f3ef;
+    list-style: none;
+  }
+
+  .wac-drawer-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    color: #333;
+    font-family: var(--wac-font-sans);
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .wac-drawer-links li + li a {
+    border-top: 1px solid #ebe4dd;
+  }
+
+  .wac-drawer-links svg {
+    flex: 0 0 auto;
+    color: #8a776b;
   }
 }

@@ -140,7 +140,7 @@
 
   <div class="resource-card__content">
     <p class="resource-card__title{% if style == 'overlay' %} h5{%else %} paragraph{% endif %}">
-      {{- resource.title -}}
+      {{- resource.title | remove_first: 'BLS - ' -}}
     </p>
 
     {% if resource_type == 'product' %}
