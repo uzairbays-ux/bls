@@ -7635,4 +7635,28 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     font-size: 13px;
     line-height: 1;
   }
+
+  /* accordion text smaller on phones (the .rte paragraph size was winning) */
+  .wac-pdp__acc-head {
+    padding: 14px 0;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.6px;
+  }
+
+  .wac-pdp__acc-body.rte,
+  .wac-pdp__acc-body.rte p,
+  .wac-pdp__acc-body.rte li,
+  .wac-pdp__acc-body.rte td,
+  .wac-pdp__acc-body.rte th {
+    font-size: 13px;
+    line-height: 1.65;
+    letter-spacing: 0.1px;
+  }
+
+  .wac-pdp__acc-body.rte p,
+  .wac-pdp__acc-body.rte ul,
+  .wac-pdp__acc-body.rte ol {
+    margin-top: 10px;
+  }
 }
