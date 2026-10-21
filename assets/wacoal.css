@@ -7615,7 +7615,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     order: 8;
   }
 
-  /* space between the Reviews row and "Complete your look" */
+  /* space between the Reviews row and "Complete your look" (phones) */
   .wac-pdp .wac-pdp__match {
     padding-top: 32px;
   }
