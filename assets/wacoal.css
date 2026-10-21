@@ -7428,6 +7428,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     margin: 16px 0 0;
   }
 
+  /* breathing room between the Shop Bra Styles row and the band under it */
+  .wac-styles {
+    padding-bottom: 32px;
+  }
+
   /* Shop Bra Styles: 8px between cards, like the other rows */
   .wac-styles__item {
     margin: 0;
