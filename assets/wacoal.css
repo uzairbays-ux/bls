@@ -7584,3 +7584,50 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     text-transform: none;
   }
 }
+
+/* ===== Product page head and size buttons on phones =====
+   stars on the price line (right), so they no longer take a line of their own; smaller size buttons. */
+@media screen and (max-width: 749px) {
+  .wac-pdp__head--mobile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  .wac-pdp__head--mobile > * {
+    grid-column: 1 / -1;
+  }
+
+  .wac-pdp__head--mobile .wac-pdp__price-row {
+    grid-column: 1;
+    order: 6;
+  }
+
+  .wac-pdp__head--mobile .wac-pdp__rating {
+    grid-column: 2;
+    order: 7;
+    justify-self: end;
+    margin-top: 0;
+  }
+
+  .wac-pdp__head--mobile .wac-pdp__style {
+    order: 8;
+  }
+
+  .wac-pdp__sizes {
+    grid-template-columns: repeat(auto-fill, 52px);
+    gap: 8px;
+  }
+
+  .wac-pdp__size {
+    margin-bottom: 0;
+  }
+
+  .wac-pdp__size label {
+    height: 38px;
+    padding: 0 6px;
+    font-size: 13px;
+    line-height: 1;
+  }
+}
