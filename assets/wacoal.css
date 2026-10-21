@@ -7615,6 +7615,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     order: 8;
   }
 
+  /* space between the Reviews row and "Complete your look" */
+  .wac-pdp .wac-pdp__match {
+    padding-top: 32px;
+  }
+
   .wac-pdp__sizes {
     grid-template-columns: repeat(auto-fill, 52px);
     gap: 8px;
