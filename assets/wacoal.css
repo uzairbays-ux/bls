@@ -7660,3 +7660,29 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     margin-top: 10px;
   }
 }
+
+/* ===== "Try me on" (sections/product-usp.liquid): View details button back to the product ===== */
+.product-usp__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 20px;
+  padding: 0 28px;
+  border: 1px solid #1e1e1e;
+  border-radius: 50px;
+  background: #1e1e1e;
+  color: #fff;
+  font-family: var(--wac-font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.product-usp__button:hover {
+  background: transparent;
+  color: #1e1e1e;
+}

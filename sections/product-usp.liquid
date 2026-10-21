@@ -87,6 +87,9 @@
           <p class="product-usp__eyebrow">{{ usp_eyebrow }}</p>
         {%- endif -%}
         <div class="product-usp__heading">{{ usp_heading }}</div>
+        {%- if section.settings.button_label != blank -%}
+          <a class="product-usp__button" href="#MainContent" data-usp-top>{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
       </div>
 
       {%- if usp_count > 1 -%}
@@ -118,6 +121,20 @@
 
   <script>
     (function () {
+      /* "View details": back up to the product photos and sizes */
+      if (!window.blsUspTop) {
+        window.blsUspTop = true;
+        document.addEventListener('click', function (e) {
+          var btn = e.target.closest && e.target.closest('[data-usp-top]');
+          if (!btn) return;
+          var target = document.querySelector('.wac-pdp') || document.getElementById('MainContent');
+          if (!target) return;
+          e.preventDefault();
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var top = target.getBoundingClientRect().top + window.scrollY - 70;
+          window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+        });
+      }
       function init(root) {
         if (!root || root.dataset.uspReady) return;
         root.dataset.uspReady = '1';
@@ -414,6 +431,13 @@
       "id": "heading",
       "label": "Default USP text",
       "default": "<p>Designed for everyday comfort with a fit that stays put.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button",
+      "default": "View details",
+      "info": "Scrolls back up to the product photos and sizes. Leave empty to hide."
     },
     {
       "type": "color_scheme",
