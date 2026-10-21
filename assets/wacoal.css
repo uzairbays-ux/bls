@@ -7472,3 +7472,101 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transition: none;
   }
 }
+
+/* ===== Product page on phones, the Intimissimi way =====
+   gallery: photos with the next one peeking in, swipe with a progress bar (no arrows or dots);
+   bottom bar: one full-width dark button; "Complete your look" and "Similar styles": serif
+   headings, swipe rows like Best Sellers (no arrows, left-aligned cards, progress bar). */
+@media screen and (max-width: 749px) {
+  .wac-pdp__slider {
+    gap: 4px;
+  }
+
+  .wac-pdp__slide {
+    flex-basis: 88%;
+  }
+
+  .wac-pdp .wac-pdp__arrows,
+  .wac-pdp__dots {
+    display: none;
+  }
+
+  .wac-pdp__slider + .bls-scrollbar {
+    margin: 12px 16px 4px;
+  }
+
+  /* bottom bar */
+  .wac-pdp-bar__info {
+    display: none;
+  }
+
+  .wac-pdp-bar__inner {
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .wac-pdp-bar .wac-pdp-bar__btn,
+  .wac-pdp-bar .wac-pdp-bar__btn.is-ready {
+    flex: 1 1 auto;
+    width: 100%;
+    border-color: #3c3738;
+    background: #3c3738;
+    color: #fff;
+  }
+
+  /* product rows */
+  .wac-pdp__match,
+  .wac-similar {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .wac-pdp__match-head,
+  .wac-similar__head {
+    padding: 0 16px;
+  }
+
+  .wac-pdp__match-title,
+  .wac-similar__title {
+    margin: 0 0 16px;
+    font-family: var(--wac-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .wac-pdp__match-arrows,
+  .wac-similar__nav {
+    display: none;
+  }
+
+  .wac-pdp__match-list,
+  .wac-similar__list {
+    gap: 8px;
+    padding: 0 16px;
+    scroll-padding-inline: 16px;
+  }
+
+  .wac-pdp__match-list .wac-pcard,
+  .wac-similar .wac-pcard {
+    flex-basis: 44%;
+  }
+
+  .wac-pdp__match-list .wac-card__info,
+  .wac-similar__list .wac-card__info {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .wac-pdp__match-list .wac-card__title-link,
+  .wac-similar__list .wac-card__title-link {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .wac-pdp__match-list .wac-card__swatches,
+  .wac-similar__list .wac-card__swatches {
+    display: none;
+  }
+}

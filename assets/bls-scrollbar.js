@@ -2,7 +2,7 @@
    thumb sized to the visible share of the row and moved with its scroll. Phones only (CSS). */
 (function () {
   if (window.blsScrollbar) return;
-  var SEL = '.wac-featured__track, .wac-styles__list, .wac-tiles--mobile-swipe, .bls-edit__row';
+  var SEL = '.wac-featured__track, .wac-styles__list, .wac-tiles--mobile-swipe, .bls-edit__row, .wac-pdp__slider, .wac-pdp__match-list, .wac-similar__list';
 
   function attach(el) {
     if (el.__blsBar) return;
