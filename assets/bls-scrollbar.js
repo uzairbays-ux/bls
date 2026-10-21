@@ -37,4 +37,11 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   window.addEventListener('load', init);
   document.addEventListener('shopify:section:load', init);
+  /* rows that arrive later (product recommendations, infinite loads) */
+  var pending = false;
+  new MutationObserver(function () {
+    if (pending) return;
+    pending = true;
+    setTimeout(function () { pending = false; init(); }, 300);
+  }).observe(document.body, { childList: true, subtree: true });
 })();

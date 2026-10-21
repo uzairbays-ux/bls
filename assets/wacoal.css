@@ -7569,4 +7569,18 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   .wac-similar__list .wac-card__swatches {
     display: none;
   }
+
+  .wac-similar__list + .bls-scrollbar {
+    margin: 16px 16px 0;
+  }
+
+  /* reviews heading like the other headings */
+  .wac-rev__title {
+    font-family: var(--wac-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+  }
 }
