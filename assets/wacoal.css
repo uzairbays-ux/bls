@@ -7826,6 +7826,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   .wac-pdp-bar:not(.is-visible) {
     transform: translateY(calc(100% + 58px + env(safe-area-inset-bottom, 0px)));
   }
+
+  /* the hero fills the screen between the top bar and the bottom bar, so its button stays in view */
+  .wac-hero__slide {
+    min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 84px - 58px - env(safe-area-inset-bottom, 0px)));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
