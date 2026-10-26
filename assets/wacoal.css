@@ -7687,9 +7687,15 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   color: #1e1e1e;
 }
 
-/* ===== Tiles on desktop: space above and below the row (not touching the hero) ===== */
+/* ===== Tiles on desktop: space above and below the row, the gap between tiles also at the sides,
+   soft corners like the edit cards ===== */
 @media screen and (min-width: 750px) {
   .wac-tiles {
     margin: 40px 0;
+    padding: 0 var(--wac-tiles-gap, 0);
+  }
+
+  .wac-tile {
+    border-radius: 4px;
   }
 }
