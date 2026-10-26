@@ -147,7 +147,7 @@
         "tile_height": 540,
         "tile_height_mobile": 400,
         "mobile_layout": "swipe",
-        "gap": 0
+        "gap": 8
       }
     },
     "wacoal_styles_slider": {
