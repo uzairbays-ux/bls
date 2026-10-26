@@ -7802,7 +7802,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     display: none;
   }
 
-  /* top bar: logo only, exactly centred (the 100px desktop column gap squeezed the logo to nothing) */
+  /* top bar: logo only and exactly centred (the 100px desktop column gap squeezed the logo to nothing) */
   .header-section .header__row--top .header__columns {
     --header-template-columns: 44px 44px minmax(0, 1fr) 44px 44px;
     column-gap: 0;
