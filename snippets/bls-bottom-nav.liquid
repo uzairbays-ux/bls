@@ -1,0 +1,68 @@
+{%- doc -%}
+  App-style bottom bar on phones: Home, Shop (opens the menu), Search (opens the search), Wishlist
+  (with its count) and Bag (opens the cart drawer, with the item count). It presses the header's own
+  buttons, so the menu, search and cart work exactly as before; on phones those header buttons are
+  kept in place but not shown, leaving the logo alone in the top bar. Hidden from 750px up.
+{%- enddoc -%}
+{%- liquid
+  assign t = template.name
+  assign wl_url = '/pages/wish-list'
+-%}
+<nav class="bls-bnav" aria-label="Shortcuts" data-bls-bnav>
+  <a class="bls-bnav__item{% if t == 'index' %} is-active{% endif %}" href="{{ routes.root_url }}"{% if t == 'index' %} aria-current="page"{% endif %}>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5V20a.5.5 0 0 1-.5.5h-5v-6h-6v6H4a.5.5 0 0 1-.5-.5z"/></svg>
+    <span>Home</span>
+  </a>
+  <button type="button" class="bls-bnav__item{% if t == 'collection' or t == 'list-collections' %} is-active{% endif %}" data-bls-bnav-open="menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1"/></svg>
+    <span>Shop</span>
+  </button>
+  <button type="button" class="bls-bnav__item{% if t == 'search' %} is-active{% endif %}" data-bls-bnav-open="search">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/></svg>
+    <span>Search</span>
+  </button>
+  <a class="bls-bnav__item{% if request.path contains 'wish' %} is-active{% endif %}" href="{{ wl_url }}"{% if request.path contains 'wish' %} aria-current="page"{% endif %}>
+    <span class="bls-bnav__icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.6 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>
+      <span class="bls-bnav__badge" data-wac-wishlist-count hidden></span>
+    </span>
+    <span>Wishlist</span>
+  </a>
+  <button type="button" class="bls-bnav__item{% if t == 'cart' %} is-active{% endif %}" data-bls-bnav-open="cart">
+    <span class="bls-bnav__icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+      <span class="bls-bnav__badge" data-bls-bnav-cart{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+    </span>
+    <span>Bag</span>
+  </button>
+</nav>
+<script>
+  (function () {
+    if (window.blsBottomNav) return;
+    window.blsBottomNav = true;
+    var targets = {
+      menu: ['.header-section .header__icon--menu', '/collections/all'],
+      search: ['.header-section search-button button, .header-section .search-action button', '/search'],
+      cart: ['.header-section cart-drawer-component button.header-actions__action', '/cart']
+    };
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-bls-bnav-open]');
+      if (!b) return;
+      var t = targets[b.getAttribute('data-bls-bnav-open')];
+      var el = t && document.querySelector(t[0]);
+      if (el) el.click(); else if (t) window.location.href = t[1];
+    });
+    function setCount(n) {
+      document.querySelectorAll('[data-bls-bnav-cart]').forEach(function (el) {
+        el.textContent = n > 0 ? String(n) : '';
+        el.hidden = !(n > 0);
+      });
+    }
+    document.addEventListener('cart:update', function (e) {
+      var d = e.detail || {};
+      var n = d.data && typeof d.data.itemCount === 'number' ? d.data.itemCount : (d.resource && typeof d.resource.item_count === 'number' ? d.resource.item_count : null);
+      if (n !== null) { setCount(n); return; }
+      fetch('/cart.js', { headers: { Accept: 'application/json' } }).then(function (r) { return r.json(); }).then(function (c) { setCount(c.item_count); }).catch(function () {});
+    });
+  })();
+</script>

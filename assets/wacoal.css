@@ -7699,3 +7699,132 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     border-radius: 4px;
   }
 }
+
+/* ===== Phones: app-style bottom bar (snippets/bls-bottom-nav.liquid) and a logo-only top bar =====
+   The header's menu, search, wishlist and cart buttons stay in place (the bottom bar presses them)
+   but are not shown, so the logo sits alone in the top bar. */
+.bls-bnav {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .bls-bnav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: calc(58px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    border-top: 1px solid #ece7e2;
+    background: rgb(255 255 255 / 0.97);
+    box-shadow: 0 -4px 16px rgb(0 0 0 / 0.05);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    transition: transform 0.25s ease;
+  }
+
+  /* out of the way while the menu drawer is open */
+  body:has(.menu-drawer-container[open]) .bls-bnav {
+    transform: translateY(110%);
+  }
+
+  body {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .bls-bnav__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #8a8280;
+    font-family: var(--wac-font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bls-bnav__item.is-active {
+    color: var(--wac-ink);
+  }
+
+  .bls-bnav__item.is-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--wac-ink);
+    transform: translateX(-50%);
+  }
+
+  .bls-bnav__item:focus-visible {
+    outline: 2px solid var(--wac-ink);
+    outline-offset: -4px;
+  }
+
+  .bls-bnav__icon {
+    position: relative;
+    display: flex;
+  }
+
+  .bls-bnav__badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: var(--wac-blush);
+    color: var(--wac-ink);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .bls-bnav__badge[hidden] {
+    display: none;
+  }
+
+  /* top bar: logo only */
+  .header-section .header__icon--menu,
+  .header-section .header-actions__action {
+    visibility: hidden;
+  }
+
+  /* product page bottom button sits above the bar */
+  .wac-pdp-bar,
+  html:not(.wac-header-hidden) .wac-pdp-bar {
+    bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .wac-pdp-bar__inner {
+    padding-bottom: 10px;
+  }
+
+  .wac-pdp-bar:not(.is-visible) {
+    transform: translateY(calc(100% + 58px + env(safe-area-inset-bottom, 0px)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bls-bnav {
+    transition: none;
+  }
+}
