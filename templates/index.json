@@ -197,6 +197,7 @@
         "item_05": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1768394400939.png",
             "image_asset": "wacoal-style-05.jpg",
             "title": "Full Coverage",
             "text": "maximum coverage, minimal compromise",
