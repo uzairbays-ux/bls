@@ -208,6 +208,7 @@
         "item_06": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.06.22.jpg",
             "image_asset": "wacoal-style-06.jpg",
             "title": "Sport",
             "text": "support that's made for movement",
