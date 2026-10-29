@@ -248,6 +248,7 @@
         "item_10": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.19.07.jpg",
             "image_asset": "wacoal-style-10.jpg",
             "title": "Front Open",
             "text": "support that never lets you down",
