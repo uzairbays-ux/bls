@@ -323,7 +323,8 @@
           "type": "collection",
           "settings": {
             "collection": "satin-secrets",
-            "label": "Satin",
+            "label": "Lace",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.35.01.jpg",
             "link": ""
           }
         },
@@ -331,7 +332,7 @@
           "type": "collection",
           "settings": {
             "collection": "sleep-wear-silk",
-            "label": "Silk",
+            "label": "Satin",
             "link": ""
           }
         },
@@ -339,7 +340,7 @@
           "type": "collection",
           "settings": {
             "collection": "bras-lace",
-            "label": "Lace",
+            "label": "",
             "link": ""
           }
         },
