@@ -407,6 +407,7 @@
       "type": "wacoal-image-text",
       "name": "BLS image with text",
       "settings": {
+        "image": "shopify://shop_images/hix.ai-download-1781088063031.jpg",
         "image_asset": "wacoal-iwt-1.jpg",
         "image_mobile_asset": "",
         "image_position": "right",
