@@ -99,6 +99,7 @@
         "tile_2": {
           "type": "tile",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.23.40.jpg",
             "image_asset": "wacoal-tile-2.jpg",
             "image_mobile_asset": "",
             "heading_line1": "BUY 3 GET 3 FREE",
