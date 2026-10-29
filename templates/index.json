@@ -15,6 +15,7 @@
         "slide_1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
             "image_asset": "wacoal-hero-1-desktop.jpg",
             "image_mobile_asset": "wacoal-hero-1-mobile.jpg",
             "position": "right",
@@ -147,7 +148,8 @@
         "tile_height": 540,
         "tile_height_mobile": 400,
         "mobile_layout": "swipe",
-        "gap": 8
+        "gap": 8,
+        "shade": 55
       }
     },
     "wacoal_styles_slider": {
@@ -266,13 +268,23 @@
       "name": "BLS rich text",
       "settings": {
         "background": "#f3f0eb",
+        "background_gradient": "",
+        "text_color": "#111111",
+        "heading_size": 50,
+        "heading_size_mobile": 30,
         "heading": "Support that <em>gets</em> you. Style that <em>reflects</em> you. Comfort that <em>never</em> quits.",
         "text": "It all starts with the right fitting bra.",
         "max_width": 60,
         "button1_label": "FIND YOUR PERFECT FIT",
         "button1_link": "/pages/the-perfect-fit",
         "button2_label": "YOUR CUSTOM BRA WARDROBE",
-        "button2_link": "/collections/bras"
+        "button2_link": "/collections/bras",
+        "margin_top": 20,
+        "margin_bottom": 20,
+        "padding_y": 20,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "padding_y_mobile": 35
       }
     },
     "wacoal_featured_collection": {
@@ -282,10 +294,68 @@
         "heading": "Best Sellers",
         "subheading": "Crafted for consistency, chosen for comfort — these are the styles that set the standard.",
         "collection": "bras",
-        "max_products": 10,
-        "badge": "Best Seller",
         "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
-        "link_label": "Shop now"
+        "link_label": "Shop now",
+        "max_products": 10,
+        "badge": "Best Seller"
+      }
+    },
+    "bls_fabric_edit": {
+      "type": "bls-collection-edit",
+      "blocks": {
+        "edit_satin": {
+          "type": "collection",
+          "settings": {
+            "collection": "satin-secrets",
+            "label": "Satin",
+            "link": ""
+          }
+        },
+        "edit_silk": {
+          "type": "collection",
+          "settings": {
+            "collection": "sleep-wear-silk",
+            "label": "Silk",
+            "link": ""
+          }
+        },
+        "edit_lace": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-lace",
+            "label": "Lace",
+            "link": ""
+          }
+        },
+        "edit_cotton": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-cotton",
+            "label": "Cotton",
+            "link": ""
+          }
+        },
+        "edit_polyamide": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-polyester-polyamide",
+            "label": "Polyamide",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "edit_satin",
+        "edit_silk",
+        "edit_lace",
+        "edit_cotton",
+        "edit_polyamide"
+      ],
+      "name": "BLS fabric edit",
+      "settings": {
+        "heading": "The Fabric Edit",
+        "heading_color": "#b16a80",
+        "text": ""
       }
     },
     "wacoal_rich_text_sale": {
@@ -1722,59 +1792,6 @@
         "icons_shape": "none",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "bls_fabric_edit": {
-      "type": "bls-collection-edit",
-      "name": "BLS fabric edit",
-      "blocks": {
-        "edit_satin": {
-          "type": "collection",
-          "settings": {
-            "collection": "satin-secrets",
-            "label": "Satin"
-          }
-        },
-        "edit_silk": {
-          "type": "collection",
-          "settings": {
-            "collection": "sleep-wear-silk",
-            "label": "Silk"
-          }
-        },
-        "edit_lace": {
-          "type": "collection",
-          "settings": {
-            "collection": "bras-lace",
-            "label": "Lace"
-          }
-        },
-        "edit_cotton": {
-          "type": "collection",
-          "settings": {
-            "collection": "bras-cotton",
-            "label": "Cotton"
-          }
-        },
-        "edit_polyamide": {
-          "type": "collection",
-          "settings": {
-            "collection": "bras-polyester-polyamide",
-            "label": "Polyamide"
-          }
-        }
-      },
-      "block_order": [
-        "edit_satin",
-        "edit_silk",
-        "edit_lace",
-        "edit_cotton",
-        "edit_polyamide"
-      ],
-      "settings": {
-        "heading": "The Fabric Edit",
-        "heading_color": "#b16a80",
-        "text": ""
       }
     }
   },
