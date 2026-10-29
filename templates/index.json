@@ -218,6 +218,7 @@
         "item_07": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.14.29.jpg",
             "image_asset": "wacoal-style-07.jpg",
             "title": "Seamless",
             "text": "for moments when comfort comes first",
