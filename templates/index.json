@@ -237,6 +237,7 @@
         "item_09": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1769589348891.png",
             "image_asset": "wacoal-style-09.jpg",
             "title": "Lace",
             "text": "delicate details meet hidden support",
