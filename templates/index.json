@@ -125,6 +125,7 @@
         "tile_4": {
           "type": "tile",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.21.37.jpg",
             "image_asset": "wacoal-tile-4.jpg",
             "image_mobile_asset": "",
             "heading_line1": "Smooth From",
