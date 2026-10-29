@@ -323,8 +323,8 @@
           "type": "collection",
           "settings": {
             "collection": "satin-secrets",
-            "label": "Lace",
-            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.35.01.jpg",
+            "label": "Satin",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.36.33.jpg",
             "link": ""
           }
         },
@@ -332,8 +332,8 @@
           "type": "collection",
           "settings": {
             "collection": "sleep-wear-silk",
-            "label": "Satin",
-            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.36.33.jpg",
+            "label": "Silk",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.35.01.jpg",
             "link": ""
           }
         },
@@ -350,6 +350,7 @@
           "settings": {
             "collection": "bras-cotton",
             "label": "Cotton",
+            "image": "shopify://shop_images/hix.ai-download-1778133174405_2905eb96-6b85-404b-828b-ad8b58980abb.jpg",
             "link": ""
           }
         },
@@ -358,6 +359,7 @@
           "settings": {
             "collection": "bras-polyester-polyamide",
             "label": "Polyamide",
+            "image": "shopify://shop_images/hix.ai-download-1781246519236.png",
             "link": ""
           }
         }
