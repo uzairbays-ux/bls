@@ -447,6 +447,7 @@
       "type": "wacoal-image-text",
       "name": "BLS image with text",
       "settings": {
+        "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.53.21.jpg",
         "image_asset": "wacoal-iwt-3.jpg",
         "image_mobile_asset": "",
         "image_position": "right",
