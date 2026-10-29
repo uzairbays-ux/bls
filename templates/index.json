@@ -228,8 +228,9 @@
         "item_08": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/BLS_-_Nanne_Non_Wired_And_Non_Padded_Nursing_Bra_3.png",
             "image_asset": "wacoal-style-08.jpg",
-            "title": "Full Figure",
+            "title": "Nursing",
             "text": "crafted to support up to K cups",
             "link": "/collections/bras"
           }
