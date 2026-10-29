@@ -168,6 +168,7 @@
         "item_02": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1781169793340_copy.png",
             "image_asset": "wacoal-style-02.jpg",
             "title": "Strapless",
             "text": "your no-straps, no-slip solution",
@@ -186,6 +187,7 @@
         "item_04": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1778133174405.jpg",
             "image_asset": "wacoal-style-04.jpg",
             "title": "Wireless",
             "text": "effortless support without the wires",
