@@ -158,8 +158,9 @@
         "item_01": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/hix-download-1776943199268-1776943203047.png",
             "image_asset": "wacoal-style-01.jpg",
-            "title": "Minimizer",
+            "title": "Push Up",
             "text": "reduce your bustline up to 1\"",
             "link": "/collections/bras"
           }
