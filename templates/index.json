@@ -53,6 +53,7 @@
         "slide_3": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.32.10.jpg",
             "image_asset": "wacoal-hero-3-desktop.jpg",
             "image_mobile_asset": "wacoal-hero-3-mobile.jpg",
             "position": "left",
