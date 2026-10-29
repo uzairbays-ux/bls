@@ -178,6 +178,7 @@
         "item_03": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.05.13.jpg",
             "image_asset": "wacoal-style-03.jpg",
             "title": "T-Shirt",
             "text": "your go-to basics",
@@ -217,7 +218,7 @@
           "type": "item",
           "settings": {
             "image_asset": "wacoal-style-07.jpg",
-            "title": "Lounge",
+            "title": "Seamless",
             "text": "for moments when comfort comes first",
             "link": "/collections/sleep-wear"
           }
