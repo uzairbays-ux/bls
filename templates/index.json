@@ -36,7 +36,7 @@
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.31.41.jpg",
             "image_asset": "wacoal-hero-2-desktop.jpg",
-            "image_mobile_asset": "wacoal-hero-2-mobile.jpg",
+            "image_mobile_asset": "",
             "position": "center",
             "text_align": "center",
             "preheader": "YOU ARE NOT EITHER/OR.",
@@ -54,8 +54,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.32.10.jpg",
-            "image_asset": "wacoal-hero-3-desktop.jpg",
-            "image_mobile_asset": "wacoal-hero-3-mobile.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
             "position": "left",
             "text_align": "left",
             "preheader": "Introducing",
