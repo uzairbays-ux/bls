@@ -7790,6 +7790,28 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   display: none;
 }
 
+/* phones: all text 8% smaller, in one place. Tiny labels stay as they are so they remain readable,
+   and form fields stay at full size, because iPhones zoom in on small fields */
+@media screen and (max-width: 749px) {
+  html {
+    -webkit-text-size-adjust: 92%;
+    text-size-adjust: 92%;
+  }
+
+  input,
+  select,
+  textarea,
+  .wac-promo-bar,
+  .wac-card__flag,
+  .wac-card__sizes,
+  .wac-card__meta,
+  .wac-tile__button,
+  .bls-bnav__item {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
 @media screen and (max-width: 749px) {
   :root {
     --bls-bnav-h: 62px;
