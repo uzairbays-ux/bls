@@ -1,6 +1,6 @@
 {%- doc -%}
-  App-style bottom bar on phones: Home, Shop (opens the menu), Search (opens the search), Wishlist
-  (with its count) and Bag (opens the cart drawer, with the item count). It presses the header's own
+  App-style bottom bar on phones: Menu (opens the menu), Search (opens the search), Home in the
+  middle, Wishlist (with its count) and Bag (opens the cart drawer, with the item count). It presses the header's own
   buttons, so the menu, search and cart work exactly as before; on phones those header buttons are
   kept in place but not shown, leaving the logo alone in the top bar. Hidden from 750px up.
 {%- enddoc -%}
@@ -9,18 +9,18 @@
   assign wl_url = '/pages/wish-list'
 -%}
 <nav class="bls-bnav" aria-label="Shortcuts" data-bls-bnav>
-  <a class="bls-bnav__item{% if t == 'index' %} is-active{% endif %}" href="{{ routes.root_url }}"{% if t == 'index' %} aria-current="page"{% endif %}>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.6 12 4l8 6.6V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/><path d="M9.5 20.5V14.5h5v6"/></svg>
-    <span>Home</span>
-  </a>
-  <button type="button" class="bls-bnav__item{% if t == 'collection' or t == 'list-collections' %} is-active{% endif %}" data-bls-bnav-open="menu">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/></svg>
-    <span>Shop</span>
+  <button type="button" class="bls-bnav__item" data-bls-bnav-open="menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 7h15"/><path d="M4.5 12h15"/><path d="M4.5 17h15"/></svg>
+    <span>Menu</span>
   </button>
   <button type="button" class="bls-bnav__item{% if t == 'search' %} is-active{% endif %}" data-bls-bnav-open="search">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.3-4.3"/></svg>
     <span>Search</span>
   </button>
+  <a class="bls-bnav__item{% if t == 'index' %} is-active{% endif %}" href="{{ routes.root_url }}"{% if t == 'index' %} aria-current="page"{% endif %}>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.6 12 4l8 6.6V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/><path d="M9.5 20.5V14.5h5v6"/></svg>
+    <span>Home</span>
+  </a>
   <a class="bls-bnav__item{% if request.path contains 'wish' %} is-active{% endif %}" href="{{ wl_url }}"{% if request.path contains 'wish' %} aria-current="page"{% endif %}>
     <span class="bls-bnav__icon">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3s-8-4.7-8-10.6A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 8 2.5c0 5.9-8 10.6-8 10.6z"/></svg>
