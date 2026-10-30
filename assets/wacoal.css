@@ -7800,6 +7800,12 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transform: none;
   }
 
+  /* the bag drawer is as wide as the menu drawer (.header-drawer .menu-drawer) */
+  .header-section dialog.cart-drawer__dialog {
+    width: min(86vw, 380px);
+    max-width: 86vw;
+  }
+
   body {
     padding-bottom: calc(var(--bls-bnav-space) + 12px);
   }
