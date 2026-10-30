@@ -42,7 +42,7 @@
 
       <div class="wac-featured__track" data-wac-featured-track>
         {%- for product in collection.products limit: limit -%}
-          {%- render 'wacoal-product-card', product: product, badge: section.settings.badge, sizes: '278px' -%}
+          {%- render 'wacoal-product-card', product: product, badge: section.settings.badge, sizes: '278px', show_sizes: section.settings.show_sizes -%}
         {%- else -%}
           <p class="wac-featured__empty">Choose a collection with products.</p>
         {%- endfor -%}
@@ -99,7 +99,8 @@
     { "type": "image_picker", "id": "image", "label": "Photo above the products (phones)", "info": "Shown on phones only, square. Without one the collection's first photo is used." },
     { "type": "text", "id": "link_label", "label": "Link to the collection (phones)", "default": "Shop now" },
     { "type": "range", "id": "max_products", "label": "Products", "min": 4, "max": 20, "step": 1, "default": 10 },
-    { "type": "text", "id": "badge", "label": "Badge on every card", "default": "Best Seller", "info": "Leave empty for no badge. Sale items also get a Sale pill." }
+    { "type": "text", "id": "badge", "label": "Badge on every card", "default": "Best Seller", "info": "Leave empty for no badge. Sale items also get a Sale pill." },
+    { "type": "checkbox", "id": "show_sizes", "label": "Show the sizes in stock on each card", "default": true }
   ],
   "presets": [ { "name": "BLS best sellers" } ]
 }
