@@ -123,7 +123,7 @@
             "heading_line2": "Everyday Luxury",
             "text": "Lingerie sets for every mood",
             "button_label": "SHOP LINGERIE",
-            "link": "/collections/all",
+            "link": "/collections/panties-bundles-sets-bra-panty-sets",
             "button_link": ""
           }
         },
@@ -137,7 +137,7 @@
             "heading_line2": "Every Angle",
             "text": "Shapewear that moves with you",
             "button_label": "SHOP SHAPEWEAR",
-            "link": "/collections/active-shape-wear",
+            "link": "/collections/shaper",
             "button_link": ""
           }
         }
@@ -168,7 +168,7 @@
             "image_asset": "",
             "title": "Push Up",
             "text": "extra lift, natural shape",
-            "link": "/collections/bras"
+            "link": "/collections/pushup"
           }
         },
         "item_02": {
@@ -178,7 +178,7 @@
             "image_asset": "",
             "title": "Strapless",
             "text": "stays put, no straps needed",
-            "link": "/collections/bras"
+            "link": "/search?q=strapless&type=product"
           }
         },
         "item_03": {
@@ -198,7 +198,7 @@
             "image_asset": "",
             "title": "Wireless",
             "text": "soft comfort, no underwire",
-            "link": "/collections/bras"
+            "link": "/collections/non-wired"
           }
         },
         "item_05": {
@@ -218,7 +218,7 @@
             "image_asset": "",
             "title": "Sport",
             "text": "made to keep up with you",
-            "link": "/collections/active-shape-wear"
+            "link": "/collections/sports-bra"
           }
         },
         "item_07": {
@@ -228,7 +228,7 @@
             "image_asset": "",
             "title": "Seamless",
             "text": "no lines, just smooth comfort",
-            "link": "/collections/sleep-wear"
+            "link": "/collections/seamless-bra"
           }
         },
         "item_08": {
@@ -238,7 +238,7 @@
             "image_asset": "",
             "title": "Nursing",
             "text": "gentle support for new mums",
-            "link": "/collections/bras"
+            "link": "/collections/maternity"
           }
         },
         "item_09": {
@@ -248,7 +248,7 @@
             "image_asset": "",
             "title": "Lace",
             "text": "soft lace with a pretty finish",
-            "link": "/collections/bras"
+            "link": "/collections/bras-lace"
           }
         },
         "item_10": {
@@ -258,7 +258,7 @@
             "image_asset": "",
             "title": "Front Open",
             "text": "easy on, easy off",
-            "link": "/collections/bras"
+            "link": "/collections/front-open"
           }
         }
       },
@@ -334,7 +334,7 @@
             "collection": "sleep-wear-silk",
             "label": "Ribbed",
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.42.25.jpg",
-            "link": ""
+            "link": "/search?q=ribbed&type=product"
           }
         },
         "edit_lace": {

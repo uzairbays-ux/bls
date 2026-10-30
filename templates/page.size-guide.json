@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "guides": {
+      "type": "bls-fit-guides",
+      "blocks": {
+        "g0": {
+          "type": "guide",
+          "settings": {
+            "title": "Bras",
+            "image_asset": "bls-fit-figure-bra.jpg",
+            "text": "<p><strong>Step 1: Find your band</strong></p><ul><li>Run the tape just below your bust, around your ribcage (line 1).</li><li>Keep it level and firm, not tight.</li></ul><p><strong>Step 2: Find your cup</strong></p><ul><li>Run the tape across the fullest point of your bust (line 2), over a bra without padding.</li><li>Keep it level and don't press down.</li></ul><p>Find your numbers in the chart below.</p>",
+            "table": "<div class=\"bls-chart\"><p class=\"bls-chart__title\">Bra size chart</p><p class=\"bls-chart__unit\">All sizes in cm</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\" rowspan=\"2\">Bra size</th><th scope=\"col\" rowspan=\"2\">Underbust</th><th scope=\"colgroup\" colspan=\"6\">Overbust</th></tr><tr><th scope=\"col\">Cup B</th><th scope=\"col\">Cup C</th><th scope=\"col\">Cup D</th><th scope=\"col\">Cup DD</th><th scope=\"col\">Cup E</th><th scope=\"col\">Cup F</th></tr></thead><tbody><tr><th scope=\"row\">32</th><td>68-72</td><td>84-86</td><td>86-88</td><td>88-90</td><td>90-92</td><td>92-94</td><td>94-96</td></tr><tr><th scope=\"row\">34</th><td>73-77</td><td>89-91</td><td>91-93</td><td>93-95</td><td>95-97</td><td>97-99</td><td>99-101</td></tr><tr><th scope=\"row\">36</th><td>78-82</td><td>94-96</td><td>96-98</td><td>98-100</td><td>100-102</td><td>102-104</td><td>104-106</td></tr><tr><th scope=\"row\">38</th><td>83-87</td><td>99-101</td><td>101-103</td><td>103-105</td><td>105-107</td><td>107-109</td><td>109-111</td></tr><tr><th scope=\"row\">40</th><td>88-92</td><td>104-106</td><td>106-108</td><td>108-110</td><td>110-112</td><td>112-114</td><td>114-116</td></tr><tr><th scope=\"row\">42</th><td>93-97</td><td>109-111</td><td>111-113</td><td>113-115</td><td>115-117</td><td>117-119</td><td>119-121</td></tr></tbody></table></div><p class=\"bls-chart__note\">This size chart is based on general merchandise. Actual product measurements may differ from the chart.</p></div>"
+          }
+        },
+        "g1": {
+          "type": "guide",
+          "settings": {
+            "title": "Panties",
+            "image_asset": "bls-fit-figure-panty.jpg",
+            "text": "<p><strong>Step 1: Measure your waist</strong></p><ul><li>Place the tape around the narrowest part of your waist (line 1), usually in line with your belly button.</li><li>Keep it comfortable, not too tight.</li></ul><p><strong>Step 2: Measure your hips</strong></p><ul><li>Place the tape around the widest part of your hips and bottom (line 2).</li><li>Keep the tape straight all the way around.</li></ul><p>Find your hip measurement in the chart below to get your panty size.</p>",
+            "table": "<div class=\"bls-chart\"><p class=\"bls-chart__title\">Panty size chart</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\">Hip (cm)</th><th scope=\"col\">Hip (inches)</th><th scope=\"col\">UK</th><th scope=\"col\">US</th><th scope=\"col\">EU</th></tr></thead><tbody><tr><th scope=\"row\">86-89</th><td>34-35</td><td>6</td><td>XS (2)</td><td>34</td></tr><tr><th scope=\"row\">90-94</th><td>36-37</td><td>8</td><td>S (4)</td><td>36</td></tr><tr><th scope=\"row\">95-99</th><td>38-39</td><td>10</td><td>M (6)</td><td>38</td></tr><tr><th scope=\"row\">100-104</th><td>40-41</td><td>12</td><td>L (8)</td><td>40</td></tr><tr><th scope=\"row\">105-109</th><td>42-43</td><td>14</td><td>XL (10)</td><td>42</td></tr><tr><th scope=\"row\">110-114</th><td>44-45</td><td>16</td><td>XXL (12)</td><td>44</td></tr><tr><th scope=\"row\">115-119</th><td>46-47</td><td>18</td><td>3XL (14)</td><td>46</td></tr></tbody></table></div><p class=\"bls-chart__note\">This size chart is based on general merchandise. Actual product measurements may differ from the chart.</p></div>"
+          }
+        },
+        "g2": {
+          "type": "guide",
+          "settings": {
+            "title": "Camisoles",
+            "image_asset": "bls-fit-figure-cami.jpg",
+            "text": "<p><strong>Step 1: Measure your bust</strong></p><ul><li>Wrap the tape around the fullest point of your chest (line 1), level and not too tight.</li></ul><p><strong>Step 2: Measure your waist</strong></p><ul><li>Place the tape around the narrowest part of your waist (line 2), snug but comfortable.</li></ul><p><strong>Step 3: Measure your hips</strong></p><ul><li>Measure around the widest part of your hips and bottom (line 3), keeping the tape straight.</li></ul><p>Use all three numbers to find your size in the chart below.</p>",
+            "table": "<div class=\"bls-chart\"><p class=\"bls-chart__title\">Camisole size chart</p><p class=\"bls-chart__unit\">Bust, waist and hips in inches</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\">Size</th><th scope=\"col\">Dress</th><th scope=\"col\">Bust</th><th scope=\"col\">Waist</th><th scope=\"col\">Hips</th></tr></thead><tbody><tr><th scope=\"row\">XS</th><td>0-2</td><td>33</td><td>23-24</td><td>35</td></tr><tr><th scope=\"row\">S</th><td>4-6</td><td>35</td><td>25-26</td><td>37</td></tr><tr><th scope=\"row\">M</th><td>8-10</td><td>37</td><td>28-29</td><td>39</td></tr><tr><th scope=\"row\">L</th><td>12-14</td><td>39</td><td>30-32</td><td>41</td></tr><tr><th scope=\"row\">XL</th><td>16-18</td><td>42</td><td>34</td><td>44</td></tr><tr><th scope=\"row\">2X</th><td>20-22</td><td>45</td><td>37</td><td>48</td></tr><tr><th scope=\"row\">3X</th><td>22-24</td><td>48</td><td>44</td><td>52</td></tr></tbody></table></div><p class=\"bls-chart__note\">This size chart is based on general merchandise. Actual product measurements may differ from the chart.</p></div>"
+          }
+        },
+        "g3": {
+          "type": "guide",
+          "settings": {
+            "title": "Shapewear",
+            "image_asset": "bls-fit-figure-cami.jpg",
+            "text": "<p><strong>Step 1: Measure your bust</strong></p><ul><li>Place the tape around the fullest point of your chest (line 1), straight across your back.</li></ul><p><strong>Step 2: Measure your waist</strong></p><ul><li>Wrap the tape around the narrowest part of your waist (line 2), near your belly button. It should feel snug but comfortable.</li></ul><p><strong>Step 3: Measure your hips</strong></p><ul><li>Place the tape around the widest part of your hips and bottom (line 3), level all the way around.</li></ul><p>Use all three numbers to find your size in the chart below.</p>",
+            "table": "<div class=\"bls-chart\"><p class=\"bls-chart__title\">Shapewear size chart</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\">Size</th><th scope=\"col\">Bust</th><th scope=\"col\">Waist</th><th scope=\"col\">Hips</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>33-36</td><td>28-31</td><td>34-38</td></tr><tr><th scope=\"row\">M</th><td>36-38</td><td>31-33</td><td>38-41</td></tr><tr><th scope=\"row\">L</th><td>38-41</td><td>33-36</td><td>41-44</td></tr><tr><th scope=\"row\">XL</th><td>41-44</td><td>36-39</td><td>44-47</td></tr><tr><th scope=\"row\">2X</th><td>44-48</td><td>39-42</td><td>47-50</td></tr><tr><th scope=\"row\">3X</th><td>48-52</td><td>42-45</td><td>50-53</td></tr><tr><th scope=\"row\">4X</th><td>52-54</td><td>45-48</td><td>53-56</td></tr></tbody></table></div><p class=\"bls-chart__note\">This size chart is based on general merchandise. Actual product measurements may differ from the chart.</p></div>"
+          }
+        }
+      },
+      "block_order": [
+        "g0",
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "settings": {
+        "heading": "Size Guide",
+        "text": "<p>Measure with a soft tape, then find your size in the chart. For bras, you can also use our <a href=\"/pages/the-perfect-fit?view=bra-fit-calculator\">size calculator</a>.</p>"
+      }
+    }
+  },
+  "order": [
+    "guides"
+  ]
+}
