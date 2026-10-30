@@ -84,6 +84,63 @@
             "title": "Bra & Panty Sets",
             "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
           }
+        },
+        "cat_p1": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-lace-1",
+            "title": "Lace",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p2": {
+          "type": "category",
+          "settings": {
+            "collection": "hipster",
+            "title": "Hipster",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties",
+            "image": "shopify://shop_images/BLS_-_Rosa_Mid_Rise_Cotton_Panty_-_Pack_Of_5.png"
+          }
+        },
+        "cat_p3": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-cotton",
+            "title": "Cotton",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p4": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-polyester-polyamide",
+            "title": "Polyamide",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p5": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-panty-sets",
+            "title": "Panty Sets",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p6": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-bundles-sets-bra-panty-sets",
+            "title": "Bra & Panty Sets",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p7": {
+          "type": "category",
+          "settings": {
+            "collection": "teens-panty",
+            "title": "Teens",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
         }
       },
       "block_order": [
@@ -95,7 +152,14 @@
         "cat_6",
         "cat_7",
         "cat_8",
-        "cat_9"
+        "cat_9",
+        "cat_p1",
+        "cat_p2",
+        "cat_p3",
+        "cat_p4",
+        "cat_p5",
+        "cat_p6",
+        "cat_p7"
       ],
       "settings": {
         "show_description": true,
