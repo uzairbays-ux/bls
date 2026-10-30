@@ -370,7 +370,7 @@
 @media screen and (min-width: 1440px) {
   .header-section .header-menu .overflow-menu::part(list) {
     justify-content: center;
-    column-gap: var(--wac-nav-gap, 24px);
+    column-gap: calc(var(--wac-nav-gap, 24px) - 24px);
   }
 }
 
@@ -388,6 +388,11 @@
 
 .header-section .menu-list__link-title {
   padding-inline: 0;
+}
+
+/* every top link keeps 12px each side, so links never touch; what does not fit moves into More */
+.header-section .menu-list__list-item:not([slot='overflow']) .menu-list__link-title {
+  padding-inline: 12px;
 }
 
 /* the page you are on (or inside) is bold, the rest regular */
@@ -4419,7 +4424,7 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
 .menu-list__link-title .wac-menu-new {
   position: absolute;
   top: -9px;
-  right: -16px;
+  right: -4px;
   pointer-events: none;
 }
 
