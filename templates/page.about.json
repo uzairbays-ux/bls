@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "hero": {
+      "type": "bls-fit-hero",
+      "settings": {
+        "image": "shopify://shop_images/main_banner_900_x_640.webp",
+        "image_position": "center center",
+        "background": "#f2ede9",
+        "heading": "About <em>Us</em>",
+        "text": "<p>Since 2015, we take pride in our diverse curated selection of lingerie to bring you the best selection of comfort, beauty, and fit. At British Lingerie Studio, we have developed an environment where you can be completely yourself. A mental condition in which the external universe melts and your internal voice dominates over.</p><p>We have quickly become a trusted brand due to our excellent and exquisite quality, as well as our diverse range. Not only that, but BLS is presently one of the fastest-growing lingerie brands, recognized for quality, comfort, and style. Whatever we create is designed to help you feel comfortable and stunningly pretty - to provide you with something that complements rather than disturbs.</p><p><strong>Comfort Starts Here</strong></p>",
+        "button_1_label": "",
+        "button_1_link": "",
+        "button_2_label": "",
+        "button_2_link": ""
+      }
+    },
+    "fabricate": {
+      "type": "wacoal-image-text",
+      "settings": {
+        "image": "shopify://shop_images/802_x802_2.webp",
+        "image_asset": "",
+        "image_mobile_asset": "",
+        "image_position": "left",
+        "link": "",
+        "preheader": "",
+        "heading": "We fabricate with care",
+        "heading_style": "serif",
+        "heading_color": "#000000",
+        "text": "<p>Natural dye is used to create our classic colors. The color formulation is done meticulously drop by drop. The elaborate creative procedure is artistic and is carried out using modern research. We invest in long-lasting items and are dedicated to producing high-quality apparel with the least amount of environmental impact feasible.</p><p>We create sets that may be mixed and matched with elements from the former or the future. What we do has a sense of progression and permanence. Whatever we create is a reflection of a yearning to feel gorgeous in your skin, a wonderful truth. We create items that are supposed to be cherished and enjoyed until they absolutely can't be used anymore.</p>",
+        "button_label": "",
+        "button_link": "",
+        "background": "#fafafc",
+        "margin_bottom": 0,
+        "image_shape": "square"
+      }
+    },
+    "embrace": {
+      "type": "wacoal-image-text",
+      "settings": {
+        "image": "shopify://shop_images/802_x802_72c3e605-ea09-4a3d-9b4b-90fcbdc9c2fd.webp",
+        "image_asset": "",
+        "image_mobile_asset": "",
+        "image_position": "right",
+        "link": "",
+        "preheader": "",
+        "heading": "It’s all about how you embrace it",
+        "heading_style": "serif",
+        "heading_color": "#000000",
+        "text": "<p>Today’s world is all about fashion. We know that you dress to impress yourselves so don’t worry, we’ve got your back!</p><p>You know what? We want you to look attractive from head to toe. As a result, there is a perpetual need to evolve, innovate and operate equally to fashion trends.</p><p>Our brand is all about being inclusive and empowering. We not only empower you by delivering products that are classified internally so that you can dominate the society outside. We also serve women of all shapes and kinds, and we encourage them to be the finest aspects of themselves. Our brand mantra encourages you to be confident, and be yourself!</p>",
+        "button_label": "",
+        "button_link": "",
+        "background": "#fafafc",
+        "margin_bottom": 0,
+        "image_shape": "square"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "fabricate",
+    "embrace"
+  ]
+}
