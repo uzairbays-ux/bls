@@ -7721,6 +7721,30 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 }
 
+/* desktop hero: a soft shade behind the text, so it reads on bright photos */
+@media screen and (min-width: 750px) {
+  .wac-hero__slide:has(.wac-hero__content--left)::after,
+  .wac-hero__slide:has(.wac-hero__content--right)::after,
+  .wac-hero__slide:has(.wac-hero__content--center)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .wac-hero__slide:has(.wac-hero__content--left)::after {
+    background: linear-gradient(90deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0) 58%);
+  }
+
+  .wac-hero__slide:has(.wac-hero__content--right)::after {
+    background: linear-gradient(270deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0) 58%);
+  }
+
+  .wac-hero__slide:has(.wac-hero__content--center)::after {
+    background: rgb(0 0 0 / 0.28);
+  }
+}
+
 /* ===== Phones: app-style bottom bar (snippets/bls-bottom-nav.liquid) and a logo-only top bar =====
    The header's menu, search, wishlist and cart buttons stay in place (the bottom bar presses them)
    but are not shown, so the logo sits alone in the top bar. */
