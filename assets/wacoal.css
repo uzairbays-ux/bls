@@ -7911,9 +7911,39 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transform: translateY(calc(100% + var(--bls-bnav-space) + 20px));
   }
 
-  /* the hero fills the screen between the top bar and the bottom bar, so its button stays in view */
+  /* the hero fills the screen between the promo bar and the bottom bar, so its button stays in view */
   .wac-hero__slide {
-    min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 84px - var(--bls-bnav-space) - 8px));
+    min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 30px - var(--bls-bnav-space) - 8px));
+  }
+
+  /* home page: no white bar, the logo sits on the hero in white and scrolls away with it. The
+     important flags beat Horizon's sticky rule; the header sits right under the 30px promo bar */
+  body:has(#MainContent .wac-hero) .header-section {
+    position: absolute !important;
+    top: 30px !important;
+    right: 0;
+    left: 0;
+  }
+
+  body:has(#MainContent .wac-hero) .header-section .header,
+  body:has(#MainContent .wac-hero) .header-section .header__row {
+    border: 0;
+    background: none;
+  }
+
+  body:has(#MainContent .wac-hero) .header-section .header__underlay {
+    display: none;
+  }
+
+  body:has(#MainContent .wac-hero) .header-section .header-logo__image {
+    filter: brightness(0) invert(1);
+  }
+
+  /* a soft shade at the top, so the white logo reads on bright photos */
+  .wac-hero__slide::after {
+    background:
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0, rgba(0, 0, 0, 0) 130px),
+      linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 35%, rgba(0, 0, 0, 0) 60%);
   }
 }
 
