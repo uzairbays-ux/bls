@@ -460,7 +460,8 @@
         "button_label": "LEARN MORE",
         "button_link": "",
         "background": "#fafafc",
-        "margin_bottom": 0
+        "margin_bottom": 0,
+        "image_shape": "square"
       }
     },
     "product_list_campaign": {
