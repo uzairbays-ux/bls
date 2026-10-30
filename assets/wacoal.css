@@ -7782,7 +7782,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 
   /* out of the way while scrolling down (with the header, assets/wacoal-header.js) and while the
-     menu or bag drawer is open */
+     bag or menu drawer is open */
   html.wac-header-hidden .bls-bnav,
   body:has(.menu-drawer-container[open]) .bls-bnav,
   body:has(dialog.cart-drawer__dialog[open]) .bls-bnav {
