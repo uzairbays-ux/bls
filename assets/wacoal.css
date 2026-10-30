@@ -7928,7 +7928,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     mix-blend-mode: screen;
   }
 
-  body:has(.menu-drawer-container[open]) .header-section {
+  body:has(#MainContent .wac-hero):has(.menu-drawer-container[open]) .header-section {
     mix-blend-mode: normal;
   }
 
