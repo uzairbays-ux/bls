@@ -7902,8 +7902,12 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     padding: 0 14px 8px;
   }
 
+  /* same height and shape as the bottom bar under it */
   .wac-pdp-bar .wac-pdp-bar__btn,
   .wac-pdp-bar .wac-pdp-bar__btn.is-ready {
+    height: var(--bls-bnav-h);
+    min-height: var(--bls-bnav-h);
+    border-radius: 31px;
     box-shadow: 0 8px 20px rgb(34 24 20 / 0.22);
   }
 
@@ -7916,33 +7920,34 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 30px - var(--bls-bnav-space) - 8px));
   }
 
-  /* home page: no white bar, the logo sits on the hero in white and scrolls away with it. The
-     important flags beat Horizon's sticky rule; the header sits right under the 30px promo bar.
-     The logo file has a white background, so it is inverted and that background (now black) is
-     screened away; the blend sits on the section because it is the stacking context */
+  /* home page: the header stays sticky, as on every page, and runs over the hero (the negative
+     margin). While the hero is on screen it has no white bar and the logo is white; below the hero
+     (html.bls-past-hero, set in snippets/bls-bottom-nav.liquid) it is the normal header. The logo
+     file has a white background, so it is inverted and that background (now black) is screened
+     away; the blend sits on the section because it is the stacking context */
   body:has(#MainContent .wac-hero) .header-section {
-    position: absolute !important;
-    top: 30px !important;
-    right: 0;
-    left: 0;
+    margin-bottom: -60px;
+  }
+
+  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section {
     mix-blend-mode: screen;
   }
 
-  body:has(#MainContent .wac-hero):has(.menu-drawer-container[open]) .header-section {
+  html body:has(#MainContent .wac-hero):has(.menu-drawer-container[open]) .header-section {
     mix-blend-mode: normal;
   }
 
-  body:has(#MainContent .wac-hero) .header-section .header,
-  body:has(#MainContent .wac-hero) .header-section .header__row {
+  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header,
+  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header__row {
     border: 0;
     background: none;
   }
 
-  body:has(#MainContent .wac-hero) .header-section .header__underlay {
+  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header__underlay {
     display: none;
   }
 
-  body:has(#MainContent .wac-hero) .header-section .header-logo__image {
+  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header-logo__image {
     filter: invert(1) grayscale(1) contrast(1.4);
   }
 
