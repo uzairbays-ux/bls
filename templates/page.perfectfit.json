@@ -15,11 +15,11 @@
         "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
         "image_position": "center top",
         "background": "#f2ede9",
-        "heading": "Finding the right bra fit has <em>never been easier</em>",
-        "text": "<p>Bodies change. Keeping up with your size and shape is the key to feeling your best.</p><p>Measure yourself with our bra size calculator, or tell us your current size, and we'll show you your best fit and the styles in stock in it.</p>",
-        "button_1_label": "Manually measure yourself",
+        "heading": "Your best fit <em>starts here</em>",
+        "text": "<p>Sizes change over time, so it's worth checking yours.</p><p>Measure at home with our size calculator, or enter the size you wear now, and we'll show you your best fit and the bras in stock in it.</p>",
+        "button_1_label": "Measure at home",
         "button_1_link": "/pages/the-perfect-fit?view=bra-fit-calculator",
-        "button_2_label": "I know my size",
+        "button_2_label": "Enter my size",
         "button_2_link": "/pages/the-perfect-fit?view=i-know-my-bra-size"
       }
     },
@@ -31,8 +31,8 @@
           "settings": {
             "icon": "bra",
             "image_asset": "",
-            "title": "I Know My Bra Size",
-            "text": "<p>Add your current bra size to see your sister sizes and the styles in stock in your size.</p>",
+            "title": "I Already Know My Size",
+            "text": "<p>Enter the size you wear now to see your sister sizes and the bras we have in it.</p>",
             "button_label": "Enter your size",
             "link": "/pages/the-perfect-fit?view=i-know-my-bra-size"
           }
@@ -42,8 +42,8 @@
           "settings": {
             "icon": "tape",
             "image_asset": "",
-            "title": "Manually Measure Yourself",
-            "text": "<p>Grab a soft measuring tape and let our bra size calculator guide you to your best fit.</p>",
+            "title": "Measure At Home",
+            "text": "<p>You only need a soft tape. Our size calculator works out the rest.</p>",
             "button_label": "Start now",
             "link": "/pages/the-perfect-fit?view=bra-fit-calculator"
           }
@@ -54,7 +54,7 @@
             "icon": "chat",
             "image_asset": "",
             "title": "Ask Our Fit Team",
-            "text": "<p>Not sure where to start? Message us and we'll guide you every step of the way.</p>",
+            "text": "<p>Not sure where to start? Message us and we'll help you choose.</p>",
             "button_label": "Contact us",
             "link": "/pages/contact"
           }
@@ -67,7 +67,7 @@
       ],
       "settings": {
         "layout": "ways",
-        "heading": "3 Ways To Get Fit",
+        "heading": "Three Ways To Find Your Size",
         "heading_italic": false,
         "text": "<p>Choose the way that suits you. We'll show you your best size and the bras in stock in it.</p>",
         "columns": 3,
@@ -167,7 +167,7 @@
             "icon": "email",
             "image_asset": "",
             "title": "Email",
-            "text": "<p>Send us a note and we'll get back to you with answers.</p>",
+            "text": "<p>Write to us and we'll reply as soon as we can.</p>",
             "button_label": "Email us"
           }
         },
@@ -190,7 +190,7 @@
       ],
       "settings": {
         "layout": "help",
-        "heading": "We're Always Here To Help...",
+        "heading": "Need A Hand?",
         "heading_italic": true,
         "text": "",
         "columns": 3,
@@ -203,7 +203,7 @@
       "settings": {
         "style": "more",
         "heading": "More info",
-        "text": "<p>British Lingerie Studio helps you find a bra that fits, with tools you can use at home in a few minutes.</p><p>If you prefer to measure, our bra size calculator walks you through two measurements with a soft tape and turns them into your BLS size. If you already know your size, enter your band and cup on the I Know My Size page to see your sister sizes and the styles in stock in your size.</p><p>A bra that fits supports you, feels comfortable all day and looks better under your clothes. Our bras come in bands 32 to 44 and cups A to F, in padded, non-padded, wired and wireless styles, with matching panties, camisoles, sleepwear and shapewear.</p>",
+        "text": "<p>British Lingerie Studio makes it simple to find your right size, from home, in a few minutes.</p><p>Prefer to measure? Our size calculator takes two measurements with a soft tape and gives you your BLS size. Already know your size? Enter your band and cup to see your sister sizes and what's in stock.</p><p>Our bras come in bands 32 to 44 and cups A to F, in padded, non-padded, wired and wireless styles, with matching panties, camisoles, sleepwear and shapewear.</p>",
         "background": "white"
       }
     }

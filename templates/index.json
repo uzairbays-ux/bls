@@ -16,38 +16,38 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
-            "image_asset": "wacoal-hero-1-desktop.jpg",
+            "image_asset": "",
             "image_mobile_asset": "",
             "position": "right",
             "text_align": "left",
-            "preheader": "<strong>NEW</strong> HIGH BAR™ COLLECTION",
+            "preheader": "<strong>NEW</strong> SATIN SECRETS",
             "preheader_font": "expanded",
-            "heading": "WE’RE RAISING\nTHE BAR\nFOR COMFORT",
+            "heading": "LACE, SATIN\nAND A LITTLE\nSECRET",
             "heading_size": 45,
             "heading_size_mobile": 25,
             "heading_weight": "400",
             "text": "",
-            "button_label": "SHOP BEST SELLERS",
-            "button_link": "/collections/all"
+            "button_label": "SHOP SATIN SECRETS",
+            "button_link": "/collections/satin-secrets"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.31.41.jpg",
-            "image_asset": "wacoal-hero-2-desktop.jpg",
+            "image_asset": "",
             "image_mobile_asset": "",
             "position": "center",
             "text_align": "center",
-            "preheader": "YOU ARE NOT EITHER/OR.",
+            "preheader": "BRA & PANTY SETS",
             "preheader_font": "expanded",
-            "heading": "UNDERNEATH\nIT ALL, LIES BLS",
+            "heading": "SOFT COLOURS,\nEASY DAYS",
             "heading_size": 50,
             "heading_size_mobile": 30,
             "heading_weight": "400",
             "text": "",
-            "button_label": "SEE THE CAMPAIGN",
-            "button_link": "/collections/all"
+            "button_label": "SHOP SETS",
+            "button_link": "/collections/bras-bundles-sets-bra-panty-sets"
           }
         },
         "slide_3": {
@@ -58,15 +58,15 @@
             "image_mobile_asset": "",
             "position": "left",
             "text_align": "left",
-            "preheader": "Introducing",
+            "preheader": "Bra bundles",
             "preheader_font": "serif",
-            "heading": "BLS REWARDS",
+            "heading": "3 BRAS FROM\nRS.7,500",
             "heading_size": 70,
             "heading_size_mobile": 35,
             "heading_weight": "500",
-            "text": "Where every order loves you back. Earn 100 points today just for signing up!",
-            "button_label": "JOIN & EARN",
-            "button_link": "/account/register"
+            "text": "Stock up on your everyday favourites.",
+            "button_label": "SHOP BUNDLES",
+            "button_link": "/collections/bundles"
           }
         }
       },
@@ -89,12 +89,12 @@
           "type": "tile",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.28.08.jpg",
-            "image_asset": "wacoal-tile-1.jpg",
+            "image_asset": "",
             "image_mobile_asset": "",
-            "heading_line1": "A New Standard for",
-            "heading_line2": "Every Bustline",
-            "text": "Available in 30–44 bands and A–F cups",
-            "button_label": "SHOP BASELINE",
+            "heading_line1": "Bras For",
+            "heading_line2": "Every Day",
+            "text": "In bands 32–44 and cups A–F",
+            "button_label": "SHOP BRAS",
             "link": "/collections/bras",
             "button_link": ""
           }
@@ -103,11 +103,11 @@
           "type": "tile",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.23.40.jpg",
-            "image_asset": "wacoal-tile-2.jpg",
+            "image_asset": "",
             "image_mobile_asset": "",
-            "heading_line1": "BUY 3 GET 3 FREE",
-            "heading_line2": "All Sale Panties",
-            "text": "No code needed.",
+            "heading_line1": "Soft, Light",
+            "heading_line2": "Lace Panties",
+            "text": "In lace, cotton and seamless styles",
             "button_label": "SHOP PANTIES",
             "link": "/collections/panties",
             "button_link": ""
@@ -117,7 +117,7 @@
           "type": "tile",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.22.34.jpg",
-            "image_asset": "wacoal-tile-3.jpg",
+            "image_asset": "",
             "image_mobile_asset": "",
             "heading_line1": "Lace, Satin &",
             "heading_line2": "Everyday Luxury",
@@ -131,7 +131,7 @@
           "type": "tile",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.21.37.jpg",
-            "image_asset": "wacoal-tile-4.jpg",
+            "image_asset": "",
             "image_mobile_asset": "",
             "heading_line1": "Smooth From",
             "heading_line2": "Every Angle",
@@ -165,9 +165,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/hix-download-1776943199268-1776943203047.png",
-            "image_asset": "wacoal-style-01.jpg",
+            "image_asset": "",
             "title": "Push Up",
-            "text": "reduce your bustline up to 1\"",
+            "text": "extra lift, natural shape",
             "link": "/collections/bras"
           }
         },
@@ -175,9 +175,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1781169793340_copy.png",
-            "image_asset": "wacoal-style-02.jpg",
+            "image_asset": "",
             "title": "Strapless",
-            "text": "your no-straps, no-slip solution",
+            "text": "stays put, no straps needed",
             "link": "/collections/bras"
           }
         },
@@ -185,9 +185,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.05.13.jpg",
-            "image_asset": "wacoal-style-03.jpg",
+            "image_asset": "",
             "title": "T-Shirt",
-            "text": "your go-to basics",
+            "text": "smooth under anything you wear",
             "link": "/collections/bras"
           }
         },
@@ -195,9 +195,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.09.04.jpg",
-            "image_asset": "wacoal-style-04.jpg",
+            "image_asset": "",
             "title": "Wireless",
-            "text": "effortless support without the wires",
+            "text": "soft comfort, no underwire",
             "link": "/collections/bras"
           }
         },
@@ -205,9 +205,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.13.07.jpg",
-            "image_asset": "wacoal-style-05.jpg",
+            "image_asset": "",
             "title": "Full Coverage",
-            "text": "maximum coverage, minimal compromise",
+            "text": "more cover, all-day ease",
             "link": "/collections/bras"
           }
         },
@@ -215,9 +215,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.06.22.jpg",
-            "image_asset": "wacoal-style-06.jpg",
+            "image_asset": "",
             "title": "Sport",
-            "text": "support that's made for movement",
+            "text": "made to keep up with you",
             "link": "/collections/active-shape-wear"
           }
         },
@@ -225,9 +225,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.14.29.jpg",
-            "image_asset": "wacoal-style-07.jpg",
+            "image_asset": "",
             "title": "Seamless",
-            "text": "for moments when comfort comes first",
+            "text": "no lines, just smooth comfort",
             "link": "/collections/sleep-wear"
           }
         },
@@ -235,9 +235,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.17.02.jpg",
-            "image_asset": "wacoal-style-08.jpg",
+            "image_asset": "",
             "title": "Nursing",
-            "text": "crafted to support up to K cups",
+            "text": "gentle support for new mums",
             "link": "/collections/bras"
           }
         },
@@ -245,9 +245,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1769589348891.png",
-            "image_asset": "wacoal-style-09.jpg",
+            "image_asset": "",
             "title": "Lace",
-            "text": "delicate details meet hidden support",
+            "text": "soft lace with a pretty finish",
             "link": "/collections/bras"
           }
         },
@@ -255,9 +255,9 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.19.07.jpg",
-            "image_asset": "wacoal-style-10.jpg",
+            "image_asset": "",
             "title": "Front Open",
-            "text": "support that never lets you down",
+            "text": "easy on, easy off",
             "link": "/collections/bras"
           }
         }
@@ -288,12 +288,12 @@
         "text_color": "#111111",
         "heading_size": 50,
         "heading_size_mobile": 30,
-        "heading": "Support that <em>gets</em> you. Style that <em>reflects</em> you. Comfort that <em>never</em> quits.",
-        "text": "It all starts with the right fitting bra.",
+        "heading": "Find the fit that <em>feels</em> like you.",
+        "text": "The right size makes all the difference.",
         "max_width": 60,
-        "button1_label": "FIND YOUR PERFECT FIT",
+        "button1_label": "FIND YOUR SIZE",
         "button1_link": "/pages/the-perfect-fit",
-        "button2_label": "YOUR CUSTOM BRA WARDROBE",
+        "button2_label": "SHOP ALL BRAS",
         "button2_link": "/collections/bras",
         "margin_top": 20,
         "margin_bottom": 20,
@@ -308,7 +308,7 @@
       "name": "BLS best sellers",
       "settings": {
         "heading": "Best Sellers",
-        "subheading": "Crafted for consistency, chosen for comfort — these are the styles that set the standard.",
+        "subheading": "The styles our customers keep coming back for.",
         "collection": "bras",
         "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
         "link_label": "Shop now",
@@ -388,11 +388,11 @@
         "text_color": "#ffffff",
         "heading_size": 40,
         "heading_size_mobile": 25,
-        "heading": "Up To 60% Off | <em>Last Chance</em>",
-        "text": "Final call for feel-good styles, now feel-great priced.",
+        "heading": "Slips & Camis | <em>3 For Rs.4,500</em>",
+        "text": "Soft layers for day and night.",
         "max_width": 60,
-        "button1_label": "SHOP ALL SALE",
-        "button1_link": "/collections/all",
+        "button1_label": "SHOP SLIPS & CAMIS",
+        "button1_link": "/collections/slips-camis",
         "button2_label": "",
         "button2_link": "",
         "margin_top": 50,
@@ -408,15 +408,15 @@
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/hix.ai-download-1781088063031.jpg",
-        "image_asset": "wacoal-iwt-1.jpg",
+        "image_asset": "",
         "image_mobile_asset": "",
         "image_position": "right",
         "link": "/collections/sleep-wear",
         "preheader": "",
-        "heading": "Fall Into Something <em>Comfortable</em>",
+        "heading": "Made For <em>Slow Mornings</em>",
         "heading_style": "serif",
         "heading_color": "#000000",
-        "text": "<p>Discover the soft and easy layers your autumn wardrobe has been asking for.</p>",
+        "text": "<p>Soft pajama sets for staying in, sleeping late and doing very little.</p>",
         "button_label": "SHOP SLEEPWEAR",
         "button_link": "",
         "background": "#fafafc",
@@ -428,16 +428,16 @@
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/hix.ai-download-1781088689103.jpg",
-        "image_asset": "wacoal-iwt-2.jpg",
+        "image_asset": "",
         "image_mobile_asset": "",
         "image_position": "left",
-        "link": "/account/register",
+        "link": "/collections/panties",
         "preheader": "Introducing",
-        "heading": "BLS REWARDS",
+        "heading": "BARELY THERE",
         "heading_style": "expanded",
         "heading_color": "#000000",
-        "text": "<p>Great support has always been our promise. Rewarding your loyalty is our way of saying thank you. Join BLS Rewards and enjoy 100 points just by signing up today!</p>",
-        "button_label": "SIGN UP & START EARNING",
+        "text": "<p>Seamless panties that stay smooth under everything you wear.</p>",
+        "button_label": "SHOP PANTIES",
         "button_link": "",
         "background": "#fafafc",
         "margin_bottom": 0
@@ -448,7 +448,7 @@
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.53.21.jpg",
-        "image_asset": "wacoal-iwt-3.jpg",
+        "image_asset": "",
         "image_mobile_asset": "",
         "image_position": "right",
         "link": "/pages/the-perfect-fit",
@@ -456,7 +456,7 @@
         "heading": "THE PERFECT FIT",
         "heading_style": "bold",
         "heading_color": "#b16a80",
-        "text": "<p>Book a complimentary fitting with our experts and find the bra size that is truly yours, in store or with our <strong>online Fitting Room</strong>.</p>",
+        "text": "<p>Measure at home with our size calculator, or message our fit team and we'll help you choose.</p>",
         "button_label": "LEARN MORE",
         "button_link": "",
         "background": "#fafafc",
@@ -801,7 +801,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Find your perfect fit</p>",
+                    "text": "<p>Find your size</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",

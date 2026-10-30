@@ -35,7 +35,7 @@
             "icon": "email",
             "image_asset": "",
             "title": "Email",
-            "text": "<p>Send us a note and we'll get back to you with answers.</p>",
+            "text": "<p>Write to us and we'll reply as soon as we can.</p>",
             "button_label": "Email us"
           }
         },
@@ -58,7 +58,7 @@
       ],
       "settings": {
         "layout": "help",
-        "heading": "We're Always Here To Help...",
+        "heading": "Need A Hand?",
         "heading_italic": true,
         "text": "",
         "columns": 3,

@@ -1,5 +1,5 @@
 {%- doc -%}
-  Find your fit hero (Wacoal "Finding the right bra fit has never been easier"): heading with an
+  Find your fit hero: heading with an
   italic part (<em>), text, up to two pill buttons, and a photo on the right (on top on phones).
 {%- enddoc -%}
 {{ 'bls-fit.css' | asset_url | stylesheet_tag }}
@@ -44,11 +44,11 @@
     { "type": "image_picker", "id": "image", "label": "Photo" },
     { "type": "select", "id": "image_position", "label": "Photo focus", "options": [ { "value": "center top", "label": "Top" }, { "value": "center 25%", "label": "Upper middle" }, { "value": "center center", "label": "Middle" } ], "default": "center 25%" },
     { "type": "color", "id": "background", "label": "Background behind the text", "default": "#f2ede9" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Make words italic to set them in the script style.", "default": "Finding the right bra fit has <em>never been easier</em>" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Bodies change. Keeping up with your size and shape is the key to feeling your best.</p><p>Measure yourself with our bra size calculator, or tell us your current size, and we'll show you your best fit.</p>" },
-    { "type": "text", "id": "button_1_label", "label": "Button 1", "default": "Measure yourself" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Make words italic to set them in the script style.", "default": "Your best fit <em>starts here</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Sizes change over time, so it's worth checking yours.</p><p>Measure at home with our size calculator, or enter the size you wear now, and we'll show you your best fit.</p>" },
+    { "type": "text", "id": "button_1_label", "label": "Button 1", "default": "Measure at home" },
     { "type": "url", "id": "button_1_link", "label": "Button 1 link" },
-    { "type": "text", "id": "button_2_label", "label": "Button 2", "default": "I know my size" },
+    { "type": "text", "id": "button_2_label", "label": "Button 2", "default": "Enter my size" },
     { "type": "url", "id": "button_2_link", "label": "Button 2 link" }
   ],
   "presets": [{ "name": "Fit hero" }],

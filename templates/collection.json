@@ -116,11 +116,11 @@
         "tile_min_products": 8,
         "tile_bg": "#cdc9de",
         "tile_gradient": "linear-gradient(140deg, rgba(169, 161, 200, 1), rgba(205, 201, 222, 1) 100%)",
-        "tile_heading_1": "all sale panties",
-        "tile_heading_2": "BUY 3 GET 3 FREE",
-        "tile_text": "limited time only",
+        "tile_heading_1": "bra bundles",
+        "tile_heading_2": "3 FROM RS.7,500",
+        "tile_text": "your everyday favourites",
         "tile_button": "SHOP NOW",
-        "tile_link": "/collections/panties"
+        "tile_link": "/collections/bundles"
       }
     }
   },

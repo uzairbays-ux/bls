@@ -1,5 +1,5 @@
 {%- doc -%}
-  "I know my size" (Wacoal): pick a band and a cup; the shared result panel shows the sister sizes,
+  "I know my size": pick a band and a cup; the shared result panel shows the sister sizes,
   the S/M/L size and the bras in stock in that size (assets/bls-fit.js).
 {%- enddoc -%}
 {{ 'bls-fit.css' | asset_url | stylesheet_tag }}
@@ -55,8 +55,8 @@
   "settings": [
     { "type": "text", "id": "back_label", "label": "Link above the title", "default": "Find your fit" },
     { "type": "url", "id": "back_link", "label": "Its link" },
-    { "type": "text", "id": "title", "label": "Title", "default": "I Know My Size" },
-    { "type": "text", "id": "question", "label": "Question", "default": "What's Your Bra Size Right Now?" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Enter My Size" },
+    { "type": "text", "id": "question", "label": "Question", "default": "What Size Do You Wear Now?" },
     { "type": "text", "id": "bands", "label": "Bands", "default": "32, 34, 36, 38, 40, 42, 44" },
     { "type": "text", "id": "cups", "label": "Cups", "default": "A, B, C, D, DD, E, F" },
     { "type": "collection", "id": "collection", "label": "Show bras from", "info": "Default: Bras." },

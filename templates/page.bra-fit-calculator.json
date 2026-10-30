@@ -33,7 +33,7 @@
           "settings": {
             "title": "Camisoles",
             "image_asset": "bls-fit-figure-cami.jpg",
-            "text": "<p><strong>Step 1: Measure your bust</strong></p><ul><li>Wrap the tape around the fullest part of your chest (line 1), level and not too tight.</li></ul><p><strong>Step 2: Measure your waist</strong></p><ul><li>Place the tape around the narrowest part of your waist (line 2), snug but comfortable.</li></ul><p><strong>Step 3: Measure your hips</strong></p><ul><li>Measure around the widest part of your hips and bottom (line 3), keeping the tape straight.</li></ul><p>Use all three numbers to find your size in the chart below.</p>",
+            "text": "<p><strong>Step 1: Measure your bust</strong></p><ul><li>Wrap the tape around the fullest point of your chest (line 1), level and not too tight.</li></ul><p><strong>Step 2: Measure your waist</strong></p><ul><li>Place the tape around the narrowest part of your waist (line 2), snug but comfortable.</li></ul><p><strong>Step 3: Measure your hips</strong></p><ul><li>Measure around the widest part of your hips and bottom (line 3), keeping the tape straight.</li></ul><p>Use all three numbers to find your size in the chart below.</p>",
             "table": "<div class=\"bls-chart\"><p class=\"bls-chart__title\">Camisole size chart</p><p class=\"bls-chart__unit\">Bust, waist and hips in inches</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\">Size</th><th scope=\"col\">Dress</th><th scope=\"col\">Bust</th><th scope=\"col\">Waist</th><th scope=\"col\">Hips</th></tr></thead><tbody><tr><th scope=\"row\">XS</th><td>0-2</td><td>33</td><td>23-24</td><td>35</td></tr><tr><th scope=\"row\">S</th><td>4-6</td><td>35</td><td>25-26</td><td>37</td></tr><tr><th scope=\"row\">M</th><td>8-10</td><td>37</td><td>28-29</td><td>39</td></tr><tr><th scope=\"row\">L</th><td>12-14</td><td>39</td><td>30-32</td><td>41</td></tr><tr><th scope=\"row\">XL</th><td>16-18</td><td>42</td><td>34</td><td>44</td></tr><tr><th scope=\"row\">2X</th><td>20-22</td><td>45</td><td>37</td><td>48</td></tr><tr><th scope=\"row\">3X</th><td>22-24</td><td>48</td><td>44</td><td>52</td></tr></tbody></table></div><p class=\"bls-chart__note\">This size chart is based on general merchandise. Actual product measurements may differ from the chart.</p></div>"
           }
         },
@@ -42,7 +42,7 @@
           "settings": {
             "title": "Shapewear",
             "image_asset": "bls-fit-figure-cami.jpg",
-            "text": "<p><strong>Step 1: Measure your bust</strong></p><ul><li>Place the tape around the fullest part of your chest (line 1), straight across your back.</li></ul><p><strong>Step 2: Measure your waist</strong></p><ul><li>Wrap the tape around the narrowest part of your waist (line 2), near your belly button. It should feel snug but comfortable.</li></ul><p><strong>Step 3: Measure your hips</strong></p><ul><li>Place the tape around the widest part of your hips and bottom (line 3), level all the way around.</li></ul><p>Use all three numbers to find your size in the chart below.</p>",
+            "text": "<p><strong>Step 1: Measure your bust</strong></p><ul><li>Place the tape around the fullest point of your chest (line 1), straight across your back.</li></ul><p><strong>Step 2: Measure your waist</strong></p><ul><li>Wrap the tape around the narrowest part of your waist (line 2), near your belly button. It should feel snug but comfortable.</li></ul><p><strong>Step 3: Measure your hips</strong></p><ul><li>Place the tape around the widest part of your hips and bottom (line 3), level all the way around.</li></ul><p>Use all three numbers to find your size in the chart below.</p>",
             "table": "<div class=\"bls-chart\"><p class=\"bls-chart__title\">Shapewear size chart</p><div class=\"bls-chart__scroll\"><table class=\"bls-chart__table\"><thead><tr><th scope=\"col\">Size</th><th scope=\"col\">Bust</th><th scope=\"col\">Waist</th><th scope=\"col\">Hips</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>33-36</td><td>28-31</td><td>34-38</td></tr><tr><th scope=\"row\">M</th><td>36-38</td><td>31-33</td><td>38-41</td></tr><tr><th scope=\"row\">L</th><td>38-41</td><td>33-36</td><td>41-44</td></tr><tr><th scope=\"row\">XL</th><td>41-44</td><td>36-39</td><td>44-47</td></tr><tr><th scope=\"row\">2X</th><td>44-48</td><td>39-42</td><td>47-50</td></tr><tr><th scope=\"row\">3X</th><td>48-52</td><td>42-45</td><td>50-53</td></tr><tr><th scope=\"row\">4X</th><td>52-54</td><td>45-48</td><td>53-56</td></tr></tbody></table></div><p class=\"bls-chart__note\">This size chart is based on general merchandise. Actual product measurements may differ from the chart.</p></div>"
           }
         }
@@ -76,7 +76,7 @@
             "icon": "email",
             "image_asset": "",
             "title": "Email",
-            "text": "<p>Send us a note and we'll get back to you with answers.</p>",
+            "text": "<p>Write to us and we'll reply as soon as we can.</p>",
             "button_label": "Email us"
           }
         },
@@ -99,7 +99,7 @@
       ],
       "settings": {
         "layout": "help",
-        "heading": "We're Always Here To Help...",
+        "heading": "Need A Hand?",
         "heading_italic": true,
         "text": "",
         "columns": 3,
@@ -112,7 +112,7 @@
       "settings": {
         "style": "more",
         "heading": "More info",
-        "text": "<p><strong>Find your perfect bra fit: measure your bra size with BLS</strong></p><p>With our bra size calculator, finding your true bra size takes two measurements and a soft measuring tape. Measuring is the most important step to a bra that fits, so follow the two steps above at home.</p><p>Choose the exact numbers you see on your tape. Questions? Contact us for help with your size and style.</p>",
+        "text": "<p><strong>How to measure at home</strong></p><p>Two measurements and a soft tape are all it takes. Follow the steps above at home, using the numbers on your tape as they are.</p><p>Questions? Our fit team can help with your size and style.</p>",
         "background": "white"
       }
     }
