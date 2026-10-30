@@ -27,7 +27,7 @@
   endif
 -%}
 <div
-  class="wac-iwt wac-iwt--image-{{ ss.image_position }} wac-iwt--heading-{{ ss.heading_style }} wac-iwt--text-{{ text_size }}"
+  class="wac-iwt wac-iwt--image-{{ ss.image_position }} wac-iwt--heading-{{ ss.heading_style }} wac-iwt--text-{{ text_size }}{% if ss.image_shape == 'square' %} wac-iwt--square{% endif %}"
   style="--wac-iwt-bg: {{ ss.background }}; --wac-iwt-heading-color: {{ ss.heading_color }}; --wac-iwt-mb: {{ ss.margin_bottom }}px;"
 >
   {%- if src != blank -%}
@@ -82,6 +82,7 @@
   "class": "wac-section-iwt",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image", "info": "About 2000 x 1830." },
+    { "type": "select", "id": "image_shape", "label": "Image shape", "options": [ { "value": "natural", "label": "Photo's own shape" }, { "value": "square", "label": "Square" } ], "default": "natural" },
     { "type": "text", "id": "image_asset", "label": "or asset file name", "info": "Used only while no image is picked." },
     { "type": "image_picker", "id": "image_mobile", "label": "Image on phones (optional)" },
     { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phones)" },

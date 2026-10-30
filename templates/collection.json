@@ -18,7 +18,7 @@
           "settings": {
             "collection": "padded",
             "title": "Padded",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_2": {
@@ -26,7 +26,7 @@
           "settings": {
             "collection": "non-padded",
             "title": "Non Padded",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_3": {
@@ -34,7 +34,7 @@
           "settings": {
             "collection": "wired-1",
             "title": "Wired",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_4": {
@@ -42,7 +42,7 @@
           "settings": {
             "collection": "non-wired",
             "title": "Wireless",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_5": {
@@ -50,7 +50,7 @@
           "settings": {
             "collection": "bras-lace",
             "title": "Lace",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_6": {
@@ -58,7 +58,7 @@
           "settings": {
             "collection": "bras-cotton",
             "title": "Cotton",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_7": {
@@ -66,7 +66,7 @@
           "settings": {
             "collection": "bralette",
             "title": "Bralette",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_8": {
@@ -74,7 +74,7 @@
           "settings": {
             "collection": "seamless-bra",
             "title": "Seamless",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_9": {
@@ -82,7 +82,7 @@
           "settings": {
             "collection": "panties-bundles-sets-bra-panty-sets",
             "title": "Bra & Panty Sets",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_p1": {
@@ -141,6 +141,86 @@
             "title": "Teens",
             "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
           }
+        },
+        "cat_s1": {
+          "type": "category",
+          "settings": {
+            "collection": "pajama-sets",
+            "title": "Pajama Sets",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s2": {
+          "type": "category",
+          "settings": {
+            "collection": "short-sets",
+            "title": "Short Sets",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s3": {
+          "type": "category",
+          "settings": {
+            "collection": "night-wear-nightgown",
+            "title": "Nightgown",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s4": {
+          "type": "category",
+          "settings": {
+            "collection": "sleep-wear-cotton",
+            "title": "Cotton",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s5": {
+          "type": "category",
+          "settings": {
+            "collection": "sleep-wear-silk",
+            "title": "Silk",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s6": {
+          "type": "category",
+          "settings": {
+            "collection": "sleep-wear-viscose",
+            "title": "Viscose",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_a1": {
+          "type": "category",
+          "settings": {
+            "collection": "shaper",
+            "title": "Shaper",
+            "show_on": "active-shape-wear,sports-shape-wear,shaper,sports-bra,sport-wear,sports-shape-wear-sports-bra"
+          }
+        },
+        "cat_a2": {
+          "type": "category",
+          "settings": {
+            "collection": "sports-bra",
+            "title": "Sports Bra",
+            "show_on": "active-shape-wear,sports-shape-wear,shaper,sports-bra,sport-wear,sports-shape-wear-sports-bra"
+          }
+        },
+        "cat_b1": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-bundles-sets-bra-panty-sets",
+            "title": "Bra & Panty Sets",
+            "show_on": "bundles,bundle"
+          }
+        },
+        "cat_b2": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-panty-sets",
+            "title": "Panty Sets",
+            "show_on": "bundles,bundle"
+          }
         }
       },
       "block_order": [
@@ -159,7 +239,17 @@
         "cat_p4",
         "cat_p5",
         "cat_p6",
-        "cat_p7"
+        "cat_p7",
+        "cat_s1",
+        "cat_s2",
+        "cat_s3",
+        "cat_s4",
+        "cat_s5",
+        "cat_s6",
+        "cat_a1",
+        "cat_a2",
+        "cat_b1",
+        "cat_b2"
       ],
       "settings": {
         "show_description": true,

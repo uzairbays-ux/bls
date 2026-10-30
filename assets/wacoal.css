@@ -1931,6 +1931,11 @@
   height: auto;
 }
 
+.wac-iwt--square .wac-iwt__img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
 .wac-iwt__content {
   flex: 1 1 50%;
   padding: 40px;
