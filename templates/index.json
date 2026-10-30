@@ -17,7 +17,7 @@
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
             "image_asset": "wacoal-hero-1-desktop.jpg",
-            "image_mobile_asset": "wacoal-hero-1-mobile.jpg",
+            "image_mobile_asset": "",
             "position": "right",
             "text_align": "left",
             "preheader": "<strong>NEW</strong> HIGH BAR™ COLLECTION",
