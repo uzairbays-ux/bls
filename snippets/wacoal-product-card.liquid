@@ -4,7 +4,7 @@
   @param {string} [badge] - Text of the white pill on the photo, e.g. Best Seller
   @param {number} [new_days] - Show "New arrival" for products published in the last this many days (default 30, 0 = off)
   @param {boolean} [no_size_flag] - Hide the size range pill (S-XL / Up to E cup)
-  @param {boolean} [show_sizes] - List the sizes in stock under the price (instead of the size range pill)
+  @param {boolean} [show_sizes] - Show the range of sizes in stock under the price (instead of the size range pill)
   @param {string} [sizes] - The img sizes attribute for the photo
   @param {boolean} [eager] - Load the photo straight away (first row of a grid)
 {%- enddoc -%}
@@ -223,10 +223,10 @@
         {%- endif -%}
       </div>
 
-      {%- if in_stock_sizes.size > 0 -%}
-        <ul class="wac-card__sizes" role="list" aria-label="Sizes in stock">
-          {%- for size_name in in_stock_sizes -%}<li>{{ size_name | escape }}</li>{%- endfor -%}
-        </ul>
+      {%- if in_stock_sizes.size == 1 -%}
+        <p class="wac-card__sizes">Size {{ in_stock_sizes.first | escape }}</p>
+      {%- elsif in_stock_sizes.size > 1 -%}
+        <p class="wac-card__sizes">Sizes {{ in_stock_sizes.first | escape }} to {{ in_stock_sizes.last | escape }}</p>
       {%- endif -%}
 
       {%- if rating != blank -%}

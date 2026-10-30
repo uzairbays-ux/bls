@@ -1433,22 +1433,17 @@
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* sizes in stock, on collection page cards */
+/* range of sizes in stock, on product cards */
 .wac-card__sizes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 8px;
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   padding: 0 0 0 4px;
   color: #6e6862;
   font-size: 12px;
   line-height: 1.4;
-  list-style: none;
 }
 
 @media screen and (max-width: 749px) {
   .wac-card__sizes {
-    gap: 1px 7px;
     padding-left: 0;
     font-size: 11px;
   }
