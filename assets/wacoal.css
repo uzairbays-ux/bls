@@ -52,6 +52,9 @@
 }
 
 .wac-top-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: inherit;
   text-decoration: none;
   letter-spacing: 1px;

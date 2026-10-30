@@ -1,0 +1,235 @@
+/* Store locator (sections/bls-store-locator.liquid) */
+.bls-stores {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 56px 40px 80px;
+  color: var(--wac-ink, #111);
+  font-family: var(--wac-font-sans);
+}
+
+.bls-stores__head {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.bls-stores__title {
+  margin: 0;
+  font-family: var(--wac-font-serif);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.bls-stores__text {
+  margin-top: 12px;
+  color: #6e6862;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.bls-stores__text p {
+  margin: 0;
+}
+
+.bls-stores__cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.bls-stores__city {
+  padding: 9px 18px;
+  border: 1px solid #d9d3cc;
+  border-radius: 22px;
+  background: #fff;
+  color: var(--wac-ink, #111);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.bls-stores__city:hover {
+  border-color: #2b2526;
+}
+
+.bls-stores__city.is-active {
+  border-color: #2b2526;
+  background: #2b2526;
+  color: #fff;
+}
+
+.bls-stores__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.bls-stores__list {
+  order: 1;
+}
+
+.bls-stores__map {
+  order: 2;
+  position: sticky;
+  top: calc(var(--wac-header-h, 80px) + 20px);
+  height: min(640px, calc(100vh - var(--wac-header-h, 80px) - 40px));
+  overflow: hidden;
+  background: #f3f0eb;
+}
+
+.bls-stores__map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.bls-stores__group + .bls-stores__group {
+  margin-top: 32px;
+}
+
+.bls-stores__group[hidden] {
+  display: none;
+}
+
+.bls-stores__group-title {
+  margin: 0 0 8px;
+  font-family: var(--wac-font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.bls-stores__stores {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #e6e2dc;
+  list-style: none;
+}
+
+.bls-stores__store {
+  padding: 16px 16px 14px;
+  border-bottom: 1px solid #e6e2dc;
+  transition: background-color 0.15s ease;
+}
+
+.bls-stores__store.is-active {
+  background: #f3f0eb;
+}
+
+.bls-stores__pick {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bls-stores__pick:focus-visible,
+.bls-stores__action:focus-visible,
+.bls-stores__city:focus-visible {
+  outline: 2px solid #2b2526;
+  outline-offset: 2px;
+}
+
+.bls-stores__name {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.bls-stores__address {
+  display: block;
+  margin-top: 4px;
+  color: #6e6862;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bls-stores__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 8px;
+}
+
+.bls-stores__action {
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media screen and (max-width: 749px) {
+  .bls-stores {
+    padding: 32px 16px 40px;
+  }
+
+  .bls-stores__head {
+    margin-bottom: 20px;
+  }
+
+  .bls-stores__title {
+    font-size: 30px;
+  }
+
+  .bls-stores__text {
+    font-size: 14px;
+  }
+
+  /* one swipe row of filters */
+  .bls-stores__cities {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 18px -16px 0;
+    padding: 0 16px 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .bls-stores__cities::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bls-stores__city {
+    flex: 0 0 auto;
+  }
+
+  .bls-stores__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .bls-stores__list {
+    order: 2;
+  }
+
+  .bls-stores__map {
+    order: 1;
+    position: static;
+    height: 300px;
+    margin: 0 -16px;
+    scroll-margin-top: 70px;
+  }
+
+  .bls-stores__store {
+    padding: 14px 12px 12px;
+  }
+
+  .bls-stores__group + .bls-stores__group {
+    margin-top: 24px;
+  }
+}

@@ -1,5 +1,7 @@
 
 
+{%- comment -%} The store locator page shows sections/bls-store-locator.liquid instead of its page content {%- endcomment -%}
+{%- unless page.handle == 'store-locator' -%}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div class="section page-width-content color-{{ section.settings.color_scheme }}">
   <div
@@ -18,6 +20,7 @@
     {% content_for 'blocks' %}
   </div>
 </div>
+{%- endunless -%}
 
 {% schema %}
 {

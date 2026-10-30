@@ -1,0 +1,123 @@
+{%- doc -%}
+  Store locator: city filters, one card per store (a block) and a single map that follows the chosen
+  store. Placed on the default page template and shown only on the page with the handle store-locator
+  (sections/main-page.liquid stays empty there), so the page URL and its store record do not change.
+  The map is a Google Maps search for the block's "Map search" text.
+{%- enddoc -%}
+{%- if page.handle == 'store-locator' and section.blocks.size > 0 -%}
+  {{ 'bls-store-locator.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'bls-store-locator.js' | asset_url }}" defer></script>
+  {%- liquid
+    assign ss = section.settings
+    assign city_list = ''
+    for block in section.blocks
+      assign city = block.settings.city | strip
+      assign marker = '|' | append: city | append: '|'
+      unless city_list contains marker
+        assign city_list = city_list | append: marker
+      endunless
+    endfor
+    assign cities = city_list | remove_first: '|' | split: '||'
+    assign last_index = cities.size | minus: 1
+    assign last_city = cities[last_index] | remove: '|'
+    assign first_store = section.blocks.first.settings
+    assign first_query = first_store.map_query | url_encode
+  -%}
+  <section class="bls-stores" data-bls-stores>
+    <div class="bls-stores__head">
+      {%- if ss.heading != blank -%}<h1 class="bls-stores__title">{{ ss.heading }}</h1>{%- endif -%}
+      {%- if ss.text != blank -%}<div class="bls-stores__text">{{ ss.text }}</div>{%- endif -%}
+      {%- if cities.size > 1 -%}
+        <div class="bls-stores__cities" role="group" aria-label="Filter by city">
+          <button type="button" class="bls-stores__city is-active" data-bls-city="" aria-pressed="true">{{ ss.all_label | escape }}</button>
+          {%- for city in cities -%}
+            {%- assign city_name = city | remove: '|' -%}
+            <button type="button" class="bls-stores__city" data-bls-city="{{ city_name | escape }}" aria-pressed="false">{{ city_name | escape }}</button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="bls-stores__layout">
+      <div class="bls-stores__map" data-bls-map-box>
+        <iframe
+          data-bls-map
+          title="Map: {{ first_store.name | escape }}"
+          src="https://www.google.com/maps?q={{ first_query }}&amp;z=16&amp;output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="bls-stores__list">
+        {%- for city in cities -%}
+          {%- assign city_name = city | remove: '|' -%}
+          <div class="bls-stores__group" data-bls-group="{{ city_name | escape }}">
+            <h2 class="bls-stores__group-title">{{ city_name | escape }}</h2>
+            <ul class="bls-stores__stores" role="list">
+              {%- for block in section.blocks -%}
+                {%- assign block_city = block.settings.city | strip -%}
+                {%- if block_city == city_name -%}
+                  {%- liquid
+                    assign bs = block.settings
+                    assign query = bs.map_query | url_encode
+                    assign is_first = false
+                    if block.id == section.blocks.first.id
+                      assign is_first = true
+                    endif
+                  -%}
+                  <li class="bls-stores__store{% if is_first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+                    <button
+                      type="button"
+                      class="bls-stores__pick"
+                      data-bls-pick="https://www.google.com/maps?q={{ query }}&amp;z=16&amp;output=embed"
+                      data-bls-name="{{ bs.name | escape }}"
+                      aria-pressed="{% if is_first %}true{% else %}false{% endif %}"
+                    >
+                      <span class="bls-stores__name">{{ bs.name | escape }}</span>
+                      <span class="bls-stores__address">{{ bs.address | escape }}</span>
+                    </button>
+                    <div class="bls-stores__actions">
+                      {%- if bs.phone != blank -%}
+                        <a class="bls-stores__action" href="tel:{{ bs.phone | remove: ' ' | remove: '-' }}">{{ bs.phone | escape }}</a>
+                      {%- endif -%}
+                      <a class="bls-stores__action" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ query }}" target="_blank" rel="noopener">Directions</a>
+                    </div>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Store locator",
+  "tag": "div",
+  "class": "bls-stores-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find A BLS Store" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "all_label", "label": "First filter", "default": "All cities" }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Store",
+      "settings": [
+        { "type": "text", "id": "city", "label": "City" },
+        { "type": "text", "id": "name", "label": "Store name" },
+        { "type": "text", "id": "address", "label": "Address" },
+        { "type": "text", "id": "phone", "label": "Phone" },
+        { "type": "text", "id": "map_query", "label": "Map search", "info": "What you would type into Google Maps to find it, e.g. Packages Mall Lahore" }
+      ]
+    }
+  ],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

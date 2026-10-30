@@ -54,9 +54,165 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "store_locator": {
+      "type": "bls-store-locator",
+      "blocks": {
+        "store_01": {
+          "type": "store",
+          "settings": {
+            "city": "Karachi",
+            "name": "Dolmen Mall, Tariq Road",
+            "address": "3rd Floor, Dolmen Mall, Tariq Road.",
+            "phone": "0213 4326616",
+            "map_query": "Dolmen Mall Tariq Road Karachi"
+          }
+        },
+        "store_02": {
+          "type": "store",
+          "settings": {
+            "city": "Karachi",
+            "name": "Dolmen Mall, Clifton",
+            "address": "2nd Floor, Dolmen Mall, Clifton.",
+            "phone": "021-35294045",
+            "map_query": "Dolmen Mall Clifton Karachi"
+          }
+        },
+        "store_03": {
+          "type": "store",
+          "settings": {
+            "city": "Karachi",
+            "name": "LuckyOne Mall",
+            "address": "LG Floor, LuckyOne Mall, Rashid Minhas Road.",
+            "phone": "0213 7181003",
+            "map_query": "LuckyOne Mall Karachi"
+          }
+        },
+        "store_04": {
+          "type": "store",
+          "settings": {
+            "city": "Karachi",
+            "name": "Dolmen Mall, Hyderi Road",
+            "address": "2nd Floor, Dolmen Mall Hyderi, Karachi.",
+            "phone": "021 36630008",
+            "map_query": "Dolmen Mall Hyderi Karachi"
+          }
+        },
+        "store_05": {
+          "type": "store",
+          "settings": {
+            "city": "Karachi",
+            "name": "Ocean Mall",
+            "address": "3rd Floor, Ocean Mall, Clifton, Karachi.",
+            "phone": "021 35166622",
+            "map_query": "The Ocean Mall Karachi"
+          }
+        },
+        "store_06": {
+          "type": "store",
+          "settings": {
+            "city": "Karachi",
+            "name": "Square One Mall",
+            "address": "First Floor, Unit FF03, Plot 118-G, Main National Stadium Road, near Askari IV, Gulshan-e-Iqbal, Karachi.",
+            "phone": "",
+            "map_query": "Square One Mall Karachi"
+          }
+        },
+        "store_07": {
+          "type": "store",
+          "settings": {
+            "city": "Lahore",
+            "name": "Packages Mall",
+            "address": "Level 1, Packages Mall, Walton Road.",
+            "phone": "0423 8915813",
+            "map_query": "Packages Mall Lahore"
+          }
+        },
+        "store_08": {
+          "type": "store",
+          "settings": {
+            "city": "Lahore",
+            "name": "Fortress Square Mall",
+            "address": "G Floor, Fortress Square Mall, Fortress Stadium, Cantt. Makeup City.",
+            "phone": "0423 7341330",
+            "map_query": "Fortress Square Mall Lahore"
+          }
+        },
+        "store_09": {
+          "type": "store",
+          "settings": {
+            "city": "Lahore",
+            "name": "Emporium Mall",
+            "address": "The Boulevard, 2nd Floor, Emporium Mall, Johar Town.",
+            "phone": "042 32592414",
+            "map_query": "Emporium Mall Lahore"
+          }
+        },
+        "store_10": {
+          "type": "store",
+          "settings": {
+            "city": "Islamabad",
+            "name": "Centaurus Mall",
+            "address": "2nd Floor, Centaurus Mall, Jinnah Avenue.",
+            "phone": "051 2701723",
+            "map_query": "The Centaurus Mall Islamabad"
+          }
+        },
+        "store_11": {
+          "type": "store",
+          "settings": {
+            "city": "Sialkot",
+            "name": "V.Mall",
+            "address": "G Floor, V.Mall, Welfare Complex, Cantt. Makeup City.",
+            "phone": "052 4272894",
+            "map_query": "Makeup City Mall of Sialkot"
+          }
+        },
+        "store_12": {
+          "type": "store",
+          "settings": {
+            "city": "Multan",
+            "name": "Sharif Complex",
+            "address": "G Floor, Sharif Complex, Gulgasht. Makeup City.",
+            "phone": "061 6211129",
+            "map_query": "Sharif Complex Gulgasht Multan"
+          }
+        },
+        "store_13": {
+          "type": "store",
+          "settings": {
+            "city": "Faisalabad",
+            "name": "Lyallpur Galleria Mall",
+            "address": "1st Floor, Shop 09, Lyallpur Galleria Mall, Canal Road, near Kashmir Pull. Makeup City.",
+            "phone": "0416 078501",
+            "map_query": "Lyallpur Galleria Mall Faisalabad"
+          }
+        }
+      },
+      "block_order": [
+        "store_01",
+        "store_02",
+        "store_03",
+        "store_04",
+        "store_05",
+        "store_06",
+        "store_07",
+        "store_08",
+        "store_09",
+        "store_10",
+        "store_11",
+        "store_12",
+        "store_13"
+      ],
+      "settings": {
+        "heading": "Find A BLS Store",
+        "text": "<p>Visit us in Karachi, Lahore, Islamabad, Sialkot, Multan and Faisalabad.</p>",
+        "all_label": "All cities"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "store_locator"
   ]
 }
