@@ -127,7 +127,7 @@
           endif
         -%}
         <div class="wac-coll__cell">
-          {%- render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 50vw, 25vw', eager: eager, new_days: ss.new_days, no_size_flag: ss.hide_size_flag -%}
+          {%- render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 50vw, 25vw', eager: eager, new_days: ss.new_days, no_size_flag: ss.hide_size_flag, show_sizes: ss.show_sizes -%}
         </div>
       {%- else -%}
         <div class="wac-coll__empty">
@@ -227,6 +227,7 @@
     { "type": "checkbox", "id": "show_full_description", "label": "Show the full collection description under the products", "default": true },
     { "type": "range", "id": "new_days", "label": "\"New arrival\" label for products published in the last (days)", "min": 0, "max": 90, "step": 1, "default": 30, "info": "0 turns it off. Products tagged New always get it." },
     { "type": "checkbox", "id": "hide_size_flag", "label": "Hide the size range label (S-XL / Up to E cup)", "default": false },
+    { "type": "checkbox", "id": "show_sizes", "label": "Show the sizes in stock on each card", "default": true },
     { "type": "header", "content": "Promo tile in the grid" },
     { "type": "checkbox", "id": "tile_enabled", "label": "Show the promo tile", "default": true, "info": "Two columns wide, first page only." },
     { "type": "range", "id": "tile_row", "label": "Row on desktop", "min": 1, "max": 8, "step": 1, "default": 4 },

@@ -4,6 +4,7 @@
   @param {string} [badge] - Text of the white pill on the photo, e.g. Best Seller
   @param {number} [new_days] - Show "New arrival" for products published in the last this many days (default 30, 0 = off)
   @param {boolean} [no_size_flag] - Hide the size range pill (S-XL / Up to E cup)
+  @param {boolean} [show_sizes] - List the sizes in stock under the price
   @param {string} [sizes] - The img sizes attribute for the photo
   @param {boolean} [eager] - Load the photo straight away (first row of a grid)
 {%- enddoc -%}
@@ -87,6 +88,28 @@
       break
     endfor
   endunless
+
+  assign in_stock_sizes = ''
+  if show_sizes
+    for option in product.options_with_values
+      assign oname = option.name | downcase
+      if oname != 'size'
+        continue
+      endif
+      assign size_index = option.position | minus: 1
+      for value in option.values
+        assign size_name = value | append: ''
+        for variant in product.variants
+          if variant.available and variant.options[size_index] == size_name
+            assign in_stock_sizes = in_stock_sizes | append: size_name | append: '|'
+            break
+          endif
+        endfor
+      endfor
+      break
+    endfor
+  endif
+  assign in_stock_sizes = in_stock_sizes | split: '|'
 -%}
 <div class="wac-card">
   <div class="wac-card__top">
@@ -199,6 +222,12 @@
           <s class="wac-card__price-was">{{ product.compare_at_price | money }}</s>
         {%- endif -%}
       </div>
+
+      {%- if in_stock_sizes.size > 0 -%}
+        <ul class="wac-card__sizes" role="list" aria-label="Sizes in stock">
+          {%- for size_name in in_stock_sizes -%}<li>{{ size_name | escape }}</li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
 
       {%- if rating != blank -%}
         <a class="wac-card__rating" href="{{ product.url }}#reviews" aria-label="Rated {{ rating.rating }} out of 5 from {{ rating_count }} reviews">

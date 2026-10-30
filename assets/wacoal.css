@@ -1425,6 +1425,27 @@
   background: rgba(255, 255, 255, 0.75);
 }
 
+/* sizes in stock, on collection page cards */
+.wac-card__sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin: 6px 0 0;
+  padding: 0 0 0 4px;
+  color: #6e6862;
+  font-size: 12px;
+  line-height: 1.4;
+  list-style: none;
+}
+
+@media screen and (max-width: 749px) {
+  .wac-card__sizes {
+    gap: 1px 7px;
+    padding-left: 0;
+    font-size: 11px;
+  }
+}
+
 .wac-card__info {
   display: flex;
   flex-direction: column;
@@ -7708,31 +7729,37 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 }
 
 @media screen and (max-width: 749px) {
+  :root {
+    --bls-bnav-h: 62px;
+    /* height of the bar plus the gap under it (the gap grows to clear the iPhone home line) */
+    --bls-bnav-space: calc(var(--bls-bnav-h) + max(12px, env(safe-area-inset-bottom, 0px)));
+  }
+
   .bls-bnav {
     position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    right: 14px;
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    left: 14px;
     z-index: 9;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    height: calc(58px + env(safe-area-inset-bottom, 0px));
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-    border-top: 1px solid #ece7e2;
-    background: rgb(255 255 255 / 0.97);
-    box-shadow: 0 -4px 16px rgb(0 0 0 / 0.05);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    height: var(--bls-bnav-h);
+    border: 1px solid rgb(255 255 255 / 0.7);
+    border-radius: 31px;
+    background: rgb(255 255 255 / 0.82);
+    box-shadow: 0 12px 32px rgb(34 24 20 / 0.16), 0 2px 6px rgb(34 24 20 / 0.06);
+    -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    backdrop-filter: blur(22px) saturate(1.6);
     transition: transform 0.25s ease;
   }
 
   /* out of the way while the menu drawer is open */
   body:has(.menu-drawer-container[open]) .bls-bnav {
-    transform: translateY(110%);
+    transform: translateY(calc(100% + 40px));
   }
 
   body {
-    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(var(--bls-bnav-space) + 12px);
   }
 
   .bls-bnav__item {
@@ -7741,35 +7768,40 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 3px;
+    min-width: 0;
     padding: 0;
     border: 0;
     background: none;
-    color: #8a8280;
+    color: #4a4443;
     font-family: var(--wac-font-sans);
     font-size: 10px;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
     text-decoration: none;
     cursor: pointer;
+    isolation: isolate;
+    transition: transform 0.12s ease;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .bls-bnav__item.is-active {
-    color: var(--wac-ink);
+  .bls-bnav__item:active {
+    transform: scale(0.94);
   }
 
+  .bls-bnav__item.is-active {
+    color: #fff;
+  }
+
+  /* the current tab: a solid dark capsule inside the bar */
   .bls-bnav__item.is-active::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    width: 24px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--wac-ink);
-    transform: translateX(-50%);
+    inset: 5px 3px;
+    z-index: -1;
+    border-radius: 26px;
+    background: #2b2526;
   }
 
   .bls-bnav__item:focus-visible {
@@ -7784,18 +7816,25 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 
   .bls-bnav__badge {
     position: absolute;
-    top: -5px;
-    right: -10px;
+    top: -6px;
+    right: -9px;
     min-width: 16px;
     height: 16px;
     padding: 0 4px;
     border-radius: 8px;
-    background: var(--wac-blush);
-    color: var(--wac-ink);
+    background: #2b2526;
+    box-shadow: 0 0 0 1.5px #fff;
+    color: #fff;
     font-size: 10px;
     font-weight: 600;
     line-height: 16px;
     text-align: center;
+  }
+
+  .bls-bnav__item.is-active .bls-bnav__badge {
+    background: #fff;
+    box-shadow: none;
+    color: #2b2526;
   }
 
   .bls-bnav__badge[hidden] {
@@ -7813,23 +7852,31 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     visibility: hidden;
   }
 
-  /* product page bottom button sits above the bar */
+  /* product page bottom button floats just above the bar */
   .wac-pdp-bar,
   html:not(.wac-header-hidden) .wac-pdp-bar {
-    bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+    bottom: var(--bls-bnav-space);
+    border: 0;
+    background: none;
+    box-shadow: none;
   }
 
   .wac-pdp-bar__inner {
-    padding-bottom: 10px;
+    padding: 0 14px 8px;
+  }
+
+  .wac-pdp-bar .wac-pdp-bar__btn,
+  .wac-pdp-bar .wac-pdp-bar__btn.is-ready {
+    box-shadow: 0 8px 20px rgb(34 24 20 / 0.22);
   }
 
   .wac-pdp-bar:not(.is-visible) {
-    transform: translateY(calc(100% + 58px + env(safe-area-inset-bottom, 0px)));
+    transform: translateY(calc(100% + var(--bls-bnav-space) + 20px));
   }
 
   /* the hero fills the screen between the top bar and the bottom bar, so its button stays in view */
   .wac-hero__slide {
-    min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 84px - 58px - env(safe-area-inset-bottom, 0px)));
+    min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 84px - var(--bls-bnav-space) - 8px));
   }
 }
 

@@ -10,27 +10,27 @@
 -%}
 <nav class="bls-bnav" aria-label="Shortcuts" data-bls-bnav>
   <a class="bls-bnav__item{% if t == 'index' %} is-active{% endif %}" href="{{ routes.root_url }}"{% if t == 'index' %} aria-current="page"{% endif %}>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5V20a.5.5 0 0 1-.5.5h-5v-6h-6v6H4a.5.5 0 0 1-.5-.5z"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.6 12 4l8 6.6V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/><path d="M9.5 20.5V14.5h5v6"/></svg>
     <span>Home</span>
   </a>
   <button type="button" class="bls-bnav__item{% if t == 'collection' or t == 'list-collections' %} is-active{% endif %}" data-bls-bnav-open="menu">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/></svg>
     <span>Shop</span>
   </button>
   <button type="button" class="bls-bnav__item{% if t == 'search' %} is-active{% endif %}" data-bls-bnav-open="search">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.3-4.3"/></svg>
     <span>Search</span>
   </button>
   <a class="bls-bnav__item{% if request.path contains 'wish' %} is-active{% endif %}" href="{{ wl_url }}"{% if request.path contains 'wish' %} aria-current="page"{% endif %}>
     <span class="bls-bnav__icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.6 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3s-8-4.7-8-10.6A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 8 2.5c0 5.9-8 10.6-8 10.6z"/></svg>
       <span class="bls-bnav__badge" data-wac-wishlist-count hidden></span>
     </span>
     <span>Wishlist</span>
   </a>
   <button type="button" class="bls-bnav__item{% if t == 'cart' %} is-active{% endif %}" data-bls-bnav-open="cart">
     <span class="bls-bnav__icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8.5h12l1 11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19.5z"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/></svg>
       <span class="bls-bnav__badge" data-bls-bnav-cart{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
     </span>
     <span>Bag</span>
