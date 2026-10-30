@@ -6865,7 +6865,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     display: block;
     width: auto;
     height: 34px;
-    filter: brightness(0) invert(1);
+    filter: invert(1) grayscale(1) contrast(1.4); /* the logo file has a white background: inverted, it melts into the black footer */
   }
 
   .wac-footer__wrap {

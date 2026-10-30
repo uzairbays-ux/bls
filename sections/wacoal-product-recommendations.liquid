@@ -1,11 +1,13 @@
 {% comment %}
-  "Similar styles" row under the Wacoal product page: Shopify's related products in a
-  side-scrolling row with round arrows. The products load after the page, from the
-  product recommendations URL with this section's id.
+  "Similar styles" row under the Wacoal product page, and "You may also like" on the cart page
+  (based on the first item in the bag): Shopify's related products in a side-scrolling row with
+  round arrows. The products load after the page, from the product recommendations URL with this
+  section's id.
 {% endcomment %}
 {%- liquid
   assign ss = section.settings
-  assign url = routes.product_recommendations_url | append: '?product_id=' | append: product.id | append: '&section_id=' | append: section.id | append: '&limit=' | append: ss.limit | append: '&intent=related'
+  assign rec_product_id = product.id | default: cart.items.first.product_id
+  assign url = routes.product_recommendations_url | append: '?product_id=' | append: rec_product_id | append: '&section_id=' | append: section.id | append: '&limit=' | append: ss.limit | append: '&intent=related'
 -%}
 <div class="wac-similar" data-wac-similar data-url="{{ url }}" style="--wac-similar-mb: {{ ss.margin_bottom }}px;">
   {%- if recommendations.performed? and recommendations.products_count > 0 -%}
@@ -43,6 +45,6 @@
     { "type": "range", "id": "margin_bottom", "label": "Space below", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 40 }
   ],
   "presets": [ { "name": "BLS similar styles" } ],
-  "enabled_on": { "templates": [ "product" ] }
+  "enabled_on": { "templates": [ "product", "cart" ] }
 }
 {% endschema %}
