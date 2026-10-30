@@ -7917,12 +7917,19 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 
   /* home page: no white bar, the logo sits on the hero in white and scrolls away with it. The
-     important flags beat Horizon's sticky rule; the header sits right under the 30px promo bar */
+     important flags beat Horizon's sticky rule; the header sits right under the 30px promo bar.
+     The logo file has a white background, so it is inverted and that background (now black) is
+     screened away; the blend sits on the section because it is the stacking context */
   body:has(#MainContent .wac-hero) .header-section {
     position: absolute !important;
     top: 30px !important;
     right: 0;
     left: 0;
+    mix-blend-mode: screen;
+  }
+
+  body:has(.menu-drawer-container[open]) .header-section {
+    mix-blend-mode: normal;
   }
 
   body:has(#MainContent .wac-hero) .header-section .header,
@@ -7936,7 +7943,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 
   body:has(#MainContent .wac-hero) .header-section .header-logo__image {
-    filter: brightness(0) invert(1);
+    filter: invert(1) grayscale(1) contrast(1.4);
   }
 
   /* a soft shade at the top, so the white logo reads on bright photos */
