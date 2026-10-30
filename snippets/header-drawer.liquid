@@ -83,11 +83,7 @@
           {{- 'icon-close.svg' | inline_asset_content -}}
         </span>
       </button>
-      {%- if settings.logo != blank -%}
-        <a class="wac-drawer-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-          {{- settings.logo | image_url: height: 80 | image_tag: height: 26, alt: shop.name, loading: 'lazy' -}}
-        </a>
-      {%- endif -%}
+      <div class="wac-drawer-top"></div>
       <nav
         class="menu-drawer__navigation"
         style="

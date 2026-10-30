@@ -440,7 +440,8 @@
         "button_label": "SHOP PANTIES",
         "button_link": "",
         "background": "#fafafc",
-        "margin_bottom": 0
+        "margin_bottom": 0,
+        "image_shape": "square"
       }
     },
     "wacoal_iwt_fit": {
@@ -1838,4 +1839,3 @@
     "carousel_shopbycategory"
   ]
 }
-

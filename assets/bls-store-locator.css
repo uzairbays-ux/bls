@@ -222,7 +222,7 @@
     position: static;
     height: 300px;
     margin: 0 -16px;
-    scroll-margin-top: 70px;
+    scroll-margin-top: 12px;
   }
 
   .bls-stores__store {

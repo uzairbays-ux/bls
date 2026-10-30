@@ -4,7 +4,7 @@
   @param {string} [badge] - Text of the white pill on the photo, e.g. Best Seller
   @param {number} [new_days] - Show "New arrival" for products published in the last this many days (default 30, 0 = off)
   @param {boolean} [no_size_flag] - Hide the size range pill (S-XL / Up to E cup)
-  @param {boolean} [show_sizes] - List the sizes in stock under the price
+  @param {boolean} [show_sizes] - List the sizes in stock under the price (instead of the size range pill)
   @param {string} [sizes] - The img sizes attribute for the photo
   @param {boolean} [eager] - Load the photo straight away (first row of a grid)
 {%- enddoc -%}
@@ -56,7 +56,7 @@
   endif
 
   assign size_flag = ''
-  unless no_size_flag
+  unless no_size_flag or show_sizes
     for option in product.options_with_values
       assign oname = option.name | downcase
       if oname != 'size'

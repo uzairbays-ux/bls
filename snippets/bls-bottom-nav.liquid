@@ -2,7 +2,9 @@
   App-style bottom bar on phones: Menu (opens the menu), Search (opens the search), Home in the
   centre, Wishlist (with its count) and Bag (opens the cart drawer, with the item count). It presses the header's own
   buttons, so the menu, search and cart work exactly as before; on phones those header buttons are
-  kept in place but not shown, leaving the logo alone in the top bar. Hidden from 750px up.
+  kept in place but not shown, leaving the logo alone in the top bar. The bar slides away while
+  scrolling down and back when scrolling up (html.wac-header-hidden, assets/wacoal-header.js).
+  Hidden from 750px up.
 {%- enddoc -%}
 {%- liquid
   assign t = template.name
@@ -40,13 +42,6 @@
   (function () {
     if (window.blsBottomNav) return;
     window.blsBottomNav = true;
-    // home page: the header is transparent over the hero, the normal white bar below it (wacoal.css)
-    var hero = document.querySelector('#MainContent .wac-hero');
-    if (hero && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        document.documentElement.classList.toggle('bls-past-hero', !entries[0].isIntersecting);
-      }, { rootMargin: '-60px 0px 0px 0px' }).observe(hero);
-    }
     var targets = {
       menu: ['.header-section .header__icon--menu', '/collections/all'],
       search: ['.header-section search-button button, .header-section .search-action button', '/search'],

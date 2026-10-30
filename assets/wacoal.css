@@ -6590,19 +6590,10 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     padding: 0;
   }
 
-  .wac-drawer-logo {
-    display: flex;
+  .wac-drawer-top {
     flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
     height: 54px;
     border-bottom: 1px solid #ececec;
-  }
-
-  .wac-drawer-logo img {
-    display: block;
-    width: auto;
-    height: 26px;
   }
 
   /* top level */
@@ -7235,7 +7226,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 
   .wac-featured .wac-featured__sub p {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.55;
   }
 
@@ -7790,9 +7781,23 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transition: transform 0.25s ease;
   }
 
-  /* out of the way while the menu drawer is open */
+  /* out of the way while scrolling down (with the header, assets/wacoal-header.js) and while the
+     menu drawer is open */
+  html.wac-header-hidden .bls-bnav,
   body:has(.menu-drawer-container[open]) .bls-bnav {
     transform: translateY(calc(100% + 40px));
+  }
+
+  /* the header is not sticky on phones (navigation is in the bottom bar), it scrolls away with the
+     page. The important flags beat Horizon's sticky rule. No slide-up transform either: it would
+     take the fixed menu drawer, which sits inside the header, off screen */
+  .header-section {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .header-section.is-wac-hidden {
+    transform: none;
   }
 
   body {
@@ -7915,39 +7920,43 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transform: translateY(calc(100% + var(--bls-bnav-space) + 20px));
   }
 
+  /* the button drops into the bottom bar's place while the bar is hidden */
+  .wac-pdp-bar {
+    transition-property: transform, bottom, visibility;
+  }
+
+  html.wac-header-hidden .wac-pdp-bar {
+    bottom: calc(max(12px, env(safe-area-inset-bottom, 0px)) - 8px);
+  }
+
   /* the hero fills the screen between the promo bar and the bottom bar, so its button stays in view */
   .wac-hero__slide {
     min-height: max(var(--wac-hero-h-mobile, 635px), calc(100svh - 30px - var(--bls-bnav-space) - 8px));
   }
 
-  /* home page: the header stays sticky, as on every page, and runs over the hero (the negative
-     margin). While the hero is on screen it has no white bar and the logo is white; below the hero
-     (html.bls-past-hero, set in snippets/bls-bottom-nav.liquid) it is the normal header. The logo
-     file has a white background, so it is inverted and that background (now black) is screened
-     away; the blend sits on the section because it is the stacking context */
+  /* home page: the header runs over the hero (the negative margin), with no white bar and a white
+     logo. The logo file has a white background, so it is inverted and that background (now black)
+     is screened away; the blend sits on the section because it is the stacking context */
   body:has(#MainContent .wac-hero) .header-section {
     margin-bottom: -60px;
-  }
-
-  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section {
     mix-blend-mode: screen;
   }
 
-  html body:has(#MainContent .wac-hero):has(.menu-drawer-container[open]) .header-section {
+  body:has(#MainContent .wac-hero):has(.menu-drawer-container[open]) .header-section {
     mix-blend-mode: normal;
   }
 
-  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header,
-  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header__row {
+  body:has(#MainContent .wac-hero) .header-section .header,
+  body:has(#MainContent .wac-hero) .header-section .header__row {
     border: 0;
     background: none;
   }
 
-  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header__underlay {
+  body:has(#MainContent .wac-hero) .header-section .header__underlay {
     display: none;
   }
 
-  html:not(.bls-past-hero) body:has(#MainContent .wac-hero) .header-section .header-logo__image {
+  body:has(#MainContent .wac-hero) .header-section .header-logo__image {
     filter: invert(1) grayscale(1) contrast(1.4);
   }
 
