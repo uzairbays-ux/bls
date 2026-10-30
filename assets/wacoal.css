@@ -1433,13 +1433,52 @@
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* range of sizes in stock, on product cards */
+/* sizes in stock on product cards: a short line, and with many sizes it opens to the exact list */
 .wac-card__sizes {
   margin: 4px 0 0;
   padding: 0 0 0 4px;
   color: #6e6862;
   font-size: 12px;
   line-height: 1.4;
+}
+
+.wac-card__sizes summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  cursor: pointer;
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wac-card__sizes summary::-webkit-details-marker {
+  display: none;
+}
+
+.wac-card__sizes summary::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-top: -3px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.wac-card__sizes[open] summary::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.wac-card__sizes ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin: 2px 0 0;
+  padding: 0;
+  color: var(--wac-ink);
+  list-style: none;
 }
 
 @media screen and (max-width: 749px) {
