@@ -7965,6 +7965,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     filter: invert(1) grayscale(1) contrast(1.4);
   }
 
+  /* first slide: the photo sits further right on phones */
+  .wac-hero__slide:first-child .wac-hero__image {
+    background-position: 30% center;
+  }
+
   /* a soft shade at the top, so the white logo reads on bright photos */
   .wac-hero__slide::after {
     background:
