@@ -7920,6 +7920,11 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transform: translateY(calc(100% + var(--bls-bnav-space) + 20px));
   }
 
+  /* the older hidden state has html:not(...) in its selector, which beat plain .is-visible */
+  html:not(.wac-header-hidden) .wac-pdp-bar.is-visible {
+    transform: translateY(0);
+  }
+
   /* the button drops into the bottom bar's place while the bar is hidden */
   .wac-pdp-bar {
     transition-property: transform, bottom, visibility;
