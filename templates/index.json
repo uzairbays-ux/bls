@@ -395,7 +395,7 @@
         "text": "Soft layers for day and night.",
         "max_width": 60,
         "button1_label": "SHOP SLIPS & CAMIS",
-        "button1_link": "/collections/slips-camis",
+        "button1_link": "shopify://collections/3-for-4500",
         "button2_label": "",
         "button2_link": "",
         "margin_top": 50,
