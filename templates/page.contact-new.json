@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "bls-contact",
+      "blocks": {
+        "help_track": {
+          "type": "link",
+          "settings": {
+            "title": "Track your order",
+            "text": "See where your parcel is.",
+            "url": "/pages/track-your-order"
+          }
+        },
+        "help_stores": {
+          "type": "link",
+          "settings": {
+            "title": "Find a store",
+            "text": "Phone numbers and directions.",
+            "url": "/pages/store-locator"
+          }
+        },
+        "help_returns": {
+          "type": "link",
+          "settings": {
+            "title": "Returns",
+            "text": "How returns and replacements work.",
+            "url": "/pages/return-policy"
+          }
+        },
+        "help_size": {
+          "type": "link",
+          "settings": {
+            "title": "Find your size",
+            "text": "Measure at home or check the chart.",
+            "url": "/pages/size-guide"
+          }
+        }
+      },
+      "block_order": [
+        "help_track",
+        "help_stores",
+        "help_returns",
+        "help_size"
+      ],
+      "settings": {
+        "heading": "Contact <em>Us</em>",
+        "text": "<p>Questions about an order, your size or a store? Send us a message and we'll get back to you.</p>",
+        "help_heading": "Quick help",
+        "instagram": "https://www.instagram.com/blsukofficial",
+        "facebook": "https://facebook.com/blsukofficial/",
+        "form_heading": "Send us a message",
+        "button_label": "Send message"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
