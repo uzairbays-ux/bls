@@ -113,11 +113,13 @@
     <div class="wac-footer__info-wrap">
       <p class="wac-footer__copyright">
         &copy; {{ year }} {{ shop.name | escape }}. All Rights Reserved
-        {%- comment -%} Same order as Wacoal: privacy, terms, then the store's other policies {%- endcomment -%}
-        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/privacy-policy' | replace: '//', '/' }}">Privacy</a>
-        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/terms-of-service' | replace: '//', '/' }}">Terms</a>
-        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/refund-policy' | replace: '//', '/' }}">Refunds</a>
-        <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/shipping-policy' | replace: '//', '/' }}">Shipping</a>
+        {%- comment -%} Off until these policies are written in Settings > Policies {%- endcomment -%}
+        {%- if section.settings.show_policy_links -%}
+          <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/privacy-policy' | replace: '//', '/' }}">Privacy</a>
+          <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/terms-of-service' | replace: '//', '/' }}">Terms</a>
+          <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/refund-policy' | replace: '//', '/' }}">Refunds</a>
+          <span class="wac-footer__sep" aria-hidden="true">|</span><a href="{{ routes.root_url | append: 'policies/shipping-policy' | replace: '//', '/' }}">Shipping</a>
+        {%- endif -%}
       </p>
     </div>
   </div>
@@ -147,7 +149,9 @@
   "tag": "div",
   "class": "wac-section-footer",
   "max_blocks": 6,
-  "settings": [],
+  "settings": [
+    { "type": "checkbox", "id": "show_policy_links", "label": "Show Privacy, Terms, Refunds and Shipping links", "default": false }
+  ],
   "blocks": [
     {
       "type": "menu",

@@ -44,12 +44,8 @@
             "url_1": "/pages/track-your-order",
             "label_2": "Return Policy",
             "url_2": "/pages/return-policy",
-            "label_3": "Shipping Policy",
-            "url_3": "/policies/shipping-policy",
-            "label_4": "Refund Policy",
-            "url_4": "/policies/refund-policy",
-            "label_5": "Contact Us",
-            "url_5": "/pages/contact"
+            "label_3": "Contact Us",
+            "url_3": "/pages/contact"
           }
         },
         "col_fit": {
@@ -71,7 +67,7 @@
           "settings": {
             "heading": "Sign up for our newsletter",
             "placeholder": "Email Address",
-            "consent": "<p>Enter your email to receive special offers, exclusive discounts and more. View <a href=\"/policies/privacy-policy\">Privacy Policy</a> &amp; <a href=\"/policies/terms-of-service\">Terms</a>.</p>",
+            "consent": "<p>Enter your email to receive special offers, exclusive discounts and more.</p>",
             "button_label": "Subscribe",
             "note_heading": "",
             "note": "",
