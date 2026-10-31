@@ -109,7 +109,7 @@
             "heading_line2": "Lace Panties",
             "text": "Lace, cotton and seamless",
             "button_label": "SHOP PANTIES",
-            "link": "/collections/panties",
+            "link": "shopify://collections/panties-lace-1",
             "button_link": ""
           }
         },
@@ -313,7 +313,8 @@
         "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
         "link_label": "Shop now",
         "max_products": 10,
-        "badge": "Best Seller"
+        "badge": "Best Seller",
+        "show_sizes": true
       }
     },
     "bls_fabric_edit": {
@@ -408,6 +409,7 @@
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/hix.ai-download-1781088063031.jpg",
+        "image_shape": "natural",
         "image_asset": "",
         "image_mobile_asset": "",
         "image_position": "right",
@@ -428,6 +430,7 @@
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/hix.ai-download-1781088689103.jpg",
+        "image_shape": "square",
         "image_asset": "",
         "image_mobile_asset": "",
         "image_position": "left",
@@ -440,8 +443,7 @@
         "button_label": "SHOP PANTIES",
         "button_link": "",
         "background": "#fafafc",
-        "margin_bottom": 0,
-        "image_shape": "square"
+        "margin_bottom": 0
       }
     },
     "wacoal_iwt_fit": {
@@ -449,6 +451,7 @@
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.53.21.jpg",
+        "image_shape": "square",
         "image_asset": "",
         "image_mobile_asset": "",
         "image_position": "right",
@@ -461,8 +464,7 @@
         "button_label": "LEARN MORE",
         "button_link": "",
         "background": "#fafafc",
-        "margin_bottom": 0,
-        "image_shape": "square"
+        "margin_bottom": 0
       }
     },
     "product_list_campaign": {
