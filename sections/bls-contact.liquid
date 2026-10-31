@@ -1,0 +1,155 @@
+{%- doc -%}
+  Contact page: a beige panel with the heading, text and quick help links (one block per link), and
+  the contact form beside it. On phones the form follows the heading and the links come after it.
+  The form sends to the store's contact email, like the theme's own contact form.
+{%- enddoc -%}
+{{ 'bls-contact.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign ss = section.settings
+  assign form_id = 'ContactForm-' | append: section.id
+-%}
+<section class="bls-contact">
+  <div class="bls-contact__side">
+    <div class="bls-contact__intro">
+      {%- if ss.heading != blank -%}
+        <h1 class="bls-contact__title">{{ ss.heading }}</h1>
+      {%- endif -%}
+      {%- if ss.text != blank -%}
+        <div class="bls-contact__text">{{ ss.text }}</div>
+      {%- endif -%}
+      {%- if page.content != blank -%}
+        <div class="bls-contact__text">{{ page.content }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 or ss.instagram != blank or ss.facebook != blank -%}
+      <div class="bls-contact__help">
+        {%- if ss.help_heading != blank -%}
+          <h2 class="bls-contact__help-title">{{ ss.help_heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="bls-contact__links" role="list">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>
+                <a class="bls-contact__link" href="{{ block.settings.url | default: '#' }}">
+                  <span class="bls-contact__link-text">
+                    <span class="bls-contact__link-title">{{ block.settings.title | escape }}</span>
+                    {%- if block.settings.text != blank -%}
+                      <span class="bls-contact__link-note">{{ block.settings.text | escape }}</span>
+                    {%- endif -%}
+                  </span>
+                  <svg width="18" height="18" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M8.5 5.5 14 11l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if ss.instagram != blank or ss.facebook != blank -%}
+          <p class="bls-contact__social">
+            <span>Follow us</span>
+            {%- if ss.instagram != blank -%}
+              <a href="{{ ss.instagram }}" target="_blank" rel="noopener">Instagram</a>
+            {%- endif -%}
+            {%- if ss.facebook != blank -%}
+              <a href="{{ ss.facebook }}" target="_blank" rel="noopener">Facebook</a>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="bls-contact__main">
+    {%- if ss.form_heading != blank -%}
+      <h2 class="bls-contact__form-title">{{ ss.form_heading | escape }}</h2>
+    {%- endif -%}
+    {%- form 'contact', id: form_id, class: 'bls-contact__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="bls-contact__success" role="status" tabindex="-1" autofocus>{{ 'blocks.contact_form.post_success' | t }}</p>
+      {%- else -%}
+        {%- if form.errors -%}
+          <div class="bls-contact__error" role="alert" tabindex="-1" autofocus>{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+        <div class="bls-contact__row">
+          <div class="bls-contact__field">
+            <label class="bls-contact__label" for="{{ form_id }}-name">Name</label>
+            <input
+              id="{{ form_id }}-name"
+              class="bls-contact__input"
+              type="text"
+              name="contact[name]"
+              autocomplete="name"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              required
+            >
+          </div>
+          <div class="bls-contact__field">
+            <label class="bls-contact__label" for="{{ form_id }}-email">Email</label>
+            <input
+              id="{{ form_id }}-email"
+              class="bls-contact__input"
+              type="email"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              required
+            >
+          </div>
+        </div>
+        <div class="bls-contact__field">
+          <label class="bls-contact__label" for="{{ form_id }}-phone">Phone <span>(optional)</span></label>
+          <input
+            id="{{ form_id }}-phone"
+            class="bls-contact__input"
+            type="tel"
+            name="contact[phone]"
+            autocomplete="tel"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          >
+        </div>
+        <div class="bls-contact__field">
+          <label class="bls-contact__label" for="{{ form_id }}-body">Message</label>
+          <textarea
+            id="{{ form_id }}-body"
+            class="bls-contact__input bls-contact__input--message"
+            name="contact[body]"
+            rows="6"
+            required
+          >{{- form.body -}}</textarea>
+        </div>
+        <button type="submit" class="bls-contact__submit">{{ ss.button_label | default: 'Send message' | escape }}</button>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "tag": "div",
+  "class": "bls-contact-section",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Make a word italic to set it in the script style.", "default": "Contact <em>Us</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "help_heading", "label": "Links heading", "default": "Quick help" },
+    { "type": "url", "id": "instagram", "label": "Instagram" },
+    { "type": "url", "id": "facebook", "label": "Facebook" },
+    { "type": "text", "id": "form_heading", "label": "Form heading", "default": "Send us a message" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Send message" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Quick help link",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Short note" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}
