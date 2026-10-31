@@ -39,6 +39,9 @@
             class="wac-hero__image"
             style="--wac-bg-desktop: url('{{ desktop_src }}'); --wac-bg-mobile: url('{{ mobile_src }}');"
           ></div>
+          {%- if block.settings.button_link != blank -%}
+            <a class="wac-hero__link" href="{{ block.settings.button_link }}" tabindex="-1" aria-hidden="true"></a>
+          {%- endif -%}
           <div class="wac-hero__content wac-hero__content--{{ block.settings.position }} wac-hero__content--text-{{ block.settings.text_align }}">
             <div class="wac-hero__text">
               {%- if block.settings.preheader != blank -%}

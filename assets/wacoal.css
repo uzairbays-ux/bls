@@ -605,6 +605,13 @@
   background-repeat: no-repeat;
 }
 
+/* the whole slide opens its button's link: the text lets clicks through to this layer,
+   and the button stays the link for keyboards and screen readers */
+.wac-hero__link {
+  position: absolute;
+  inset: 0;
+}
+
 .wac-hero__content {
   position: relative;
   z-index: 1;
@@ -612,6 +619,11 @@
   display: flex;
   box-sizing: border-box;
   padding: 30px;
+  pointer-events: none;
+}
+
+.wac-hero__content a {
+  pointer-events: auto;
 }
 
 .wac-hero__content--left {
