@@ -173,6 +173,7 @@
         },
         "item_02": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1781169793340_copy.png",
             "image_asset": "",
@@ -203,6 +204,7 @@
         },
         "item_05": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.13.07.jpg",
             "image_asset": "",
