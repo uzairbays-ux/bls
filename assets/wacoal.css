@@ -2287,7 +2287,10 @@
 }
 
 .wac-colhead__link {
+  position: relative;
   display: block;
+  overflow: hidden;
+  border-radius: 8px;
   color: #000;
   text-decoration: none;
 }
@@ -2301,15 +2304,24 @@
   background: #ebe6e0;
 }
 
+/* the name sits in a box on the photo, so these don't read as product cards */
 .wac-colhead__label {
-  display: block;
-  margin: 15px 0 10px;
-  font-size: calc(16px * var(--bls-fs));
-  line-height: 19.2px;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  padding: 9px 6px;
+  border-radius: 6px;
+  background: #fff;
+  font-size: calc(14px * var(--bls-fs));
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .wac-colhead__item.is-current .wac-colhead__label {
-  font-weight: 600;
+  background: #2b2526;
+  color: #fff;
 }
 
 /* filter bar */
@@ -2937,8 +2949,11 @@ html.wac-drawer-open {
   }
 
   .wac-colhead__label {
-    margin: 12px 0 8px;
-    font-size: calc(14px * var(--bls-fs));
+    right: 6px;
+    bottom: 6px;
+    left: 6px;
+    padding: 7px 4px;
+    font-size: calc(13px * var(--bls-fs));
   }
 
   .wac-section-coll {
