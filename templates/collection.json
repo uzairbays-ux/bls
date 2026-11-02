@@ -49,12 +49,14 @@
           "type": "category",
           "settings": {
             "collection": "bras-lace",
+            "image": "shopify://shop_images/lace-top.jpg",
             "title": "Lace",
             "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
         "cat_6": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "bras-cotton",
             "title": "Cotton",
