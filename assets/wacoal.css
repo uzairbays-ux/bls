@@ -613,6 +613,10 @@
   object-fit: cover;
 }
 
+.wac-hero__video {
+  display: none;
+}
+
 /* the whole slide opens its button's link: the text lets clicks through to this layer,
    and the button stays the link for keyboards and screen readers */
 .wac-hero__link {
@@ -8250,6 +8254,22 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   /* first slide: the photo sits further right on phones */
   .wac-hero__slide:first-child .wac-hero__img {
     object-position: 30% center;
+  }
+
+  /* phones: fades in over the photo once it is really playing */
+  .wac-hero__video {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .wac-hero__video.is-playing {
+    opacity: 1;
   }
 
   /* a soft shade at the top, so the white logo reads on bright photos */

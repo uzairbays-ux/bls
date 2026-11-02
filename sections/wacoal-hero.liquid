@@ -34,6 +34,17 @@
           elsif block.settings.image_asset != blank
             assign src = block.settings.image_asset | asset_url
           endif
+          comment
+            The largest mp4 up to 1280px tall: sharp on phones without being a heavy file
+          endcomment
+          assign video_src = ''
+          assign video_h = 0
+          for source in block.settings.video_mobile.sources
+            if source.format == 'mp4' and source.height <= 1280 and source.height > video_h
+              assign video_src = source.url
+              assign video_h = source.height
+            endif
+          endfor
           assign src_mobile = ''
           if block.settings.image_mobile != blank
             assign src_mobile = block.settings.image_mobile | image_url: width: 1000
@@ -63,6 +74,9 @@
                   {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
                 >
               </picture>
+            {%- endif -%}
+            {%- if video_src != blank -%}
+              <video class="wac-hero__video" data-wac-hero-video data-src="{{ video_src }}" muted loop playsinline preload="none" aria-hidden="true"></video>
             {%- endif -%}
           </div>
           {%- if block.settings.button_link != blank -%}
@@ -128,11 +142,40 @@
       root.dataset.wacHeroReady = '1';
       var track = root.querySelector('[data-wac-hero-track]');
       var slides = root.querySelectorAll('[data-wac-hero-slide]');
+      var paused = false;
+      var loaded = false;
+
+      // phone videos: never on desktop, and only once the page has loaded, so the photo shows first and
+      // stays as the fallback. Skipped for visitors who ask for less motion or less data
+      var phone = window.matchMedia('(max-width: 749px)');
+      var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var saveData = navigator.connection && navigator.connection.saveData;
+      function playVideos() {
+        root.querySelectorAll('[data-wac-hero-video]').forEach(function (video) {
+          var active = video.closest('[data-wac-hero-slide]').classList.contains('is-active');
+          if (!loaded || !active || paused || saveData || calm.matches || !phone.matches) {
+            video.pause();
+            return;
+          }
+          if (!video.getAttribute('src')) {
+            video.addEventListener('playing', function () { video.classList.add('is-playing'); }, { once: true });
+            video.src = video.dataset.src;
+          }
+          var playing = video.play();
+          if (playing) playing.catch(function () {});
+        });
+      }
+      function pageLoaded() {
+        loaded = true;
+        playVideos();
+      }
+      phone.addEventListener('change', playVideos);
+      if (document.readyState === 'complete') pageLoaded(); else window.addEventListener('load', pageLoaded, { once: true });
+
       if (slides.length < 2) return;
       var delay = parseInt(root.dataset.autoplay, 10) || 0;
       var index = 0;
       var timer = null;
-      var paused = false;
       var toggle = root.querySelector('[data-wac-hero-toggle]');
 
       // the other slides wait for the first photo, then load in time for their turn
@@ -145,6 +188,7 @@
         track.style.transition = animate === false ? 'none' : '';
         track.style.transform = 'translateX(' + (-index * 100) + '%)';
         slides.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
+        playVideos();
       }
       function start() {
         stop();
@@ -162,6 +206,7 @@
         toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
         toggle.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
         if (paused) stop(); else start();
+        playVideos();
       });
 
       // finger swipe
@@ -207,6 +252,7 @@
         { "type": "text", "id": "image_asset", "label": "or asset file name (desktop)", "info": "Used only while no image is picked." },
         { "type": "image_picker", "id": "image_mobile", "label": "Image (phone)" },
         { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phone)" },
+        { "type": "video", "id": "video_mobile", "label": "Video (phones only)", "info": "Plays on phones in place of the photo, muted and looping. The photo shows first and stays as the fallback. Desktop always shows the photo." },
         { "type": "select", "id": "position", "label": "Text box position (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "right" },
         { "type": "select", "id": "text_align", "label": "Text alignment (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" } ], "default": "left" },
         { "type": "inline_richtext", "id": "preheader", "label": "Line above the heading" },
