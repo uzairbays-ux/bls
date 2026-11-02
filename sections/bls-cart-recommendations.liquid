@@ -1,0 +1,55 @@
+{%- doc -%}
+  "You may also like" row in the cart drawer, based on the newest item in the bag. Not placed on any
+  page: assets/bls-cart-recs.js asks for it from the product recommendations URL when the drawer opens.
+  Products already in the bag and sold out products are left out.
+{%- enddoc -%}
+{%- liquid
+  assign in_bag = cart.items | map: 'product_id'
+  assign shown = 0
+-%}
+{%- capture cards -%}
+  {%- if recommendations.performed? -%}
+    {%- for item in recommendations.products -%}
+      {%- unless in_bag contains item.id or item.available == false or shown == 8 -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- assign title = item.title | remove_first: 'BLS - ' | remove_first: 'BLS-' | remove_first: 'BLS ' -%}
+        <li class="bls-cart-recs__item">
+          <a class="bls-cart-recs__card" href="{{ item.url }}">
+            {%- if item.featured_image != blank -%}
+              {{ item.featured_image | image_url: width: 420 | image_tag: class: 'bls-cart-recs__img', widths: '140, 280, 420', sizes: '124px', loading: 'lazy', alt: title }}
+            {%- endif -%}
+            <span class="bls-cart-recs__name">{{ title | escape }}</span>
+            <span class="bls-cart-recs__price">
+              {{- item.price | money -}}
+              {%- if item.compare_at_price > item.price %} <s>{{ item.compare_at_price | money }}</s>{% endif -%}
+            </span>
+          </a>
+        </li>
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+  <div class="bls-cart-recs__inner">
+    <div class="bls-cart-recs__head">
+      <h3 class="bls-cart-recs__title">You may also like</h3>
+      <div class="bls-cart-recs__nav">
+        <button type="button" class="bls-cart-recs__arrow" data-bls-recs-prev aria-label="Previous products" disabled>
+          <svg width="8" height="12" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8.5 1.5L2 8l6.5 6.5" stroke="currentColor" stroke-width="1.7"/></svg>
+        </button>
+        <button type="button" class="bls-cart-recs__arrow" data-bls-recs-next aria-label="Next products">
+          <svg width="8" height="12" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M1.5 1.5L8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.7"/></svg>
+        </button>
+      </div>
+    </div>
+    <ul class="bls-cart-recs__list" role="list" data-bls-recs-list>{{ cards }}</ul>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "BLS cart recommendations",
+  "tag": "div",
+  "class": "bls-cart-recs-section"
+}
+{% endschema %}

@@ -7802,6 +7802,135 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   display: none;
 }
 
+/* cart drawer: You may also like (sections/bls-cart-recommendations.liquid) */
+.bls-cart-recs {
+  flex: 0 0 auto;
+  margin-top: 20px;
+  padding: 18px 0 14px;
+  border-top: 1px solid #ececec;
+}
+
+.bls-cart-recs:empty {
+  display: none;
+}
+
+.bls-cart-recs__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 30px;
+  margin-bottom: 12px;
+}
+
+.bls-cart-recs__title {
+  margin: 0;
+  color: inherit;
+  font-family: var(--wac-font-serif);
+  font-size: calc(18px * var(--bls-fs));
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.bls-cart-recs__nav {
+  display: flex;
+  gap: 6px;
+}
+
+.bls-cart-recs__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #d9d3cc;
+  border-radius: 50%;
+  background: #fff;
+  color: #2b2526;
+  cursor: pointer;
+}
+
+.bls-cart-recs__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.bls-cart-recs__list {
+  display: flex;
+  gap: 10px;
+  margin: 0 calc(var(--padding-xl) * -1);
+  padding: 0 var(--padding-xl);
+  overflow-x: auto;
+  list-style: none;
+  scroll-padding-inline: var(--padding-xl);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.bls-cart-recs__list::-webkit-scrollbar {
+  display: none;
+}
+
+.bls-cart-recs__item {
+  flex: 0 0 124px;
+  scroll-snap-align: start;
+}
+
+.bls-cart-recs__card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.bls-cart-recs__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  background: #f2ede9;
+  object-fit: cover;
+}
+
+.bls-cart-recs__name {
+  display: -webkit-box;
+  margin-top: 8px;
+  overflow: hidden;
+  font-size: calc(12px * var(--bls-fs));
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.bls-cart-recs__price {
+  display: block;
+  margin-top: 3px;
+  font-size: calc(12px * var(--bls-fs));
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.bls-cart-recs__price s {
+  color: #949494;
+  font-weight: 400;
+}
+
+/* phones swipe, so the arrows are only for a mouse */
+@media (hover: none) {
+  .bls-cart-recs__nav {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .bls-cart-recs__list {
+    margin-inline: calc(var(--padding-2xl) * -1);
+    padding-inline: var(--padding-2xl);
+    scroll-padding-inline: var(--padding-2xl);
+  }
+}
+
 /* phones: all text 8% smaller, in one place. Every font size from 12px up is written as
    calc(Npx * var(--bls-fs)), and the theme's own sizes follow below. Tiny labels are left out so they
    stay readable, and form fields too, because iPhones zoom in on small fields */
