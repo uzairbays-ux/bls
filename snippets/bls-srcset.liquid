@@ -1,0 +1,14 @@
+{%- doc -%}
+  The srcset list for an image: one entry per width, leaving out widths larger than the file.
+  @param {image} image - The image
+  @param {string} widths - Comma separated widths, smallest first, e.g. 360,540,720
+{%- enddoc -%}
+{%- assign width_list = widths | split: ',' -%}
+{%- assign separator = '' -%}
+{%- for width in width_list -%}
+  {%- assign w = width | plus: 0 -%}
+  {%- if w <= image.width -%}
+    {{- separator }}{{ image | image_url: width: w }} {{ w }}w
+    {%- assign separator = ', ' -%}
+  {%- endif -%}
+{%- endfor -%}

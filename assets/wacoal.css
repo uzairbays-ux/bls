@@ -605,6 +605,18 @@
   background-repeat: no-repeat;
 }
 
+.wac-hero__image picture {
+  display: block;
+  height: 100%;
+}
+
+.wac-hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* the whole slide opens its button's link: the text lets clicks through to this layer,
    and the button stays the link for keyboards and screen readers */
 .wac-hero__link {
@@ -1417,6 +1429,13 @@
 
 .wac-card__image-link:hover .wac-card__img--back {
   opacity: 1;
+}
+
+/* touch screens never hover, so this keeps them from downloading the second photo */
+@media (hover: none) {
+  .wac-card__img--back {
+    display: none;
+  }
 }
 
 .wac-card__flags {
@@ -8191,6 +8210,10 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   /* first slide: the photo sits further right on phones */
   .wac-hero__slide:first-child .wac-hero__image {
     background-position: 30% center;
+  }
+
+  .wac-hero__slide:first-child .wac-hero__img {
+    object-position: 30% center;
   }
 
   /* a soft shade at the top, so the white logo reads on bright photos */

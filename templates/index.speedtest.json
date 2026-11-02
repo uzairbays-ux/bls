@@ -1,0 +1,1845 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "wacoal_hero": {
+      "type": "wacoal-hero-new",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "position": "right",
+            "text_align": "left",
+            "preheader": "<strong>NEW</strong> SATIN SECRETS",
+            "preheader_font": "expanded",
+            "heading": "LACE, SATIN\nAND A LITTLE\nSECRET",
+            "heading_size": 45,
+            "heading_size_mobile": 25,
+            "heading_weight": "400",
+            "text": "",
+            "button_label": "SHOP SATIN SECRETS",
+            "button_link": "/collections/satin-secrets"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.31.41.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "position": "center",
+            "text_align": "center",
+            "preheader": "BRA & PANTY SETS",
+            "preheader_font": "expanded",
+            "heading": "SOFT COLOURS,\nEASY DAYS",
+            "heading_size": 50,
+            "heading_size_mobile": 30,
+            "heading_weight": "400",
+            "text": "",
+            "button_label": "SHOP SETS",
+            "button_link": "/collections/bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.32.10.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "position": "left",
+            "text_align": "left",
+            "preheader": "Bra bundles",
+            "preheader_font": "serif",
+            "heading": "3 BRAS FROM\nRS.7,500",
+            "heading_size": 70,
+            "heading_size_mobile": 35,
+            "heading_weight": "500",
+            "text": "Stock up on your everyday favourites.",
+            "button_label": "SHOP BUNDLES",
+            "button_link": "shopify://collections/3-for-7500"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "name": "BLS hero slider",
+      "settings": {
+        "height_desktop": 800,
+        "height_mobile": 635,
+        "autoplay_seconds": 6
+      }
+    },
+    "wacoal_tiles": {
+      "type": "wacoal-tiles-new",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.28.08.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "heading_line1": "Bras For",
+            "heading_line2": "Every Day",
+            "text": "Bands 32–44, cups A–F",
+            "button_label": "SHOP BRAS",
+            "link": "/collections/bras",
+            "button_link": ""
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.23.40.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "heading_line1": "Soft, Light",
+            "heading_line2": "Lace Panties",
+            "text": "Lace, cotton and seamless",
+            "button_label": "SHOP PANTIES",
+            "link": "shopify://collections/panties-lace-1",
+            "button_link": ""
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.22.34.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "heading_line1": "Lace, Satin &",
+            "heading_line2": "Everyday Luxury",
+            "text": "Lingerie sets for every mood",
+            "button_label": "SHOP LINGERIE",
+            "link": "shopify://collections/bras-lace",
+            "button_link": ""
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.21.37.jpg",
+            "image_asset": "",
+            "image_mobile_asset": "",
+            "heading_line1": "Smooth From",
+            "heading_line2": "Every Angle",
+            "text": "Shapewear that moves with you",
+            "button_label": "SHOP SHAPEWEAR",
+            "link": "/collections/shaper",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4"
+      ],
+      "name": "BLS tiles",
+      "settings": {
+        "columns": 4,
+        "tile_height": 540,
+        "tile_height_mobile": 400,
+        "mobile_layout": "swipe",
+        "gap": 8,
+        "shade": 55
+      }
+    },
+    "wacoal_styles_slider": {
+      "type": "wacoal-image-text-slider",
+      "blocks": {
+        "item_01": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/hix-download-1776943199268-1776943203047.png",
+            "image_asset": "",
+            "title": "Push Up",
+            "text": "extra lift, natural shape",
+            "link": "/collections/pushup"
+          }
+        },
+        "item_02": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1781169793340_copy.png",
+            "image_asset": "",
+            "title": "Strapless",
+            "text": "stays put, no straps needed",
+            "link": "/search?q=strapless&type=product"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.05.13.jpg",
+            "image_asset": "",
+            "title": "T-Shirt",
+            "text": "smooth under anything you wear",
+            "link": "shopify://collections/padded"
+          }
+        },
+        "item_04": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.09.04.jpg",
+            "image_asset": "",
+            "title": "Wireless",
+            "text": "soft comfort, no underwire",
+            "link": "/collections/non-wired"
+          }
+        },
+        "item_05": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.13.07.jpg",
+            "image_asset": "",
+            "title": "Full Coverage",
+            "text": "more cover, all-day ease",
+            "link": "/collections/bras"
+          }
+        },
+        "item_06": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.06.22.jpg",
+            "image_asset": "",
+            "title": "Sport",
+            "text": "made to keep up with you",
+            "link": "/collections/sports-bra"
+          }
+        },
+        "item_07": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.14.29.jpg",
+            "image_asset": "",
+            "title": "Seamless",
+            "text": "no lines, just smooth comfort",
+            "link": "/collections/seamless-bra"
+          }
+        },
+        "item_08": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.17.02.jpg",
+            "image_asset": "",
+            "title": "Nursing",
+            "text": "gentle support for new mums",
+            "link": "/collections/maternity"
+          }
+        },
+        "item_09": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/hix.ai-download-1769589348891.png",
+            "image_asset": "",
+            "title": "Lace",
+            "text": "soft lace with a pretty finish",
+            "link": "/collections/bras-lace"
+          }
+        },
+        "item_10": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.19.07.jpg",
+            "image_asset": "",
+            "title": "Front Open",
+            "text": "easy on, easy off",
+            "link": "/collections/front-open"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04",
+        "item_05",
+        "item_06",
+        "item_07",
+        "item_08",
+        "item_09",
+        "item_10"
+      ],
+      "name": "BLS styles slider",
+      "settings": {
+        "heading": "Shop Bra Styles"
+      }
+    },
+    "wacoal_rich_text": {
+      "type": "wacoal-rich-text",
+      "name": "BLS rich text",
+      "settings": {
+        "background": "#f3f0eb",
+        "background_gradient": "",
+        "text_color": "#111111",
+        "heading_size": 50,
+        "heading_size_mobile": 30,
+        "heading": "Find the fit that <em>feels</em> like you.",
+        "text": "The right size makes all the difference.",
+        "max_width": 60,
+        "button1_label": "FIND YOUR SIZE",
+        "button1_link": "/pages/the-perfect-fit",
+        "button2_label": "SHOP ALL BRAS",
+        "button2_link": "/collections/bras",
+        "margin_top": 20,
+        "margin_bottom": 20,
+        "padding_y": 20,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "padding_y_mobile": 35
+      }
+    },
+    "wacoal_featured_collection": {
+      "type": "wacoal-featured-collection",
+      "name": "BLS best sellers",
+      "settings": {
+        "heading": "Best Sellers",
+        "subheading": "The styles our customers keep coming back for.",
+        "collection": "bras",
+        "image": "shopify://shop_images/hix.ai-download-1781091068827_copy.webp",
+        "link_label": "Shop now",
+        "max_products": 10,
+        "badge": "Best Seller",
+        "show_sizes": true
+      }
+    },
+    "bls_fabric_edit": {
+      "type": "bls-collection-edit",
+      "blocks": {
+        "edit_satin": {
+          "type": "collection",
+          "settings": {
+            "collection": "satin-secrets",
+            "label": "Satin",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.36.33.jpg",
+            "link": ""
+          }
+        },
+        "edit_silk": {
+          "type": "collection",
+          "settings": {
+            "collection": "sleep-wear-silk",
+            "label": "Ribbed",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.42.25.jpg",
+            "link": "/search?q=ribbed&type=product"
+          }
+        },
+        "edit_lace": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-lace",
+            "label": "Lace",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.40.05.jpg",
+            "link": ""
+          }
+        },
+        "edit_cotton": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-cotton",
+            "label": "Cotton",
+            "image": "shopify://shop_images/hix.ai-download-1778133174405_2905eb96-6b85-404b-828b-ad8b58980abb.jpg",
+            "link": ""
+          }
+        },
+        "edit_polyamide": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras-polyester-polyamide",
+            "label": "Polyamide",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.44.31.jpg",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "edit_satin",
+        "edit_silk",
+        "edit_lace",
+        "edit_cotton",
+        "edit_polyamide"
+      ],
+      "name": "BLS fabric edit",
+      "settings": {
+        "heading": "The Fabric Edit",
+        "heading_color": "#b16a80",
+        "text": ""
+      }
+    },
+    "wacoal_rich_text_sale": {
+      "type": "wacoal-rich-text",
+      "name": "BLS rich text",
+      "settings": {
+        "background": "#a8948b",
+        "background_gradient": "linear-gradient(293deg, rgba(188, 166, 149, 1), rgba(201, 184, 173, 1) 3%, rgba(168, 148, 139, 1) 100%)",
+        "text_color": "#ffffff",
+        "heading_size": 40,
+        "heading_size_mobile": 25,
+        "heading": "Slips & Camis | <em>3 For Rs.4,500</em>",
+        "text": "Soft layers for day and night.",
+        "max_width": 60,
+        "button1_label": "SHOP SLIPS & CAMIS",
+        "button1_link": "shopify://collections/3-for-4500",
+        "button2_label": "",
+        "button2_link": "",
+        "margin_top": 50,
+        "margin_bottom": 50,
+        "padding_y": 20,
+        "margin_top_mobile": 45,
+        "margin_bottom_mobile": 40,
+        "padding_y_mobile": 30
+      }
+    },
+    "wacoal_iwt_fall": {
+      "type": "wacoal-image-text-new",
+      "name": "BLS image with text",
+      "settings": {
+        "image": "shopify://shop_images/hix.ai-download-1781088063031.jpg",
+        "image_shape": "natural",
+        "image_asset": "",
+        "image_mobile_asset": "",
+        "image_position": "right",
+        "link": "/collections/sleep-wear",
+        "preheader": "",
+        "heading": "Made For <em>Slow Mornings</em>",
+        "heading_style": "serif",
+        "heading_color": "#000000",
+        "text": "<p>Soft pajama sets for staying in, sleeping late and doing very little.</p>",
+        "button_label": "SHOP SLEEPWEAR",
+        "button_link": "",
+        "background": "#fafafc",
+        "margin_bottom": 0
+      }
+    },
+    "wacoal_iwt_rewards": {
+      "type": "wacoal-image-text-new",
+      "name": "BLS image with text",
+      "settings": {
+        "image": "shopify://shop_images/hix.ai-download-1781088689103.jpg",
+        "image_shape": "square",
+        "image_asset": "",
+        "image_mobile_asset": "",
+        "image_position": "left",
+        "link": "/collections/panties",
+        "preheader": "Introducing",
+        "heading": "BARELY THERE",
+        "heading_style": "expanded",
+        "heading_color": "#000000",
+        "text": "<p>Seamless panties that stay smooth under everything you wear.</p>",
+        "button_label": "SHOP PANTIES",
+        "button_link": "",
+        "background": "#fafafc",
+        "margin_bottom": 0
+      }
+    },
+    "wacoal_iwt_fit": {
+      "type": "wacoal-image-text-new",
+      "name": "BLS image with text",
+      "settings": {
+        "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.53.21.jpg",
+        "image_shape": "square",
+        "image_asset": "",
+        "image_mobile_asset": "",
+        "image_position": "right",
+        "link": "/pages/the-perfect-fit",
+        "preheader": "",
+        "heading": "THE PERFECT FIT",
+        "heading_style": "bold",
+        "heading_color": "#b16a80",
+        "text": "<p>Measure at home with our size calculator, or message our fit team and we'll help you choose.</p>",
+        "button_label": "LEARN MORE",
+        "button_link": "",
+        "background": "#fafafc",
+        "margin_bottom": 0
+      }
+    },
+    "product_list_campaign": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>SHOP BUNDLES</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "1.25rem",
+                "line_height": "tight",
+                "letter_spacing": "normal",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-heading--family)",
+                "font_size": "1rem",
+                "line_height": "tight",
+                "letter_spacing": "tight",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "use_custom_color": true,
+                "custom_color": "#111111",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "review_mQf37G": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "outline",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "review_mQf37G",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Campaign collection",
+      "settings": {
+        "collection": "bundles",
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrows_large",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "two_up_content": {
+      "type": "carousel",
+      "blocks": {
+        "static-header": {
+          "type": "group",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 16,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "name": "t:names.header",
+              "settings": {
+                "text": "<h3>EXPLORE</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "static-carousel-content": {
+          "type": "_carousel-content",
+          "name": "t:names.carousel_content",
+          "static": true,
+          "settings": {
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "height": "fit",
+            "position": "top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card_bras": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-CosimaWiredAndPushUpBra-Red.webp",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/pages/the-perfect-fit",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 20,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_bras": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Find your size</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_bras": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Fitting room",
+                    "link": "/pages/the-perfect-fit",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_bras",
+                "button_bras"
+              ]
+            },
+            "card_sleepwear": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-RibbedPajamaSet-Purple.webp",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/bundles",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 20,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_sleepwear": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Bundles &amp; sets</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_sleepwear": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop bundles",
+                    "link": "/collections/bundles",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_sleepwear",
+                "button_sleepwear"
+              ]
+            }
+          },
+          "block_order": [
+            "card_bras",
+            "card_sleepwear"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "t:names.carousel",
+      "settings": {
+        "columns": 2,
+        "mobile_columns": "1",
+        "section_width": "page-width",
+        "columns_gap": 12,
+        "color_scheme": "scheme-1",
+        "infinite_scroll": false,
+        "icons_style": "none",
+        "icons_shape": "none",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "marquee_valueprops": {
+      "type": "marquee",
+      "blocks": {
+        "icon_1": {
+          "type": "icon",
+          "settings": {
+            "icon": "truck",
+            "width": 34,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Free shipping above Rs.9,999</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-subheading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_2": {
+          "type": "icon",
+          "settings": {
+            "icon": "credit_card",
+            "width": 34,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Cash on delivery available</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-subheading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "icon_1",
+        "text_1",
+        "icon_2",
+        "text_2"
+      ],
+      "name": "t:names.marquee",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "scheme-bls-signature",
+        "padding-block-start": 16,
+        "padding-block-end": 16,
+        "gap_between_elements": 40
+      }
+    },
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>SHOP BESTSELLERS</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "1.25rem",
+                "line_height": "tight",
+                "letter_spacing": "normal",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-heading--family)",
+                "font_size": "1rem",
+                "line_height": "tight",
+                "letter_spacing": "tight",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "use_custom_color": true,
+                "custom_color": "#111111",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "review_mQf37G": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "outline",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "review_mQf37G",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all",
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrows_large",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "carousel_shopbycategory": {
+      "type": "carousel",
+      "blocks": {
+        "static-header": {
+          "type": "group",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 16,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "name": "t:names.header",
+              "settings": {
+                "text": "<h3>SHOP BY CATEGORY</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "1.25rem",
+                "line_height": "tight",
+                "letter_spacing": "normal",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "static-carousel-content": {
+          "type": "_carousel-content",
+          "name": "t:names.carousel_content",
+          "static": true,
+          "settings": {
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "height": "fit",
+            "position": "top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card_bras": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-CosimaWiredAndPushUpBra-Red.webp",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/bras",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 28,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_bras": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Bras</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_bras": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "/collections/bras",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_bras",
+                "button_bras"
+              ]
+            },
+            "card_panties": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLSBJ7315PantyPackof3SSkinChocolateBlack.webp",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/panties",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 28,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_panties": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Panties</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_panties": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "/collections/panties",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_panties",
+                "button_panties"
+              ]
+            },
+            "card_sleepwear": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-RibbedPajamaSet-Purple.webp",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/sleep-wear",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 28,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_sleepwear": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Sleep Wear</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_sleepwear": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "/collections/sleep-wear",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_sleepwear",
+                "button_sleepwear"
+              ]
+            },
+            "card_slipscamis": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-ZendayaStretchableCottonCamisole-Pink.jpg",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/slips-camis",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 28,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_slipscamis": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Slips & Camis</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_slipscamis": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "/collections/slips-camis",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_slipscamis",
+                "button_slipscamis"
+              ]
+            },
+            "card_active": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-BodyShaper-Beige.webp",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/active-shape-wear",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 28,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_active": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Active & Shape Wear</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_active": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "/collections/active-shape-wear",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_active",
+                "button_active"
+              ]
+            },
+            "card_teens": {
+              "type": "_card",
+              "name": "t:names.card",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-bls-accent",
+                "background_media": "image",
+                "background_image": "shopify://shop_images/BLS-ZelmaCottonTeenPanty-DarkBlue.png",
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "#000000b3",
+                "overlay_style": "gradient",
+                "gradient_direction": "to top",
+                "link": "/collections/teens",
+                "open_in_new_tab": false,
+                "padding-block-start": 20,
+                "padding-block-end": 28,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "heading_teens": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Teens</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_teens": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "/collections/teens",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_teens",
+                "button_teens"
+              ]
+            }
+          },
+          "block_order": [
+            "card_bras",
+            "card_panties",
+            "card_sleepwear",
+            "card_slipscamis",
+            "card_active",
+            "card_teens"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "t:names.carousel",
+      "settings": {
+        "columns": 3,
+        "mobile_columns": "2",
+        "section_width": "page-width",
+        "columns_gap": 12,
+        "color_scheme": "scheme-1",
+        "infinite_scroll": true,
+        "icons_style": "arrows_large",
+        "icons_shape": "none",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "wacoal_hero",
+    "wacoal_tiles",
+    "wacoal_styles_slider",
+    "wacoal_rich_text",
+    "wacoal_featured_collection",
+    "bls_fabric_edit",
+    "wacoal_rich_text_sale",
+    "wacoal_iwt_fall",
+    "wacoal_iwt_rewards",
+    "wacoal_iwt_fit",
+    "product_list_campaign",
+    "two_up_content",
+    "marquee_valueprops",
+    "product_list_fa6P9H",
+    "carousel_shopbycategory"
+  ]
+}
