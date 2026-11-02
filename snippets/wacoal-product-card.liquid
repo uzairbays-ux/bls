@@ -23,6 +23,16 @@
       assign color_option = option
     endif
   endfor
+  assign offer_label = ''
+  if product.available and settings.wac_offer_tags != blank
+    assign offer_tags = settings.wac_offer_tags | replace: ', ', ',' | split: ','
+    for tag in product.tags
+      if offer_tags contains tag
+        assign offer_label = tag
+        break
+      endif
+    endfor
+  endif
   assign rating = product.metafields.reviews.rating.value
   assign rating_count = product.metafields.reviews.rating_count.value
 
@@ -124,6 +134,9 @@
           <img class="wac-card__img wac-card__img--back" src="{{ back | image_url: width: 560 }}" srcset="{{ back | image_url: width: 280 }} 280w, {{ back | image_url: width: 430 }} 430w, {{ back | image_url: width: 560 }} 560w" sizes="{{ sizes | default: '278px' }}" width="{{ back.width }}" height="{{ back.height }}" alt="" loading="lazy">
         {%- endif -%}
       </span>
+      {%- if offer_label != blank and template.suffix == 't' -%}
+        <span class="wac-card__offer">{{ settings.wac_offer_prefix | escape }}<br>{{ offer_label | escape }}</span>
+      {%- endif -%}
       {%- if status_flag != blank or size_flag != blank -%}
         <span class="wac-card__flags">
           {%- if status_flag != blank -%}

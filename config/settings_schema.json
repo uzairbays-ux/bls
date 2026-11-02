@@ -2311,6 +2311,19 @@
         "id": "wac_card_show_meta",
         "label": "Show brand name and style number",
         "default": false
+      },
+      {
+        "type": "text",
+        "id": "wac_offer_tags",
+        "label": "Offer label tags",
+        "info": "Products with one of these tags show the round offer label. Separate tags with commas.",
+        "default": "3 for 7500,3 for 9500,3 for 4500,3 for 3500"
+      },
+      {
+        "type": "text",
+        "id": "wac_offer_prefix",
+        "label": "Offer label first line",
+        "default": "Buy any"
       }
     ]
   },
