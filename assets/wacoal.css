@@ -617,6 +617,19 @@
   display: none;
 }
 
+.wac-hero__sound {
+  display: none;
+}
+
+.wac-hero__icon-sound,
+.wac-hero.is-sound-on .wac-hero__icon-muted {
+  display: none;
+}
+
+.wac-hero.is-sound-on .wac-hero__icon-sound {
+  display: block;
+}
+
 /* the whole slide opens its button's link: the text lets clicks through to this layer,
    and the button stays the link for keyboards and screen readers */
 .wac-hero__link {
@@ -8270,6 +8283,19 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 
   .wac-hero__video.is-playing {
     opacity: 1;
+  }
+
+  /* above the slide controls, clear of the button on the left */
+  .wac-hero__sound {
+    position: absolute;
+    right: 16px;
+    bottom: 64px;
+    z-index: 2;
+    display: flex;
+  }
+
+  .wac-hero__sound[hidden] {
+    display: none;
   }
 
   /* a soft shade at the top, so the white logo reads on bright photos */

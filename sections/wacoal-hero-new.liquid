@@ -1,0 +1,343 @@
+{% comment %}
+  Full-bleed hero slider (Wacoal replica). One slide per block: a desktop and a phone
+  image, a short line above the heading, the heading, optional text and a pill button.
+  Images come from the theme's Files when picked, otherwise from a file in assets/
+  (the placeholder photos live there until the store's own are uploaded). The first photo
+  is a real image marked high priority, so the browser finds it early.
+{% endcomment %}
+<section
+  class="wac-hero"
+  data-wac-hero
+  data-autoplay="{{ section.settings.autoplay_seconds | times: 1000 }}"
+  style="--wac-hero-h-desktop: {{ section.settings.height_desktop }}px; --wac-hero-h-mobile: {{ section.settings.height_mobile }}px;"
+>
+  <div class="wac-hero__viewport">
+    <div class="wac-hero__track" data-wac-hero-track>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign image = block.settings.image
+          assign src = ''
+          assign srcset = ''
+          assign img_sizes = '100vw'
+          if image != blank
+            assign src = image | image_url: width: 2048
+            capture srcset
+              render 'bls-srcset', image: image, widths: '828,1080,1500,2048'
+            endcapture
+            comment
+              Phones show the photo in a tall box about 710px high, so a wide photo runs far wider than the screen
+            endcomment
+            assign phone_w = image.aspect_ratio | times: 710 | round
+            if phone_w > 430
+              assign img_sizes = '(max-width: 749px) ' | append: phone_w | append: 'px, 100vw'
+            endif
+          elsif block.settings.image_asset != blank
+            assign src = block.settings.image_asset | asset_url
+          endif
+          comment
+            The largest mp4 up to 1280px tall: sharp on phones without being a heavy file
+          endcomment
+          assign video_src = ''
+          assign video_h = 0
+          for source in block.settings.video_mobile.sources
+            if source.format == 'mp4' and source.height <= 1280 and source.height > video_h
+              assign video_src = source.url
+              assign video_h = source.height
+            endif
+          endfor
+          assign src_mobile = ''
+          if block.settings.image_mobile != blank
+            assign src_mobile = block.settings.image_mobile | image_url: width: 1000
+          elsif block.settings.image_mobile_asset != blank
+            assign src_mobile = block.settings.image_mobile_asset | asset_url
+          endif
+        -%}
+        <div
+          class="wac-hero__slide{% if forloop.first %} is-active{% endif %}"
+          data-wac-hero-slide
+          role="group"
+          aria-roledescription="slide"
+          aria-label="{{ forloop.index }} of {{ forloop.length }}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="wac-hero__image">
+            {%- if src != blank -%}
+              <picture>
+                {%- if src_mobile != blank -%}
+                  <source media="(max-width: 749px)" srcset="{{ src_mobile }}">
+                {%- endif -%}
+                <img
+                  class="wac-hero__img"
+                  src="{{ src }}"
+                  {% if srcset != blank %}srcset="{{ srcset | strip }}" sizes="{{ img_sizes }}"{% endif %}
+                  alt="{{ image.alt | escape }}"
+                  {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                >
+              </picture>
+            {%- endif -%}
+            {%- if video_src != blank -%}
+              <video class="wac-hero__video" data-wac-hero-video data-src="{{ video_src }}" muted playsinline preload="none" aria-hidden="true"></video>
+            {%- endif -%}
+          </div>
+          {%- if block.settings.button_link != blank -%}
+            <a class="wac-hero__link" href="{{ block.settings.button_link }}" tabindex="-1" aria-hidden="true"></a>
+          {%- endif -%}
+          <div class="wac-hero__content wac-hero__content--{{ block.settings.position }} wac-hero__content--text-{{ block.settings.text_align }}">
+            <div class="wac-hero__text">
+              {%- if block.settings.preheader != blank -%}
+                <p class="wac-hero__preheader wac-hero__preheader--{{ block.settings.preheader_font }}">{{ block.settings.preheader }}</p>
+              {%- endif -%}
+              {%- if block.settings.heading != blank -%}
+                <h2
+                  class="wac-hero__heading"
+                  style="--wac-h-size: {{ block.settings.heading_size }}px; --wac-h-size-mobile: {{ block.settings.heading_size_mobile }}px; --wac-h-weight: {{ block.settings.heading_weight }};"
+                >
+                  {{- block.settings.heading | escape | newline_to_br -}}
+                </h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="wac-hero__body">{{ block.settings.text }}</p>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank -%}
+                <div class="wac-hero__buttons">
+                  <a class="wac-hero__button" href="{{ block.settings.button_link | default: '#' }}">{{ block.settings.button_label }}</a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <button type="button" class="wac-hero__control wac-hero__sound" data-wac-hero-sound aria-label="Turn sound on" aria-pressed="false" hidden>
+    <svg class="wac-hero__icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path d="M16 9.5l4.5 5M20.5 9.5l-4.5 5"/>
+    </svg>
+    <svg class="wac-hero__icon-sound" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5M18 7a7 7 0 0 1 0 10"/>
+    </svg>
+  </button>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="wac-hero__controls">
+      <button type="button" class="wac-hero__control wac-hero__control--toggle" data-wac-hero-toggle aria-label="Pause slideshow" aria-pressed="false">
+        <svg class="wac-hero__icon-pause" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <rect x="6" y="4" width="3.5" height="14" fill="currentColor"/>
+          <rect x="12.5" y="4" width="3.5" height="14" fill="currentColor"/>
+        </svg>
+        <svg class="wac-hero__icon-play" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <path d="M7 4.5v13l10-6.5z" fill="currentColor"/>
+        </svg>
+      </button>
+      <button type="button" class="wac-hero__control" data-wac-hero-prev aria-label="Previous slide">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M13.5 5.5 8 11l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button type="button" class="wac-hero__control" data-wac-hero-next aria-label="Next slide">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M8.5 5.5 14 11l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.wacHeroReady) return;
+      root.dataset.wacHeroReady = '1';
+      var track = root.querySelector('[data-wac-hero-track]');
+      var slides = root.querySelectorAll('[data-wac-hero-slide]');
+      var delay = parseInt(root.dataset.autoplay, 10) || 0;
+      var index = 0;
+      var timer = null;
+      var paused = false;
+      var loaded = false;
+      var soundOn = false;
+      var toggle = root.querySelector('[data-wac-hero-toggle]');
+      var sound = root.querySelector('[data-wac-hero-sound]');
+
+      // phone videos: never on desktop, and only once the page has loaded, so the photo shows first and
+      // stays as the fallback. Skipped for visitors who ask for less motion or less data
+      var phone = window.matchMedia('(max-width: 749px)');
+      var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var saveData = navigator.connection && navigator.connection.saveData;
+      function activeVideo() {
+        var slide = root.querySelector('[data-wac-hero-slide].is-active');
+        var video = slide && slide.querySelector('[data-wac-hero-video]');
+        if (!video || video.blsFailed || saveData || calm.matches || !phone.matches) return null;
+        return video;
+      }
+      function hasSound(video) {
+        if (video.webkitAudioDecodedByteCount !== undefined) return video.webkitAudioDecodedByteCount > 0;
+        return !video.audioTracks || video.audioTracks.length > 0;
+      }
+      function updateSound() {
+        if (!sound) return;
+        var video = activeVideo();
+        sound.hidden = !(video && video.classList.contains('is-playing') && hasSound(video));
+        root.classList.toggle('is-sound-on', soundOn);
+        sound.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+        sound.setAttribute('aria-label', soundOn ? 'Turn sound off' : 'Turn sound on');
+      }
+      function videoFailed(video) {
+        video.blsFailed = true;
+        video.pause();
+        video.classList.remove('is-playing');
+        updateSound();
+        start();
+      }
+      function prepareVideo(video) {
+        video.loop = slides.length < 2 || !delay;
+        video.addEventListener('playing', function () {
+          video.classList.add('is-playing');
+          stop();
+          setTimeout(updateSound, 800);
+        });
+        video.addEventListener('ended', function () {
+          go(index + 1);
+          start();
+        });
+        video.addEventListener('error', function () { videoFailed(video); });
+        video.src = video.dataset.src;
+      }
+      function playVideos() {
+        var current = activeVideo();
+        root.querySelectorAll('[data-wac-hero-video]').forEach(function (video) {
+          if (!loaded || video !== current || paused) {
+            video.pause();
+            return;
+          }
+          if (!video.getAttribute('src')) prepareVideo(video);
+          video.muted = !soundOn;
+          var playing = video.play();
+          if (playing) playing.catch(function (error) {
+            if (error.name !== 'NotAllowedError') return;
+            // a browser may refuse sound, or any autoplay in low power mode
+            if (video.muted) {
+              videoFailed(video);
+            } else {
+              soundOn = false;
+              playVideos();
+            }
+          });
+        });
+        updateSound();
+      }
+
+      // the other slides wait for the first photo, then load in time for their turn
+      function loadRest() {
+        root.querySelectorAll('.wac-hero__img[loading="lazy"]').forEach(function (img) { img.loading = 'eager'; });
+      }
+      function go(i, animate) {
+        if (slides.length < 2) return;
+        if (animate !== false) loadRest();
+        index = (i + slides.length) % slides.length;
+        track.style.transition = animate === false ? 'none' : '';
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        slides.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
+        playVideos();
+      }
+      // a slide with a video stays until the video ends; if it never starts, the slide moves on with the photo
+      function start() {
+        stop();
+        if (!delay || paused || slides.length < 2) return;
+        var video = activeVideo();
+        if (!video) {
+          timer = setTimeout(function () { go(index + 1); start(); }, delay);
+        } else if (!video.classList.contains('is-playing')) {
+          timer = setTimeout(function () { videoFailed(video); }, delay * 2);
+        }
+      }
+      function stop() {
+        if (timer) clearTimeout(timer);
+        timer = null;
+      }
+      function pageLoaded() {
+        loaded = true;
+        loadRest();
+        playVideos();
+      }
+      phone.addEventListener('change', function () { playVideos(); start(); });
+      if (sound) sound.addEventListener('click', function () {
+        soundOn = !soundOn;
+        playVideos();
+      });
+
+      if (slides.length > 1) {
+        root.querySelector('[data-wac-hero-next]').addEventListener('click', function () { go(index + 1); start(); });
+        root.querySelector('[data-wac-hero-prev]').addEventListener('click', function () { go(index - 1); start(); });
+        toggle.addEventListener('click', function () {
+          paused = !paused;
+          root.classList.toggle('is-paused', paused);
+          toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+          toggle.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+          if (paused) stop(); else start();
+          playVideos();
+        });
+
+        // finger swipe
+        var startX = null;
+        root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+        root.addEventListener('touchend', function (e) {
+          if (startX === null) return;
+          var dx = e.changedTouches[0].clientX - startX;
+          startX = null;
+          if (Math.abs(dx) < 40) return;
+          go(dx < 0 ? index + 1 : index - 1);
+          start();
+        }, { passive: true });
+      }
+
+      go(0, false);
+      start();
+      if (document.readyState === 'complete') pageLoaded(); else window.addEventListener('load', pageLoaded, { once: true });
+    }
+    function initAll() {
+      document.querySelectorAll('[data-wac-hero]').forEach(init);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    document.addEventListener('shopify:section:load', initAll);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BLS hero slider",
+  "tag": "section",
+  "class": "wac-section-hero",
+  "settings": [
+    { "type": "range", "id": "height_desktop", "label": "Height on desktop (px)", "min": 400, "max": 1000, "step": 10, "default": 800 },
+    { "type": "range", "id": "height_mobile", "label": "Height on phones (px)", "min": 400, "max": 900, "step": 5, "default": 635 },
+    { "type": "range", "id": "autoplay_seconds", "label": "Seconds per slide (0 = no autoplay)", "min": 0, "max": 15, "step": 1, "default": 6 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
+        { "type": "text", "id": "image_asset", "label": "or asset file name (desktop)", "info": "Used only while no image is picked." },
+        { "type": "image_picker", "id": "image_mobile", "label": "Image (phone)" },
+        { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phone)" },
+        { "type": "video", "id": "video_mobile", "label": "Video (phones only)", "info": "Plays on phones in place of the photo, starting muted with a sound button. The slide stays until the video ends. The photo shows first and stays as the fallback. Desktop always shows the photo." },
+        { "type": "select", "id": "position", "label": "Text box position (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "right" },
+        { "type": "select", "id": "text_align", "label": "Text alignment (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" } ], "default": "left" },
+        { "type": "inline_richtext", "id": "preheader", "label": "Line above the heading" },
+        { "type": "select", "id": "preheader_font", "label": "Font of that line", "options": [ { "value": "expanded", "label": "Expanded sans" }, { "value": "serif", "label": "Serif" }, { "value": "sans", "label": "Sans" } ], "default": "expanded" },
+        { "type": "textarea", "id": "heading", "label": "Heading", "info": "One line per row." },
+        { "type": "range", "id": "heading_size", "label": "Heading size on desktop (px)", "min": 24, "max": 90, "step": 1, "default": 45 },
+        { "type": "range", "id": "heading_size_mobile", "label": "Heading size on phones (px)", "min": 16, "max": 50, "step": 1, "default": 25 },
+        { "type": "select", "id": "heading_weight", "label": "Heading weight", "options": [ { "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" } ], "default": "400" },
+        { "type": "inline_richtext", "id": "text", "label": "Text under the heading" },
+        { "type": "text", "id": "button_label", "label": "Button label" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "BLS hero slider" } ]
+}
+{% endschema %}
