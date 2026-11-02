@@ -156,10 +156,10 @@
         "msg_rewards": {
           "type": "message",
           "settings": {
-            "text": "BRA BUNDLES: BUY 3 FROM RS.7,500",
-            "text_mobile": "3 BRAS FROM RS.7,500",
+            "text": "BRA BUNDLES: BUY 3 FOR RS.7,500",
+            "text_mobile": "3 BRAS FOR RS.7,500",
             "details_label": "SHOP",
-            "link": "/collections/bundles"
+            "link": "/collections/3-for-7500"
           }
         },
         "msg_sale": {
@@ -168,7 +168,7 @@
             "text": "SLIPS & CAMIS: BUY 3 FOR RS.4,500",
             "text_mobile": "3 SLIPS & CAMIS FOR RS.4,500",
             "details_label": "SHOP",
-            "link": "/collections/slips-camis"
+            "link": "/collections/3-for-4500"
           }
         }
       },

@@ -95,6 +95,13 @@
       if ss.tile_enabled and paginate.current_page == 1 and collection.products_count > ss.tile_min_products
         assign show_tile = true
       endif
+      comment
+        No point promoting the page the customer is already on
+      endcomment
+      assign this_collection = routes.collections_url | append: '/' | append: collection.handle
+      if ss.tile_link == this_collection
+        assign show_tile = false
+      endif
       assign tile_bg = ss.tile_bg
       if ss.tile_gradient != blank
         assign tile_bg = ss.tile_gradient
