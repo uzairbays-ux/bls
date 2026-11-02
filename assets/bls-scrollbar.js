@@ -1,4 +1,4 @@
-/* Thin progress bar under the swipe rows on phones (Intimissimi style): a light track with a dark
+/* Thin progress bar under the swipe rows on phones: a light track with a dark
    thumb sized to the visible share of the row and moved with its scroll. Phones only (CSS). */
 (function () {
   if (window.blsScrollbar) return;

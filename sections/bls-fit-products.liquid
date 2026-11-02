@@ -27,7 +27,7 @@
         endfor
       -%}
       {%- if ok -%}
-        <div class="bls-fit-products__item">{% render 'wacoal-product-card', product: product, sizes: '(max-width: 749px) 50vw, 240px' %}</div>
+        <div class="bls-fit-products__item">{% render 'bls-product-card', product: product, sizes: '(max-width: 749px) 50vw, 240px' %}</div>
         {%- assign shown = shown | plus: 1 -%}
         {%- if shown >= 8 -%}{%- break -%}{%- endif -%}
       {%- endif -%}

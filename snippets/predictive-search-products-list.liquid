@@ -53,7 +53,7 @@
               class="predictive-search-results__card predictive-search-results__card--product"
               ref="recentlyViewedItems[]"
             >
-              {% render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 45vw, 260px' %}
+              {% render 'bls-product-card', product: product, badge: '', sizes: '(max-width: 749px) 45vw, 260px' %}
             </li>
           {% endfor %}
         {% else %}
@@ -62,7 +62,7 @@
               class="predictive-search-results__card predictive-search-results__card--product"
               ref="recentlyViewedItems[]"
             >
-              {% render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 45vw, 260px' %}
+              {% render 'bls-product-card', product: product, badge: '', sizes: '(max-width: 749px) 45vw, 260px' %}
             </li>
           {% endfor %}
         {% endif %}
@@ -83,7 +83,7 @@
           class="predictive-search-results__card predictive-search-results__card--product"
           ref="resultsItems[]"
         >
-          {% render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 45vw, 260px' %}
+          {% render 'bls-product-card', product: product, badge: '', sizes: '(max-width: 749px) 45vw, 260px' %}
         </li>
       {% endfor %}
     </ul>

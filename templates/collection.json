@@ -9,8 +9,8 @@
  */
 {
   "sections": {
-    "wacoal_collection_header": {
-      "type": "wacoal-collection-header",
+    "bls_collection_header": {
+      "type": "bls-collection-header",
       "blocks": {
         "cat_1": {
           "type": "category",
@@ -263,8 +263,8 @@
         "fallback_text": ""
       }
     },
-    "wacoal_main_collection": {
-      "type": "wacoal-main-collection",
+    "bls_main_collection": {
+      "type": "bls-main-collection",
       "name": "BLS collection grid",
       "settings": {
         "per_page": 24,
@@ -291,7 +291,7 @@
     }
   },
   "order": [
-    "wacoal_collection_header",
-    "wacoal_main_collection"
+    "bls_collection_header",
+    "bls_main_collection"
   ]
 }

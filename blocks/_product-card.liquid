@@ -5,13 +5,13 @@
 -%}
 
 {%- comment -%}
-  BLS: real products use the site's card (snippets/wacoal-product-card.liquid) so every Horizon grid
+  BLS: real products use the site's card (snippets/bls-product-card.liquid) so every Horizon grid
   (You may also like, cart, search results, product lists) matches the collection pages.
   The editor's empty placeholder cards keep Horizon's card.
 {%- endcomment -%}
 {%- if product != blank and product.id -%}
   <div class="wac-hcard">
-    {%- render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 50vw, 25vw' -%}
+    {%- render 'bls-product-card', product: product, badge: '', sizes: '(max-width: 749px) 50vw, 25vw' -%}
   </div>
 {%- else -%}
   {% capture children %}

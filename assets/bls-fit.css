@@ -1,6 +1,5 @@
 /* Fit pages: Find your fit, bra size calculator, I know my size (sections/bls-fit-*.liquid).
-   Measured from wacoal-america.com/pages/find-your-fit, bra-fit-calculator and i-know-my-bra-size,
-   in the theme's own fonts (serif headings, sans text). */
+   In the theme's own fonts (serif headings, sans text). */
 .bls-fit-section {
   --fit-ink: #111;
   --fit-text: #333;

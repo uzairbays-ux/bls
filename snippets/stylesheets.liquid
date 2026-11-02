@@ -1,6 +1,6 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
-{%- comment -%} Wacoal replica: extra weights of the store body font (Poppins) and heading font, Bebas Neue from Google Fonts for the condensed capitals, then the replica stylesheet. {%- endcomment -%}
+{%- comment -%} extra weights of the store body font (Poppins) and heading font, Bebas Neue from Google Fonts for the condensed capitals, then the replica stylesheet. {%- endcomment -%}
 {%- liquid
   assign wac_body = settings.type_body_font
   assign wac_body_400 = wac_body | font_modify: 'weight', '400'
@@ -37,4 +37,4 @@
     src: url('{{ 'bebas-neue-latin.woff2' | asset_url }}') format('woff2');
   }
 </style>
-{{ 'wacoal.css' | asset_url | stylesheet_tag }}
+{{ 'bls-theme.css' | asset_url | stylesheet_tag }}

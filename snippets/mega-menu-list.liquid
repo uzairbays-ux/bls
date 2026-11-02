@@ -291,7 +291,7 @@
             {% for item in collection_object.products %}
               <li class="mega-menu__content-list-item {% if forloop.index > max_featured_products_tablet %} mega-menu__content-list-item--hidden-tablet{% endif %}">
                 {%- comment -%} same card as the collection pages and carousels {%- endcomment -%}
-                {% render 'wacoal-product-card', product: item, badge: '', sizes: '260px' %}
+                {% render 'bls-product-card', product: item, badge: '', sizes: '260px' %}
               </li>
             {% endfor %}
           {% endpaginate %}

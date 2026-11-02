@@ -9,8 +9,8 @@
  */
 {
   "sections": {
-    "wacoal_hero": {
-      "type": "wacoal-hero",
+    "bls_hero": {
+      "type": "bls-hero",
       "blocks": {
         "slide_1": {
           "type": "slide",
@@ -83,8 +83,8 @@
         "autoplay_seconds": 6
       }
     },
-    "wacoal_tiles": {
-      "type": "wacoal-tiles",
+    "bls_tiles": {
+      "type": "bls-tiles",
       "blocks": {
         "tile_1": {
           "type": "tile",
@@ -159,8 +159,8 @@
         "shade": 55
       }
     },
-    "wacoal_styles_slider": {
-      "type": "wacoal-image-text-slider",
+    "bls_styles_slider": {
+      "type": "bls-image-text-slider",
       "blocks": {
         "item_01": {
           "type": "item",
@@ -282,8 +282,8 @@
         "heading": "Shop Bra Styles"
       }
     },
-    "wacoal_rich_text": {
-      "type": "wacoal-rich-text",
+    "bls_rich_text": {
+      "type": "bls-rich-text",
       "name": "BLS rich text",
       "settings": {
         "background": "#f3f0eb",
@@ -306,8 +306,8 @@
         "padding_y_mobile": 35
       }
     },
-    "wacoal_featured_collection": {
-      "type": "wacoal-featured-collection",
+    "bls_featured_collection": {
+      "type": "bls-featured-collection",
       "name": "BLS best sellers",
       "settings": {
         "heading": "Best Sellers",
@@ -383,8 +383,8 @@
         "text": ""
       }
     },
-    "wacoal_rich_text_sale": {
-      "type": "wacoal-rich-text",
+    "bls_rich_text_sale": {
+      "type": "bls-rich-text",
       "name": "BLS rich text",
       "settings": {
         "background": "#a8948b",
@@ -407,8 +407,8 @@
         "padding_y_mobile": 30
       }
     },
-    "wacoal_iwt_fall": {
-      "type": "wacoal-image-text",
+    "bls_iwt_fall": {
+      "type": "bls-image-text",
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/hix.ai-download-1781088063031.jpg",
@@ -428,8 +428,8 @@
         "margin_bottom": 0
       }
     },
-    "wacoal_iwt_rewards": {
-      "type": "wacoal-image-text",
+    "bls_iwt_rewards": {
+      "type": "bls-image-text",
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/hix.ai-download-1781088689103.jpg",
@@ -449,8 +449,8 @@
         "margin_bottom": 0
       }
     },
-    "wacoal_iwt_fit": {
-      "type": "wacoal-image-text",
+    "bls_iwt_fit": {
+      "type": "bls-image-text",
       "name": "BLS image with text",
       "settings": {
         "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.53.21.jpg",
@@ -1827,16 +1827,16 @@
     }
   },
   "order": [
-    "wacoal_hero",
-    "wacoal_tiles",
-    "wacoal_styles_slider",
-    "wacoal_rich_text",
-    "wacoal_featured_collection",
+    "bls_hero",
+    "bls_tiles",
+    "bls_styles_slider",
+    "bls_rich_text",
+    "bls_featured_collection",
     "bls_fabric_edit",
-    "wacoal_rich_text_sale",
-    "wacoal_iwt_fall",
-    "wacoal_iwt_rewards",
-    "wacoal_iwt_fit",
+    "bls_rich_text_sale",
+    "bls_iwt_fall",
+    "bls_iwt_rewards",
+    "bls_iwt_fit",
     "product_list_campaign",
     "two_up_content",
     "marquee_valueprops",

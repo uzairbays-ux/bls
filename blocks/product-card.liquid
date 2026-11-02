@@ -7,7 +7,7 @@
 {%- comment -%} BLS: same as blocks/_product-card.liquid, real products use the site's card {%- endcomment -%}
 {%- if product != blank and product.id -%}
   <div class="wac-hcard" {{ block.shopify_attributes }}>
-    {%- render 'wacoal-product-card', product: product, badge: '', sizes: '(max-width: 749px) 50vw, 25vw' -%}
+    {%- render 'bls-product-card', product: product, badge: '', sizes: '(max-width: 749px) 50vw, 25vw' -%}
   </div>
 {%- else -%}
   {% capture children %}

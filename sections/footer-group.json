@@ -11,8 +11,8 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
-    "wacoal_footer": {
-      "type": "wacoal-footer",
+    "bls_footer": {
+      "type": "bls-footer",
       "name": "BLS footer",
       "blocks": {
         "col_shop": {
@@ -91,6 +91,6 @@
     }
   },
   "order": [
-    "wacoal_footer"
+    "bls_footer"
   ]
 }

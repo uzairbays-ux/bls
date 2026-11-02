@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "wacoal-search",
+      "type": "bls-search",
       "settings": {
         "heading": "Search",
         "placeholder": "Search bras, panties, sleepwear...",

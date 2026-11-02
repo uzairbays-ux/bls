@@ -15,7 +15,7 @@
       }
     },
     "fabricate": {
-      "type": "wacoal-image-text",
+      "type": "bls-image-text",
       "settings": {
         "image": "shopify://shop_images/802_x802_2.webp",
         "image_asset": "",
@@ -35,7 +35,7 @@
       }
     },
     "embrace": {
-      "type": "wacoal-image-text",
+      "type": "bls-image-text",
       "settings": {
         "image": "shopify://shop_images/802_x802_72c3e605-ea09-4a3d-9b4b-90fcbdc9c2fd.webp",
         "image_asset": "",

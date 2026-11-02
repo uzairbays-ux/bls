@@ -9,8 +9,8 @@
  */
 {
   "sections": {
-    "wacoal_main_product": {
-      "type": "wacoal-main-product",
+    "bls_main_product": {
+      "type": "bls-main-product",
       "blocks": {
         "feature_padding": {
           "type": "feature",
@@ -337,8 +337,8 @@
         "padding-block-end": 0
       }
     },
-    "wacoal_similar": {
-      "type": "wacoal-product-recommendations",
+    "bls_similar": {
+      "type": "bls-product-recommendations",
       "settings": {
         "heading": "Similar styles",
         "limit": 10,
@@ -346,13 +346,13 @@
       }
     },
     "reviews": {
-      "type": "wacoal-reviews",
+      "type": "bls-reviews",
       "settings": {
         "heading": "Reviews"
       }
     },
     "faq": {
-      "type": "wacoal-faq",
+      "type": "bls-faq",
       "blocks": {
         "faq_size": {
           "type": "question",
@@ -1414,9 +1414,9 @@
     }
   },
   "order": [
-    "wacoal_main_product",
+    "bls_main_product",
     "product_usp",
-    "wacoal_similar",
+    "bls_similar",
     "reviews",
     "faq",
     "main",

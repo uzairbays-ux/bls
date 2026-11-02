@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "wacoal-404",
+      "type": "bls-404",
       "settings": {
         "eyebrow": "Error 404 · wardrobe malfunction",
         "title": "Well, this is awkward.",
@@ -18,7 +18,7 @@
       }
     },
     "picks": {
-      "type": "wacoal-featured-collection",
+      "type": "bls-featured-collection",
       "settings": {
         "heading": "Things that definitely exist",
         "subheading": "Real styles, real sizes, in stock and ready to fit.",

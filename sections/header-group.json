@@ -88,10 +88,10 @@
         "wishlist_url": ""
       }
     },
-    "wacoal_top_nav": {
-      "type": "wacoal-top-nav",
+    "bls_top_nav": {
+      "type": "bls-top-nav",
       "blocks": {
-        "brand_wacoal": {
+        "brand_main": {
           "type": "brand",
           "settings": {
             "label": "British Lingerie Studio",
@@ -130,7 +130,7 @@
         }
       },
       "block_order": [
-        "brand_wacoal",
+        "brand_main",
         "brand_btemptd",
         "store_pakistan",
         "store_usa",
@@ -142,8 +142,8 @@
         "store_label": ""
       }
     },
-    "wacoal_promo_bar": {
-      "type": "wacoal-promo-bar",
+    "bls_promo_bar": {
+      "type": "bls-promo-bar",
       "blocks": {
         "msg_shipping": {
           "type": "message",
@@ -185,8 +185,8 @@
     }
   },
   "order": [
-    "wacoal_top_nav",
-    "wacoal_promo_bar",
+    "bls_top_nav",
+    "bls_promo_bar",
     "header_section"
   ]
 }

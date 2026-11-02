@@ -64,7 +64,7 @@
       }
     },
     "cart_recommendations": {
-      "type": "wacoal-product-recommendations",
+      "type": "bls-product-recommendations",
       "settings": {
         "heading": "You may also like",
         "limit": 10,

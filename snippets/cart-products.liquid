@@ -46,7 +46,7 @@
 
     <div class="wac-cart-empty">
       <p class="wac-cart-empty__text">Not sure where to start? Pick a type:</p>
-      {% render 'wacoal-search-pills' %}
+      {% render 'bls-search-pills' %}
     </div>
 
     <a
@@ -65,7 +65,7 @@
     >
       {{- cart.item_count -}}
     </span>
-    {% render 'wacoal-free-shipping' %}
+    {% render 'bls-free-shipping' %}
     <form
       action="{{ routes.cart_url }}"
       class="cart-form"
