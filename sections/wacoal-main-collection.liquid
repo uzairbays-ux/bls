@@ -99,14 +99,33 @@
       if ss.tile_gradient != blank
         assign tile_bg = ss.tile_gradient
       endif
+
+      comment
+        The tile stays on its set row while products fill the space beside it. With fewer products it
+        moves to the last row and takes whatever is left there, so no gap shows.
+      endcomment
+      assign tile_row = ss.tile_row
+      assign tile_span = 2
+      assign tile_start = ''
+      assign page_count = collection.products.size
+      assign tile_needs = ss.tile_row | times: ss.columns | minus: 2
+      if page_count < tile_needs
+        assign last_row_count = page_count | modulo: ss.columns
+        assign tile_row = page_count | divided_by: ss.columns | plus: 1
+        assign tile_span = ss.columns | minus: last_row_count
+        assign tile_start = 1
+        if ss.tile_side == 'right'
+          assign tile_start = last_row_count | plus: 1
+        endif
+      endif
     -%}
     <div
       class="wac-coll__grid"
       data-wac-grid
-      style="--wac-cols: {{ ss.columns }}; --wac-tile-row: {{ ss.tile_row }}; --wac-tile-row-m: {{ ss.tile_row_mobile }};"
+      style="--wac-cols: {{ ss.columns }}; --wac-tile-row: {{ tile_row }}; --wac-tile-row-m: {{ ss.tile_row_mobile }};"
     >
       {%- if show_tile -%}
-        <a class="wac-coll__tile wac-coll__tile--{{ ss.tile_side }}" href="{{ ss.tile_link | default: '#' }}" style="--wac-tile-bg: {{ tile_bg }};">
+        <a class="wac-coll__tile wac-coll__tile--{{ ss.tile_side }}{% if tile_span == 1 %} wac-coll__tile--narrow{% endif %}" href="{{ ss.tile_link | default: '#' }}" style="--wac-tile-bg: {{ tile_bg }};{% if tile_start != blank %} --wac-tile-start: {{ tile_start }}; --wac-tile-span: {{ tile_span }};{% endif %}">
           {%- if ss.tile_image != blank -%}
             <img class="wac-coll__tile-img" src="{{ ss.tile_image | image_url: width: 1400 }}" alt="" loading="lazy" width="{{ ss.tile_image.width }}" height="{{ ss.tile_image.height }}">
           {%- endif -%}

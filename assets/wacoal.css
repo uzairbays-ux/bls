@@ -2655,6 +2655,18 @@
   letter-spacing: 1.5px;
 }
 
+/* one column wide, beside three products on the last row */
+@media screen and (min-width: 750px) {
+  .wac-coll__tile--narrow {
+    min-height: 0;
+  }
+
+  .wac-coll__tile--narrow .wac-coll__tile-h2 {
+    font-size: calc(44px * var(--bls-fs));
+    line-height: 42px;
+  }
+}
+
 .wac-coll__tile-text {
   margin: 10px 0 16px;
   font-size: calc(18px * var(--bls-fs));
@@ -3003,7 +3015,7 @@ html.wac-drawer-open {
 
 .wac-coll__about {
   max-width: 900px;
-  margin: 10px auto 60px;
+  margin: 10px auto 0;
   font-size: calc(14px * var(--bls-fs));
   line-height: 1.7;
   color: #444;
@@ -3015,7 +3027,7 @@ html.wac-drawer-open {
 
 @media screen and (max-width: 749px) {
   .wac-coll__about {
-    margin: 10px 2.5% 40px;
+    margin: 10px 2.5% 0;
   }
 }
 
