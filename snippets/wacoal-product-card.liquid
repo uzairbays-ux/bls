@@ -209,10 +209,12 @@
       {%- endif -%}
 
       <a class="wac-card__title-link" href="{{ product.url }}">
-        <span class="wac-card__meta">
-          <span>{{ product.vendor | escape }}</span>
-          {%- if style_no != blank -%}<span>{{ style_no | escape }}</span>{%- endif -%}
-        </span>
+        {%- if settings.wac_card_show_meta -%}
+          <span class="wac-card__meta">
+            <span>{{ product.vendor | escape }}</span>
+            {%- if style_no != blank -%}<span>{{ style_no | escape }}</span>{%- endif -%}
+          </span>
+        {%- endif -%}
         <span class="wac-card__title">{{ title | escape }}</span>
       </a>
 

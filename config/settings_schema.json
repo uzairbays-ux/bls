@@ -2304,6 +2304,17 @@
     ]
   },
   {
+    "name": "BLS product cards",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "wac_card_show_meta",
+        "label": "Show brand name and style number",
+        "default": false
+      }
+    ]
+  },
+  {
     "name": "BLS cart",
     "settings": [
       {
