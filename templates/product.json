@@ -330,7 +330,7 @@
     "product_usp": {
       "type": "product-usp",
       "settings": {
-        "eyebrow": "Try me on",
+        "eyebrow": "",
         "heading": "<p>Everyday comfort, engineered to stay put — soft cotton with a fit that moves with you.</p>",
         "color_scheme": "scheme-bls-signature",
         "padding-block-start": 64,
