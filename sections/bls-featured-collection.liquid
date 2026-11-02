@@ -1,0 +1,107 @@
+{% comment %}
+  "Best Sellers" product carousel: centred serif heading
+  and sub-heading, round prev/next buttons at the right, a horizontally scrolling row of
+  product cards: image (second image on hover), badge pills, colour swatches, vendor and
+  style number, title, price, star rating. Products come from the chosen collection.
+{% endcomment %}
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.max_products
+-%}
+<div class="wac-featured" data-wac-featured>
+  <div class="wac-featured__container">
+    <div class="wac-featured__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="wac-featured__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <div class="wac-featured__sub"><p>{{ section.settings.subheading | escape }}</p></div>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank and collection != blank -%}
+        <a class="wac-featured__link" href="{{ collection.url }}">{{ section.settings.link_label | escape }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Phones: a big square photo above the cards {%- endcomment -%}
+    {%- assign photo = section.settings.image | default: collection.featured_image -%}
+    {%- if photo != blank -%}
+      <a class="wac-featured__photo" href="{{ collection.url }}" tabindex="-1" aria-hidden="true">
+        {{- photo | image_url: width: 1200 | image_tag: widths: '400, 600, 800, 1200', sizes: '100vw', loading: 'lazy', class: 'wac-featured__photo-img', alt: '' -}}
+      </a>
+    {%- endif -%}
+
+    <div class="wac-featured__body">
+      <div class="wac-featured__nav">
+        <button type="button" class="wac-featured__arrow wac-featured__arrow--prev is-disabled" data-wac-featured-prev aria-label="Previous products" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="wac-featured__arrow wac-featured__arrow--next" data-wac-featured-next aria-label="Next products">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="wac-featured__track" data-wac-featured-track>
+        {%- for product in collection.products limit: limit -%}
+          {%- render 'bls-product-card', product: product, badge: section.settings.badge, sizes: '(max-width: 749px) 41vw, 278px', show_sizes: section.settings.show_sizes -%}
+        {%- else -%}
+          <p class="wac-featured__empty">Choose a collection with products.</p>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    function init(root) {
+      if (root.dataset.wacFeaturedReady) return;
+      root.dataset.wacFeaturedReady = '1';
+      var track = root.querySelector('[data-wac-featured-track]');
+      var prev = root.querySelector('[data-wac-featured-prev]');
+      var next = root.querySelector('[data-wac-featured-next]');
+      if (!track || !prev || !next) return;
+      function step() {
+        var card = track.querySelector('.wac-card');
+        if (!card) return track.clientWidth;
+        var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0) || 0;
+        var w = card.getBoundingClientRect().width + gap;
+        var n = Math.max(1, Math.floor((track.clientWidth + gap) / w));
+        return n * w;
+      }
+      function update() {
+        var max = track.scrollWidth - track.clientWidth - 1;
+        var atStart = track.scrollLeft <= 1;
+        var atEnd = track.scrollLeft >= max;
+        prev.classList.toggle('is-disabled', atStart); prev.disabled = atStart;
+        next.classList.toggle('is-disabled', atEnd); next.disabled = atEnd;
+      }
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+    function initAll() { document.querySelectorAll('[data-wac-featured]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    document.addEventListener('shopify:section:load', initAll);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BLS best sellers",
+  "tag": "section",
+  "class": "wac-section-featured",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Best Sellers" },
+    { "type": "text", "id": "subheading", "label": "Sub-heading", "default": "Crafted for consistency, chosen for comfort — these are the styles that set the standard." },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "image_picker", "id": "image", "label": "Photo above the products (phones)", "info": "Shown on phones only, square. Without one the collection's first photo is used." },
+    { "type": "text", "id": "link_label", "label": "Link to the collection (phones)", "default": "Shop now" },
+    { "type": "range", "id": "max_products", "label": "Products", "min": 4, "max": 20, "step": 1, "default": 10 },
+    { "type": "text", "id": "badge", "label": "Badge on every card", "default": "Best Seller", "info": "Leave empty for no badge. Sale items also get a Sale pill." },
+    { "type": "checkbox", "id": "show_sizes", "label": "Show the sizes in stock on each card", "default": true }
+  ],
+  "presets": [ { "name": "BLS best sellers" } ]
+}
+{% endschema %}
