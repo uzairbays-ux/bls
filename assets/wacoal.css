@@ -617,7 +617,7 @@
   display: none;
 }
 
-.wac-hero__sound {
+.wac-hero__sound[hidden] {
   display: none;
 }
 
@@ -8291,11 +8291,6 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     right: 16px;
     bottom: 64px;
     z-index: 2;
-    display: flex;
-  }
-
-  .wac-hero__sound[hidden] {
-    display: none;
   }
 
   /* a soft shade at the top, so the white logo reads on bright photos */
