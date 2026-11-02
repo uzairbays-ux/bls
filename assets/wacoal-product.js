@@ -94,6 +94,7 @@ class WacoalProduct {
     this.idInput = el.querySelector('[data-wac-id]');
     this.addBtn = el.querySelector('[data-wac-add]');
     this.message = el.querySelector('[data-wac-message]');
+    this.notify = el.querySelector('.wac-pdp__notify');
     this.qty = el.querySelector('[data-wac-qty]');
     this.color = null;
     if (this.data.multiColor) {
@@ -412,6 +413,7 @@ class WacoalProduct {
       });
     }
     this.setButton();
+    this.updateNotify();
     if (fromUser && variant) {
       const url = new URL(window.location.href);
       url.searchParams.set('variant', String(variant.id));
@@ -449,6 +451,20 @@ class WacoalProduct {
       btn.textContent = d.labelAdd;
       btn.classList.add('is-ready');
     }
+  }
+
+  /** Notify me: open for a sold out size, or when nothing is left at all. */
+  updateNotify() {
+    const box = this.notify;
+    if (!box) return;
+    if (box.querySelector('[data-wac-notify-keep]')) {
+      box.classList.add('is-open');
+      return;
+    }
+    const noneLeft = !this.data.variants.some((v) => v.available);
+    box.classList.toggle('is-open', noneLeft || Boolean(this.variant && !this.variant.available));
+    const size = box.querySelector('[data-wac-notify-size]');
+    if (size) size.value = this.variant ? this.variant.options.join(' / ') : 'Any size';
   }
 
   say(text) {

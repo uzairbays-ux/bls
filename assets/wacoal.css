@@ -3553,6 +3553,84 @@ html.wac-drawer-open {
   background: var(--wac-badge);
 }
 
+/* Notify me, under the add button on a sold out size */
+.wac-pdp__notify {
+  display: none;
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #f7f3f0;
+}
+
+.wac-pdp__notify.is-open {
+  display: block;
+}
+
+.wac-pdp__notify-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: calc(14px * var(--bls-fs));
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.wac-pdp__notify-row {
+  display: flex;
+  gap: 8px;
+}
+
+.wac-pdp__notify-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid #afafaf;
+  border-radius: 60px;
+  outline: 0;
+  background: #fff;
+  color: #000;
+  font-family: inherit;
+  font-size: 16px; /* iPhones zoom in on anything smaller */
+}
+
+.wac-pdp__notify-input:focus {
+  border-color: #000;
+}
+
+.wac-pdp__notify-btn {
+  flex: 0 0 auto;
+  height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 60px;
+  background: #2b2526;
+  color: #fff;
+  font-family: inherit;
+  font-size: calc(13px * var(--bls-fs));
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wac-pdp__notify-done,
+.wac-pdp__notify-error {
+  margin: 0;
+  font-size: calc(14px * var(--bls-fs));
+  line-height: 1.5;
+}
+
+.wac-pdp__notify-error {
+  margin-bottom: 10px;
+  color: #8b0000;
+}
+
+.wac-pdp__notify-error ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .wac-pdp__add.is-ready:hover {
   border-color: #cdb3a0;
   background: #cdb3a0;
