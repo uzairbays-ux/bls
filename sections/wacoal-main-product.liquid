@@ -666,17 +666,42 @@
         {% render 'wacoal-wishlist-button', product: p, class: 'wac-pdp__wish' %}
         </div>
         <p class="wac-pdp__message" data-wac-message role="status" aria-live="polite" hidden></p>
-
-        {%- if ss.ship_text != blank -%}
-          <div class="wac-pdp__ship">{{ ss.ship_text }}</div>
-        {%- endif -%}
-        {%- if ss.note_text != blank -%}
-          <div class="wac-pdp__note">{{ ss.note_text }}</div>
-        {%- endif -%}
-        {%- if ss.show_share -%}
-          {% render 'wacoal-share', product: p %}
-        {%- endif -%}
       </form>
+
+      <div class="wac-pdp__after">
+      {%- comment -%} Notify me: shown for a sold out size. Each request reaches the store's contact email with the product and size {%- endcomment -%}
+      {%- if ss.notify_enabled -%}
+        {%- assign notify_id = 'BackInStock-' | append: section.id -%}
+        {%- form 'contact', id: notify_id, class: 'wac-pdp__notify' -%}
+          <input type="hidden" name="contact[Request]" value="Back in stock">
+          <input type="hidden" name="contact[Product]" value="{{ p.title | escape }}">
+          <input type="hidden" name="contact[Size]" value="" data-wac-notify-size>
+          <input type="hidden" name="contact[Link]" value="{{ shop.url }}{{ p.url }}">
+          {%- if form.posted_successfully? -%}
+            <p class="wac-pdp__notify-done" role="status" data-wac-notify-keep>{{ ss.notify_done | escape }}</p>
+          {%- else -%}
+            <label class="wac-pdp__notify-label" for="{{ notify_id }}-email">{{ ss.notify_text | escape }}</label>
+            {%- if form.errors -%}
+              <div class="wac-pdp__notify-error" role="alert" data-wac-notify-keep>{{ form.errors | default_errors }}</div>
+            {%- endif -%}
+            <div class="wac-pdp__notify-row">
+              <input id="{{ notify_id }}-email" class="wac-pdp__notify-input" type="email" name="contact[email]" autocomplete="email" spellcheck="false" autocapitalize="off" placeholder="Email address" value="{{ form.email | default: customer.email }}" required>
+              <button type="submit" class="wac-pdp__notify-btn">{{ ss.notify_button | escape }}</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+
+      {%- if ss.ship_text != blank -%}
+        <div class="wac-pdp__ship">{{ ss.ship_text }}</div>
+      {%- endif -%}
+      {%- if ss.note_text != blank -%}
+        <div class="wac-pdp__note">{{ ss.note_text }}</div>
+      {%- endif -%}
+      {%- if ss.show_share -%}
+        {% render 'wacoal-share', product: p %}
+      {%- endif -%}
+      </div>
 
       {%- capture features -%}
         {%- for block in section.blocks -%}
@@ -925,6 +950,10 @@
     { "type": "text", "id": "select_label", "label": "Button before a size is picked", "default": "Select your size" },
     { "type": "text", "id": "add_label", "label": "Button text", "default": "Add to cart" },
     { "type": "text", "id": "sold_out_label", "label": "Sold out text", "default": "Sold out" },
+    { "type": "checkbox", "id": "notify_enabled", "label": "Show Notify me on sold out sizes", "default": true, "info": "Requests go to the store's contact email with the product and size." },
+    { "type": "text", "id": "notify_text", "label": "Notify me text", "default": "Get an email when this is back in stock." },
+    { "type": "text", "id": "notify_button", "label": "Notify me button", "default": "Notify me" },
+    { "type": "text", "id": "notify_done", "label": "Notify me thank you", "default": "Thanks, we'll email you when it's back." },
     { "type": "text", "id": "adding_label", "label": "While adding", "default": "Adding..." },
     { "type": "text", "id": "added_label", "label": "After adding", "default": "Added to cart" },
     { "type": "richtext", "id": "ship_text", "label": "Bold line under the button", "default": "<p>Free shipping on orders above Rs.9,999</p>" },
