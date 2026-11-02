@@ -599,10 +599,6 @@
 .wac-hero__image {
   position: absolute;
   inset: 0;
-  background-image: var(--wac-bg-desktop);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .wac-hero__image picture {
@@ -801,10 +797,6 @@
   .wac-hero__slide {
     min-height: var(--wac-hero-h-mobile, 635px);
     align-items: flex-end;
-  }
-
-  .wac-hero__image {
-    background-image: var(--wac-bg-mobile, var(--wac-bg-desktop));
   }
 
   .wac-hero__content,
@@ -8208,10 +8200,6 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   }
 
   /* first slide: the photo sits further right on phones */
-  .wac-hero__slide:first-child .wac-hero__image {
-    background-position: 30% center;
-  }
-
   .wac-hero__slide:first-child .wac-hero__img {
     object-position: 30% center;
   }
