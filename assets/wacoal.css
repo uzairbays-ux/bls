@@ -2229,6 +2229,13 @@
   letter-spacing: 0.2px;
 }
 
+/* a cut-short description holds two lines, so the page doesn't jump when the site font arrives */
+@media screen and (min-width: 750px) {
+  .wac-colhead__desc p:has(.wac-colhead__more) {
+    min-height: 48px;
+  }
+}
+
 .wac-colhead__more {
   margin-left: 6px;
   color: inherit;
