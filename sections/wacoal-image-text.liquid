@@ -9,7 +9,9 @@
   assign srcset = ''
   if ss.image != blank
     assign src = ss.image | image_url: width: 1440
-    assign srcset = ss.image | image_url: width: 720 | append: ' 720w, ' | append: src | append: ' 1440w'
+    capture srcset
+      render 'bls-srcset', image: ss.image, widths: '360,540,720,900,1080,1440'
+    endcapture
   elsif ss.image_asset != blank
     assign src = ss.image_asset | asset_url
   endif
@@ -45,7 +47,7 @@
         <img
           class="wac-iwt__img"
           src="{{ src }}"
-          {% if srcset != blank %}srcset="{{ srcset }}" sizes="(max-width: 749px) 100vw, 50vw"{% endif %}
+          {% if srcset != blank %}srcset="{{ srcset | strip }}" sizes="(max-width: 749px) 100vw, 50vw"{% endif %}
           width="{{ img_w }}"
           height="{{ img_h }}"
           alt="{{ ss.image.alt | default: ss.heading | strip_html | escape }}"

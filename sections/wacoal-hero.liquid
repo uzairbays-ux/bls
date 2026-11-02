@@ -2,7 +2,8 @@
   Full-bleed hero slider (Wacoal replica). One slide per block: a desktop and a phone
   image, a short line above the heading, the heading, optional text and a pill button.
   Images come from the theme's Files when picked, otherwise from a file in assets/
-  (the placeholder photos live there until the store's own are uploaded).
+  (the placeholder photos live there until the store's own are uploaded). The first photo
+  is a real image marked high priority, so the browser finds it early.
 {% endcomment %}
 <section
   class="wac-hero"
@@ -14,17 +15,30 @@
     <div class="wac-hero__track" data-wac-hero-track>
       {%- for block in section.blocks -%}
         {%- liquid
-          assign desktop_src = ''
-          if block.settings.image != blank
-            assign desktop_src = block.settings.image | image_url: width: 2048
+          assign image = block.settings.image
+          assign src = ''
+          assign srcset = ''
+          assign img_sizes = '100vw'
+          if image != blank
+            assign src = image | image_url: width: 2048
+            capture srcset
+              render 'bls-srcset', image: image, widths: '828,1080,1500,2048'
+            endcapture
+            comment
+              Phones show the photo in a tall box about 710px high, so a wide photo runs far wider than the screen
+            endcomment
+            assign phone_w = image.aspect_ratio | times: 710 | round
+            if phone_w > 430
+              assign img_sizes = '(max-width: 749px) ' | append: phone_w | append: 'px, 100vw'
+            endif
           elsif block.settings.image_asset != blank
-            assign desktop_src = block.settings.image_asset | asset_url
+            assign src = block.settings.image_asset | asset_url
           endif
-          assign mobile_src = desktop_src
+          assign src_mobile = ''
           if block.settings.image_mobile != blank
-            assign mobile_src = block.settings.image_mobile | image_url: width: 1000
+            assign src_mobile = block.settings.image_mobile | image_url: width: 1000
           elsif block.settings.image_mobile_asset != blank
-            assign mobile_src = block.settings.image_mobile_asset | asset_url
+            assign src_mobile = block.settings.image_mobile_asset | asset_url
           endif
         -%}
         <div
@@ -35,10 +49,22 @@
           aria-label="{{ forloop.index }} of {{ forloop.length }}"
           {{ block.shopify_attributes }}
         >
-          <div
-            class="wac-hero__image"
-            style="--wac-bg-desktop: url('{{ desktop_src }}'); --wac-bg-mobile: url('{{ mobile_src }}');"
-          ></div>
+          <div class="wac-hero__image">
+            {%- if src != blank -%}
+              <picture>
+                {%- if src_mobile != blank -%}
+                  <source media="(max-width: 749px)" srcset="{{ src_mobile }}">
+                {%- endif -%}
+                <img
+                  class="wac-hero__img"
+                  src="{{ src }}"
+                  {% if srcset != blank %}srcset="{{ srcset | strip }}" sizes="{{ img_sizes }}"{% endif %}
+                  alt="{{ image.alt | escape }}"
+                  {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                >
+              </picture>
+            {%- endif -%}
+          </div>
           {%- if block.settings.button_link != blank -%}
             <a class="wac-hero__link" href="{{ block.settings.button_link }}" tabindex="-1" aria-hidden="true"></a>
           {%- endif -%}
@@ -109,7 +135,12 @@
       var paused = false;
       var toggle = root.querySelector('[data-wac-hero-toggle]');
 
+      // the other slides wait for the first photo, then load in time for their turn
+      function loadRest() {
+        root.querySelectorAll('.wac-hero__img[loading="lazy"]').forEach(function (img) { img.loading = 'eager'; });
+      }
       function go(i, animate) {
+        if (animate !== false) loadRest();
         index = (i + slides.length) % slides.length;
         track.style.transition = animate === false ? 'none' : '';
         track.style.transform = 'translateX(' + (-index * 100) + '%)';
@@ -147,6 +178,7 @@
 
       go(0, false);
       start();
+      if (document.readyState === 'complete') loadRest(); else window.addEventListener('load', loadRest, { once: true });
     }
     function initAll() {
       document.querySelectorAll('[data-wac-hero]').forEach(init);

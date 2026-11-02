@@ -116,12 +116,12 @@
     <a class="wac-card__image-link" href="{{ product.url }}" aria-label="{{ title | escape }}">
       <span class="wac-card__flip">
         {%- if front -%}
-          <img class="wac-card__img wac-card__img--front" src="{{ front | image_url: width: 560 }}" srcset="{{ front | image_url: width: 280 }} 280w, {{ front | image_url: width: 560 }} 560w" sizes="{{ sizes | default: '278px' }}" width="{{ front.width }}" height="{{ front.height }}" alt="{{ front.alt | default: title | escape }}" {% if eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+          <img class="wac-card__img wac-card__img--front" src="{{ front | image_url: width: 560 }}" srcset="{{ front | image_url: width: 200 }} 200w, {{ front | image_url: width: 280 }} 280w, {{ front | image_url: width: 360 }} 360w, {{ front | image_url: width: 430 }} 430w, {{ front | image_url: width: 560 }} 560w" sizes="{{ sizes | default: '278px' }}" width="{{ front.width }}" height="{{ front.height }}" alt="{{ front.alt | default: title | escape }}" {% if eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
         {%- else -%}
           <span class="wac-card__img wac-card__img--front wac-card__img--empty"></span>
         {%- endif -%}
         {%- if back != blank -%}
-          <img class="wac-card__img wac-card__img--back" src="{{ back | image_url: width: 560 }}" width="{{ back.width }}" height="{{ back.height }}" alt="" loading="lazy">
+          <img class="wac-card__img wac-card__img--back" src="{{ back | image_url: width: 560 }}" srcset="{{ back | image_url: width: 280 }} 280w, {{ back | image_url: width: 430 }} 430w, {{ back | image_url: width: 560 }} 560w" sizes="{{ sizes | default: '278px' }}" width="{{ back.width }}" height="{{ back.height }}" alt="" loading="lazy">
         {%- endif -%}
       </span>
       {%- if status_flag != blank or size_flag != blank -%}

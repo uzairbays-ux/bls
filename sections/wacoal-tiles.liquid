@@ -27,7 +27,9 @@
       assign srcset = ''
       if block.settings.image != blank
         assign src = block.settings.image | image_url: width: 1440
-        assign srcset = block.settings.image | image_url: width: 720 | append: ' 720w, ' | append: src | append: ' 1440w'
+        capture srcset
+          render 'bls-srcset', image: block.settings.image, widths: '360,540,720,900,1080,1440'
+        endcapture
       elsif block.settings.image_asset != blank
         assign src = block.settings.image_asset | asset_url
       endif
@@ -48,7 +50,7 @@
           <img
             class="wac-tile__img"
             src="{{ src }}"
-            {% if srcset != blank %}srcset="{{ srcset }}" sizes="(max-width: 749px) 100vw, {{ 100 | divided_by: cols }}vw"{% endif %}
+            {% if srcset != blank %}srcset="{{ srcset | strip }}" sizes="(max-width: 749px) {% if section.settings.mobile_layout == 'swipe' %}75vw{% else %}100vw{% endif %}, {{ 100 | divided_by: cols }}vw"{% endif %}
             alt="{{ block.settings.image.alt | default: block.settings.heading_line1 | escape }}"
             loading="lazy"
           >

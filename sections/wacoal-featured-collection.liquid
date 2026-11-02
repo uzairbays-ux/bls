@@ -42,7 +42,7 @@
 
       <div class="wac-featured__track" data-wac-featured-track>
         {%- for product in collection.products limit: limit -%}
-          {%- render 'wacoal-product-card', product: product, badge: section.settings.badge, sizes: '278px', show_sizes: section.settings.show_sizes -%}
+          {%- render 'wacoal-product-card', product: product, badge: section.settings.badge, sizes: '(max-width: 749px) 41vw, 278px', show_sizes: section.settings.show_sizes -%}
         {%- else -%}
           <p class="wac-featured__empty">Choose a collection with products.</p>
         {%- endfor -%}

@@ -30,7 +30,15 @@
     --font-accent--family: 'Achemost', {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
   }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+{%- comment -%} Bebas Neue comes with the theme, so the page never waits on Google to show text {%- endcomment -%}
+<link rel="preload" href="{{ 'bebas-neue-latin.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('{{ 'bebas-neue-latin.woff2' | asset_url }}') format('woff2');
+  }
+</style>
 {{ 'wacoal.css' | asset_url | stylesheet_tag }}
