@@ -149,8 +149,8 @@
   endif
 
   comment
-    Size option: the first option that is not the colour. Bra sizes (two digits then letters,
-    e.g. 34B, 36DD) are split into a band list and a cup list.
+    Size option: the first option that is not the colour. With the setting on, bra sizes (two
+    digits then letters, e.g. 34B, 36DD) are split into a band list and a cup list.
   endcomment
   assign size_index = -1
   for option in p.options_with_values
@@ -161,7 +161,7 @@
   assign split_sizes = false
   assign bands = ''
   assign cups = ''
-  if size_index > -1 and p.has_only_default_variant == false
+  if ss.split_bra_sizes and size_index > -1 and p.has_only_default_variant == false
     assign split_sizes = true
     assign size_option = p.options_with_values[size_index]
     for value in size_option.values
@@ -914,7 +914,8 @@
     { "type": "text", "id": "badge_tags", "label": "Badge by tag", "default": "Best Seller, Bestseller=Best Seller, new=New", "info": "Tags that show a pill next to the price, separated by commas. Use tag=Text to change the wording. Products on sale show Sale when no tag matches." },
     { "type": "header", "content": "Options" },
     { "type": "text", "id": "color_label", "label": "Colour label", "default": "Color" },
-    { "type": "text", "id": "band_label", "label": "Band label", "default": "Band", "info": "Bra sizes like 34B are split into band and cup." },
+    { "type": "checkbox", "id": "split_bra_sizes", "label": "Split bra sizes into band and cup", "default": true, "info": "Off shows each size as it is in Shopify, e.g. 34B." },
+    { "type": "text", "id": "band_label", "label": "Band label", "default": "Band", "info": "Used when bra sizes are split." },
     { "type": "text", "id": "cup_label", "label": "Cup label", "default": "Cup" },
     { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Size Guide", "info": "The charts are the Size chart / Extra size chart blocks: the first Size chart whose tags or title match is shown; each matching Extra size chart is a tab." },
     { "type": "image_picker", "id": "sister_size_chart", "label": "Sister Size chart", "info": "Shown on charts that have Sister Size switched on." },
