@@ -11,13 +11,12 @@
   "sections": {
     "wacoal_collection_header": {
       "type": "wacoal-collection-header",
-      "name": "BLS collection header",
       "blocks": {
         "cat_1": {
           "type": "category",
           "settings": {
             "collection": "padded",
-            "title": "Padded",
+            "title": "T-Shirt",
             "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
@@ -97,9 +96,9 @@
           "type": "category",
           "settings": {
             "collection": "hipster",
+            "image": "shopify://shop_images/BLS_-_Rosa_Mid_Rise_Cotton_Panty_-_Pack_Of_5.png",
             "title": "Hipster",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties",
-            "image": "shopify://shop_images/BLS_-_Rosa_Mid_Rise_Cotton_Panty_-_Pack_Of_5.png"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
           }
         },
         "cat_p3": {
@@ -251,8 +250,10 @@
         "cat_b1",
         "cat_b2"
       ],
+      "name": "BLS collection header",
       "settings": {
         "show_description": true,
+        "description_length": 160,
         "fallback_text": ""
       }
     },
@@ -261,8 +262,13 @@
       "name": "BLS collection grid",
       "settings": {
         "per_page": 24,
+        "infinite_scroll": true,
         "columns": 4,
         "inline_filters": true,
+        "show_full_description": true,
+        "new_days": 30,
+        "hide_size_flag": false,
+        "show_sizes": true,
         "tile_enabled": true,
         "tile_row": 4,
         "tile_row_mobile": 3,
