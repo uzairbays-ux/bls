@@ -1,0 +1,285 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "wacoal_collection_header": {
+      "type": "wacoal-collection-header",
+      "name": "BLS collection header",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "collection": "padded",
+            "title": "Padded",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "collection": "non-padded",
+            "title": "Non Padded",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "collection": "wired-1",
+            "title": "Wired",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "collection": "non-wired",
+            "title": "Wireless",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": {
+            "collection": "bras-lace",
+            "title": "Lace",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_6": {
+          "type": "category",
+          "settings": {
+            "collection": "bras-cotton",
+            "title": "Cotton",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_7": {
+          "type": "category",
+          "settings": {
+            "collection": "bralette",
+            "title": "Bralette",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_8": {
+          "type": "category",
+          "settings": {
+            "collection": "seamless-bra",
+            "title": "Seamless",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_9": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-bundles-sets-bra-panty-sets",
+            "title": "Bra & Panty Sets",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+          }
+        },
+        "cat_p1": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-lace-1",
+            "title": "Lace",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p2": {
+          "type": "category",
+          "settings": {
+            "collection": "hipster",
+            "title": "Hipster",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties",
+            "image": "shopify://shop_images/BLS_-_Rosa_Mid_Rise_Cotton_Panty_-_Pack_Of_5.png"
+          }
+        },
+        "cat_p3": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-cotton",
+            "title": "Cotton",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p4": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-polyester-polyamide",
+            "title": "Polyamide",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p5": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-panty-sets",
+            "title": "Panty Sets",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p6": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-bundles-sets-bra-panty-sets",
+            "title": "Bra & Panty Sets",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p7": {
+          "type": "category",
+          "settings": {
+            "collection": "teens-panty",
+            "title": "Teens",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_s1": {
+          "type": "category",
+          "settings": {
+            "collection": "pajama-sets",
+            "title": "Pajama Sets",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s2": {
+          "type": "category",
+          "settings": {
+            "collection": "short-sets",
+            "title": "Short Sets",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s3": {
+          "type": "category",
+          "settings": {
+            "collection": "night-wear-nightgown",
+            "title": "Nightgown",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s4": {
+          "type": "category",
+          "settings": {
+            "collection": "sleep-wear-cotton",
+            "title": "Cotton",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s5": {
+          "type": "category",
+          "settings": {
+            "collection": "sleep-wear-silk",
+            "title": "Silk",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_s6": {
+          "type": "category",
+          "settings": {
+            "collection": "sleep-wear-viscose",
+            "title": "Viscose",
+            "show_on": "sleep-wear,night-wear,pajama-sets,short-sets,night-wear-short-sets,lounge-wear-short-sets,night-wear-nightgown,nightgown,sleep-wear-cotton,sleep-wear-silk,sleep-wear-viscose"
+          }
+        },
+        "cat_a1": {
+          "type": "category",
+          "settings": {
+            "collection": "shaper",
+            "title": "Shaper",
+            "show_on": "active-shape-wear,sports-shape-wear,shaper,sports-bra,sport-wear,sports-shape-wear-sports-bra"
+          }
+        },
+        "cat_a2": {
+          "type": "category",
+          "settings": {
+            "collection": "sports-bra",
+            "title": "Sports Bra",
+            "show_on": "active-shape-wear,sports-shape-wear,shaper,sports-bra,sport-wear,sports-shape-wear-sports-bra"
+          }
+        },
+        "cat_b1": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-bundles-sets-bra-panty-sets",
+            "title": "Bra & Panty Sets",
+            "show_on": "bundles,bundle"
+          }
+        },
+        "cat_b2": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-panty-sets",
+            "title": "Panty Sets",
+            "show_on": "bundles,bundle"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7",
+        "cat_8",
+        "cat_9",
+        "cat_p1",
+        "cat_p2",
+        "cat_p3",
+        "cat_p4",
+        "cat_p5",
+        "cat_p6",
+        "cat_p7",
+        "cat_s1",
+        "cat_s2",
+        "cat_s3",
+        "cat_s4",
+        "cat_s5",
+        "cat_s6",
+        "cat_a1",
+        "cat_a2",
+        "cat_b1",
+        "cat_b2"
+      ],
+      "settings": {
+        "show_description": true,
+        "fallback_text": ""
+      }
+    },
+    "wacoal_main_collection": {
+      "type": "wacoal-main-collection-new",
+      "name": "BLS collection grid",
+      "settings": {
+        "per_page": 24,
+        "columns": 4,
+        "inline_filters": true,
+        "tile_enabled": true,
+        "tile_row": 4,
+        "tile_row_mobile": 3,
+        "tile_side": "right",
+        "tile_min_products": 8,
+        "tile_bg": "#cdc9de",
+        "tile_gradient": "linear-gradient(140deg, rgba(169, 161, 200, 1), rgba(205, 201, 222, 1) 100%)",
+        "tile_heading_1": "bra bundles",
+        "tile_heading_2": "3 FROM RS.7,500",
+        "tile_text": "your everyday favourites",
+        "tile_button": "SHOP NOW",
+        "tile_link": "/collections/bundles"
+      }
+    }
+  },
+  "order": [
+    "wacoal_collection_header",
+    "wacoal_main_collection"
+  ]
+}
