@@ -668,6 +668,7 @@
         <p class="wac-pdp__message" data-wac-message role="status" aria-live="polite" hidden></p>
       </form>
 
+      <div class="wac-pdp__after">
       {%- comment -%} Notify me: shown for a sold out size. Each request reaches the store's contact email with the product and size {%- endcomment -%}
       {%- if ss.notify_enabled -%}
         {%- assign notify_id = 'BackInStock-' | append: section.id -%}
@@ -700,6 +701,7 @@
       {%- if ss.show_share -%}
         {% render 'wacoal-share', product: p %}
       {%- endif -%}
+      </div>
 
       {%- capture features -%}
         {%- for block in section.blocks -%}

@@ -3296,6 +3296,12 @@ html.wac-drawer-open {
   padding: 15px;
 }
 
+/* the rest of the column, outside the add to bag form so Notify me can have a form of its own */
+.wac-pdp__after {
+  margin-top: -15px;
+  padding: 0 15px 15px;
+}
+
 .wac-pdp__option {
   margin-bottom: 25px;
 }
@@ -6096,7 +6102,8 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   background: var(--wac-blush);
 }
 
-.wac-pdp__info .wac-share {
+.wac-pdp__info .wac-share,
+.wac-pdp__after .wac-share {
   margin-top: 16px;
 }
 
