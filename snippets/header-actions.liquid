@@ -134,6 +134,11 @@
       type="module"
       fetchpriority="low"
     ></script>
+    <script
+      src="{{ 'bls-cart-recs.js' | asset_url }}"
+      defer
+      fetchpriority="low"
+    ></script>
 
     {% capture empty_cart_drawer_content %}
       <div class="cart-drawer__header">
@@ -241,6 +246,14 @@
                   class="cart-drawer__items"
                 >
                   {% render 'cart-products' %}
+                  {%- comment -%} You may also like: filled by assets/bls-cart-recs.js, and kept when the cart redraws {%- endcomment -%}
+                  <div
+                    class="bls-cart-recs"
+                    data-bls-cart-recs
+                    data-skip-subtree-update
+                    data-bag="{{ cart.items | map: 'product_id' | join: ',' }}"
+                    data-url="{{ routes.product_recommendations_url }}?product_id={{ cart.items.first.product_id }}&section_id=bls-cart-recommendations&limit=10&intent=related"
+                  ></div>
                 </scroll-hint>
 
                 <div
