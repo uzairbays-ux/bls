@@ -81,6 +81,7 @@
         },
         "cat_9": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "panties-bundles-sets-bra-panty-sets",
             "title": "Bra & Panty Sets",
