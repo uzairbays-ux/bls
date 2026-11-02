@@ -1067,7 +1067,7 @@
   margin: 0 0 13px;
   font-family: var(--wac-font-serif);
   font-size: calc(36px * var(--bls-fs));
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.3;
   letter-spacing: 0;
   text-transform: none;
@@ -1353,7 +1353,7 @@
   margin: 0;
   font-family: var(--wac-font-serif);
   font-size: calc(50px * var(--bls-fs));
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.3;
   letter-spacing: 0;
   text-transform: none;
@@ -4724,7 +4724,7 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   margin: 18px 0 12px;
   font-family: var(--wac-font-serif);
   font-size: calc(40px * var(--bls-fs));
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.15;
   color: var(--wac-ink);
 }
