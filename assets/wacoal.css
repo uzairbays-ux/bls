@@ -6941,8 +6941,8 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
   .wac-footer__brand img {
     display: block;
     width: auto;
-    height: 34px;
-    filter: invert(1) grayscale(1) contrast(1.4); /* the logo file has a white background: inverted, it melts into the black footer */
+    height: 64px;
+    filter: invert(1) grayscale(1) contrast(1.4); /* the dark logo turns white on the black footer */
   }
 
   .wac-footer__wrap {
