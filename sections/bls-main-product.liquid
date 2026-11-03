@@ -403,7 +403,7 @@
       <span class="wac-pdp__rating-text">{{ rating.rating | round: 1 }} ({{ rating_count }})</span>
     </a>
   {%- endif -%}
-  {%- if ss.brand_line != blank -%}
+  {%- if ss.show_brand_line and ss.brand_line != blank -%}
     <div class="wac-pdp__vendor">{{ ss.brand_line | escape }}</div>
   {%- endif -%}
   <h1 class="wac-pdp__title">{{ title | escape }}</h1>
@@ -933,7 +933,8 @@
     { "type": "select", "id": "photo_shape", "label": "Photo shape", "options": [ { "value": "tall", "label": "Tall frame (592 x 695)" }, { "value": "portrait", "label": "Portrait 2:3" }, { "value": "natural", "label": "Photo's own shape" } ], "default": "tall" },
     { "type": "checkbox", "id": "sticky_gallery", "label": "Photos stay in view while scrolling (desktop)", "default": true },
     { "type": "header", "content": "Title area" },
-    { "type": "text", "id": "brand_line", "label": "Line above the title", "default": "British Lingerie Studio", "info": "Leave empty to hide." },
+    { "type": "checkbox", "id": "show_brand_line", "label": "Show the line above the title", "default": false },
+    { "type": "text", "id": "brand_line", "label": "Line above the title", "default": "British Lingerie Studio" },
     { "type": "checkbox", "id": "show_style", "label": "Show style number", "default": true, "info": "Taken from the start of the SKU, e.g. BLSAUPD04." },
     { "type": "text", "id": "style_label", "label": "Style number label", "default": "Style" },
     { "type": "text", "id": "badge_tags", "label": "Badge by tag", "default": "Best Seller, Bestseller=Best Seller, new=New", "info": "Tags that show a pill next to the price, separated by commas. Use tag=Text to change the wording. Products on sale show Sale when no tag matches." },
