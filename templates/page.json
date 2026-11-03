@@ -63,8 +63,8 @@
           "settings": {
             "city": "Karachi",
             "name": "Dolmen Mall, Tariq Road",
-            "address": "3rd Floor, Dolmen Mall, Tariq Road.",
-            "phone": "0213 4326616",
+            "address": "3rd Floor, Shop No. TF10, Dolmen Mall, Tariq Road, Karachi.",
+            "phone": "0319 7892049",
             "map_query": "Dolmen Mall Tariq Road Karachi"
           }
         },
@@ -96,16 +96,6 @@
             "address": "2nd Floor, Dolmen Mall Hyderi, Karachi.",
             "phone": "021 36630008",
             "map_query": "Dolmen Mall Hyderi Karachi"
-          }
-        },
-        "store_05": {
-          "type": "store",
-          "settings": {
-            "city": "Karachi",
-            "name": "Ocean Mall",
-            "address": "3rd Floor, Ocean Mall, Clifton, Karachi.",
-            "phone": "021 35166622",
-            "map_query": "The Ocean Mall Karachi"
           }
         },
         "store_06": {
@@ -194,7 +184,6 @@
         "store_02",
         "store_03",
         "store_04",
-        "store_05",
         "store_06",
         "store_07",
         "store_08",
