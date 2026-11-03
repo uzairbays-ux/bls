@@ -94,7 +94,7 @@
           "type": "category",
           "settings": {
             "collection": "hipster",
-            "image": "shopify://shop_images/BLS_-_Rosa_Mid_Rise_Cotton_Panty_-_Pack_Of_5.png",
+            "image": "shopify://shop_images/BLS-PoppyCottonAndLacePanty-Black2.jpg",
             "title": "Hipster",
             "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
           }
@@ -119,7 +119,7 @@
           "type": "category",
           "settings": {
             "collection": "panties-polyester-polyamide",
-            "title": "Polyamide",
+            "title": "Polymide",
             "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
           }
         },
