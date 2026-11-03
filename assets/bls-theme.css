@@ -1446,6 +1446,15 @@
   }
 }
 
+/* product photos are taller than their boxes: trim mostly from the bottom, so heads stay in */
+.wac-card__img,
+.wac-colhead__img,
+.wac-styles__img,
+.bls-cart-recs__img,
+.wac-wl__image img {
+  object-position: 50% 10%;
+}
+
 .wac-card__flags {
   position: absolute;
   left: 10px;
