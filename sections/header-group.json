@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "type": "header",
   "name": "Header",
   "sections": {
@@ -170,12 +169,33 @@
             "details_label": "SHOP",
             "link": "/collections/3-for-4500"
           }
+        },
+        "msg_9500": {
+          "type": "message",
+          "settings": {
+            "text": "BRAS: BUY ANY 3 FOR RS.9,500",
+            "text_mobile": "3 BRAS FOR RS.9,500",
+            "details_label": "SHOP",
+            "link": "/collections/3-for-9500"
+          }
+        },
+        "msg_3500": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "text": "PANTIES: BUY ANY 3 FOR RS.3,500",
+            "text_mobile": "3 PANTIES FOR RS.3,500",
+            "details_label": "SHOP",
+            "link": "/collections/3-for-3500"
+          }
         }
       },
       "block_order": [
         "msg_shipping",
         "msg_rewards",
-        "msg_sale"
+        "msg_9500",
+        "msg_sale",
+        "msg_3500"
       ],
       "settings": {
         "background": "#ecd8c9",
