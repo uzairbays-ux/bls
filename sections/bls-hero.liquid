@@ -249,7 +249,8 @@
         if (!video) {
           timer = setTimeout(function () { go(index + 1); start(); }, delay);
         } else if (!video.classList.contains('is-playing')) {
-          timer = setTimeout(function () { videoFailed(video); }, delay * 2);
+          // generous, so a slow connection still gets its video
+          timer = setTimeout(function () { videoFailed(video); }, 20000);
         }
       }
       function stop() {
@@ -257,6 +258,7 @@
         timer = null;
       }
       function pageLoaded() {
+        if (loaded) return;
         loaded = true;
         loadRest();
         playVideos();
@@ -294,7 +296,18 @@
 
       go(0, false);
       start();
-      if (document.readyState === 'complete') pageLoaded(); else window.addEventListener('load', pageLoaded, { once: true });
+
+      // videos and the other photos start once the first photo is in, or when the page finishes loading,
+      // whichever comes first (some app scripts keep the page from ever finishing on phones)
+      var firstPhoto = root.querySelector('.wac-hero__img');
+      function afterFirstPhoto() { setTimeout(pageLoaded, 200); }
+      if (document.readyState === 'complete' || !firstPhoto || firstPhoto.complete) {
+        afterFirstPhoto();
+      } else {
+        firstPhoto.addEventListener('load', afterFirstPhoto, { once: true });
+        firstPhoto.addEventListener('error', afterFirstPhoto, { once: true });
+        window.addEventListener('load', pageLoaded, { once: true });
+      }
     }
     function initAll() {
       document.querySelectorAll('[data-wac-hero]').forEach(init);
