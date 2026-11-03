@@ -6797,7 +6797,13 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     padding: 0;
   }
 
-  .wac-drawer-top {
+  .menu-drawer__view-all .menu-drawer__menu-item-text {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.wac-drawer-top {
     flex: 0 0 auto;
     height: 54px;
     border-bottom: 1px solid #ececec;

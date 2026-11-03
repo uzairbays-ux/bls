@@ -324,6 +324,14 @@
                           role="list"
                           tabindex="-1"
                         >
+                          {%- comment -%} tapping a main link opens this list, so its own page is the first item here {%- endcomment -%}
+                          {%- if link.url != blank and link.url != '#' -%}
+                            <li class="menu-drawer__list-item{% if block_settings.drawer_dividers %} menu-drawer__list-item--divider{% endif %}">
+                              <a href="{{ link.url }}" class="menu-drawer__menu-item menu-drawer__menu-item--parent menu-drawer__view-all focus-inset">
+                                <span class="menu-drawer__menu-item-text wrap-text">Shop all {{ link.title | escape }}</span>
+                              </a>
+                            </li>
+                          {%- endif -%}
                           {% assign first_accordion_open = false -%}
                           {%- for childlink in link.links -%}
                             <li
