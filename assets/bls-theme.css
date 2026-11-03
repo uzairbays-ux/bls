@@ -8244,6 +8244,18 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     display: flex;
   }
 
+  /* Home: the BLS monogram, dark like the other icons, white in the dark capsule */
+  .bls-bnav__logo {
+    display: block;
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) opacity(0.78);
+  }
+
+  .bls-bnav__item.is-active .bls-bnav__logo {
+    filter: brightness(0) invert(1);
+  }
+
   .bls-bnav__badge {
     position: absolute;
     top: -6px;
