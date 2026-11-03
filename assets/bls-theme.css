@@ -2315,7 +2315,9 @@
   position: relative;
   display: block;
   overflow: hidden;
+  border: 1px solid #ebe5df;
   border-radius: 8px;
+  background: #fff;
   color: #000;
   text-decoration: none;
 }
@@ -2329,19 +2331,19 @@
   background: #ebe6e0;
 }
 
-/* the name sits in a box on the photo, so these don't read as product cards */
+/* the name sits in a strip under the photo, inside the same box, so these don't read as product cards */
 .wac-colhead__label {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  left: 8px;
-  padding: 9px 6px;
-  border-radius: 6px;
+  display: block;
+  padding: 10px 6px;
   background: #fff;
   font-size: calc(14px * var(--bls-fs));
   font-weight: 500;
   line-height: 1.2;
   text-align: center;
+}
+
+.wac-colhead__item.is-current .wac-colhead__link {
+  border-color: #2b2526;
 }
 
 .wac-colhead__item.is-current .wac-colhead__label {
@@ -2980,10 +2982,7 @@ html.wac-drawer-open {
   }
 
   .wac-colhead__label {
-    right: 6px;
-    bottom: 6px;
-    left: 6px;
-    padding: 7px 4px;
+    padding: 8px 4px;
     font-size: calc(13px * var(--bls-fs));
   }
 
