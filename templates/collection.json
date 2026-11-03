@@ -107,6 +107,14 @@
             "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
           }
         },
+        "category_qJfJCq": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-lace-1",
+            "title": "Brazilian",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
         "cat_p3": {
           "type": "category",
           "settings": {
@@ -240,6 +248,7 @@
         "cat_9",
         "cat_p2",
         "cat_p1",
+        "category_qJfJCq",
         "cat_p3",
         "cat_p4",
         "cat_p5",
