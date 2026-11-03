@@ -312,7 +312,8 @@
     function initAll() {
       document.querySelectorAll('[data-wac-hero]').forEach(init);
     }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+    // this script comes straight after the hero, so it starts now instead of waiting for every other script
+    initAll();
     document.addEventListener('shopify:section:load', initAll);
   })();
 </script>
