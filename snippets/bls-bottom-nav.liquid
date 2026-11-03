@@ -19,9 +19,8 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.3-4.3"/></svg>
     <span>Search</span>
   </button>
-  <a class="bls-bnav__item{% if t == 'index' %} is-active{% endif %}" href="{{ routes.root_url }}"{% if t == 'index' %} aria-current="page"{% endif %}>
+  <a class="bls-bnav__item bls-bnav__item--home{% if t == 'index' %} is-active{% endif %}" href="{{ routes.root_url }}" aria-label="Home"{% if t == 'index' %} aria-current="page"{% endif %}>
     <img class="bls-bnav__logo" src="{{ 'bls-favicon.webp' | file_url }}" width="24" height="24" alt="" aria-hidden="true">
-    <span>Home</span>
   </a>
   <a class="bls-bnav__item{% if request.path contains 'wish' %} is-active{% endif %}" href="{{ wl_url }}"{% if request.path contains 'wish' %} aria-current="page"{% endif %}>
     <span class="bls-bnav__icon">
