@@ -136,6 +136,7 @@
         },
         "cat_p5": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "panties-panty-sets",
             "title": "Panty Sets",
@@ -152,6 +153,7 @@
         },
         "cat_p7": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "teens-panty",
             "title": "Teens",
