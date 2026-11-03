@@ -8272,6 +8272,37 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transform: translate(-50%, -50%);
   }
 
+  /* a thin gradient ring that turns slowly around the round Home button */
+  .bls-bnav__item--home.is-active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: 58px;
+    height: 58px;
+    margin: -29px 0 0 -29px;
+    padding: 2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ecd8c9, #73170f 40%, #d9b38c 70%, #ecd8c9);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    animation: bls-home-ring 3s linear infinite;
+  }
+
+  @keyframes bls-home-ring {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bls-bnav__item--home.is-active::after {
+      animation: none;
+    }
+  }
+
   .bls-bnav__badge {
     position: absolute;
     top: -6px;
