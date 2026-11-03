@@ -90,20 +90,20 @@
             "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
           }
         },
-        "cat_p1": {
-          "type": "category",
-          "settings": {
-            "collection": "panties-lace-1",
-            "title": "Lace",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
-          }
-        },
         "cat_p2": {
           "type": "category",
           "settings": {
             "collection": "hipster",
             "image": "shopify://shop_images/BLS_-_Rosa_Mid_Rise_Cotton_Panty_-_Pack_Of_5.png",
             "title": "Hipster",
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "cat_p1": {
+          "type": "category",
+          "settings": {
+            "collection": "panties-lace-1",
+            "title": "Lace",
             "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
           }
         },
@@ -238,8 +238,8 @@
         "cat_7",
         "cat_8",
         "cat_9",
-        "cat_p1",
         "cat_p2",
+        "cat_p1",
         "cat_p3",
         "cat_p4",
         "cat_p5",
