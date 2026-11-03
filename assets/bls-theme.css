@@ -2937,9 +2937,15 @@ html.wac-drawer-open {
     margin: 0 2.5%;
   }
 
+  .wac-colhead__breadcrumb {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
   .wac-colhead__title {
-    font-size: calc(22px * var(--bls-fs));
-    line-height: 26.4px;
+    font-size: calc(32px * var(--bls-fs));
+    line-height: 1;
   }
 
   .wac-colhead__desc p {
