@@ -379,7 +379,7 @@
       "name": "BLS fabric edit",
       "settings": {
         "heading": "The Fabric Edit",
-        "heading_color": "#b16a80",
+        "heading_color": "#a45d75",
         "text": ""
       }
     },
@@ -462,9 +462,9 @@
         "preheader": "",
         "heading": "THE PERFECT FIT",
         "heading_style": "bold",
-        "heading_color": "#b16a80",
+        "heading_color": "#a45d75",
         "text": "<p>Measure at home with our size calculator, or message our fit team and we'll help you choose.</p>",
-        "button_label": "LEARN MORE",
+        "button_label": "FIND YOUR FIT",
         "button_link": "",
         "background": "#fafafc",
         "margin_bottom": 0
