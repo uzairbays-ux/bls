@@ -194,6 +194,26 @@
   href="{{ canonical_url }}"
 >
 
+{%- if seo_v2 and settings.seo_noindex != blank -%}
+  {%- liquid
+    # Duplicate or leftover pages and catalogue-copy collections listed in the theme settings stay out of Google
+    assign noindex_list = settings.seo_noindex | remove: ' ' | downcase | prepend: ',' | append: ','
+    assign this_handle = ''
+    if request.page_type == 'collection' and collection != blank
+      assign this_handle = collection.handle
+    elsif request.page_type == 'page'
+      assign this_handle = page.handle
+    endif
+    assign handle_key = ',' | append: this_handle | append: ','
+  -%}
+  {%- if this_handle != blank and noindex_list contains handle_key -%}
+    <meta
+      name="robots"
+      content="noindex, follow"
+    >
+  {%- endif -%}
+{%- endif -%}
+
 {% if seo_v2 %}
   {%- if seo_description != blank -%}
     <meta

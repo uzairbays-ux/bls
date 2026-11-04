@@ -2389,6 +2389,12 @@
         "id": "seo_facebook",
         "label": "Facebook page",
         "default": "https://www.facebook.com/blsukofficial/"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_noindex",
+        "label": "Hide from Google",
+        "info": "Page and collection handles, separated by commas. These pages keep working but ask search engines not to list them (for duplicates and leftovers)."
       }
     ]
   }

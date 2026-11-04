@@ -579,7 +579,8 @@
     "seo_share_image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
     "seo_desc_end": "Free delivery over Rs.9,999, cash on delivery across Pakistan.",
     "seo_instagram": "https://www.instagram.com/blsukofficial",
-    "seo_facebook": "https://www.facebook.com/blsukofficial/"
+    "seo_facebook": "https://www.facebook.com/blsukofficial/",
+    "seo_noindex": "copy-of-store-locator, copy-of-breast-shape, home-page-2, avada-best-sellers, bls-catalog, non-discount, top-picks"
   },
   "presets": {
     "Horizon": {
