@@ -2376,7 +2376,7 @@
         "id": "seo_desc_end",
         "label": "End of built search descriptions",
         "info": "Added to products and collections that have no search description of their own.",
-        "default": "Free delivery over Rs.9,999 and cash on delivery across Pakistan."
+        "default": "Free delivery over Rs.9,999, cash on delivery across Pakistan."
       },
       {
         "type": "text",

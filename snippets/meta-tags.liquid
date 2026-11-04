@@ -53,7 +53,7 @@
       assign size_opt = product.options_with_values | where: 'name', 'Size' | first
       capture built
         echo p_name
-        echo ' by British Lingerie Studio (BLS). '
+        echo ' by British Lingerie Studio. '
         if size_opt != blank and size_opt.values.size > 1
           echo 'Sizes ' | append: size_opt.values.first | append: ' to ' | append: size_opt.values.last | append: ', '
         endif
@@ -63,13 +63,15 @@
       endcapture
     elsif request.page_type == 'collection' and collection != blank and collection.metafields.global.description_tag == blank
       capture built
-        echo 'Shop ' | append: collection.title | append: ' from British Lingerie Studio (BLS): '
+        echo 'Shop ' | append: collection.title | append: ' from British Lingerie Studio: '
         echo collection.products_count | append: ' styles online. '
         echo desc_end
       endcapture
     endif
     if built != blank
       assign seo_description = built | strip
+    else
+      assign seo_description = seo_description | truncate: 160
     endif
     assign seo_description = seo_description | strip_html | strip_newlines | strip
     assign og_description = seo_description | default: shop.description | default: shop.name | truncate: 200
@@ -196,7 +198,7 @@
   {%- if seo_description != blank -%}
     <meta
       name="description"
-      content="{{ seo_description | truncate: 160 | escape_once }}"
+      content="{{ seo_description | escape_once }}"
     >
   {%- endif -%}
   {%- comment -%} Structured data for search and AI answers: brand on every page, site search on home, breadcrumbs on collections and products (product and store data are in their sections) {%- endcomment -%}
