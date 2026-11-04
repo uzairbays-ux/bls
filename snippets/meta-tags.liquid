@@ -62,11 +62,17 @@
         echo desc_end
       endcapture
     elsif request.page_type == 'collection' and collection != blank and collection.metafields.global.description_tag == blank
-      capture built
-        echo 'Shop ' | append: collection.title | append: ' from British Lingerie Studio: '
-        echo collection.products_count | append: ' styles online. '
-        echo desc_end
-      endcapture
+      # The collection's own intro (first paragraph) when it has one, else a line built from its facts
+      assign intro = collection.description | split: '</p>' | first | strip_html | strip
+      if intro != blank and intro.size <= 170
+        assign built = intro
+      else
+        capture built
+          echo 'Shop ' | append: collection.title | append: ' from British Lingerie Studio: '
+          echo collection.products_count | append: ' styles online. '
+          echo desc_end
+        endcapture
+      endif
     endif
     if built != blank
       assign seo_description = built | strip
