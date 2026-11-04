@@ -24,22 +24,42 @@
     return null;
   }
 
+  function inStock(input) {
+    var label = input && document.querySelector('label[for="' + input.id + '"]');
+    return !!input && !(label && label.classList.contains('is-unavailable'));
+  }
+
+  /* a sister size this style has in stock, when the size itself is not offered or sold out */
+  function sisterInStock(size) {
+    var m = size.match(/^(\d+)([A-Z]+)$/i);
+    if (!m || !window.blsFit || !window.blsFit.sisters) return '';
+    var list = window.blsFit.sisters(+m[1], m[2].toUpperCase());
+    for (var i = 0; i < list.length; i++) if (inStock(sizeInput(list[i]))) return list[i];
+    return '';
+  }
+
   function offer(size) {
     pick.hidden = !size;
     if (!size) return;
     var input = sizeInput(size), text = pick.querySelector('[data-calc-pick-text]'), btn = pick.querySelector('[data-calc-pick]');
-    var label = input && document.querySelector('label[for="' + input.id + '"]');
-    if (!input) {
-      text.textContent = 'This style does not come in ' + size + '. Try one of the bras shown below.';
-      btn.hidden = true;
-    } else if (label && label.classList.contains('is-unavailable')) {
-      text.textContent = size + ' is sold out in this colour right now.';
-      btn.hidden = true;
-    } else {
+    var choose = '';
+    if (inStock(input)) {
       text.textContent = 'Your size ' + size + ' is available in this style.';
-      btn.textContent = 'Select ' + size;
-      btn.dataset.size = size;
-      btn.hidden = false;
+      choose = size;
+    } else {
+      var sister = sisterInStock(size);
+      var why = input ? size + ' is sold out in this colour right now.' : 'This style does not come in ' + size + '.';
+      if (sister) {
+        text.textContent = why + ' Your sister size ' + sister + ' is available.';
+        choose = sister;
+      } else {
+        text.textContent = why + ' Try one of the bras shown below.';
+      }
+    }
+    btn.hidden = !choose;
+    if (choose) {
+      btn.textContent = 'Select ' + choose;
+      btn.dataset.size = choose;
     }
   }
 
