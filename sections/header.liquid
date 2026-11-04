@@ -284,6 +284,8 @@
   {% endif %}
 {% endcapture %}
 
+{%- comment -%} The fuller brand data in bls-seo-schema replaces this once search set-up is on {%- endcomment -%}
+{%- unless settings.bls_seo_live or template.suffix == 't' -%}
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -295,6 +297,7 @@
     "url": {{ request.origin | append: page.url | json }}
   }
 </script>
+{%- endunless -%}
 
 {% if section.settings.top_link_text != blank %}
   <div class="top-link" style="text-align:center;font-size:0.875rem;padding:6px 12px;color:rgb(120,120,120);">

@@ -93,6 +93,36 @@
       </div>
     </div>
   </section>
+
+  {%- comment -%} Search set-up: each store as a shop with its address, so maps and AI answers can find it {%- endcomment -%}
+  {%- if settings.bls_seo_live or template.suffix == 't' -%}
+    <script type="application/ld+json">
+      [
+        {%- for block in section.blocks -%}
+          {%- assign bs = block.settings -%}
+          {
+            "@context": "https://schema.org",
+            "@type": "ClothingStore",
+            "@id": {{ request.origin | append: page.url | append: '#' | append: block.id | json }},
+            "name": {{ 'British Lingerie Studio, ' | append: bs.name | json }},
+            "brand": { "@type": "Brand", "name": "British Lingerie Studio" },
+            "parentOrganization": { "@id": {{ request.origin | append: '/#organization' | json }} },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": {{ bs.address | json }},
+              "addressLocality": {{ bs.city | strip | json }},
+              "addressCountry": "PK"
+            },
+            {%- if bs.phone != blank %}
+            "telephone": {{ bs.phone | remove: ' ' | remove: '-' | remove_first: '0' | prepend: '+92' | json }},
+            {%- endif %}
+            "hasMap": {{ bs.map_query | url_encode | prepend: 'https://www.google.com/maps?q=' | json }},
+            "url": {{ request.origin | append: page.url | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    </script>
+  {%- endif -%}
 {%- endif -%}
 
 {% schema %}

@@ -70,7 +70,7 @@
                   class="wac-hero__img"
                   src="{{ src }}"
                   {% if srcset != blank %}srcset="{{ srcset | strip }}" sizes="{{ img_sizes }}"{% endif %}
-                  alt="{{ image.alt | escape }}"
+                  alt="{{ image.alt | default: block.settings.heading | strip_newlines | escape }}"
                   {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
                 >
               </picture>

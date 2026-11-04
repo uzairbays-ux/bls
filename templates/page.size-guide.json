@@ -48,7 +48,8 @@
       ],
       "settings": {
         "heading": "Size Guide",
-        "text": "<p>Measure with a soft tape, then find your size in the chart. For bras, you can also use our <a href=\"/pages/the-perfect-fit?view=bra-fit-calculator\">size calculator</a>.</p>"
+        "text": "<p>Measure with a soft tape, then find your size in the chart. For bras, you can also use our <a href=\"/pages/the-perfect-fit?view=bra-fit-calculator\">size calculator</a>.</p>",
+        "heading_tag": "h1"
       }
     }
   },

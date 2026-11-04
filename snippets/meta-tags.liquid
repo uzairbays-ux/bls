@@ -35,6 +35,54 @@
   elsif request.page_type == 'password'
     assign og_url = request.origin
   endif
+
+  # BLS search set-up: on for everyone once the "Search and sharing" switch is on, on ?view=t pages for testing
+  assign seo_v2 = false
+  if settings.bls_seo_live or template.suffix == 't'
+    assign seo_v2 = true
+  endif
+  assign seo_description = page_description
+  assign share_image = page_image
+  if seo_v2
+    # Products and collections without their own search description get one built from their facts,
+    # instead of Shopify's cut-off first 320 characters of the description
+    assign built = ''
+    assign desc_end = settings.seo_desc_end | strip
+    if request.page_type == 'product' and product.metafields.global.description_tag == blank
+      assign p_name = product.title | remove_first: 'BLS - ' | strip
+      assign size_opt = product.options_with_values | where: 'name', 'Size' | first
+      capture built
+        echo p_name
+        echo ' by British Lingerie Studio (BLS). '
+        if size_opt != blank and size_opt.values.size > 1
+          echo 'Sizes ' | append: size_opt.values.first | append: ' to ' | append: size_opt.values.last | append: ', '
+        endif
+        echo product.price | money_without_trailing_zeros | strip_html
+        echo '. '
+        echo desc_end
+      endcapture
+    elsif request.page_type == 'collection' and collection != blank and collection.metafields.global.description_tag == blank
+      capture built
+        echo 'Shop ' | append: collection.title | append: ' from British Lingerie Studio (BLS): '
+        echo collection.products_count | append: ' styles online. '
+        echo desc_end
+      endcapture
+    endif
+    if built != blank
+      assign seo_description = built | strip
+    endif
+    assign seo_description = seo_description | strip_html | strip_newlines | strip
+    assign og_description = seo_description | default: shop.description | default: shop.name | truncate: 200
+
+    # Pages without a photo of their own still get one when shared (WhatsApp, Facebook)
+    if share_image == blank
+      if request.page_type == 'collection' and collection.products.first.featured_image != blank
+        assign share_image = collection.products.first.featured_image
+      elsif settings.seo_share_image != blank
+        assign share_image = settings.seo_share_image
+      endif
+    endif
+  endif
 %}
 
 <meta
@@ -55,10 +103,31 @@
 >
 <meta
   property="og:description"
-  content="{{ og_description | escape }}"
+  content="{% if seo_v2 %}{{ og_description | escape_once }}{% else %}{{ og_description | escape }}{% endif %}"
 >
 
-{%- if page_image -%}
+{%- if seo_v2 and share_image != blank -%}
+  {%- liquid
+    assign share_w = share_image.width | at_most: 1200
+    assign share_h = share_w | divided_by: share_image.aspect_ratio | round
+  -%}
+  <meta
+    property="og:image"
+    content="http:{{ share_image | image_url: width: share_w, format: 'jpg' }}"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https:{{ share_image | image_url: width: share_w, format: 'jpg' }}"
+  >
+  <meta
+    property="og:image:width"
+    content="{{ share_w }}"
+  >
+  <meta
+    property="og:image:height"
+    content="{{ share_h }}"
+  >
+{%- elsif page_image -%}
   <meta
     property="og:image"
     content="http:{{ page_image | image_url }}"
@@ -104,14 +173,18 @@
 >
 <meta
   name="twitter:description"
-  content="{{ og_description | escape }}"
+  content="{% if seo_v2 %}{{ og_description | escape_once }}{% else %}{{ og_description | escape }}{% endif %}"
 >
 
 <title>
   {{ page_title }}
   {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
   {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- if seo_v2 -%}
+    {%- unless page_title contains 'British Lingerie Studio' %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- else -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- endif -%}
 </title>
 
 <link
@@ -119,7 +192,15 @@
   href="{{ canonical_url }}"
 >
 
-{% if page_description %}
+{% if seo_v2 %}
+  {%- if seo_description != blank -%}
+    <meta
+      name="description"
+      content="{{ seo_description | truncate: 160 | escape_once }}"
+    >
+  {%- endif -%}
+  {%- render 'bls-seo-schema' -%}
+{% elsif page_description %}
   <meta
     name="description"
     content="{{ page_description | escape }}"

@@ -8,7 +8,7 @@
 {%- if section.blocks.size > 0 -%}
 <section class="bls-fit-guides" data-bls-fit-guides>
   <div class="bls-fit-guides__inner">
-    {%- if ss.heading != blank -%}<h2 class="bls-fit-cards__title bls-fit-cards__title--italic">{{ ss.heading | escape }}</h2>{%- endif -%}
+    {%- if ss.heading != blank -%}{%- assign h_tag = ss.heading_tag | default: 'h2' -%}<{{ h_tag }} class="bls-fit-cards__title bls-fit-cards__title--italic">{{ ss.heading | escape }}</{{ h_tag }}>{%- endif -%}
     {%- if ss.text != blank -%}<div class="bls-fit-cards__lead">{{ ss.text }}</div>{%- endif -%}
     <div class="bls-fit-guides__tabs" role="tablist">
       {%- for block in section.blocks -%}
@@ -44,6 +44,7 @@
   "class": "bls-fit-section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Measuring For Everything Else" },
+    { "type": "select", "id": "heading_tag", "label": "Heading level", "info": "Use H1 when this is the first heading on the page (Size Guide page).", "options": [ { "value": "h2", "label": "H2" }, { "value": "h1", "label": "H1" } ], "default": "h2" },
     { "type": "richtext", "id": "text", "label": "Text" }
   ],
   "blocks": [

@@ -2350,5 +2350,46 @@
         "default": "Cash on delivery available · Secure checkout"
       }
     ]
+  },
+  {
+    "name": "BLS search and sharing",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Search engine and AI-search set-up: brand, breadcrumb, product rating and store data, plus better search descriptions and share photos."
+      },
+      {
+        "type": "checkbox",
+        "id": "bls_seo_live",
+        "label": "Search set-up on",
+        "info": "Off: only pages opened with ?view=t use it (for testing).",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "seo_share_image",
+        "label": "Share photo",
+        "info": "Used when a page has no photo of its own (home, pages) and is shared on WhatsApp or Facebook."
+      },
+      {
+        "type": "text",
+        "id": "seo_desc_end",
+        "label": "End of built search descriptions",
+        "info": "Added to products and collections that have no search description of their own.",
+        "default": "Free delivery over Rs.9,999 and cash on delivery across Pakistan."
+      },
+      {
+        "type": "text",
+        "id": "seo_instagram",
+        "label": "Instagram page",
+        "default": "https://www.instagram.com/blsukofficial"
+      },
+      {
+        "type": "text",
+        "id": "seo_facebook",
+        "label": "Facebook page",
+        "default": "https://www.facebook.com/blsukofficial/"
+      }
+    ]
   }
 ]

@@ -520,7 +520,12 @@
     </dialog>
 
     <div class="wac-pdp__wrap">
-      <div class="wac-pdp__head wac-pdp__head--desktop">{{ head }}</div>
+      {%- comment -%} The heading block is printed twice (phone and desktop layouts); only the first copy is the page's H1 {%- endcomment -%}
+      {%- if settings.bls_seo_live or template.suffix == 't' -%}
+        <div class="wac-pdp__head wac-pdp__head--desktop">{{ head | replace_first: '<h1 class="wac-pdp__title">', '<div class="wac-pdp__title" role="heading" aria-level="1">' | replace_first: '</h1>', '</div>' }}</div>
+      {%- else -%}
+        <div class="wac-pdp__head wac-pdp__head--desktop">{{ head }}</div>
+      {%- endif -%}
 
       <form class="wac-pdp__info" method="post" action="{{ routes.cart_add_url }}" data-wac-form novalidate>
         <input type="hidden" name="form_type" value="product">
@@ -917,7 +922,27 @@
       ]
     }
   </script>
-  <script type="application/ld+json">{{ p | structured_data }}</script>
+  {%- liquid
+    assign product_ld = p | structured_data
+    # Search set-up: add the Judge.me star rating so Google can show stars next to the product
+    if settings.bls_seo_live or template.suffix == 't'
+      if rating != blank and rating_count > 0
+        capture rating_ld
+          echo '{"aggregateRating":{"@type":"AggregateRating","ratingValue":'
+          echo rating.rating | round: 2
+          echo ',"bestRating":'
+          echo rating.scale_max | round: 0
+          echo ',"worstRating":'
+          echo rating.scale_min | round: 0
+          echo ',"ratingCount":'
+          echo rating_count
+          echo '},'
+        endcapture
+        assign product_ld = product_ld | replace_first: '{', rating_ld
+      endif
+    endif
+  -%}
+  <script type="application/ld+json">{{ product_ld }}</script>
 </div>
 
 <script type="module" src="{{ 'bls-product.js' | asset_url }}"></script>
