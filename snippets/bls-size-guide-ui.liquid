@@ -10,9 +10,14 @@
   @param {string} [sister_table] - Sister Size chart as table HTML (used instead of the image)
   @param {string} [sister_label] - Default "Sister Size"
   @param {string} [attrs] - Extra attributes for the wrapper (editor)
+  @param {string} [calc_label] - Shows a size calculator link with this text (assets/bls-size-calc.js)
+  @param {string} [calc_url] - Where the calculator section is fetched from
 {%- enddoc -%}
 <div class="bls-sg bls-sg--{{ alignment | default: 'right' }}" data-bls-size-guide {{ attrs }}>
   <div class="bls-sg__links">
+    {%- if calc_label != blank and calc_url != blank -%}
+      <button type="button" class="bls-sg__link" data-bls-calc-open data-calc-url="{{ calc_url }}" data-calc-js="{{ 'bls-fit.js' | asset_url }}">{{ calc_label | escape }}</button>
+    {%- endif -%}
     <button type="button" class="bls-sg__link" data-bls-sg-open="chart">{{ link_label | default: 'Size Guide' | escape }}</button>
     {%- if sister_image != blank or sister_table != blank -%}
       <button type="button" class="bls-sg__link" data-bls-sg-open="sister" data-bls-sg-sister-link hidden>{{ sister_label | default: 'Sister Size' | escape }}</button>
@@ -49,3 +54,6 @@
   {%- endif -%}
 </div>
 <script src="{{ 'bls-size-guide.js' | asset_url }}" defer></script>
+{%- if calc_label != blank and calc_url != blank -%}
+  <script src="{{ 'bls-size-calc.js' | asset_url }}" defer></script>
+{%- endif -%}

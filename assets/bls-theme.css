@@ -6119,6 +6119,68 @@ html.wac-header-hidden .wac-pdp--sticky .wac-pdp__gallery {
   margin-top: 16px;
 }
 
+/* Size Calculator pop-up on product pages (assets/bls-size-calc.js) */
+.bls-calc__modal {
+  width: min(760px, calc(100vw - 24px));
+}
+
+.bls-calc__body {
+  padding: 0 4px 8px;
+}
+
+.bls-calc__body .bls-fit-crumb {
+  display: none;
+}
+
+.bls-calc__body .bls-fit-tool {
+  padding-top: 0;
+}
+
+.bls-calc__loading {
+  margin: 0;
+  padding: 48px 16px;
+  text-align: center;
+  font-size: calc(14px * var(--bls-fs));
+}
+
+.bls-calc__pick {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 12px 16px;
+  border-top: 1px solid #ebe5df;
+  background: #fff;
+}
+
+.bls-calc__pick[hidden],
+.bls-calc__pick-btn[hidden] {
+  display: none;
+}
+
+.bls-calc__pick-text {
+  margin: 0;
+  font-size: calc(14px * var(--bls-fs));
+}
+
+.bls-calc__pick-btn {
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font: inherit;
+  font-size: calc(13px * var(--bls-fs));
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 /* size guide links next to the size label */
 .wac-pdp__option-head .bls-sg {
   margin-left: auto;

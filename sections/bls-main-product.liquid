@@ -326,11 +326,33 @@
   endif
 -%}
 
+{%- liquid
+  # Size Calculator: products with the calculator tag (the tag the old Kiwi app used) get the BLS bra calculator in a pop-up
+  assign calc_label = ''
+  assign calc_url = ''
+  if ss.calc_label != blank and ss.calc_tag != blank
+    assign calc_tag = ss.calc_tag | downcase | strip
+    for t in p.tags
+      assign t_down = t | downcase | strip
+      if t_down == calc_tag
+        assign calc_label = ss.calc_label
+        assign calc_url = routes.root_url | append: 'pages/the-perfect-fit?section_id=bls-fit-calculator' | replace: '//', '/'
+        break
+      endif
+    endfor
+  endif
+  # testing: only on ?view=t until checked
+  if template.suffix != 't'
+    assign calc_label = ''
+  endif
+-%}
 {%- capture size_guide -%}
   {%- if sg_rules != blank -%}
     {%- render 'bls-size-guide-ui',
       rules: sg_rules,
       uid: section.id,
+      calc_label: calc_label,
+      calc_url: calc_url,
       link_label: ss.size_guide_label,
       modal_title: 'Size Chart',
       alignment: 'right',
@@ -968,6 +990,8 @@
     { "type": "checkbox", "id": "split_bra_sizes", "label": "Split bra sizes into band and cup", "default": false, "info": "Off shows each size as it is in Shopify, e.g. 34B." },
     { "type": "text", "id": "band_label", "label": "Band label", "default": "Band", "info": "Used when bra sizes are split." },
     { "type": "text", "id": "cup_label", "label": "Cup label", "default": "Cup" },
+    { "type": "text", "id": "calc_label", "label": "Size calculator link text", "default": "Size Calculator", "info": "Opens the BLS bra size calculator in a pop-up. Empty hides the link." },
+    { "type": "text", "id": "calc_tag", "label": "Size calculator shows on products tagged", "default": "Size Calculator" },
     { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Size Guide", "info": "The charts are the Size chart / Extra size chart blocks: the first Size chart whose tags or title match is shown; each matching Extra size chart is a tab." },
     { "type": "image_picker", "id": "sister_size_chart", "label": "Sister Size chart", "info": "Shown on charts that have Sister Size switched on." },
     { "type": "html", "id": "sister_size_table", "label": "Sister Size chart as a table", "info": "Shown instead of the image when filled." },

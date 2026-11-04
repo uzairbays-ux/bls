@@ -80,6 +80,11 @@
   Result.prototype.q = function (s) { return this.root.querySelector(s); };
   Result.prototype.hide = function () {
     this.root.hidden = true;
+    this.tell(null);
+  };
+  /* lets a product page offer the size (bls-size-calc.js) */
+  Result.prototype.tell = function (size) {
+    this.root.dispatchEvent(new CustomEvent('bls-fit:size', { bubbles: true, detail: { size: size } }));
   };
   Result.prototype.error = function (text) {
     this.root.hidden = false;
@@ -87,6 +92,7 @@
     this.q('[data-fit-result-error]').hidden = false;
     this.q('[data-fit-error-text]').textContent = text;
     this.q('[data-fit-products-wrap]').hidden = true;
+    this.tell(null);
     this.focus();
   };
   Result.prototype.show = function (r, eyebrow) {
@@ -114,12 +120,17 @@
     this.q('[data-fit-letter]').textContent = letter;
     this.q('[data-fit-letter-row]').hidden = !letter;
     this.products(r.size);
+    this.tell(r.size);
     this.focus();
   };
   Result.prototype.focus = function () {
     var box = this.q('[data-fit-result-box]');
-    var top = this.root.getBoundingClientRect().top + window.scrollY - 120;
-    window.scrollTo({ top: top, behavior: 'smooth' });
+    if (this.root.closest('dialog')) {
+      this.root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      var top = this.root.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
     try { box.focus({ preventScroll: true }); } catch (e) { box.focus(); }
   };
   Result.prototype.products = function (size) {
@@ -270,11 +281,20 @@
     });
   }
 
-  function init() {
-    document.querySelectorAll('[data-bls-fit-calc]').forEach(initCalc);
-    document.querySelectorAll('[data-bls-fit-picker]').forEach(initPicker);
-    document.querySelectorAll('[data-bls-fit-guides]').forEach(initGuides);
+  /* each tool is set up once, also when it arrives later (the product page pop-up) */
+  function once(fn) {
+    return function (el) {
+      if (el.dataset.blsFitReady) return;
+      el.dataset.blsFitReady = '1';
+      fn(el);
+    };
   }
-  window.blsFit = { fromMeasure: fromMeasure, sisters: sisters, letterOf: letterOf };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  function init(scope) {
+    scope = scope || document;
+    scope.querySelectorAll('[data-bls-fit-calc]').forEach(once(initCalc));
+    scope.querySelectorAll('[data-bls-fit-picker]').forEach(once(initPicker));
+    scope.querySelectorAll('[data-bls-fit-guides]').forEach(once(initGuides));
+  }
+  window.blsFit = { fromMeasure: fromMeasure, sisters: sisters, letterOf: letterOf, init: init };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); }); else init();
 })();
