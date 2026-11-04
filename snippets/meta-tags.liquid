@@ -246,7 +246,7 @@
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": {{ site | append: routes.search_url | append: '?q={search_term_string}' | json }}
+          "urlTemplate": "{{ site }}{{ routes.search_url }}?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
