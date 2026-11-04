@@ -341,10 +341,6 @@
       endif
     endfor
   endif
-  # testing: only on ?view=t until checked
-  if template.suffix != 't'
-    assign calc_label = ''
-  endif
 -%}
 {%- capture size_guide -%}
   {%- if sg_rules != blank -%}
