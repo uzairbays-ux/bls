@@ -5,11 +5,25 @@
   (the placeholder photos live there until the store's own are uploaded). The first photo
   is a real image marked high priority, so the browser finds it early.
 {% endcomment %}
+{%- liquid
+  # A first slide that is a finished banner (its text is in the picture) sets the slider to the banner's own shape,
+  # so nothing is cropped; the other slides fill that box as usual
+  assign banner_style = ''
+  assign first = section.blocks.first
+  if first.settings.whole_image and first.settings.image != blank
+    assign ratio_d = 1.0 | divided_by: first.settings.image.aspect_ratio
+    assign ratio_m = ratio_d
+    if first.settings.image_mobile != blank
+      assign ratio_m = 1.0 | divided_by: first.settings.image_mobile.aspect_ratio
+    endif
+    assign banner_style = ' --wac-hero-ratio-d: ' | append: ratio_d | append: '; --wac-hero-ratio-m: ' | append: ratio_m | append: ';'
+  endif
+-%}
 <section
-  class="wac-hero"
+  class="wac-hero{% if banner_style != blank %} wac-hero--banner{% endif %}"
   data-wac-hero
   data-autoplay="{{ section.settings.autoplay_seconds | times: 1000 }}"
-  style="--wac-hero-h-desktop: {{ section.settings.height_desktop }}px; --wac-hero-h-mobile: {{ section.settings.height_mobile }}px;"
+  style="--wac-hero-h-desktop: {{ section.settings.height_desktop }}px; --wac-hero-h-mobile: {{ section.settings.height_mobile }}px;{{ banner_style }}"
 >
   <div class="wac-hero__viewport">
     <div class="wac-hero__track" data-wac-hero-track>
@@ -53,7 +67,8 @@
           endif
         -%}
         <div
-          class="wac-hero__slide{% if forloop.first %} is-active{% endif %}"
+          class="wac-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.whole_image %} wac-hero__slide--whole{% endif %}"
+          {% if block.settings.whole_image %}style="--wac-hero-whole-bg: {{ block.settings.whole_bg }};"{% endif %}
           data-wac-hero-slide
           role="group"
           aria-roledescription="slide"
@@ -80,7 +95,11 @@
             {%- endif -%}
           </div>
           {%- if block.settings.button_link != blank -%}
-            <a class="wac-hero__link" href="{{ block.settings.button_link }}" tabindex="-1" aria-hidden="true"></a>
+            {%- if block.settings.whole_image and block.settings.button_label == blank -%}
+              <a class="wac-hero__link" href="{{ block.settings.button_link }}" aria-label="{{ image.alt | default: block.settings.heading | default: 'Shop now' | escape }}"></a>
+            {%- else -%}
+              <a class="wac-hero__link" href="{{ block.settings.button_link }}" tabindex="-1" aria-hidden="true"></a>
+            {%- endif -%}
           {%- endif -%}
           <div class="wac-hero__content wac-hero__content--{{ block.settings.position }} wac-hero__content--text-{{ block.settings.text_align }}">
             <div class="wac-hero__text">
@@ -336,6 +355,8 @@
         { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
         { "type": "text", "id": "image_asset", "label": "or asset file name (desktop)", "info": "Used only while no image is picked." },
         { "type": "image_picker", "id": "image_mobile", "label": "Image (phone)" },
+        { "type": "checkbox", "id": "whole_image", "label": "Show the whole picture (banner with its own text)", "default": false, "info": "On the first slide the slider takes the picture's shape on desktop and on phones, so nothing is cropped. Leave heading and button empty; the button link makes the whole slide clickable." },
+        { "type": "color", "id": "whole_bg", "label": "Colour behind the logo on phones", "default": "#ffffff", "info": "For a whole-picture banner: phones show it below the logo bar on this colour (use the banner's top colour)." },
         { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phone)" },
         { "type": "video", "id": "video_mobile", "label": "Video (phones only)", "info": "Plays on phones in place of the photo, starting muted with a sound button. The slide stays until the video ends. The photo shows first and stays as the fallback. Desktop always shows the photo." },
         { "type": "select", "id": "position", "label": "Text box position (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "right" },

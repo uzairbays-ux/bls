@@ -8531,3 +8531,31 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transition: none;
   }
 }
+
+/* home banner: a first slide that is a finished banner keeps its whole picture (sections/bls-hero.liquid) */
+.wac-hero.wac-hero--banner .wac-hero__slide {
+  min-height: calc(100vw * var(--wac-hero-ratio-d));
+}
+
+@media screen and (max-width: 749px) {
+  /* the phone header runs over the hero (60px, see above): the banner starts below it */
+  .wac-hero.wac-hero--banner .wac-hero__slide {
+    min-height: calc(100vw * var(--wac-hero-ratio-m) + 60px);
+  }
+
+  .wac-hero__slide--whole {
+    background: var(--wac-hero-whole-bg, #fff);
+  }
+
+  .wac-hero__slide--whole .wac-hero__image {
+    top: 60px;
+  }
+
+  .wac-hero__slide.wac-hero__slide--whole .wac-hero__img {
+    object-position: center top;
+  }
+
+  .wac-hero__slide--whole::after {
+    display: none;
+  }
+}
