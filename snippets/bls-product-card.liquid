@@ -41,6 +41,14 @@
   endcomment
   assign status_flag = badge
   assign status_sale = false
+  # a row with its own label (e.g. Best seller) still shows the discount, as a pill before that label
+  assign sale_flag = ''
+  if badge != blank
+    assign sale_v = product.selected_or_first_available_variant
+    if sale_v.compare_at_price > sale_v.price
+      assign sale_flag = sale_v.compare_at_price | minus: sale_v.price | times: 100.0 | divided_by: sale_v.compare_at_price | round | append: '% OFF'
+    endif
+  endif
   if status_flag == blank
     assign days = new_days | default: 30
     assign is_new = false
@@ -142,8 +150,11 @@
           <img class="wac-card__img wac-card__img--back" src="{{ back | image_url: width: 560 }}" srcset="{{ back | image_url: width: 280 }} 280w, {{ back | image_url: width: 430 }} 430w, {{ back | image_url: width: 560 }} 560w" sizes="{{ sizes | default: '278px' }}" width="{{ back.width }}" height="{{ back.height }}" alt="" loading="lazy">
         {%- endif -%}
       </span>
-      {%- if offer_label != blank or status_flag != blank or size_flag != blank -%}
+      {%- if offer_label != blank or sale_flag != blank or status_flag != blank or size_flag != blank -%}
         <span class="wac-card__flags">
+          {%- if sale_flag != blank -%}
+            <span class="wac-card__flag wac-card__flag--sale">{{ sale_flag | escape }}</span>
+          {%- endif -%}
           {%- if offer_label != blank -%}
             <span class="wac-card__flag wac-card__flag--offer">{{ settings.wac_offer_prefix | escape }} {{ offer_label | escape }}</span>
           {%- endif -%}

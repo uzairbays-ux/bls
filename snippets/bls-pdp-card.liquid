@@ -84,6 +84,7 @@
         <span>{{ product.price | money }}</span>
         {%- if product.compare_at_price > product.price -%}
           <s>{{ product.compare_at_price | money }}</s>
+          <span class="wac-pcard__off">{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}% OFF</span>
         {%- endif -%}
       </span>
     </a>

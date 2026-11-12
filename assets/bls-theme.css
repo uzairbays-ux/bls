@@ -8570,3 +8570,10 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 .wac-hero .wac-hero__slide.wac-hero__slide--no-shade::after {
   display: none;
 }
+
+/* discount next to the price in the product page carousels */
+.wac-pcard__off {
+  margin-left: 6px;
+  color: #73170f;
+  font-weight: 600;
+}
