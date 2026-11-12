@@ -12,11 +12,36 @@
     "bls_hero": {
       "type": "bls-hero",
       "blocks": {
+        "slide_pink_party": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/pink-party-sale-desktop.jpg",
+            "image_asset": "",
+            "image_mobile": "shopify://shop_images/pink-party-sale-mobile.jpg",
+            "whole_image": true,
+            "whole_bg": "#e9658c",
+            "image_mobile_asset": "",
+            "position": "center",
+            "text_align": "center",
+            "preheader": "",
+            "preheader_font": "expanded",
+            "heading": "",
+            "heading_size": 45,
+            "heading_size_mobile": 25,
+            "heading_weight": "400",
+            "text": "",
+            "button_label": "",
+            "button_link": "/collections/sale"
+          }
+        },
         "slide_1": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
             "image_asset": "",
+            "whole_image": false,
+            "whole_bg": "#ffffff",
             "image_mobile_asset": "",
             "video_mobile": "shopify://files/videos/satin-reel.mp4",
             "position": "right",
@@ -34,9 +59,12 @@
         },
         "slide_2": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.31.41.jpg",
             "image_asset": "",
+            "whole_image": false,
+            "whole_bg": "#ffffff",
             "image_mobile_asset": "",
             "position": "center",
             "text_align": "center",
@@ -53,9 +81,12 @@
         },
         "slide_3": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.32.10.jpg",
             "image_asset": "",
+            "whole_image": false,
+            "whole_bg": "#ffffff",
             "image_mobile_asset": "",
             "position": "left",
             "text_align": "left",
@@ -68,24 +99,6 @@
             "text": "Stock up on your everyday favourites.",
             "button_label": "SHOP BUNDLES",
             "button_link": "shopify://collections/3-for-7500"
-          }
-        },
-        "slide_pink_party": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/pink-party-sale-desktop.jpg",
-            "image_asset": "",
-            "image_mobile": "shopify://shop_images/pink-party-sale-mobile.jpg",
-            "image_mobile_asset": "",
-            "whole_image": true,
-            "whole_bg": "#e9658c",
-            "position": "center",
-            "text_align": "center",
-            "preheader": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": "/collections/sale"
           }
         }
       },
