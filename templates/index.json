@@ -69,9 +69,28 @@
             "button_label": "SHOP BUNDLES",
             "button_link": "shopify://collections/3-for-7500"
           }
+        },
+        "slide_pink_party": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/pink-party-sale-desktop.jpg",
+            "image_asset": "",
+            "image_mobile": "shopify://shop_images/pink-party-sale-mobile.jpg",
+            "image_mobile_asset": "",
+            "whole_image": true,
+            "whole_bg": "#e9658c",
+            "position": "center",
+            "text_align": "center",
+            "preheader": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": "/collections/sale"
+          }
         }
       },
       "block_order": [
+        "slide_pink_party",
         "slide_1",
         "slide_2",
         "slide_3"
