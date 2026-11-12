@@ -1487,6 +1487,12 @@
   color: #fff;
 }
 
+/* discount pill ("30% OFF") on sale products */
+.wac-card__flag.wac-card__flag--sale {
+  background: #73170f;
+  color: #fff;
+}
+
 /* sizes in stock on product cards: a short line, and with many sizes it opens to the exact list */
 .wac-card__sizes {
   margin: 4px 0 0;

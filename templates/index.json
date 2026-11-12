@@ -437,7 +437,8 @@
         "margin_top_mobile": 45,
         "margin_bottom_mobile": 40,
         "padding_y_mobile": 30
-      }
+      },
+      "disabled": true
     },
     "bls_iwt_fall": {
       "type": "bls-image-text",

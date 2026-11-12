@@ -2313,6 +2313,13 @@
         "default": false
       },
       {
+        "type": "checkbox",
+        "id": "wac_offer_show",
+        "label": "Show bundle offers",
+        "default": true,
+        "info": "Off hides the offer labels on product cards and the app's 'Buy 3 for' bar on product pages."
+      },
+      {
         "type": "text",
         "id": "wac_offer_tags",
         "label": "Offer label tags",

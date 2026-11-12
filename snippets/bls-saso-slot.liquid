@@ -3,6 +3,9 @@
   header. This moves the app's #saso-notifications element into a slot right after the product title, and puts it
   back there if the product details are re-rendered (variant change).
 {%- enddoc -%}
+{%- unless settings.wac_offer_show -%}
+  <style>#saso-notifications, .wac-saso-slot { display: none !important; }</style>
+{%- endunless -%}
 <script>
   (function () {
     // the product title on screen: Horizon's product details, or the BLS product page (one title for

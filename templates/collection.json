@@ -289,7 +289,7 @@
         "new_days": 30,
         "hide_size_flag": false,
         "show_sizes": true,
-        "tile_enabled": true,
+        "tile_enabled": false,
         "tile_row": 4,
         "tile_row_mobile": 3,
         "tile_side": "right",

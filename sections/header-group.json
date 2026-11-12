@@ -159,7 +159,8 @@
             "text_mobile": "3 BRAS FOR RS.7,500",
             "details_label": "SHOP",
             "link": "/collections/3-for-7500"
-          }
+          },
+          "disabled": true
         },
         "msg_sale": {
           "type": "message",
@@ -168,7 +169,8 @@
             "text_mobile": "3 SLIPS & CAMIS FOR RS.4,500",
             "details_label": "SHOP",
             "link": "/collections/3-for-4500"
-          }
+          },
+          "disabled": true
         },
         "msg_9500": {
           "type": "message",
@@ -177,7 +179,8 @@
             "text_mobile": "3 BRAS FOR RS.9,500",
             "details_label": "SHOP",
             "link": "/collections/3-for-9500"
-          }
+          },
+          "disabled": true
         },
         "msg_3500": {
           "type": "message",

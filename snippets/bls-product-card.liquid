@@ -24,7 +24,7 @@
     endif
   endfor
   assign offer_label = ''
-  if product.available and settings.wac_offer_tags != blank
+  if product.available and settings.wac_offer_show and settings.wac_offer_tags != blank
     assign offer_tags = settings.wac_offer_tags | replace: ', ', ',' | split: ','
     for tag in product.tags
       if offer_tags contains tag
@@ -40,6 +40,7 @@
     Pills on the photo, : one status pill (badge, else New arrival, else Sale) and a size range pill.
   endcomment
   assign status_flag = badge
+  assign status_sale = false
   if status_flag == blank
     assign days = new_days | default: 30
     assign is_new = false
@@ -58,10 +59,17 @@
         assign is_new = true
       endif
     endif
-    if is_new
+    # on sale: the discount itself ("30% OFF"), ahead of New arrival
+    assign sale_v = product.selected_or_first_available_variant
+    if sale_v.compare_at_price > sale_v.price
+      assign sale_pct = sale_v.compare_at_price | minus: sale_v.price | times: 100.0 | divided_by: sale_v.compare_at_price | round
+      assign status_flag = sale_pct | append: '% OFF'
+      assign status_sale = true
+    elsif is_new
       assign status_flag = 'New arrival'
     elsif product.compare_at_price > product.price
       assign status_flag = 'Sale'
+      assign status_sale = true
     endif
   endif
 
@@ -140,7 +148,7 @@
             <span class="wac-card__flag wac-card__flag--offer">{{ settings.wac_offer_prefix | escape }} {{ offer_label | escape }}</span>
           {%- endif -%}
           {%- if status_flag != blank -%}
-            <span class="wac-card__flag">{{ status_flag | escape }}</span>
+            <span class="wac-card__flag{% if status_sale %} wac-card__flag--sale{% endif %}">{{ status_flag | escape }}</span>
           {%- endif -%}
           {%- if size_flag != blank -%}
             <span class="wac-card__flag">{{ size_flag | escape }}</span>

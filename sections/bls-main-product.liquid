@@ -73,6 +73,10 @@
   endfor
   if badge == '' and p.compare_at_price > p.price
     assign badge = 'Sale'
+    assign sale_v = p.selected_or_first_available_variant
+    if sale_v.compare_at_price > sale_v.price
+      assign badge = sale_v.compare_at_price | minus: sale_v.price | times: 100.0 | divided_by: sale_v.compare_at_price | round | append: '% OFF'
+    endif
   endif
 
   assign rating = p.metafields.reviews.rating.value
