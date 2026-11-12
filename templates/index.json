@@ -31,7 +31,8 @@
             "heading_weight": "400",
             "text": "",
             "button_label": "",
-            "button_link": "/collections/sale"
+            "button_link": "/collections/sale",
+            "overlay": false
           }
         },
         "slide_1": {

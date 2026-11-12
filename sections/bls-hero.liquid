@@ -67,7 +67,7 @@
           endif
         -%}
         <div
-          class="wac-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.whole_image %} wac-hero__slide--whole{% endif %}"
+          class="wac-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.whole_image %} wac-hero__slide--whole{% endif %}{% if block.settings.overlay == false %} wac-hero__slide--no-shade{% endif %}"
           {% if block.settings.whole_image %}style="--wac-hero-whole-bg: {{ block.settings.whole_bg }};"{% endif %}
           data-wac-hero-slide
           role="group"
@@ -355,6 +355,7 @@
         { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
         { "type": "text", "id": "image_asset", "label": "or asset file name (desktop)", "info": "Used only while no image is picked." },
         { "type": "image_picker", "id": "image_mobile", "label": "Image (phone)" },
+        { "type": "checkbox", "id": "overlay", "label": "Darken the photo behind the text", "default": true, "info": "A soft dark shade so white text reads on bright photos. Turn off for banners and photos that should show their true colours." },
         { "type": "checkbox", "id": "whole_image", "label": "Show the whole picture (banner with its own text)", "default": false, "info": "On the first slide the slider takes the picture's shape on desktop and on phones, so nothing is cropped. Leave heading and button empty; the button link makes the whole slide clickable." },
         { "type": "color", "id": "whole_bg", "label": "Colour behind the logo on phones", "default": "#ffffff", "info": "For a whole-picture banner: phones show it below the logo bar on this colour (use the banner's top colour)." },
         { "type": "text", "id": "image_mobile_asset", "label": "or asset file name (phone)" },

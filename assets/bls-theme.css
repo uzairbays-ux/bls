@@ -8565,3 +8565,8 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     display: none;
   }
 }
+
+/* home banner: slides with "Darken the photo behind the text" off show the picture without the shade */
+.wac-hero .wac-hero__slide.wac-hero__slide--no-shade::after {
+  display: none;
+}
