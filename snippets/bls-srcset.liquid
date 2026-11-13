@@ -1,14 +1,22 @@
 {%- doc -%}
-  The srcset list for an image: one entry per width, leaving out widths larger than the file.
+  The srcset list for an image: one entry per width, leaving out widths larger than the file, plus the file's own
+  width when it falls between the listed widths.
   @param {image} image - The image
   @param {string} widths - Comma separated widths, smallest first, e.g. 360,540,720
 {%- enddoc -%}
 {%- assign width_list = widths | split: ',' -%}
 {%- assign separator = '' -%}
+{%- assign largest = 0 -%}
 {%- for width in width_list -%}
   {%- assign w = width | plus: 0 -%}
   {%- if w <= image.width -%}
     {{- separator }}{{ image | image_url: width: w }} {{ w }}w
     {%- assign separator = ', ' -%}
+    {%- assign largest = w -%}
   {%- endif -%}
 {%- endfor -%}
+{%- comment -%} the file's own full width too, when it is wider than the last listed width (e.g. a 1580px banner) {%- endcomment -%}
+{%- assign last_w = width_list | last | plus: 0 -%}
+{%- if image.width > largest and image.width < last_w -%}
+  {{- separator }}{{ image | image_url: width: image.width }} {{ image.width }}w
+{%- endif -%}
