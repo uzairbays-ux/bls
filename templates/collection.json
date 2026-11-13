@@ -18,7 +18,7 @@
             "collection": "padded",
             "image": "shopify://shop_images/BLS_-_Pixie_Wired_And_Padded_Bra_-_Cherry_45355ee3-abd9-4375-9bb9-d88f74a06003.jpg",
             "title": "T-Shirt",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_2": {
@@ -27,15 +27,16 @@
             "collection": "non-padded",
             "image": "shopify://shop_images/WhatsApp_Image_2026-11-02_at_18.07.03.jpg",
             "title": "Non Padded",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
-          }
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
+          },
+          "disabled": true
         },
         "cat_3": {
           "type": "category",
           "settings": {
             "collection": "wired-1",
-            "title": "Wired",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "title": "Underwire",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_4": {
@@ -44,7 +45,7 @@
             "collection": "non-wired",
             "image": "shopify://shop_images/bls-snow-non-padded-and-wireless-satin-bra-purplelilac-1.webp",
             "title": "Wireless",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_5": {
@@ -53,8 +54,9 @@
             "collection": "bras-lace",
             "image": "shopify://shop_images/lace-top.jpg",
             "title": "Lace",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
-          }
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
+          },
+          "disabled": true
         },
         "cat_6": {
           "type": "category",
@@ -62,7 +64,7 @@
           "settings": {
             "collection": "bras-cotton",
             "title": "Cotton",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_7": {
@@ -70,7 +72,7 @@
           "settings": {
             "collection": "bralette",
             "title": "Bralette",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_8": {
@@ -78,7 +80,7 @@
           "settings": {
             "collection": "seamless-bra",
             "title": "Seamless",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_9": {
@@ -87,7 +89,7 @@
           "settings": {
             "collection": "panties-bundles-sets-bra-panty-sets",
             "title": "Bra & Panty Sets",
-            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets"
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
           }
         },
         "cat_p2": {
@@ -239,17 +241,53 @@
             "title": "Panty Sets",
             "show_on": "bundles,bundle"
           }
+        },
+        "cat_fo": {
+          "type": "category",
+          "settings": {
+            "collection": "front-open",
+            "title": "Front Open",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
+          }
+        },
+        "cat_st": {
+          "type": "category",
+          "settings": {
+            "collection": "strapless-1",
+            "title": "Strapless",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
+          }
+        },
+        "cat_sp": {
+          "type": "category",
+          "settings": {
+            "collection": "sports-bra",
+            "title": "Sports",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
+          }
+        },
+        "cat_pu": {
+          "type": "category",
+          "settings": {
+            "collection": "pushup",
+            "title": "Pushup",
+            "show_on": "bras,padded,non-padded,wired-1,non-wired,bras-lace,bras-cotton,bralette,seamless-bra,panties-bundles-sets-bra-panty-sets,bras-polyester-polyamide,bras-skin-shade,pushup,front-open,by-style-crop-top,maternity,teens-bra,bras-bundles-sets-bra-panty-sets,strapless-1"
+          }
         }
       },
       "block_order": [
-        "cat_1",
-        "cat_2",
-        "cat_3",
+        "cat_fo",
+        "cat_8",
+        "cat_7",
+        "cat_st",
+        "cat_sp",
         "cat_4",
+        "cat_1",
+        "cat_pu",
+        "cat_3",
+        "cat_2",
         "cat_5",
         "cat_6",
-        "cat_7",
-        "cat_8",
         "cat_9",
         "cat_p2",
         "cat_p1",
