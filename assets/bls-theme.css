@@ -8579,7 +8579,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 }
 
 /* desktop: a finished banner is never stretched past its own width (stretched text looks blurry); on wider
-   screens it sits centred at its real size and the sides show a soft, blurred extension of it */
+   screens it sits centred at its real size and the sides continue its edge colours */
 @media screen and (min-width: 750px) {
   .wac-hero.wac-hero--banner .wac-hero__slide {
     min-height: calc(min(100vw, var(--wac-hero-max-w, 100vw)) * var(--wac-hero-ratio-d));
@@ -8590,13 +8590,30 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     background: var(--wac-hero-whole-bg, #fff);
   }
 
-  .wac-hero__slide--whole::before {
+  /* the sides continue the banner's own edge: its first and last pixel columns stretched sideways */
+  .wac-hero .wac-hero__slide.wac-hero__slide--whole::before,
+  .wac-hero .wac-hero__slide.wac-hero__slide--whole::after {
     content: '';
+    display: block;
     position: absolute;
-    inset: -60px;
-    background: var(--wac-hero-whole-img) center / cover no-repeat;
-    filter: blur(40px);
+    top: 0;
+    bottom: 0;
+    width: calc((100% - var(--wac-hero-max-w, 100%)) / 2 + 2px);
+    background: var(--wac-hero-whole-img) no-repeat;
+    background-size: calc(var(--wac-hero-max-w, 100%) * 200) 100%;
     pointer-events: none;
+  }
+
+  .wac-hero .wac-hero__slide.wac-hero__slide--whole::before {
+    left: 0;
+    background-position: left center;
+  }
+
+  .wac-hero .wac-hero__slide.wac-hero__slide--whole::after {
+    left: auto;
+    right: 0;
+    inset-inline: auto 0;
+    background-position: right center;
   }
 
   .wac-hero__slide--whole .wac-hero__image {
