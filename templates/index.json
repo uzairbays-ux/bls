@@ -15,9 +15,10 @@
         "slide_pink_party": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/pink-party-sale-desktop.jpg",
+            "image": "shopify://shop_images/1580_x_800_desktop.jpg",
             "image_asset": "",
-            "image_mobile": "shopify://shop_images/pink-party-sale-mobile.jpg",
+            "image_mobile": "shopify://shop_images/844_x_440_mobile.jpg",
+            "overlay": false,
             "whole_image": true,
             "whole_bg": "#e9658c",
             "image_mobile_asset": "",
@@ -31,8 +32,7 @@
             "heading_weight": "400",
             "text": "",
             "button_label": "",
-            "button_link": "/collections/sale",
-            "overlay": false
+            "button_link": "/collections/sale"
           }
         },
         "slide_1": {
@@ -41,6 +41,7 @@
           "settings": {
             "image": "shopify://shop_images/hix.ai-download-1791960371382.webp",
             "image_asset": "",
+            "overlay": true,
             "whole_image": false,
             "whole_bg": "#ffffff",
             "image_mobile_asset": "",
@@ -64,6 +65,7 @@
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.31.41.jpg",
             "image_asset": "",
+            "overlay": true,
             "whole_image": false,
             "whole_bg": "#ffffff",
             "image_mobile_asset": "",
@@ -86,6 +88,7 @@
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-29_at_17.32.10.jpg",
             "image_asset": "",
+            "overlay": true,
             "whole_image": false,
             "whole_bg": "#ffffff",
             "image_mobile_asset": "",

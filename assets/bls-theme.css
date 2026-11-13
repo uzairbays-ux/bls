@@ -8573,6 +8573,7 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
 
 /* discount next to the price in the product page carousels */
 .wac-pcard__off {
+  margin-left: 6px;
   color: #73170f;
   font-weight: 600;
 }
