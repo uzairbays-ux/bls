@@ -16,7 +16,7 @@
     if first.settings.image_mobile != blank
       assign ratio_m = 1.0 | divided_by: first.settings.image_mobile.aspect_ratio
     endif
-    assign banner_style = ' --wac-hero-ratio-d: ' | append: ratio_d | append: '; --wac-hero-ratio-m: ' | append: ratio_m | append: ';'
+    assign banner_style = ' --wac-hero-ratio-d: ' | append: ratio_d | append: '; --wac-hero-ratio-m: ' | append: ratio_m | append: '; --wac-hero-max-w: ' | append: first.settings.image.width | append: 'px;'
   endif
 -%}
 <section
@@ -68,7 +68,7 @@
         -%}
         <div
           class="wac-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.whole_image %} wac-hero__slide--whole{% endif %}{% if block.settings.overlay == false %} wac-hero__slide--no-shade{% endif %}"
-          {% if block.settings.whole_image %}style="--wac-hero-whole-bg: {{ block.settings.whole_bg }};"{% endif %}
+          {% if block.settings.whole_image %}style="--wac-hero-whole-bg: {{ block.settings.whole_bg }};{% if image != blank %} --wac-hero-whole-img: url('{{ image | image_url: width: 400 }}');{% endif %}"{% endif %}
           data-wac-hero-slide
           role="group"
           aria-roledescription="slide"
