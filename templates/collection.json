@@ -202,6 +202,7 @@
         },
         "cat_p1": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "panties-lace-1",
             "title": "Lace",
@@ -210,6 +211,7 @@
         },
         "category_qJfJCq": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "panties-lace-1",
             "image": "shopify://shop_images/BLS-LacePantyPackOf3-PlumCaspia-LavenderFog-CreamPink3.jpg",
@@ -219,6 +221,7 @@
         },
         "cat_p3": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "panties-cotton",
             "image": "shopify://shop_images/hix.ai-download-1788252230324.jpg",
@@ -228,6 +231,7 @@
         },
         "cat_p4": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "collection": "panties-polyester-polyamide",
             "image": "shopify://shop_images/BLS-CottonPantyPackOf3-MidBlue-UitimateGray-FairOrchid3.jpg",
