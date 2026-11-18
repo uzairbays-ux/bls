@@ -162,9 +162,36 @@
           "type": "category",
           "settings": {
             "collection": "hipster",
-            "image": "shopify://shop_images/blush_9d39dc29-5419-4095-974e-fb7c9bb3100f.png",
+            "image": "shopify://shop_images/Hipster.webp",
             "title": "Hipster",
             "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+          }
+        },
+        "category_6gnWzG": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Classic_Panty.webp",
+            "title": "Classic Panty",
+            "show_on": ""
+          }
+        },
+        "category_YJWTj4": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Packs.webp",
+            "title": "Packs",
+            "show_on": ""
+          }
+        },
+        "category_cUEczB": {
+          "type": "category",
+          "settings": {
+            "collection": "seamless-panties",
+            "image": "shopify://shop_images/Seamless_80f6e69c-7c19-42e1-a11e-cf810ea273e2.webp",
+            "title": "Seamless",
+            "show_on": ""
           }
         },
         "cat_p1": {
@@ -327,6 +354,9 @@
         "category_8i3nbj",
         "category_3VNyRF",
         "cat_p2",
+        "category_6gnWzG",
+        "category_YJWTj4",
+        "category_cUEczB",
         "cat_p1",
         "category_qJfJCq",
         "cat_p3",
