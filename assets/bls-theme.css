@@ -1417,7 +1417,8 @@
   position: relative;
   display: block;
   overflow: hidden;
-  aspect-ratio: 450 / 526;
+  /* the product photos' own shape (1200 x 1800), so the whole photo shows */
+  aspect-ratio: 2 / 3;
   background: #ebe6e0;
 }
 
@@ -3953,7 +3954,7 @@ button.wac-pdp__feature-head {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 220 / 257;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
   object-position: center top;
 }
@@ -4107,7 +4108,7 @@ button.wac-pdp__feature-head {
 }
 
 .wac-similar .wac-pcard__image img {
-  aspect-ratio: 300 / 351;
+  aspect-ratio: 2 / 3;
 }
 
 @media screen and (max-width: 749px) {
