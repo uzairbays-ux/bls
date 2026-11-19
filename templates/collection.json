@@ -142,62 +142,56 @@
         },
         "category_8i3nbj": {
           "type": "category",
-          "disabled": true,
           "settings": {
             "collection": "highwaisted",
             "image": "shopify://shop_images/High_Waist.webp",
             "title": "High Waist",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "category_3VNyRF": {
           "type": "category",
-          "disabled": true,
           "settings": {
-            "collection": "",
+            "collection": "boxer-panties",
             "image": "shopify://shop_images/Boxer.webp",
             "title": "Boxer",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p2": {
           "type": "category",
-          "disabled": true,
           "settings": {
             "collection": "hipster",
             "image": "shopify://shop_images/Hipster.webp",
             "title": "Hipster",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "category_6gnWzG": {
           "type": "category",
-          "disabled": true,
           "settings": {
-            "collection": "",
+            "collection": "classic-panties",
             "image": "shopify://shop_images/Classic_Panty.webp",
             "title": "Classic Panty",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "category_YJWTj4": {
           "type": "category",
-          "disabled": true,
           "settings": {
-            "collection": "",
+            "collection": "panty-packs",
             "image": "shopify://shop_images/Packs.webp",
             "title": "Packs",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "category_cUEczB": {
           "type": "category",
-          "disabled": true,
           "settings": {
             "collection": "seamless-panties",
             "image": "shopify://shop_images/Seamless_80f6e69c-7c19-42e1-a11e-cf810ea273e2.webp",
             "title": "Seamless",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p1": {
@@ -206,7 +200,7 @@
           "settings": {
             "collection": "panties-lace-1",
             "title": "Lace",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "category_qJfJCq": {
@@ -216,7 +210,7 @@
             "collection": "panties-lace-1",
             "image": "shopify://shop_images/BLS-LacePantyPackOf3-PlumCaspia-LavenderFog-CreamPink3.jpg",
             "title": "Brazilian",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p3": {
@@ -226,7 +220,7 @@
             "collection": "panties-cotton",
             "image": "shopify://shop_images/hix.ai-download-1788252230324.jpg",
             "title": "Cotton",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p4": {
@@ -236,7 +230,7 @@
             "collection": "panties-polyester-polyamide",
             "image": "shopify://shop_images/BLS-CottonPantyPackOf3-MidBlue-UitimateGray-FairOrchid3.jpg",
             "title": "Polymide",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p5": {
@@ -245,7 +239,7 @@
           "settings": {
             "collection": "panties-panty-sets",
             "title": "Panty Sets",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p6": {
@@ -253,7 +247,7 @@
           "settings": {
             "collection": "panties-bundles-sets-bra-panty-sets",
             "title": "Bra & Panty Sets",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_p7": {
@@ -262,7 +256,7 @@
           "settings": {
             "collection": "teens-panty",
             "title": "Teens",
-            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties"
+            "show_on": "panties,hipster,panties-lace-1,panties-cotton,panties-polyester-polyamide,panties-panty-sets,teens-panty,breathable-lace-panty,seamless-panties,highwaisted,boxer-panties,classic-panties,panty-packs"
           }
         },
         "cat_s1": {
@@ -363,10 +357,10 @@
         "cat_9",
         "category_8i3nbj",
         "category_3VNyRF",
-        "cat_p2",
         "category_6gnWzG",
         "category_YJWTj4",
         "category_cUEczB",
+        "cat_p2",
         "cat_p1",
         "category_qJfJCq",
         "cat_p3",
