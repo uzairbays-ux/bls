@@ -8623,3 +8623,9 @@ html:not(.wac-header-hidden) .wac-pdp-bar {
     transform: translateX(-50%);
   }
 }
+
+/* the line under every product description (BLS product section setting) */
+.wac-pdp__desc-note {
+  margin-top: 12px;
+  font-style: italic;
+}

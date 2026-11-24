@@ -840,6 +840,12 @@
             if body == blank and block.settings.source != 'description' and block.settings.source != 'details'
               assign body = block.settings.text
             endif
+            # one line under every product description (theme setting), e.g. the size chart reminder
+            if ss.description_note != blank and body != blank
+              if block.settings.source == 'details' or block.settings.source == 'description'
+                assign body = body | append: '<p class="wac-pdp__desc-note">' | append: ss.description_note | append: '</p>'
+              endif
+            endif
           -%}
           {%- if body != blank -%}
             <details class="wac-pdp__acc"{% if block.settings.open %} open{% endif %} {{ block.shopify_attributes }}>
@@ -990,6 +996,7 @@
     { "type": "checkbox", "id": "split_bra_sizes", "label": "Split bra sizes into band and cup", "default": false, "info": "Off shows each size as it is in Shopify, e.g. 34B." },
     { "type": "text", "id": "band_label", "label": "Band label", "default": "Band", "info": "Used when bra sizes are split." },
     { "type": "text", "id": "cup_label", "label": "Cup label", "default": "Cup" },
+    { "type": "inline_richtext", "id": "description_note", "label": "Line under every description", "default": "*We recommend checking the size chart before placing your order to ensure the best fit.", "info": "Shown at the end of the Details section on every product. Empty hides it." },
     { "type": "text", "id": "calc_label", "label": "Size calculator link text", "default": "Size Calculator", "info": "Opens the BLS bra size calculator in a pop-up. Empty hides the link." },
     { "type": "text", "id": "calc_tag", "label": "Size calculator shows on products tagged", "default": "Size Calculator" },
     { "type": "text", "id": "size_guide_label", "label": "Size guide link text", "default": "Size Guide", "info": "The charts are the Size chart / Extra size chart blocks: the first Size chart whose tags or title match is shown; each matching Extra size chart is a tab." },
