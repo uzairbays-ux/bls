@@ -511,6 +511,11 @@
   gap: 14px;
 }
 
+/* one dropdown per measurement */
+.bls-fit-pair--single {
+  grid-template-columns: minmax(0, 280px);
+}
+
 .bls-fit-pair__and {
   color: var(--fit-text);
   font-size: calc(14px * var(--bls-fs));

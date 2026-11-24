@@ -1,6 +1,6 @@
 {%- doc -%}
   Bra size calculator: inches or centimetres, underbust and bust from two
-  selects each (whole number + fraction), BLS's own chart turns them into a size (assets/bls-fit.js),
+  picks each in one dropdown (inches in half-inch steps, or centimetres), BLS's own chart turns them into a size (assets/bls-fit.js),
   then the shared result panel and the "Do this / Not this" tips.
 {%- enddoc -%}
 {{ 'bls-fit.css' | asset_url | stylesheet_tag }}
@@ -58,14 +58,13 @@
           <div class="bls-fit-step__text">{{ s_text }}</div>
           <p class="bls-fit-step__label" id="BlsFitLabel-{{ key }}-{{ section.id }}">{{ s_label | escape }}</p>
           <p class="bls-fit-step__req">*Required</p>
-          <div class="bls-fit-pair">
+          <div class="bls-fit-pair bls-fit-pair--single">
             <select class="bls-fit-select" data-fit-whole="{{ key }}" aria-labelledby="BlsFitLabel-{{ key }}-{{ section.id }}" aria-describedby="BlsFitUnitHint-{{ section.id }}">
               <option value="">--</option>
-              {%- for i in (25..50) -%}<option value="{{ i }}">{{ i }}</option>{%- endfor -%}
-            </select>
-            <span class="bls-fit-pair__and" aria-hidden="true">&amp;</span>
-            <select class="bls-fit-select" data-fit-frac="{{ key }}" aria-label="Fraction">
-              <option value="0">0</option><option value="0.125">1/8</option><option value="0.25">1/4</option><option value="0.375">3/8</option><option value="0.5">1/2</option><option value="0.625">5/8</option><option value="0.75">3/4</option><option value="0.875">7/8</option>
+              {%- for i in (25..50) -%}
+                <option value="{{ i }}">{{ i }} in</option>
+                {%- if i < 50 -%}<option value="{{ i }}.5">{{ i }}&frac12; in</option>{%- endif -%}
+              {%- endfor -%}
             </select>
           </div>
         </div>

@@ -164,16 +164,22 @@
   };
 
   /* ---------- calculator ---------- */
-  var IN_WHOLE = [25, 50], CM_WHOLE = [60, 130];
-  var IN_FRAC = [['0', '0'], ['0.125', '1/8'], ['0.25', '1/4'], ['0.375', '3/8'], ['0.5', '1/2'], ['0.625', '5/8'], ['0.75', '3/4'], ['0.875', '7/8']];
-  var CM_FRAC = [['0', '0'], ['0.5', '.5']];
+  /* one dropdown per measurement: inches in half-inch steps (30, 30½, 31 ...), centimetres in whole numbers */
+  var IN_RANGE = [25, 50], CM_RANGE = [60, 130];
 
   function fill(select, list, keepFirst) {
     var html = keepFirst ? '<option value="">--</option>' : '';
     list.forEach(function (o) { html += '<option value="' + o[0] + '">' + o[1] + '</option>'; });
     select.innerHTML = html;
   }
-  function range(a, b) { var o = []; for (var i = a; i <= b; i++) o.push([String(i), String(i)]); return o; }
+  function steps(unit) {
+    var o = [], r = unit === 'in' ? IN_RANGE : CM_RANGE;
+    for (var i = r[0]; i <= r[1]; i++) {
+      o.push([String(i), i + ' ' + unit]);
+      if (unit === 'in' && i < r[1]) o.push([i + '.5', i + '\u00bd ' + unit]);
+    }
+    return o;
+  }
 
   function initCalc(root) {
     var unit = 'in';
@@ -182,7 +188,8 @@
     var get = function (key) {
       var w = root.querySelector('[data-fit-whole="' + key + '"]').value;
       if (w === '') return null;
-      return parseFloat(w) + parseFloat(root.querySelector('[data-fit-frac="' + key + '"]').value || 0);
+      var frac = root.querySelector('[data-fit-frac="' + key + '"]');
+      return parseFloat(w) + (frac ? parseFloat(frac.value || 0) : 0);
     };
     var check = function () { btn.disabled = get('under') === null || get('over') === null; };
     root.querySelectorAll('[data-fit-unit]').forEach(function (b) {
@@ -194,9 +201,7 @@
           x.classList.toggle('is-active', on);
           x.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
-        var w = unit === 'in' ? IN_WHOLE : CM_WHOLE;
-        root.querySelectorAll('[data-fit-whole]').forEach(function (s) { fill(s, range(w[0], w[1]), true); });
-        root.querySelectorAll('[data-fit-frac]').forEach(function (s) { fill(s, unit === 'in' ? IN_FRAC : CM_FRAC); });
+        root.querySelectorAll('[data-fit-whole]').forEach(function (s) { fill(s, steps(unit), true); });
         var hint = root.querySelector('[data-fit-unit-hint]');
         if (hint) hint.textContent = unit === 'in' ? 'In inches' : 'In centimetres';
         result.hide();
