@@ -164,7 +164,7 @@
   };
 
   /* ---------- calculator ---------- */
-  /* one dropdown per measurement: inches in half-inch steps (30, 30½, 31 ...), centimetres in whole numbers */
+  /* one dropdown per measurement, whole numbers: inches (BLS's chart is in whole inches) or centimetres */
   var IN_RANGE = [25, 50], CM_RANGE = [60, 130];
 
   function fill(select, list, keepFirst) {
@@ -176,7 +176,6 @@
     var o = [], r = unit === 'in' ? IN_RANGE : CM_RANGE;
     for (var i = r[0]; i <= r[1]; i++) {
       o.push([String(i), i + ' ' + unit]);
-      if (unit === 'in' && i < r[1]) o.push([i + '.5', i + '\u00bd ' + unit]);
     }
     return o;
   }

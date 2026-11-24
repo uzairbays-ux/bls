@@ -1,6 +1,6 @@
 {%- doc -%}
   Bra size calculator: inches or centimetres, underbust and bust from two
-  picks each in one dropdown (inches in half-inch steps, or centimetres), BLS's own chart turns them into a size (assets/bls-fit.js),
+  picks each in one dropdown (whole inches or centimetres), BLS's own chart turns them into a size (assets/bls-fit.js),
   then the shared result panel and the "Do this / Not this" tips.
 {%- enddoc -%}
 {{ 'bls-fit.css' | asset_url | stylesheet_tag }}
@@ -61,10 +61,7 @@
           <div class="bls-fit-pair bls-fit-pair--single">
             <select class="bls-fit-select" data-fit-whole="{{ key }}" aria-labelledby="BlsFitLabel-{{ key }}-{{ section.id }}" aria-describedby="BlsFitUnitHint-{{ section.id }}">
               <option value="">--</option>
-              {%- for i in (25..50) -%}
-                <option value="{{ i }}">{{ i }} in</option>
-                {%- if i < 50 -%}<option value="{{ i }}.5">{{ i }}&frac12; in</option>{%- endif -%}
-              {%- endfor -%}
+              {%- for i in (25..50) -%}<option value="{{ i }}">{{ i }} in</option>{%- endfor -%}
             </select>
           </div>
         </div>
